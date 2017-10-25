@@ -1,13 +1,12 @@
 #if UNITY_EDITOR
-using System;
-using System.Collections.Generic;
-using System.Text.RegularExpressions;
-using UnityEditor;
-using UnityEngine;
-
-
 namespace InControl
 {
+	using System.Collections.Generic;
+	using System.Text.RegularExpressions;
+	using UnityEditor;
+	using UnityEngine;
+
+
 	[InitializeOnLoad]
 	internal class InputManagerAssetGenerator
 	{
@@ -369,7 +368,7 @@ namespace InControl
 				get
 				{
 					if (Regex.Match( name, @"^joystick \d+ analog \d+$" ).Success ||
-					    Regex.Match( name, @"^mouse (x|y|z)$" ).Success)
+						Regex.Match( name, @"^mouse (x|y|z)$" ).Success)
 					{
 						return true;
 					}
@@ -414,11 +413,11 @@ namespace InControl
 					return false;
 				if (GetChildProperty( axisPreset, "altPositiveButton" ).stringValue != altPositiveButton)
 					return false;
-				if (!Mathf.Approximately( GetChildProperty( axisPreset, "gravity" ).floatValue, gravity ))
+				if (!Utility.Approximately( GetChildProperty( axisPreset, "gravity" ).floatValue, gravity ))
 					return false;
-				if (!Mathf.Approximately( GetChildProperty( axisPreset, "dead" ).floatValue, deadZone ))
+				if (!Utility.Approximately( GetChildProperty( axisPreset, "dead" ).floatValue, deadZone ))
 					return false;
-				if (!Mathf.Approximately( GetChildProperty( axisPreset, "sensitivity" ).floatValue, this.sensitivity ))
+				if (!Utility.Approximately( GetChildProperty( axisPreset, "sensitivity" ).floatValue, this.sensitivity ))
 					return false;
 				if (GetChildProperty( axisPreset, "snap" ).boolValue != snap)
 					return false;
