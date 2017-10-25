@@ -1,0 +1,140 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using InControl;
+
+//Player Device manager that handles assigning devices to action sets and providing them
+//upon request. Handles intermittent connection of controllers and supports keyboard as well.
+public class PlayerDeviceManager : MonoBehaviour
+{
+    const int maxPlayers = 2;
+
+    List<PlayerActions> playerDevices = new List<PlayerActions>( maxPlayers );
+
+    //Default control profiles for all keyboard/controller users
+    PlayerActions keyboardListener;
+    PlayerActions controllerListener;
+
+    //Interface for retreiving player controls. Needs to be checked in Update in case of controller connnection/disconnection.
+    PlayerActions GetControls(int playerID)
+    {
+        return playerDevices[playerID];
+    }
+
+    private void OnEnable()
+    {
+        InputManager.OnDeviceDetached += OnDeviceDetached;
+        keyboardListener = PlayerActions.CreateWithKeyboardBindings();
+        controllerListener = PlayerActions.CreateWithControllerBindings();
+    }
+
+    private void OnDisable()
+    {
+        InputManager.OnDeviceDetached -= OnDeviceDetached;
+        keyboardListener.Destroy();
+        controllerListener.Destroy();
+    }
+
+    void Start ()
+    {
+        DontDestroyOnLoad(this);
+	}
+
+	void Update ()
+    {
+        //Checks join button on all controllers.
+        if(ListenerJoins(controllerListener))
+        {
+            //Most recently Active Device.
+            InputDevice lastActive = InputManager.ActiveDevice;
+
+            //If this controller isn't being used, add it
+            if(FindController(lastActive) == null)
+            {
+                AddPlayerDevice(lastActive);
+            }
+        }
+
+        //Checks join button on the keyboard
+        if(ListenerJoins(keyboardListener))
+        {
+            if(FindKeyboard() == null)
+            {
+                AddPlayerDevice(null);
+            }
+        }
+	}
+
+    //Returns true if the join button has been pressed.
+    bool ListenerJoins(PlayerActions actions)
+    {
+        return actions.Join.WasPressed;
+    }
+
+    //Checks all devices in use to see if targetDevice is in use.
+    PlayerActions FindController(InputDevice targetDevice)
+    {
+        foreach(PlayerActions controller in playerDevices)
+        {
+            if(controller.Device == targetDevice)
+            {
+                return controller;
+            }
+        }
+
+        return null;
+    }
+
+    //Checks all devices to see if keyboard is in use.
+    PlayerActions FindKeyboard()
+    {
+        foreach(PlayerActions keyboard in playerDevices)
+        {
+            if(keyboard == keyboardListener)
+            {
+                return keyboard;
+            }
+        }
+
+        return null;
+    }
+
+    //When a controller is detached, check if its one that's being used and destroy it's set if so.
+    //TODO: Define better behavior on controller disconnect. 
+    void OnDeviceDetached(InputDevice detachedDevice)
+    {
+        PlayerActions targetDevice = FindController(detachedDevice);
+        if(targetDevice != null)
+        {
+            playerDevices.Remove(targetDevice);
+        }
+
+        return;
+    }
+
+    PlayerActions AddPlayerDevice(InputDevice targetDevice)
+    {
+        if(playerDevices.Count < maxPlayers)
+        {
+            PlayerActions targetDeviceActionSet;
+
+            //If its the keyboard, we can just add it. There's only one.
+            if(targetDevice == null)
+            {
+                targetDeviceActionSet = keyboardListener;
+            }
+
+            //If its a controller, instantiate a new action set bound to the target device.
+            else
+            {
+                targetDeviceActionSet = PlayerActions.CreateWithControllerBindings();
+                targetDeviceActionSet.Device = targetDevice;
+            }
+
+            playerDevices.Add(targetDeviceActionSet);
+            return targetDeviceActionSet;
+        }
+
+        return null;
+    }
+}

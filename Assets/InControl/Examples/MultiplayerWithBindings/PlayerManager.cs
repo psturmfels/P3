@@ -143,6 +143,7 @@
 					// and it lets us easily find the keyboard player.
 					player.Actions = keyboardListener;
 				}
+
 				else
 				{
 					// Create a new instance and specifically set it to listen to the
