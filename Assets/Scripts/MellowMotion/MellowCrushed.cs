@@ -19,7 +19,10 @@ public class MellowCrushed : MonoBehaviour {
 		if (GetComponent<BoxCollider2D> () != null) {
 			GetComponent<BoxCollider2D> ().enabled = false;
 		}
-		ms.SetState (MellowStates.State.Dead, true);
+		if (GetComponent<PickUpAction> () != null) {
+			GetComponent<PickUpAction> ().DropItem ();
+		}
+ 		ms.SetState (MellowStates.State.Dead, true);
 		ma.InterruptMovementAnimation (crushSprites, timeBetweenCrushSprites);
 		Invoke ("RemoveSelf", removeDelay);
 	}

@@ -16,7 +16,6 @@ public class InputJump : MonoBehaviour {
 	private InputMove im;
 	private MellowStates ms;
 
-
 	public void StartJump(float forceModifier = 1.0f) {
 		if (!ms.canJump || ms.canWallJumpLeft || ms.canWallJumpRight) {
 			return;

@@ -62,7 +62,7 @@ public class PickUpAction : MonoBehaviour {
 		}
 	}
 
-	void DropItem() {
+	public void DropItem() {
 		pickUpLerpSpeed = minLerpSpeed;
 		hasPickedUpObject = false;
 		if (currentPickedUpItem.GetComponent<SpriteRenderer> () != null) {
