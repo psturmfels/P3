@@ -8,6 +8,7 @@ public class PickUpAction : MonoBehaviour {
 	public Vector2 holdOffset = new Vector2 (0.4f, 0.2f);
 	public KeyCode pickUpKey;
 
+	private MellowStates ms;
 	private GameObject currentPickedUpItem;
 	private bool hasPickedUpObject = false;
 	private Vector2 pickedUpOffset = new Vector2(0.4f, 0.2f);
@@ -22,6 +23,7 @@ public class PickUpAction : MonoBehaviour {
 	private InputMove im;
 
 	void Start() {	
+		ms = GetComponent<MellowStates> ();
 		im = GetComponent<InputMove> ();
 	}
 
@@ -63,6 +65,9 @@ public class PickUpAction : MonoBehaviour {
 	}
 
 	public void DropItem() {
+		if (currentPickedUpItem == null) {
+			return;
+		}
 		pickUpLerpSpeed = minLerpSpeed;
 		hasPickedUpObject = false;
 		if (currentPickedUpItem.GetComponent<SpriteRenderer> () != null) {
@@ -85,6 +90,10 @@ public class PickUpAction : MonoBehaviour {
 	}
 
 	void PickUpItem() {
+		if (!ms.canPickup) {
+			return;
+		}
+
 		Vector2 currentPosition = new Vector2 (transform.position.x, transform.position.y);
 		Collider2D[] nearbyObjects = Physics2D.OverlapCircleAll (currentPosition, pickUpRadius);
 

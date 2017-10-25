@@ -17,6 +17,11 @@ public class InputMove : MonoBehaviour {
 			currentFaceDirection = newHorzAxis;
 		}
 
+		if (!ms.canMove) {
+			currentHorzAxis = 0.0f; 
+			return;
+		}
+
 		previousHorzAxis = currentHorzAxis;
 		currentHorzAxis = newHorzAxis;
 	}

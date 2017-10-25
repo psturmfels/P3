@@ -9,7 +9,9 @@ public class MellowStates : MonoBehaviour {
 		WallJumpLeft,
 		WallJumpRight,
 		StillMovement,
-		Dead
+		Dead, 
+		PickUp,
+		Transformed
 	};
 
 	public bool canMove = true;
@@ -17,16 +19,34 @@ public class MellowStates : MonoBehaviour {
 	public bool canWallJumpLeft = false;
 	public bool canWallJumpRight = false;
 	public bool shouldStillMovement = true;
+	public bool canPickup = true;
 	public bool isDead = false;
+	public bool isTransformed = false;
 
 	private WallClingAnimate wca;
 
 	void Start() {
 		wca = GetComponent<WallClingAnimate> ();
 	}
+		
+	public void DisableMovementInput() {
+		canMove = false;
+		canJump = false;
+		canWallJumpLeft = false;
+		canWallJumpRight = false;
+		canPickup = false;
+	}
+
+	public void EnableMovementInput() {
+		canMove = true;
+		canPickup = true;
+	}
 
 	public void SetState(State SwitchState, bool newValue) {
 		if (isDead) {
+			return;
+		}
+		if (isTransformed && SwitchState != State.Transformed) {
 			return;
 		}
 
@@ -64,11 +84,21 @@ public class MellowStates : MonoBehaviour {
 		case State.Dead:
 			isDead = newValue;
 			if (isDead) {
-				canMove = false;
-				canJump = false;
-				canWallJumpLeft = false;
-				canWallJumpRight = false;
+				DisableMovementInput ();
 				shouldStillMovement = false;
+			}
+			break;
+
+		case State.PickUp:
+			canPickup = newValue;
+			break;
+
+		case State.Transformed:
+			isTransformed = newValue;
+			if (isTransformed) {
+				DisableMovementInput ();
+			} else {
+				EnableMovementInput ();
 			}
 			break;
 		}

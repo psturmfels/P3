@@ -15,6 +15,7 @@ public class MoveAnimate : MonoBehaviour {
 	private int currentInterruptIndex = 0;
 
 	public void ReturnMovementAnimation() {
+		sr.enabled = true;
 		sr.sprite = standingFrame;
 		trackMovement = true;
 	}
@@ -22,6 +23,11 @@ public class MoveAnimate : MonoBehaviour {
 	public void OverrideMovementAnimation(Sprite OverrideSprite) {
 		sr.sprite = OverrideSprite;
 		trackMovement = false;
+	}
+
+	public void DisableRenderer() {
+		trackMovement = false;
+		sr.enabled = false;
 	}
 
 	public void InterruptMovementAnimation(Sprite[] newInterruptSprites, float timeBetweenSprites) {
