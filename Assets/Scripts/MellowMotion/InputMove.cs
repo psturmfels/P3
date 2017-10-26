@@ -9,6 +9,7 @@ public class InputMove : MonoBehaviour {
 	private float previousHorzAxis;
 	private float currentFaceDirection;
 
+	public string horzAxisName;
 	public float moveIncrement;
 	public float maxMoveSpeed;
 
@@ -44,7 +45,7 @@ public class InputMove : MonoBehaviour {
 	}
 	
 	void Update () {
-		SetCurrentHorzAxis (Input.GetAxisRaw ("Horizontal"));
+		SetCurrentHorzAxis (Input.GetAxisRaw (horzAxisName));
 	}
 
 	void FixedUpdate() {
