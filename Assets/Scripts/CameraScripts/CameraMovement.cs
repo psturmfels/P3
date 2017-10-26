@@ -5,6 +5,8 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour {
 	public Transform player1;
 	public Transform player2;
+	public Transform player1Transformed;
+	public Transform player2Transformed;
 	public float minSizeY = 5.0f;
 	public float maxSizeY = 7f;
 
@@ -17,15 +19,21 @@ public class CameraMovement : MonoBehaviour {
 	void Start() {
 		mainCamera = GetComponent<Camera> ();
 	}
-	
 
-	void SetCameraPos() {
+	void SetLastPositions() {
 		if (player1.gameObject.activeSelf) {
 			lastPlayer1Position = player1.position;
+		} else if (player1Transformed.gameObject.activeSelf) {
+			lastPlayer1Position = player1Transformed.position;
 		}
 		if (player2.gameObject.activeSelf) {
 			lastPlayer2Position = player2.position;
+		} else if (player2Transformed.gameObject.activeSelf) {
+			lastPlayer2Position = player2Transformed.position;
 		}
+	}
+
+	void SetCameraPos() {
 		Vector3 middle = (lastPlayer1Position + lastPlayer2Position) * 0.5f;
 
 		mainCamera.transform.position = new Vector3(
@@ -36,12 +44,6 @@ public class CameraMovement : MonoBehaviour {
 	}
 
 	void SetCameraSize() {
-		if (player1.gameObject.activeSelf) {
-			lastPlayer1Position = player1.position;
-		}
-		if (player2.gameObject.activeSelf) {
-			lastPlayer2Position = player2.position;
-		}
 		//horizontal size is based on actual screen ratio
 		float minSizeX = minSizeY * Screen.width / Screen.height;
 
@@ -70,6 +72,7 @@ public class CameraMovement : MonoBehaviour {
 		if (player1 == null || player2 == null) { 
 			return;
 		}
+		SetLastPositions ();
 		SetCameraPos ();
 		SetCameraSize ();
 		ClampPlayers ();
