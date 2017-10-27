@@ -85,6 +85,7 @@ public class TransformBehavior: MonoBehaviour {
 	}
 
 	void CancelTransform() {
+		ResetCancelChecks ();
 		if (!scaleToNormal && !scaleToTransform) {
 			return;
 		}
