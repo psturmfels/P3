@@ -7,9 +7,10 @@ using InControl;
 //upon request. Handles intermittent connection of controllers and supports keyboard as well.
 public class PlayerDeviceManager : MonoBehaviour
 {
-    const int maxPlayers = 2;
+    private int currentPlayers = 0;
+    private const int maxPlayers = 2;
 
-    List<PlayerActions> playerDevices = new List<PlayerActions>( maxPlayers );
+    List<PlayerActions> playerDevices = new List<PlayerActions>(maxPlayers);
 
     //Default control profiles for all keyboard/controller users
     PlayerActions keyboardListener;
@@ -26,6 +27,11 @@ public class PlayerDeviceManager : MonoBehaviour
         InputManager.OnDeviceDetached += OnDeviceDetached;
         keyboardListener = PlayerActions.CreateWithKeyboardBindings();
         controllerListener = PlayerActions.CreateWithControllerBindings();
+
+        for(int i = currentPlayers; i < maxPlayers; ++i)
+        {
+            playerDevices.Add(null);
+        }
     }
 
     private void OnDisable()
@@ -107,6 +113,7 @@ public class PlayerDeviceManager : MonoBehaviour
         if(targetDevice != null)
         {
             playerDevices.Remove(targetDevice);
+            --currentPlayers;
         }
 
         return;
@@ -114,7 +121,7 @@ public class PlayerDeviceManager : MonoBehaviour
 
     PlayerActions AddPlayerDevice(InputDevice targetDevice)
     {
-        if(playerDevices.Count < maxPlayers)
+        if(currentPlayers < maxPlayers)
         {
             PlayerActions targetDeviceActionSet;
 
@@ -132,6 +139,7 @@ public class PlayerDeviceManager : MonoBehaviour
             }
 
             playerDevices.Add(targetDeviceActionSet);
+            ++currentPlayers;
             return targetDeviceActionSet;
         }
 
