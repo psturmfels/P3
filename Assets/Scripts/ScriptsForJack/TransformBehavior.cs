@@ -17,6 +17,8 @@ public class TransformBehavior: MonoBehaviour {
 	private bool scaleToTransform = false;
 	private float eps = 0.1f;
 	private Vector3 largestScaleDirection;
+	private bool firstCancel = false;
+	private bool secondCancel = false;
 
 	void Start () {
 		ms = GetComponent<MellowStates> ();
@@ -38,10 +40,11 @@ public class TransformBehavior: MonoBehaviour {
 	}
 
 	void ReachedTransformScale() {
+		ResetCancelChecks ();
+
 		if (ma != null) {
 			ma.DisableRenderer ();
 		}
-
 		otherBehavior.gameObject.SetActive (true);
 		otherBehavior.transform.position = transform.position;
 		otherBehavior.ScaleToNormal ();
@@ -52,10 +55,11 @@ public class TransformBehavior: MonoBehaviour {
 	}
 
 	void ReachedNormalScale() {
+		ResetCancelChecks ();
+
 		transform.localScale = normalScale;
 		scaleToNormal = false;
 		parentStateMachine.SetState (normalSetState);
-
 		if (ms != null) {
 			ms.SetState (MellowStates.State.Transformed, false);
 		}
@@ -63,6 +67,35 @@ public class TransformBehavior: MonoBehaviour {
 			ma.ReturnMovementAnimation ();
 		}
 	}
+
+	void ResetCancelChecks() {
+		firstCancel = false;
+		secondCancel = false;
+	}
+
+	public void RegisterCancelContact(int cancelID) {
+		if (cancelID == 1) {
+			firstCancel = true;
+		} else if (cancelID == 2) {
+			secondCancel = true;
+		}
+		if (firstCancel && secondCancel) {
+			CancelTransform ();
+		}
+	}
+
+	void CancelTransform() {
+		if (!scaleToNormal && !scaleToTransform) {
+			return;
+		}
+		if (normalSetState == StateMachineForJack.State.Normal) {
+			ScaleToNormal ();
+		} else if (normalSetState == StateMachineForJack.State.Transformed){
+			ScaleToTransform ();
+		}
+	}
+
+	
 
 	public void ScaleToTransform () {
 		if (ma != null) {
