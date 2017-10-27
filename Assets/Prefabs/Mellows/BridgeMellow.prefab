@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 50342185282551906}
   - component: {fileID: 61024753473611770}
   - component: {fileID: 114286038366221480}
+  - component: {fileID: 114987960596566114}
   m_Layer: 12
   m_Name: LeftCollider
   m_TagString: Player
@@ -40,6 +41,7 @@ GameObject:
   - component: {fileID: 50580207295662672}
   - component: {fileID: 61806455015696070}
   - component: {fileID: 114962895045559700}
+  - component: {fileID: 114866909475658198}
   m_Layer: 12
   m_Name: RightCollider
   m_TagString: Player
@@ -174,8 +176,6 @@ GameObject:
   - component: {fileID: 212955249788912522}
   - component: {fileID: 114360568735575172}
   - component: {fileID: 61968348915846552}
-  - component: {fileID: 50150546277029738}
-  - component: {fileID: 114793133210803334}
   m_Layer: 10
   m_Name: MellowTransformed
   m_TagString: Player
@@ -287,7 +287,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1896530445491730}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4, y: 0, z: 0}
+  m_LocalPosition: {x: 1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4531536203354712}
@@ -327,26 +327,6 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!50 &50150546277029738
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1956724992226718}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!50 &50254980385897248
 Rigidbody2D:
@@ -783,7 +763,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68f852624a8794fe5b5779fd9a9a60a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpVector: {x: 6, y: 14}
+  jumpVector: {x: 10, y: 12}
   jumpKey: 273
   positiveJumpSprites:
   - {fileID: 21300000, guid: 2db19d37dfbb54f1eb9be2ff93e0549a, type: 3}
@@ -910,18 +890,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ce5ab54f9f03e4ddfada0a34b3555f25, type: 3}
   - {fileID: 21300000, guid: 44f781ec1738d490ca96228d01bbab44, type: 3}
   timeBetweenJumpSprites: 0.01
---- !u!114 &114793133210803334
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1956724992226718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 688d4f059528543da9ef2161a334b1c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rejectVector: {x: 1, y: 0, z: 0}
 --- !u!114 &114816785855224382
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -964,6 +932,18 @@ MonoBehaviour:
   timeBetweenCrushSprites: 0.03
   deathExplosion: {fileID: 1301474835221234, guid: b246ceb7c468a447da15a77cf94af46c,
     type: 2}
+--- !u!114 &114866909475658198
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1270204083297324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 688d4f059528543da9ef2161a334b1c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rejectVector: {x: 1, y: 0, z: 0}
 --- !u!114 &114873237194368446
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -990,6 +970,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cancelID: 2
+--- !u!114 &114987960596566114
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1035130723605198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 688d4f059528543da9ef2161a334b1c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rejectVector: {x: 1, y: 0, z: 0}
 --- !u!212 &212161945276043560
 SpriteRenderer:
   m_ObjectHideFlags: 1
