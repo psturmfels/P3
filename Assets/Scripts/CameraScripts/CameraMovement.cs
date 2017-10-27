@@ -15,6 +15,8 @@ public class CameraMovement : MonoBehaviour {
 
 	private Vector3 lastPlayer1Position;
 	private Vector3 lastPlayer2Position;
+	private float smoothSpeed = 1.5f;
+	private float upOffset = 1.0f;
 
 	void Start() {
 		mainCamera = GetComponent<Camera> ();
@@ -36,11 +38,13 @@ public class CameraMovement : MonoBehaviour {
 	void SetCameraPos() {
 		Vector3 middle = (lastPlayer1Position + lastPlayer2Position) * 0.5f;
 
-		mainCamera.transform.position = new Vector3(
+		Vector3 targetCameraPosition = new Vector3(
 			middle.x,
-			middle.y,
+			middle.y + upOffset,
 			mainCamera.transform.position.z
 		);
+
+		mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, targetCameraPosition, smoothSpeed*Time.deltaTime);
 	}
 
 	void SetCameraSize() {
