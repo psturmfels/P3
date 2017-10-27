@@ -7,6 +7,7 @@ using InControl;
 public class PlayerActions : PlayerActionSet
 {
     //Player actions
+    public PlayerAction Jump;
     public PlayerAction Transform;      //Grow/shrink character
     public PlayerAction Interact;       //Pickup/drop an item
     public PlayerAction Join;           //Join the game
@@ -25,6 +26,7 @@ public class PlayerActions : PlayerActionSet
     public PlayerActions()
     {
         //Player Actions
+        Jump        = CreatePlayerAction("Jump");
         Transform   = CreatePlayerAction("Transform");
         Interact    = CreatePlayerAction("Interact");
         Join        = CreatePlayerAction("Join");
@@ -47,9 +49,10 @@ public class PlayerActions : PlayerActionSet
         var actions = new PlayerActions();
 
         //Player Actions
-        actions.Transform.AddDefaultBinding(Key.Z);
-        actions.Interact.AddDefaultBinding(Key.X);
-        actions.Join.AddDefaultBinding(Key.C);
+        actions.Jump.AddDefaultBinding(Key.Z);
+        actions.Transform.AddDefaultBinding(Key.X);
+        actions.Interact.AddDefaultBinding(Key.A);
+        actions.Join.AddDefaultBinding(Key.S);
 
         actions.Left.AddDefaultBinding(Key.LeftArrow);
         actions.Right.AddDefaultBinding(Key.RightArrow);
@@ -59,8 +62,8 @@ public class PlayerActions : PlayerActionSet
         //Developer Actions
         actions.ResetLevel.AddDefaultBinding(Key.I);
         actions.ResetCheckpoint.AddDefaultBinding(Key.K);
-        actions.AdvanceLevel.AddDefaultBinding(Key.J);
-        actions.BackLevel.AddDefaultBinding(Key.L);
+        actions.AdvanceLevel.AddDefaultBinding(Key.L);
+        actions.BackLevel.AddDefaultBinding(Key.J);
 
         return actions;
     }
@@ -71,9 +74,10 @@ public class PlayerActions : PlayerActionSet
         var actions = new PlayerActions();
 
         //Player Actions
-        actions.Transform.AddDefaultBinding(InputControlType.Action1);
-        actions.Interact.AddDefaultBinding(InputControlType.Action2);
-        actions.Join.AddDefaultBinding(InputControlType.Start);
+        actions.Jump.AddDefaultBinding(InputControlType.Action1);
+        actions.Transform.AddDefaultBinding(InputControlType.Action2);
+        actions.Interact.AddDefaultBinding(InputControlType.Action3);
+        actions.Join.AddDefaultBinding(InputControlType.Action4);
 
         actions.Left.AddDefaultBinding(InputControlType.LeftStickLeft);
         actions.Right.AddDefaultBinding(InputControlType.LeftStickRight);
@@ -83,8 +87,8 @@ public class PlayerActions : PlayerActionSet
         //Developer Actions
         actions.ResetLevel.AddDefaultBinding(InputControlType.DPadUp);
         actions.ResetCheckpoint.AddDefaultBinding(InputControlType.DPadDown);
-        actions.AdvanceLevel.AddDefaultBinding(InputControlType.DPadLeft);
-        actions.BackLevel.AddDefaultBinding(InputControlType.DPadRight);
+        actions.AdvanceLevel.AddDefaultBinding(InputControlType.DPadRight);
+        actions.BackLevel.AddDefaultBinding(InputControlType.DPadLeft);
 
         return actions;
     }

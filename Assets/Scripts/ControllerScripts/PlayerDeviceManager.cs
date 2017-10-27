@@ -17,7 +17,7 @@ public class PlayerDeviceManager : MonoBehaviour
     PlayerActions controllerListener;
 
     //Interface for retreiving player controls. Needs to be checked in Update in case of controller connnection/disconnection.
-    PlayerActions GetControls(int playerID)
+    public PlayerActions GetControls(int playerID)
     {
         return playerDevices[playerID];
     }
@@ -32,6 +32,8 @@ public class PlayerDeviceManager : MonoBehaviour
         {
             playerDevices.Add(null);
         }
+
+        Debug.Log("PDM Started.");
     }
 
     private void OnDisable()
@@ -51,6 +53,7 @@ public class PlayerDeviceManager : MonoBehaviour
         //Checks join button on all controllers.
         if(ListenerJoins(controllerListener))
         {
+            Debug.Log("Join Pressed");
             //Most recently Active Device.
             InputDevice lastActive = InputManager.ActiveDevice;
 
@@ -64,6 +67,7 @@ public class PlayerDeviceManager : MonoBehaviour
         //Checks join button on the keyboard
         if(ListenerJoins(keyboardListener))
         {
+            Debug.Log("Join Pressed");
             if(FindKeyboard() == null)
             {
                 AddPlayerDevice(null);
@@ -82,7 +86,7 @@ public class PlayerDeviceManager : MonoBehaviour
     {
         foreach(PlayerActions controller in playerDevices)
         {
-            if(controller.Device == targetDevice)
+            if((controller != null) && (controller.Device == targetDevice))
             {
                 return controller;
             }
@@ -128,6 +132,7 @@ public class PlayerDeviceManager : MonoBehaviour
             //If its the keyboard, we can just add it. There's only one.
             if(targetDevice == null)
             {
+                Debug.Log("KB Added");
                 targetDeviceActionSet = keyboardListener;
             }
 
@@ -138,7 +143,16 @@ public class PlayerDeviceManager : MonoBehaviour
                 targetDeviceActionSet.Device = targetDevice;
             }
 
-            playerDevices.Add(targetDeviceActionSet);
+            for(int i = 0; i < maxPlayers; ++i)
+            {
+                if(playerDevices[i] == null)
+                {
+                    Debug.Log("New set added");
+                    playerDevices[i] = targetDeviceActionSet;
+                    break;
+                }
+            }
+
             ++currentPlayers;
             return targetDeviceActionSet;
         }
