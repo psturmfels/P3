@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212743410078659068}
   - component: {fileID: 61076504612988112}
   - component: {fileID: 114869074945954964}
+  - component: {fileID: 114701223310409322}
   m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
@@ -67,6 +68,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &114701223310409322
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1032794291044180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98799097e8e681147bdb698dbda6331d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TriggeredObject: {fileID: 0}
 --- !u!114 &114869074945954964
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -92,7 +105,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
