@@ -9,7 +9,6 @@ public class LevelFinish : MonoBehaviour {
     public Sprite greenFlagSprite;
     public SceneLoader sceneLoader;
 
-    private int numOfPlayersFinished = 0;
     private GameObject firstPlayer;
 
     void OnTriggerEnter2D(Collider2D other) {
