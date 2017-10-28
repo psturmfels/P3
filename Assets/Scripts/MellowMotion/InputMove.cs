@@ -1,13 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using InControl;
 
 public class InputMove : MonoBehaviour {
 	private Rigidbody2D rb;
 	private MellowStates ms;
+    private PlayerDeviceManager deviceManager;
 	private float currentHorzAxis;
 	private float previousHorzAxis;
 	private float currentFaceDirection;
+    private int playerID = 0;
+    private PlayerActions controls;
 
 	public string horzAxisName;
 	public float moveIncrement;
@@ -42,10 +46,26 @@ public class InputMove : MonoBehaviour {
 	void Start () {
 		ms = GetComponent<MellowStates> ();
 		rb = GetComponent<Rigidbody2D> ();
+
+        //Find PlayerDeviceManager
+        deviceManager = GameObject.Find("PlayerDeviceManager").GetComponent<PlayerDeviceManager>();
+
+        //Grab playerID for controller purposes.
+        if(ms) {
+            playerID = ms.playerID;
+        }
+
 	}
 	
 	void Update () {
-		SetCurrentHorzAxis (Input.GetAxisRaw (horzAxisName));
+        //Find the controls bound to this player
+        if((deviceManager != null) && (controls == null)) {
+            controls = deviceManager.GetControls(playerID);
+        }
+
+        if(controls != null) {
+            SetCurrentHorzAxis(controls.Move.X);
+        }
 	}
 
 	void FixedUpdate() {

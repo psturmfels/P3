@@ -1,12 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using InControl;
 
 public class PickUpAction : MonoBehaviour {
 	public bool disableObjectColliderWhileHeld = true;
 	public bool lerpObjectToIdentity = true;
 	public Vector2 holdOffset = new Vector2 (0.4f, 0.2f);
-	public KeyCode pickUpKey;
 
 	private MellowStates ms;
 	private GameObject currentPickedUpItem;
@@ -19,22 +19,46 @@ public class PickUpAction : MonoBehaviour {
 	private float maxLerpSpeed = 1.0f;
 	private float lerpIncrement = 0.1f;
 	private float objectGravityScale;
+    private PlayerActions controls;
+    private PlayerDeviceManager deviceManager;
+    private int playerID = 0;
 
-	private InputMove im;
+    private InputMove im;
 
 	void Start() {	
 		ms = GetComponent<MellowStates> ();
 		im = GetComponent<InputMove> ();
-	}
+
+        //Find PlayerDeviceManager
+        deviceManager = GameObject.Find("PlayerDeviceManager").GetComponent<PlayerDeviceManager>();
+
+        //Grab playerID for controller purposes.
+        if(ms) {
+            playerID = ms.playerID;
+        }
+    }
 
 	void Update () {
-		if (Input.GetKeyDown (pickUpKey)) {
-			if (hasPickedUpObject) {
-				DropItem ();
-			} else {
-				PickUpItem ();
-			}
-		}
+        //Find the controls bound to this player
+        if((deviceManager != null) && (controls == null))
+        {
+            controls = deviceManager.GetControls(playerID);
+        }
+
+        if(controls != null)
+        {
+            if(controls.Interact.IsPressed)
+            {
+                if(hasPickedUpObject)
+                {
+                    DropItem();
+                }
+                else
+                {
+                    PickUpItem();
+                }
+            }
+        }
 
 		if (hasPickedUpObject && currentPickedUpItem != null) {
 			if (Mathf.Sign (pickedUpOffset.x) != im.GetCurrentFaceDirection ()) {

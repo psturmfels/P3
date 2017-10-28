@@ -23,6 +23,8 @@ public class MellowStates : MonoBehaviour {
 	public bool isDead = false;
 	public bool isTransformed = false;
 
+    public int playerID = 0;
+
 	private WallClingAnimate wca;
 
 	void Start() {

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using InControl;
 
 public class StateMachineForJack : MonoBehaviour {
 	public enum State {
@@ -9,14 +10,17 @@ public class StateMachineForJack : MonoBehaviour {
 		InTransition
 	};
 
-	public KeyCode transformKey;
-
 	public GameObject normalObject;
 	public GameObject transformedObject;
 
 	private State currentState = State.Normal;
+    private PlayerActions controls;
+    private PlayerDeviceManager deviceManager;
+    private MellowStates ms;
 
-	public void SetState(State newState) {
+    private int playerID = 0;
+
+    public void SetState(State newState) {
 		currentState = newState;
 	}
 
@@ -36,14 +40,42 @@ public class StateMachineForJack : MonoBehaviour {
 			}
 		}
 	}
-		
-	void Update () {
-		if (Input.GetKeyDown (transformKey)) {
-			if (currentState == State.Normal) {
-				TransitionToState (State.Transformed);
-			} else if (currentState == State.Transformed) {
-				TransitionToState (State.Normal);
-			}
-		}
+
+    void Start()
+    {
+        ms = GetComponentInChildren<MellowStates>();
+
+        //Find PlayerDeviceManager
+        deviceManager = GameObject.Find("PlayerDeviceManager").GetComponent<PlayerDeviceManager>();
+
+        //Grab playerID for controller purposes.
+        if(ms)
+        {
+            playerID = ms.playerID;
+        }
+
+    }
+
+    void Update () {
+        //Find the controls bound to this player
+        if((deviceManager != null) && (controls == null))
+        {
+            controls = deviceManager.GetControls(playerID);
+        }
+
+        if(controls != null)
+        {
+            if(controls.Transform.IsPressed)
+            {
+                if(currentState == State.Normal)
+                {
+                    TransitionToState(State.Transformed);
+                }
+                else if(currentState == State.Transformed)
+                {
+                    TransitionToState(State.Normal);
+                }
+            }
+        }
 	}
 }

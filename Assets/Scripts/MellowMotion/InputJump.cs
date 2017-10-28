@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using InControl;
 
 public class InputJump : MonoBehaviour {
 	public float jumpForce;
-	public KeyCode jumpKey;
 	public Sprite[] positiveJumpSprites;
 	public Sprite[] negativeJumpSprites;
 	public float timeBetweenJumpSprites;
@@ -15,8 +15,11 @@ public class InputJump : MonoBehaviour {
 	private MoveAnimate ma;
 	private InputMove im;
 	private MellowStates ms;
+    private PlayerActions controls;
+    private PlayerDeviceManager deviceManager;
+    private int playerID = 0;
 
-	public void StartJump(float forceModifier = 1.0f) {
+    public void StartJump(float forceModifier = 1.0f) {
 		if (!ms.canJump || ms.canWallJumpLeft || ms.canWallJumpRight) {
 			return;
 		}
@@ -38,7 +41,15 @@ public class InputJump : MonoBehaviour {
 		ma = GetComponent<MoveAnimate> ();
 		im = GetComponent<InputMove> ();
 		jumpDelay = timeBetweenJumpSprites * positiveJumpSprites.Length;
-	}
+
+        //Find PlayerDeviceManager
+        deviceManager = GameObject.Find("PlayerDeviceManager").GetComponent<PlayerDeviceManager>();
+
+        //Grab playerID for controller purposes.
+        if(ms) {
+            playerID = ms.playerID;
+        }
+    }
 		
 	void Jump() {
 		rb.velocity = new Vector2 (rb.velocity.x, 0.0f);
@@ -46,8 +57,18 @@ public class InputJump : MonoBehaviour {
 	}
 
 	void Update () {
-		if (Input.GetKeyDown (jumpKey)) {
-			StartJump ();
-		}
+        //Find the controls bound to this player
+        if((deviceManager != null) && (controls == null))
+        {
+            controls = deviceManager.GetControls(playerID);
+        }
+
+        if(controls != null)
+        {
+            if(controls.Jump.IsPressed)
+            {
+                StartJump();
+            }
+        }
 	}
 }
