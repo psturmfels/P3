@@ -5,32 +5,32 @@ using UnityEngine;
 public class ButtonActivate : MonoBehaviour {
 
     public GameObject TriggeredObject;
+    public Sprite buttonUnpressedSprite;
+    public Sprite buttonPressedSprite;
     public bool locked = true;
 
-    Renderer render;
-    Color oldColor;
-    Color activeColor = Color.cyan;
+    private SpriteRenderer sr;
 
     // Use this for initialization
     void Start()
     {
-        render = this.GetComponent<Renderer>();
-        oldColor = render.material.color;
+        sr = GetComponent<SpriteRenderer>();
         ChangeAlphaOfChildren(locked ? 1.0f : 0.5f);
+        ChangeColliderOfChildren(locked);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         ChangeColliderOfChildren(!locked);
         ChangeAlphaOfChildren(!locked ? 1.0f : 0.5f);
-        render.material.color = activeColor;
+        sr.sprite = buttonPressedSprite;
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
         ChangeColliderOfChildren(locked);
         ChangeAlphaOfChildren(locked ? 1.0f : 0.5f);
-        render.material.color = oldColor;
+        sr.sprite = buttonUnpressedSprite;
     }
 
     private void ChangeAlphaOfChildren(float alpha)

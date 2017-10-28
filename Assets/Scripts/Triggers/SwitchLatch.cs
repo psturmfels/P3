@@ -5,20 +5,22 @@ using UnityEngine;
 public class SwitchLatch : MonoBehaviour {
 
     public GameObject TriggeredObject;
+    public Sprite pressedButtonSprite;
 
-    Renderer render;
-    Color activeColor = Color.cyan;
+//    private Renderer render;
+    private SpriteRenderer sr;
 
 	// Use this for initialization
 	void Start () {
-        render = GetComponent<Renderer>();
+//        render = GetComponent<Renderer>();
+	    sr = GetComponent<SpriteRenderer>();
 	}
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         ChangeAlphaOfChildren(0.5f);
         ChangeColliderOfChildren(false);
-        render.material.color = activeColor;
+        sr.sprite = pressedButtonSprite;
     }
 
     private void ChangeAlphaOfChildren(float alpha)
