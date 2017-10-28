@@ -7,6 +7,7 @@ public class LevelFinish : MonoBehaviour {
     public SpriteRenderer firstFlag;
     public SpriteRenderer secondFlag;
     public Sprite greenFlagSprite;
+    public SceneLoader sceneLoader;
 
     private int numOfPlayersFinished = 0;
     private GameObject firstPlayer;
@@ -19,8 +20,13 @@ public class LevelFinish : MonoBehaviour {
             }
             else if (other.gameObject != firstPlayer) {
                 secondFlag.sprite = greenFlagSprite;
+                Invoke("BackToMenu", 3.0f);
             }
         }
+    }
+
+    private void BackToMenu() {
+        sceneLoader.LoadMenu();
     }
 
 }
