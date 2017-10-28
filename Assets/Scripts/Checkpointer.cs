@@ -6,9 +6,12 @@ using UnityEngine.SceneManagement;
 public class Checkpointer : MonoBehaviour {
 
     Vector3 CheckpointPos;
+    GameObject self;
+
 	// Use this for initialization
 	void Start () {
         CheckpointPos = this.transform.position;
+        self = this.gameObject;
 	}
 	
 	// Update is called once per frame
@@ -31,7 +34,8 @@ public class Checkpointer : MonoBehaviour {
     }
 
     public void ResetToCheckpoint() {
-        this.transform.SetPositionAndRotation(CheckpointPos, Quaternion.identity);
+        Instantiate(self, CheckpointPos, Quaternion.identity);
+        Destroy(this.gameObject);
     }
 
     public void ResetToBeginning() {
