@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Checkpointer : MonoBehaviour {
 
-    public GameObject self;
+    public GameObject bridgeMello;
+    public GameObject stiltMello;
 
     Vector3 CheckpointPos;
 
@@ -33,28 +34,18 @@ public class Checkpointer : MonoBehaviour {
         }
     }
 
-    public void ResetToCheckpoint() {
-        Destroy(this.gameObject);
-        Instantiate(self, CheckpointPos, Quaternion.identity);
-        ResetCameraReferences();
-        //reset other mello
+    public void SetCheckpoint(Vector3 pos) {
+        CheckpointPos = pos;
+    }
 
+    public void ResetToCheckpoint() {
+        stiltMello.GetComponentInParent<StateMachineForJack>().TransitionToState(StateMachineForJack.State.Normal);
+        bridgeMello.GetComponentInParent<StateMachineForJack>().TransitionToState(StateMachineForJack.State.Normal);
+        stiltMello.transform.position = CheckpointPos + new Vector3(1,0,0);
+        bridgeMello.transform.position = CheckpointPos - new Vector3(1,0,0);
     }
 
     public void ResetToBeginning() {
-        //reset other mello
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
-
-    private void ResetCameraReferences() {
-        CameraMovement cm = Camera.main.gameObject.GetComponent<CameraMovement>();
-        if (gameObject.name == "BridgeMellow") {
-            cm.player1Transformed = transform.GetChild(0);
-            cm.player1 = transform.GetChild(1);
-        }
-        else {
-            cm.player2Transformed = transform.GetChild(0);
-            cm.player2 = transform.GetChild(1);
-        }
     }
 }
