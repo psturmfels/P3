@@ -59,7 +59,7 @@ public class InputMove : MonoBehaviour {
 	
 	void Update () {
         //Find the controls bound to this player
-        if((deviceManager != null) && (controls == null)) {
+        if (deviceManager != null) {
             controls = deviceManager.GetControls(playerID);
         }
 

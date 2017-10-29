@@ -73,6 +73,15 @@ public class PlayerDeviceManager : MonoBehaviour
                 AddPlayerDevice(null);
             }
         }
+
+		//Check if the swap button was pressed
+		if (SwitchPressed (controllerListener) || SwitchPressed (keyboardListener))
+		{
+			Debug.Log ("Swap Pressed");
+			PlayerActions temp = playerDevices [0];
+			playerDevices [0] = playerDevices [1];
+			playerDevices [1] = temp;
+		}
 	}
 
     //Returns true if the join button has been pressed.
@@ -80,6 +89,12 @@ public class PlayerDeviceManager : MonoBehaviour
     {
         return actions.Join.WasPressed;
     }
+
+	//Returns true if the swap button is pressed.
+	bool SwitchPressed(PlayerActions actions)
+	{
+		return actions.SwitchCharacters.WasPressed;
+	}
 
     //Checks all devices in use to see if targetDevice is in use.
     PlayerActions FindController(InputDevice targetDevice)

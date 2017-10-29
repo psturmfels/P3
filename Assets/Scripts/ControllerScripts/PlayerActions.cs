@@ -16,6 +16,7 @@ public class PlayerActions : PlayerActionSet
     public PlayerAction Up;
     public PlayerAction Down;
     public PlayerTwoAxisAction Move;
+	public PlayerAction SwitchCharacters;
 
     //Developer actions
     public PlayerAction ResetLevel;         //Reset the current level
@@ -41,6 +42,7 @@ public class PlayerActions : PlayerActionSet
         ResetCheckpoint = CreatePlayerAction("ResetCheckpoint");
         AdvanceLevel    = CreatePlayerAction("AdvanceLevel");
         BackLevel       = CreatePlayerAction("BackLevel");
+		SwitchCharacters = CreatePlayerAction ("SwitchCharacters");
     }
 
     //Define Player actions for keyboard. DO NOT CHANGE THESE.
@@ -49,7 +51,7 @@ public class PlayerActions : PlayerActionSet
         var actions = new PlayerActions();
 
         //Player Actions
-        actions.Jump.AddDefaultBinding(Key.Z);
+		actions.Jump.AddDefaultBinding(Key.UpArrow);
         actions.Transform.AddDefaultBinding(Key.X);
         actions.Interact.AddDefaultBinding(Key.A);
         actions.Join.AddDefaultBinding(Key.S);
@@ -64,6 +66,7 @@ public class PlayerActions : PlayerActionSet
         actions.ResetCheckpoint.AddDefaultBinding(Key.K);
         actions.AdvanceLevel.AddDefaultBinding(Key.L);
         actions.BackLevel.AddDefaultBinding(Key.J);
+		actions.SwitchCharacters.AddDefaultBinding (Key.Shift);
 
         return actions;
     }
@@ -89,6 +92,7 @@ public class PlayerActions : PlayerActionSet
         actions.ResetCheckpoint.AddDefaultBinding(InputControlType.DPadDown);
         actions.AdvanceLevel.AddDefaultBinding(InputControlType.DPadRight);
         actions.BackLevel.AddDefaultBinding(InputControlType.DPadLeft);
+		actions.SwitchCharacters.AddDefaultBinding (InputControlType.LeftBumper);
 
         return actions;
     }
