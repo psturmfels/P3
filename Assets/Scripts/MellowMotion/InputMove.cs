@@ -63,9 +63,11 @@ public class InputMove : MonoBehaviour {
             controls = deviceManager.GetControls(playerID);
         }
 
-        if(controls != null) {
-            SetCurrentHorzAxis(controls.Move.X);
-        }
+		if (controls != null && controls.Move.X != 0.0f) {
+			SetCurrentHorzAxis (Mathf.Sign(controls.Move.X));
+		} else {
+			SetCurrentHorzAxis (0.0f);
+		}
 	}
 
 	void FixedUpdate() {
