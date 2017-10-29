@@ -65,7 +65,7 @@ public class InputJump : MonoBehaviour {
 
         if(controls != null)
         {
-            if(controls.Jump.IsPressed)
+            if(controls.Jump.WasPressed)
             {
                 StartJump();
             }

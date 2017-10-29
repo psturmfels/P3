@@ -65,7 +65,7 @@ public class StateMachineForJack : MonoBehaviour {
 
         if(controls != null)
         {
-            if(controls.Transform.IsPressed)
+            if(controls.Transform.WasPressed)
             {
                 if(currentState == State.Normal)
                 {
