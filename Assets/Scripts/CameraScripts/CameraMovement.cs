@@ -63,12 +63,12 @@ public class CameraMovement : MonoBehaviour {
 	void ClampPlayers() {
 		Vector3 player1CameraPos = Camera.main.WorldToViewportPoint (player1.position);
 		player1CameraPos.x = Mathf.Clamp(player1CameraPos.x, 0.022f, 0.978f);
-		player1CameraPos.y = Mathf.Clamp(player1CameraPos.y, 0.022f, 0.978f);
+		//player1CameraPos.y = Mathf.Clamp(player1CameraPos.y, 0.022f, 0.978f);
 		player1.position = Camera.main.ViewportToWorldPoint(player1CameraPos);
 
 		Vector3 player2CameraPos = Camera.main.WorldToViewportPoint (player2.position);
 		player2CameraPos.x = Mathf.Clamp(player2CameraPos.x, 0.022f, 0.978f);
-		player2CameraPos.y = Mathf.Clamp(player2CameraPos.y, 0.022f, 0.978f);
+		//player2CameraPos.y = Mathf.Clamp(player2CameraPos.y, 0.022f, 0.978f);
 		player2.position = Camera.main.ViewportToWorldPoint(player2CameraPos);
 	}
 

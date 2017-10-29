@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4143125017040974}
   - component: {fileID: 114639551587385128}
+  - component: {fileID: 114934318947610734}
   m_Layer: 0
   m_Name: StiltMellow
   m_TagString: Player
@@ -684,7 +685,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68f852624a8794fe5b5779fd9a9a60a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpVector: {x: 10, y: 12}
+  jumpVector: {x: 12, y: 12}
   positiveJumpSprites:
   - {fileID: 21300000, guid: 2db19d37dfbb54f1eb9be2ff93e0549a, type: 3}
   - {fileID: 21300000, guid: 9edcf4c5d4c534b21b70b27a9d83060d, type: 3}
@@ -957,6 +958,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cancelID: 2
+--- !u!114 &114934318947610734
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1364072912395016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c80e0bd509696b74fbe7d77b15de0e81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114954587388497768
 MonoBehaviour:
   m_ObjectHideFlags: 1

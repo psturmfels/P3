@@ -5,13 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class Checkpointer : MonoBehaviour {
 
+    public GameObject self;
+
     Vector3 CheckpointPos;
-    GameObject self;
 
 	// Use this for initialization
 	void Start () {
         CheckpointPos = this.transform.position;
-        self = this.gameObject;
 	}
 	
 	// Update is called once per frame
@@ -34,11 +34,14 @@ public class Checkpointer : MonoBehaviour {
     }
 
     public void ResetToCheckpoint() {
-        Instantiate(self, CheckpointPos, Quaternion.identity);
         Destroy(this.gameObject);
+        Instantiate(self, CheckpointPos, Quaternion.identity);
+        //reset other mello
+        
     }
 
     public void ResetToBeginning() {
+        //reset other mello
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

@@ -64,6 +64,6 @@ public class MellowCrushed : MonoBehaviour {
 		if (deathExplosion != null) {
 			Instantiate (deathExplosion, transform.position, Quaternion.identity);
 		}
-		Destroy (gameObject);
+        GetComponent<Checkpointer>().ResetToCheckpoint();
 	}
 }
