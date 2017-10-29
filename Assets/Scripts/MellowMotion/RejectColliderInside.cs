@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RejectColliderInside : MonoBehaviour {
 	public Vector3 rejectVector;
-	private float eps = 0.1f;
+	private float eps = 0.3f;
 
 	void OnTriggerEnter2D(Collider2D other) {
 		RejectOther (other.gameObject);

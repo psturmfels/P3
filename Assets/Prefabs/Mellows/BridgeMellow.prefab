@@ -131,6 +131,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4847377526447634}
   - component: {fileID: 114632385916016572}
+  - component: {fileID: 114840092748189700}
   m_Layer: 0
   m_Name: BridgeMellow
   m_TagString: Player
@@ -763,8 +764,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68f852624a8794fe5b5779fd9a9a60a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpVector: {x: 10, y: 12}
-  jumpKey: 273
+  jumpVector: {x: 12, y: 12}
   positiveJumpSprites:
   - {fileID: 21300000, guid: 2db19d37dfbb54f1eb9be2ff93e0549a, type: 3}
   - {fileID: 21300000, guid: 9edcf4c5d4c534b21b70b27a9d83060d, type: 3}
@@ -840,7 +840,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d72b2cd84a3f54555ac3a3ce700aaedd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transformKey: 108
   normalObject: {fileID: 1918495302005248}
   transformedObject: {fileID: 1956724992226718}
 --- !u!114 &114727126200560278
@@ -857,7 +856,6 @@ MonoBehaviour:
   disableObjectColliderWhileHeld: 1
   lerpObjectToIdentity: 1
   holdOffset: {x: 0.4, y: 0.2}
-  pickUpKey: 107
 --- !u!114 &114751144855179418
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -870,7 +868,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 14
-  jumpKey: 273
   positiveJumpSprites:
   - {fileID: 21300000, guid: 8ecbafe0049b1461abd55ab9f9ee8404, type: 3}
   - {fileID: 21300000, guid: 6bdad9c3aeed94e9fa7465c54be1d6af, type: 3}
@@ -909,6 +906,7 @@ MonoBehaviour:
   canPickup: 1
   isDead: 0
   isTransformed: 0
+  playerID: 0
 --- !u!114 &114839743573177664
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -920,7 +918,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a49a1353d6a0410e84d0fb7b200f074, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selfDestructKey: 120
   crushSprites:
   - {fileID: 21300000, guid: 9ca7bb71a86a84230ace9ca8432771d1, type: 3}
   - {fileID: 21300000, guid: 8582f47b74f9a4f00b4a435fb2ed14ca, type: 3}
@@ -932,6 +929,17 @@ MonoBehaviour:
   timeBetweenCrushSprites: 0.03
   deathExplosion: {fileID: 1301474835221234, guid: b246ceb7c468a447da15a77cf94af46c,
     type: 2}
+--- !u!114 &114840092748189700
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1896530445491730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c80e0bd509696b74fbe7d77b15de0e81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114866909475658198
 MonoBehaviour:
   m_ObjectHideFlags: 1
