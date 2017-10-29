@@ -59,6 +59,11 @@ public class MellowStates : MonoBehaviour {
 
 		case State.Jump:
 			canJump = newValue;
+			if (canJump) {
+				canWallJumpLeft = false;
+				canWallJumpRight = false;
+				wca.StopWallCling ();
+			}
 			break;
 
 		case State.WallJumpLeft:
