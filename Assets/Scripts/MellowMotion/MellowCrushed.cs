@@ -16,16 +16,16 @@ public class MellowCrushed : MonoBehaviour {
     private int playerID = 0;
 
     public void Die() {
-		if (GetComponent<Rigidbody2D> () != null) {
-			GetComponent<Rigidbody2D> ().simulated = false;
-		}
-		if (GetComponent<BoxCollider2D> () != null) {
-			GetComponent<BoxCollider2D> ().enabled = false;
-		}
-		if (GetComponent<PickUpAction> () != null) {
-			GetComponent<PickUpAction> ().DropItem ();
-		}
- 		ms.SetState (MellowStates.State.Dead, true);
+		//if (GetComponent<Rigidbody2D> () != null) {
+		//	GetComponent<Rigidbody2D> ().simulated = false;
+		//}
+		//if (GetComponent<BoxCollider2D> () != null) {
+		//	GetComponent<BoxCollider2D> ().enabled = false;
+		//}
+		//if (GetComponent<PickUpAction> () != null) {
+		//	GetComponent<PickUpAction> ().DropItem ();
+		//}
+ 	//	ms.SetState (MellowStates.State.Dead, true);
 		ma.InterruptMovementAnimation (crushSprites, timeBetweenCrushSprites);
 		Invoke ("RemoveSelf", removeDelay);
 	}
@@ -64,6 +64,6 @@ public class MellowCrushed : MonoBehaviour {
 		if (deathExplosion != null) {
 			Instantiate (deathExplosion, transform.position, Quaternion.identity);
 		}
-        GetComponent<Checkpointer>().ResetToCheckpoint();
+        GameObject.Find("Checkpointer").GetComponent<Checkpointer>().ResetToCheckpoint();
 	}
 }

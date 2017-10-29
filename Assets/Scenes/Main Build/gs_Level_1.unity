@@ -2905,6 +2905,11 @@ Prefab:
       propertyPath: sceneLoader
       value: 
       objectReference: {fileID: 1029094945}
+    - target: {fileID: 114630213257165832, guid: 22f53d36ef0a56b46af73e9439dc194f,
+        type: 2}
+      propertyPath: level
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 22f53d36ef0a56b46af73e9439dc194f, type: 2}
   m_IsPrefabParent: 0
@@ -3901,6 +3906,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9617b245c9f76f42b44c41baf3582de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentLevel: 1
 --- !u!1001 &1248039485
 Prefab:
   m_ObjectHideFlags: 0

@@ -2,28 +2,38 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using InControl;
 
 public class SkipLevel : MonoBehaviour {
 
-    int currentBuildInd = SceneManager.GetActiveScene().buildIndex;
+    public int currentLevel = 1;
+    int numberOfLevels = 2;
+    PlayerActions controllerActions;
+    PlayerActions keyboardActions;
+
+    private void Start()
+    {
+        controllerActions = PlayerActions.CreateWithControllerBindings();
+        keyboardActions = PlayerActions.CreateWithKeyboardBindings();
+    }
 
     // Update is called once per frame
     void Update () {
-        if (Input.GetKeyDown(KeyCode.N)) {
+        if (controllerActions.AdvanceLevel.WasPressed || keyboardActions.AdvanceLevel.WasPressed) {
+            Debug.Log("Advance Level");
             LoadNextLevel();
         }
 
-        if (Input.GetKeyDown(KeyCode.B)) {
+        if (controllerActions.BackLevel.WasPressed || keyboardActions.BackLevel.WasPressed) {
             LoadPrevLevel();
         }
 	}
 
     public void LoadNextLevel() {
-        Scene nextScene = SceneManager.GetSceneByBuildIndex(currentBuildInd + 1);
-
-        if (nextScene.IsValid())
+        if (currentLevel < numberOfLevels)
         {
-            SceneManager.LoadScene(nextScene.buildIndex);
+            ++currentLevel;
+            GameObject.Find("SceneLoader").GetComponent<SceneLoader>().LoadLevel(currentLevel.ToString());
         }
         else {
             Debug.Log("At final scene!");
@@ -32,9 +42,10 @@ public class SkipLevel : MonoBehaviour {
 
     public void LoadPrevLevel() {
         
-        if (currentBuildInd > 0)
+        if (currentLevel > 1)
         {
-            SceneManager.LoadScene(currentBuildInd - 1);
+            --currentLevel;
+            GameObject.Find("SceneLoader").GetComponent<SceneLoader>().LoadLevel(currentLevel.ToString());
         }
         else {
             Debug.Log("At scene 0!");

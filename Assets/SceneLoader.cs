@@ -11,10 +11,15 @@ public class SceneLoader : MonoBehaviour {
     }
 
     public void LoadLevel(string levelNumber) {
-        SceneManager.LoadScene("Level " + levelNumber + " Dev");
+        SceneManager.LoadScene("gs_Level_" + levelNumber);
     }
 
     public void LoadMenu() {
         SceneManager.LoadScene("Level Select Menu");
+    }
+
+    public void LoadEnd()
+    {
+        SceneManager.LoadScene("gs_endGame");
     }
 }

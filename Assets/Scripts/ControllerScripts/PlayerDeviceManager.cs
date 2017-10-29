@@ -7,6 +7,7 @@ using InControl;
 //upon request. Handles intermittent connection of controllers and supports keyboard as well.
 public class PlayerDeviceManager : MonoBehaviour
 {
+    public static PlayerDeviceManager instance;
     private int currentPlayers = 0;
     private const int maxPlayers = 2;
 
@@ -43,8 +44,19 @@ public class PlayerDeviceManager : MonoBehaviour
         controllerListener.Destroy();
     }
 
-    void Start ()
+    void Awake ()
     {
+        if(instance == null)
+        {
+            instance = this;
+        }
+
+        else
+        {
+            Debug.Log("Instance already exists.");
+            Destroy(gameObject);
+        }
+
         DontDestroyOnLoad(this);
 	}
 

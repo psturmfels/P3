@@ -131,7 +131,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4847377526447634}
   - component: {fileID: 114632385916016572}
-  - component: {fileID: 114840092748189700}
   m_Layer: 0
   m_Name: BridgeMellow
   m_TagString: Player
@@ -912,18 +911,6 @@ MonoBehaviour:
   timeBetweenCrushSprites: 0.03
   deathExplosion: {fileID: 1301474835221234, guid: b246ceb7c468a447da15a77cf94af46c,
     type: 2}
---- !u!114 &114840092748189700
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1896530445491730}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c80e0bd509696b74fbe7d77b15de0e81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  self: {fileID: 1896530445491730}
 --- !u!114 &114866909475658198
 MonoBehaviour:
   m_ObjectHideFlags: 1
