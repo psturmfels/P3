@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4721685627806508}
   - component: {fileID: 61799214103556528}
   - component: {fileID: 114693292388388824}
-  - component: {fileID: 114963923205672406}
+  - component: {fileID: 114622805497170222}
   m_Layer: 8
   m_Name: Spike Block
   m_TagString: Ground
@@ -97,6 +97,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.4}
   m_EdgeRadius: 0
+--- !u!114 &114622805497170222
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1686075563476184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1f905e506a23304bb9e9cc1fb288681, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114693292388388824
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -109,17 +120,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cell_size: 1
---- !u!114 &114963923205672406
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1686075563476184}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8261b8e3124b1df4fab19b43e7d833da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &212579957078853328
 SpriteRenderer:
   m_ObjectHideFlags: 1
