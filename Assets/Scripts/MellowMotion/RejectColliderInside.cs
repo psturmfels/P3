@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RejectColliderInside : MonoBehaviour {
 	public Vector3 rejectVector;
-	private float eps = 0.3f;
+	private float eps = 0.1f;
 
 	void OnTriggerEnter2D(Collider2D other) {
 		RejectOther (other.gameObject);
@@ -15,7 +15,7 @@ public class RejectColliderInside : MonoBehaviour {
 	}
 
 	void RejectOther(GameObject other) {
-		if (!other.CompareTag ("Player") && transform.parent != null) {
+		if (other.CompareTag ("Ground") && transform.parent != null) {
 			Vector3 difference = transform.parent.position - other.transform.position;
 			transform.parent.position += Vector3.Dot(difference.normalized, rejectVector) * eps * rejectVector;
 		}
