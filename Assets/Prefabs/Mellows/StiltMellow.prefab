@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 114352727909810016}
   - component: {fileID: 61997200196125478}
   m_Layer: 9
-  m_Name: MellowTransformed
+  m_Name: StiltMellowTransformed
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 114008891899914874}
   - component: {fileID: 61728594376160588}
   m_Layer: 9
-  m_Name: Mellow
+  m_Name: StiltMellowMove
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -767,6 +767,7 @@ MonoBehaviour:
   timeBetweenCrushSprites: 0.03
   deathExplosion: {fileID: 1301474835221234, guid: b246ceb7c468a447da15a77cf94af46c,
     type: 2}
+  isStilt: 1
 --- !u!114 &114378722797910650
 MonoBehaviour:
   m_ObjectHideFlags: 1

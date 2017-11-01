@@ -8,7 +8,7 @@ public class PlayerDeathOnContact : MonoBehaviour {
     {
         if (other.GetComponent<MellowStates>() != null)
         {
-            other.gameObject.GetComponent<MellowCrushed>().Die();
+            other.gameObject.GetComponent<MellowCrushed>().StartDie();
         }
     }
 }

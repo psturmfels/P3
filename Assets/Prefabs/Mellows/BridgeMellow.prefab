@@ -159,7 +159,7 @@ GameObject:
   - component: {fileID: 114058107025241488}
   - component: {fileID: 61933724002933380}
   m_Layer: 10
-  m_Name: Mellow
+  m_Name: BridgeMellowMove
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 114360568735575172}
   - component: {fileID: 61968348915846552}
   m_Layer: 10
-  m_Name: MellowTransformed
+  m_Name: BridgeMellowTransformed
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -921,6 +921,7 @@ MonoBehaviour:
   timeBetweenCrushSprites: 0.03
   deathExplosion: {fileID: 1301474835221234, guid: b246ceb7c468a447da15a77cf94af46c,
     type: 2}
+  isStilt: 0
 --- !u!114 &114866909475658198
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -45,7 +45,7 @@ public class MellowStates : MonoBehaviour {
 	}
 
 	public void SetState(State SwitchState, bool newValue) {
-		if (isDead) {
+		if (isDead && SwitchState != State.Dead) {
 			return;
 		}
 		if (isTransformed && SwitchState != State.Transformed) {
@@ -98,7 +98,6 @@ public class MellowStates : MonoBehaviour {
 			isDead = newValue;
 			if (isDead) {
 				DisableMovementInput ();
-				shouldStillMovement = false;
 			}
 			break;
 
