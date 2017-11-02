@@ -24,9 +24,12 @@ public class PlayerActions : PlayerActionSet
     public PlayerAction AdvanceLevel;       //Advance to the next level
     public PlayerAction BackLevel;          //Regress to the previous level
 
+    //Development Mode -- TODO: SET TO FALSE BEFORE FINAL BUILDS
+    private static bool developmentMode = true;
+
     public PlayerActions()
     {
-        //Player Actions
+        //In Game Player Actions
         Jump        = CreatePlayerAction("Jump");
         Transform   = CreatePlayerAction("Transform");
         Interact    = CreatePlayerAction("Interact");
@@ -36,10 +39,10 @@ public class PlayerActions : PlayerActionSet
         Up          = CreatePlayerAction("Up");
         Down        = CreatePlayerAction("Down");
         Move        = CreateTwoAxisPlayerAction(Left, Right, Down, Up);
+        ResetLevel  = CreatePlayerAction("ResetLevel");
+        ResetCheckpoint = CreatePlayerAction("ResetCheckpoint");
 
         //Developer Actions
-        ResetLevel      = CreatePlayerAction("ResetLevel");
-        ResetCheckpoint = CreatePlayerAction("ResetCheckpoint");
         AdvanceLevel    = CreatePlayerAction("AdvanceLevel");
         BackLevel       = CreatePlayerAction("BackLevel");
 		SwitchCharacters = CreatePlayerAction ("SwitchCharacters");
@@ -61,12 +64,16 @@ public class PlayerActions : PlayerActionSet
         actions.Up.AddDefaultBinding(Key.UpArrow);
         actions.Down.AddDefaultBinding(Key.DownArrow);
 
-        //Developer Actions
         actions.ResetLevel.AddDefaultBinding(Key.I);
         actions.ResetCheckpoint.AddDefaultBinding(Key.K);
-        actions.AdvanceLevel.AddDefaultBinding(Key.L);
-        actions.BackLevel.AddDefaultBinding(Key.J);
-		actions.SwitchCharacters.AddDefaultBinding (Key.Shift);
+
+        //Developer Actions -- These commands remain unbound if not for a dev build.
+        if(developmentMode)
+        {
+            actions.AdvanceLevel.AddDefaultBinding(Key.L);
+            actions.BackLevel.AddDefaultBinding(Key.J);
+            actions.SwitchCharacters.AddDefaultBinding(Key.Shift);
+        }
 
         return actions;
     }
@@ -87,12 +94,16 @@ public class PlayerActions : PlayerActionSet
         actions.Up.AddDefaultBinding(InputControlType.LeftStickUp);
         actions.Down.AddDefaultBinding(InputControlType.LeftStickDown);
 
-        //Developer Actions
         actions.ResetLevel.AddDefaultBinding(InputControlType.DPadUp);
         actions.ResetCheckpoint.AddDefaultBinding(InputControlType.DPadDown);
-        actions.AdvanceLevel.AddDefaultBinding(InputControlType.DPadRight);
-        actions.BackLevel.AddDefaultBinding(InputControlType.DPadLeft);
-		actions.SwitchCharacters.AddDefaultBinding (InputControlType.LeftBumper);
+
+        //Developer Actions -- These commands remain unbound if not for a dev build.
+        if(developmentMode)
+        {
+            actions.AdvanceLevel.AddDefaultBinding(InputControlType.DPadRight);
+            actions.BackLevel.AddDefaultBinding(InputControlType.DPadLeft);
+            actions.SwitchCharacters.AddDefaultBinding(InputControlType.LeftBumper);
+        }
 
         return actions;
     }
