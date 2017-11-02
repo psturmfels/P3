@@ -1,10 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ButtonActivate : MonoBehaviour {
 
-    public GameObject TriggeredObject;
+    public UnityAction OnButtonPress;
+    public UnityAction OnButtonRelease;
+
+//    public GameObject TriggeredObject;
     public Sprite buttonUnpressedSprite;
     public Sprite buttonPressedSprite;
     public bool locked = true;
@@ -15,41 +19,27 @@ public class ButtonActivate : MonoBehaviour {
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
-        ChangeAlphaOfChildren(locked ? 1.0f : 0.5f);
-        ChangeColliderOfChildren(locked);
+        OnButtonPress += ButtonPressed;
+        OnButtonRelease += ButtonReleased;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        ChangeColliderOfChildren(!locked);
-        ChangeAlphaOfChildren(!locked ? 1.0f : 0.5f);
+        OnButtonPress();
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        OnButtonRelease();
+    }
+
+    private void ButtonPressed() {
         sr.sprite = buttonPressedSprite;
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        ChangeColliderOfChildren(locked);
-        ChangeAlphaOfChildren(locked ? 1.0f : 0.5f);
+    private void ButtonReleased() {
         sr.sprite = buttonUnpressedSprite;
     }
 
-    private void ChangeAlphaOfChildren(float alpha)
-    {
-        foreach (Transform child in TriggeredObject.transform)
-        {
-            SpriteRenderer sr = child.gameObject.GetComponent<SpriteRenderer>();
-            Color color = sr.color;
-            color.a = alpha;
-            sr.color = color;
-        }
-    }
 
-    private void ChangeColliderOfChildren(bool doorlocked)
-    {
-        foreach (Transform child in TriggeredObject.transform)
-        {
-            BoxCollider2D bc = child.gameObject.GetComponent<BoxCollider2D>();
-            bc.enabled = doorlocked;
-        }
-    }
 }

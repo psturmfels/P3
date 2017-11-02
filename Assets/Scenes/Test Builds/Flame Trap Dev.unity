@@ -402,19 +402,13 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 4550340420390282, guid: 1b08569e148a34786af2b413e8d4002e, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1b08569e148a34786af2b413e8d4002e, type: 2}
   m_IsPrefabParent: 0
---- !u!4 &289152573 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4531536203354712, guid: 1b08569e148a34786af2b413e8d4002e,
-    type: 2}
-  m_PrefabInternal: {fileID: 289152572}
---- !u!4 &289152574 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4550340420390282, guid: 1b08569e148a34786af2b413e8d4002e,
-    type: 2}
-  m_PrefabInternal: {fileID: 289152572}
 --- !u!4 &354906266 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4257043121333152, guid: b89625ab0bc83cd46bbc41084df2871e,
@@ -2413,10 +2407,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4128bf382c117436f8b350d264ec7c28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player1: {fileID: 1829304830}
-  player2: {fileID: 289152574}
-  player1Transformed: {fileID: 1829304829}
-  player2Transformed: {fileID: 289152573}
+  stiltTransform: {fileID: 0}
+  bridgeTransform: {fileID: 0}
+  stiltTransformed: {fileID: 0}
+  bridgeTransformed: {fileID: 0}
   minSizeY: 5
   maxSizeY: 7
 --- !u!1001 &1829304828
@@ -2458,19 +2452,13 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 4411986174989108, guid: 1343c3c487d508e41813d3ed441976e3, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1343c3c487d508e41813d3ed441976e3, type: 2}
   m_IsPrefabParent: 0
---- !u!4 &1829304829 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4950746258390594, guid: 1343c3c487d508e41813d3ed441976e3,
-    type: 2}
-  m_PrefabInternal: {fileID: 1829304828}
---- !u!4 &1829304830 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4411986174989108, guid: 1343c3c487d508e41813d3ed441976e3,
-    type: 2}
-  m_PrefabInternal: {fileID: 1829304828}
 --- !u!1001 &1857434495
 Prefab:
   m_ObjectHideFlags: 0
