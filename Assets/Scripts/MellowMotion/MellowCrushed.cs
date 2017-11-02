@@ -28,10 +28,15 @@ public class MellowCrushed : MonoBehaviour {
 	}
 
 	public void CollaborativeDie() {
-		if (GetComponent<TransformBehavior> () != null) {
+		if (GetComponentInParent<StateMachineForJack> () != null && GetComponentInParent<StateMachineForJack> ().GetState() == StateMachineForJack.State.Transformed) {
+			GetComponentInParent<StateMachineForJack> ().TransitionToState (StateMachineForJack.State.Normal);
+			Invoke ("CollaborativeDie", 0.2f);
+			return;
+		} else if (GetComponent<TransformBehavior> () != null) {
 			GetComponent<TransformBehavior> ().RegisterCancelContact (1);
 			GetComponent<TransformBehavior> ().RegisterCancelContact (2);
 		}
+
 		DisableInput ();
 		ma.InterruptMovementAnimation (crushSprites, timeBetweenCrushSprites);
 		Invoke ("RemoveSelf", removeDelay);
@@ -118,10 +123,6 @@ public class MellowCrushed : MonoBehaviour {
 
 	void RespawnSelf() {
 		Respawn ();
-
-		if (GetComponentInParent<StateMachineForJack> () != null) {
-			GetComponentInParent<StateMachineForJack> ().TransitionToState (StateMachineForJack.State.Normal);
-		}
 
 		StartCoroutine (FadeAndScaleIn ());
 	}

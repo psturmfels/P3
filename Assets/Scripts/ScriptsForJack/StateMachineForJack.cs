@@ -24,6 +24,10 @@ public class StateMachineForJack : MonoBehaviour {
 		currentState = newState;
 	}
 
+	public StateMachineForJack.State GetState() {
+		return currentState;
+	}
+
 	public void TransitionToState(State newState) {
 		if (newState == currentState || currentState == State.InTransition) {
 			return;
