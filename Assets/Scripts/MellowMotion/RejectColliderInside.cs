@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class RejectColliderInside : MonoBehaviour {
 	public Vector3 rejectVector;
-	private float eps = 0.1f;
+	private BoxCollider2D parentCollider;
+	private Vector3 oppositeVector;
+
+	void Start() {
+		parentCollider = transform.parent.GetComponent<BoxCollider2D> ();
+	}
 
 	void OnTriggerEnter2D(Collider2D other) {
 		RejectOther (other.gameObject);
@@ -15,9 +20,14 @@ public class RejectColliderInside : MonoBehaviour {
 	}
 
 	void RejectOther(GameObject other) {
-		if (other.CompareTag ("Ground") && transform.parent != null) {
-			Vector3 difference = transform.parent.position - other.transform.position;
-			transform.parent.position += Vector3.Dot(difference.normalized, rejectVector) * eps * rejectVector;
+		if (other.CompareTag ("Ground") && transform.parent != null && parentCollider != null) {
+			if (other.GetComponent<SpriteRenderer> () != null) {
+				float otherSize = Vector3.Dot (other.GetComponent<SpriteRenderer> ().bounds.size, rejectVector);
+				float parentSize = Vector3.Dot (parentCollider.bounds.size, rejectVector);
+				float difference = Vector3.Dot  (transform.parent.position - other.transform.position, rejectVector);
+				float moveUpAbs = (otherSize + parentSize) * 0.5f - Mathf.Abs (difference);
+				transform.parent.position +=  moveUpAbs * rejectVector * Mathf.Sign(difference);
+			}
 		}
 	}
 }

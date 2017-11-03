@@ -45,8 +45,8 @@ public class TransformBehavior: MonoBehaviour {
 		if (ma != null) {
 			ma.DisableRenderer ();
 		}
-		otherBehavior.gameObject.SetActive (true);
 		otherBehavior.transform.position = transform.position;
+		otherBehavior.gameObject.SetActive (true);
 		otherBehavior.ScaleToNormal ();
 
 		transform.localScale = transformScale;
