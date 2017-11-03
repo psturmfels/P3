@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using InControl;
 
 public class InputJump : MonoBehaviour {
@@ -8,6 +9,8 @@ public class InputJump : MonoBehaviour {
 	public Sprite[] positiveJumpSprites;
 	public Sprite[] negativeJumpSprites;
 	public float timeBetweenJumpSprites;
+
+	public event UnityAction DidJump;
 
 	private float jumpForceModifier = 1.0f;
 	private float jumpDelay = 0.0f;
@@ -32,6 +35,8 @@ public class InputJump : MonoBehaviour {
 		} else {
 			ma.InterruptMovementAnimation (negativeJumpSprites, timeBetweenJumpSprites);
 		}
+
+		DidJump ();
 		Invoke ("Jump", jumpDelay);
 	}
 

@@ -6,20 +6,28 @@ public class StateToggle : MonoBehaviour {
 	public MellowStates.State toggleState;
 	public bool OnTriggerEnable;
 	public bool RegisterStay;
-	public bool DebugCollisions = false;
+	public float DelayBeforeExit = 0.0f;
 
 	private MellowStates ms;
 
 	void Start () {
 		ms = GetComponentInParent<MellowStates> ();
+		InputJump ij = GetComponentInParent<InputJump> ();
+		ij.DidJump += DisableRegisterStay;
+	}
+
+	void DisableRegisterStay() {
+		RegisterStay = false;
+		Invoke ("EnableRegisterStay", 0.5f);
+	}
+
+	void EnableRegisterStay() {
+		RegisterStay = true;
 	}
 	
 	void OnTriggerEnter2D(Collider2D other) {
 		if (ms != null) {
 			ms.SetState (toggleState, OnTriggerEnable);
-		}
-		if (DebugCollisions) {
-			Debug.Log ("Entered trigger with: " + other.gameObject.name);
 		}
 	}
 
@@ -27,17 +35,19 @@ public class StateToggle : MonoBehaviour {
 		if (ms != null && RegisterStay) {
 			ms.SetState (toggleState, OnTriggerEnable);
 		}
-		if (DebugCollisions) {
-			Debug.Log ("Stayed trigger with: " + other.gameObject.name);
-		}
 	}
 
 	void OnTriggerExit2D(Collider2D other) {
 		if (ms != null) {
-			ms.SetState (toggleState, !OnTriggerEnable);
+			if (DelayBeforeExit > 0.0f) {
+				Invoke ("ExitAssignedState", DelayBeforeExit);
+			} else {
+				ExitAssignedState ();
+			}
 		}
-		if (DebugCollisions) {
-			Debug.Log ("Left trigger with: " + other.gameObject.name);
-		}
+	}
+
+	void ExitAssignedState() {
+		ms.SetState (toggleState, !OnTriggerEnable);
 	}
 }
