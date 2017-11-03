@@ -7,7 +7,6 @@ public class LevelFinish : MonoBehaviour {
     public SpriteRenderer firstFlag;
     public SpriteRenderer secondFlag;
     public Sprite greenFlagSprite;
-//    public int level = 0;
 
     private GameObject firstPlayer;
 
