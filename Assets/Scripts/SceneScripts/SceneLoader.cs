@@ -5,13 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour {
 
-    enum sceneState {
-        Menu,
-        Level
+    public static SceneLoader instance;
+
+    void Awake() {
+        if (instance != null)
+            Destroy(gameObject);
+        else {
+            instance = this;
+        }
     }
 
     public void LoadLevel(string levelNumber) {
-        SceneManager.LoadScene("gs_Level_" + levelNumber);
+        int level = 0;
+        int.TryParse(levelNumber, out level);
+        SceneManager.LoadScene(level);
     }
 
     public void LoadMenu() {

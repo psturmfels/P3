@@ -7,8 +7,7 @@ public class LevelFinish : MonoBehaviour {
     public SpriteRenderer firstFlag;
     public SpriteRenderer secondFlag;
     public Sprite greenFlagSprite;
-    public SceneLoader sceneLoader;
-    public int level = 0;
+//    public int level = 0;
 
     private GameObject firstPlayer;
 
@@ -26,16 +25,7 @@ public class LevelFinish : MonoBehaviour {
     }
 
     private void BackToMenu() {
-        if(level == 1)
-        {
-            ++level;
-            sceneLoader.LoadLevel(level.ToString());
-        }
-
-        else if(level == 2)
-        {
-            sceneLoader.LoadEnd();
-        }
+        SceneLoader.instance.LoadMenu();
     }
 
 }
