@@ -6,9 +6,11 @@ public class RejectColliderInside : MonoBehaviour {
 	public Vector3 rejectVector;
 	private BoxCollider2D parentCollider;
 	private Vector3 oppositeVector;
+	private TransformBehavior tb;
 
-	void Start() {
+	void Awake() {
 		parentCollider = transform.parent.GetComponent<BoxCollider2D> ();
+		tb = transform.parent.GetComponent<TransformBehavior> (); 
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
@@ -20,6 +22,9 @@ public class RejectColliderInside : MonoBehaviour {
 	}
 
 	void RejectOther(GameObject other) {
+		if (!tb.IsTransforming ()) {
+			return;
+		}
 		if (other.CompareTag ("Ground") && transform.parent != null && parentCollider != null) {
 			if (other.GetComponent<SpriteRenderer> () != null) {
 				float otherSize = Vector3.Dot (other.GetComponent<SpriteRenderer> ().bounds.size, rejectVector);

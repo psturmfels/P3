@@ -19,6 +19,7 @@ public class TransformBehavior: MonoBehaviour {
 	private Vector3 largestScaleDirection;
 	private bool firstCancel = false;
 	private bool secondCancel = false;
+	private bool isTransforming = false;
 
 	void Start () {
 		ms = GetComponent<MellowStates> ();
@@ -52,6 +53,8 @@ public class TransformBehavior: MonoBehaviour {
 		transform.localScale = transformScale;
 		scaleToTransform = false;
 		gameObject.SetActive (false);
+
+		Invoke ("IsNotTransforming", 1.0f);
 	}
 
 	void ReachedNormalScale() {
@@ -66,6 +69,8 @@ public class TransformBehavior: MonoBehaviour {
 		if (ma != null) {
 			ma.ReturnMovementAnimation ();
 		}
+
+		Invoke ("IsNotTransforming", 1.0f);
 	}
 
 	void ResetCancelChecks() {
@@ -96,7 +101,9 @@ public class TransformBehavior: MonoBehaviour {
 		}
 	}
 
-	
+	void IsNotTransforming() {
+		isTransforming = false;
+	}
 
 	public void ScaleToTransform () {
 		if (ma != null) {
@@ -105,9 +112,10 @@ public class TransformBehavior: MonoBehaviour {
 		if (GetComponent<PickUpAction> () != null) {
 			GetComponent<PickUpAction> ().DropItem ();
 		}
-
+			
 		scaleToNormal = false;
 		scaleToTransform = true;
+		isTransforming = true;
 	}
 
 	public void ScaleToNormal() {
@@ -117,5 +125,11 @@ public class TransformBehavior: MonoBehaviour {
 
 		scaleToTransform = false;
 		scaleToNormal = true;
+		isTransforming = true;
+	}
+		
+
+	public bool IsTransforming() {
+		return isTransforming;
 	}
 }
