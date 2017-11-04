@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Door : MonoBehaviour {
-
+	public bool DefaultActive = true;
     public GameObject[] triggers;
     private int unlockedTriggers;
+
 
 	// Use this for initialization
 	void Start () {
@@ -23,21 +24,40 @@ public class Door : MonoBehaviour {
                 sl.OnSwitchTrigger += TriggerPressed;
             }
         }
+		SetDefault ();
     }
 
     private void TriggerPressed() {
         unlockedTriggers++;
         if (unlockedTriggers == triggers.Length) {
-            ChangeAlphaOfSprite(0.5f);
-            ChangeColliders(false);
+			SetHighlighted ();
         }
     }
 
     private void TriggerReleased() {
         unlockedTriggers--;
-        ChangeAlphaOfSprite(1.0f);
-        ChangeColliders(true);
+		SetDefault ();
     }
+
+	private void SetHighlighted() {
+		if (DefaultActive) {
+			ChangeAlphaOfSprite (0.5f);
+			ChangeColliders (false);
+		} else {
+			ChangeAlphaOfSprite (1.0f);
+			ChangeColliders (true);
+		}
+	}
+
+	private void SetDefault() {
+		if (DefaultActive) {
+			ChangeAlphaOfSprite (1.0f);
+			ChangeColliders (true);
+		} else {
+			ChangeAlphaOfSprite (0.5f);
+			ChangeColliders (false);
+		}
+	}
 
     private void ChangeAlphaOfSprite(float alpha)
     {
