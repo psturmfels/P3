@@ -45,7 +45,7 @@ public class InputMove : MonoBehaviour {
 
 	void Start () {
 		ms = GetComponent<MellowStates> ();
-		rb = GetComponent<Rigidbody2D> ();
+		rb = GetComponentInParent<Rigidbody2D> ();
 
         //Find PlayerDeviceManager
         deviceManager = GameObject.Find("PlayerDeviceManager").GetComponent<PlayerDeviceManager>();

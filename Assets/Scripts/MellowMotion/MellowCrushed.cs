@@ -19,6 +19,7 @@ public class MellowCrushed : MonoBehaviour {
 	private MellowStates ms;
     private PlayerActions controls;
     private PlayerDeviceManager deviceManager;
+	private Rigidbody2D rb;
     private int playerID = 0;
 	private float fadeInSpeed = 0.1f;
 
@@ -45,6 +46,7 @@ public class MellowCrushed : MonoBehaviour {
 	void Start () {
 		ma = GetComponent<MoveAnimate> ();
 		ms = GetComponent<MellowStates> ();
+		rb = GetComponentInParent<Rigidbody2D> ();
 		removeDelay = (crushSprites.Length - 1) * timeBetweenCrushSprites;
 		if (isStilt) {
 			GameObject bridgeMellowMove = GameObject.Find ("BridgeMellowMove");
@@ -78,20 +80,12 @@ public class MellowCrushed : MonoBehaviour {
         {
             controls = deviceManager.GetControls(playerID);
         }
-
-//        if(controls != null) WHY WAS THIS HERE? LOL
-//        {
-//            if(controls == null)
-//            {
-//				StartDie();
-//            }
-//        }
 	}
 
 	private void DisableInput() {
-		if (GetComponent<Rigidbody2D> () != null) {
-			GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
-			GetComponent<Rigidbody2D> ().simulated = false;
+		if (rb != null) {
+			rb.velocity = Vector2.zero;
+			rb.simulated = false;
 		}
 		if (GetComponent<BoxCollider2D> () != null) {
 			GetComponent<BoxCollider2D> ().enabled = false;
@@ -103,8 +97,8 @@ public class MellowCrushed : MonoBehaviour {
 	}
 
 	private void EnableInput() {
-		if (GetComponent<Rigidbody2D> () != null) {
-			GetComponent<Rigidbody2D> ().simulated = true;
+		if (rb != null) {
+			rb.simulated = true;
 		}
 		if (GetComponent<BoxCollider2D> () != null) {
 			GetComponent<BoxCollider2D> ().enabled = true;

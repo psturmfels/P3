@@ -46,7 +46,7 @@ public class InputJump : MonoBehaviour {
 
 	void Start () {
 		ms = GetComponent<MellowStates> ();
-		rb = GetComponent<Rigidbody2D> ();
+		rb = GetComponentInParent<Rigidbody2D> ();
 		ma = GetComponent<MoveAnimate> ();
 		im = GetComponent<InputMove> ();
 		jumpDelay = timeBetweenJumpSprites * positiveJumpSprites.Length;
@@ -56,7 +56,7 @@ public class InputJump : MonoBehaviour {
 
         //Grab playerID for controller purposes.
         if(ms) {
-            playerID = ms.playerID;
+            playerID = ms.playerID;	
         }
     }
 		

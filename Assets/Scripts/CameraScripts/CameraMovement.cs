@@ -6,8 +6,6 @@ using UnityEngine.Events;
 public class CameraMovement : MonoBehaviour {
 	public Transform stiltTransform;
 	public Transform bridgeTransform;
-	public Transform stiltTransformed;
-	public Transform bridgeTransformed;
 	public event UnityAction reachedCheckpoint;
 	public float minSizeY = 5.0f;
 	public float maxSizeY = 7f;
@@ -33,13 +31,9 @@ public class CameraMovement : MonoBehaviour {
 	void SetLastPositions() {
 		if (stiltTransform.gameObject.activeSelf) {
 			lastPlayer1Position = stiltTransform.position;
-		} else if (stiltTransformed.gameObject.activeSelf) {
-			lastPlayer1Position = stiltTransformed.position;
 		}
 		if (bridgeTransform.gameObject.activeSelf) {
 			lastPlayer2Position = bridgeTransform.position;
-		} else if (bridgeTransformed.gameObject.activeSelf) {
-			lastPlayer2Position = bridgeTransformed.position;
 		}
 	}
 

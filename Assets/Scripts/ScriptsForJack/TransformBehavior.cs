@@ -46,15 +46,24 @@ public class TransformBehavior: MonoBehaviour {
 		if (ma != null) {
 			ma.DisableRenderer ();
 		}
-		otherBehavior.transform.position = transform.position;
+		if (normalSetState == StateMachineForJack.State.Normal) {
+			if (GetComponentInParent<Rigidbody2D> () != null) {
+				GetComponentInParent<Rigidbody2D> ().velocity = Vector2.zero;
+				GetComponentInParent<Rigidbody2D> ().isKinematic = true;
+			}
+		} else if (normalSetState == StateMachineForJack.State.Transformed) {
+			if (GetComponentInParent<Rigidbody2D> () != null) {
+				GetComponentInParent<Rigidbody2D> ().velocity = Vector2.zero;
+				GetComponentInParent<Rigidbody2D> ().isKinematic = false;
+			}
+		}
+
 		otherBehavior.gameObject.SetActive (true);
 		otherBehavior.ScaleToNormal ();
 
 		transform.localScale = transformScale;
 		scaleToTransform = false;
 		gameObject.SetActive (false);
-
-		Invoke ("IsNotTransforming", 1.0f);
 	}
 
 	void ReachedNormalScale() {
@@ -70,7 +79,7 @@ public class TransformBehavior: MonoBehaviour {
 			ma.ReturnMovementAnimation ();
 		}
 
-		Invoke ("IsNotTransforming", 1.0f);
+		Invoke ("IsNotTransforming", 1.5f);
 	}
 
 	void ResetCancelChecks() {
@@ -91,6 +100,11 @@ public class TransformBehavior: MonoBehaviour {
 
 	void CancelTransform() {
 		ResetCancelChecks ();
+		if (isTransforming && normalSetState == StateMachineForJack.State.Transformed) {
+			ScaleToTransform ();
+			return;
+		}
+
 		if (!scaleToNormal && !scaleToTransform) {
 			return;
 		}
@@ -115,7 +129,6 @@ public class TransformBehavior: MonoBehaviour {
 			
 		scaleToNormal = false;
 		scaleToTransform = true;
-		isTransforming = true;
 	}
 
 	public void ScaleToNormal() {

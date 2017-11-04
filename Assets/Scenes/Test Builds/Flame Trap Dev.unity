@@ -409,6 +409,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1b08569e148a34786af2b413e8d4002e, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &289152573 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4847377526447634, guid: 1b08569e148a34786af2b413e8d4002e,
+    type: 2}
+  m_PrefabInternal: {fileID: 289152572}
 --- !u!4 &354906266 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4257043121333152, guid: b89625ab0bc83cd46bbc41084df2871e,
@@ -1966,11 +1971,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4534418296945168, guid: f14dd4eb869599b40bb3d6bebc6c9f65, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -2.58
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 4534418296945168, guid: f14dd4eb869599b40bb3d6bebc6c9f65, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.29
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4534418296945168, guid: f14dd4eb869599b40bb3d6bebc6c9f65, type: 2}
       propertyPath: m_LocalPosition.z
@@ -2407,10 +2412,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4128bf382c117436f8b350d264ec7c28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stiltTransform: {fileID: 0}
-  bridgeTransform: {fileID: 0}
-  stiltTransformed: {fileID: 0}
-  bridgeTransformed: {fileID: 0}
+  stiltTransform: {fileID: 1829304829}
+  bridgeTransform: {fileID: 289152573}
   minSizeY: 5
   maxSizeY: 7
 --- !u!1001 &1829304828
@@ -2459,6 +2462,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1343c3c487d508e41813d3ed441976e3, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &1829304829 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4143125017040974, guid: 1343c3c487d508e41813d3ed441976e3,
+    type: 2}
+  m_PrefabInternal: {fileID: 1829304828}
 --- !u!1001 &1857434495
 Prefab:
   m_ObjectHideFlags: 0
