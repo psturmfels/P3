@@ -12,14 +12,21 @@ public class Checkpoint : MonoBehaviour {
     private static PlayerActions controllerActions;
     private static PlayerActions keyboardActions;
 
-    private SpriteRenderer sr;
-    private Color activeColor = new Color(0.3f, 1f, 0.3f, 1.0f);
     private bool bridgeAtCheckpoint = false;
     private bool stiltAtCheckpoint = false;
+	private AnimateShrinkScale bridgeCoin;
+	private AnimateShrinkScale stiltCoin;
+
 
     // Use this for initialization
     void Start () {
-        sr = GetComponent<SpriteRenderer>();
+		foreach (AnimateShrinkScale coin in GetComponentsInChildren<AnimateShrinkScale> ()) {
+			if (coin.gameObject.name == "CheckpointBridge") {
+				bridgeCoin = coin;
+			} else if (coin.gameObject.name == "CheckpointStilt") {
+				stiltCoin = coin;
+			}
+		}
 
         bridgeMellow = GameObject.Find("BridgeMellow");
         stiltMellow = GameObject.Find("StiltMellow");
@@ -51,14 +58,17 @@ public class Checkpoint : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
+		Debug.Log ("Registered trigger");
 		if (!bridgeAtCheckpoint && collision.gameObject.name.Contains("Bridge")) {
             bridgeAtCheckpoint = true;
+			bridgeCoin.StartAnimation ();
             if (stiltAtCheckpoint) {
                 SetCheckpoint(transform.position);
             }
         }
 		else if (!stiltAtCheckpoint && collision.gameObject.name.Contains("Stilt")) {
             stiltAtCheckpoint = true;
+			stiltCoin.StartAnimation ();
             if (bridgeAtCheckpoint) {
                 SetCheckpoint(transform.position);
             }
@@ -67,7 +77,6 @@ public class Checkpoint : MonoBehaviour {
 
     public void SetCheckpoint(Vector3 pos) {
         CheckpointPos = pos;
-        sr.color = activeColor;
     }
 
     void RegisterMellowRemoved() {
