@@ -14,7 +14,8 @@ public class EyeMovement : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 	    rb = GetComponentInParent<Rigidbody2D>();
-	}
+        Invoke("Blink", 4.0f + Random.Range(0f, 4f));
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -28,5 +29,11 @@ public class EyeMovement : MonoBehaviour {
 	        Vector3 irisRelativePos = targetMellow - transform.position;
             iris.position = transform.position + irisRelativePos.normalized / 15f;
         }
+    }
+    
+    private void Blink() {
+        Debug.Log("Blinkink " + gameObject.name + " " + Time.time);
+        GetComponentInParent<Animator>().SetTrigger("blink");
+        Invoke("Blink", 4.0f + Random.Range(0f, 4f));
     }
 }
