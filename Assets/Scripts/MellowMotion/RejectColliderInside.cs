@@ -26,13 +26,17 @@ public class RejectColliderInside : MonoBehaviour {
 			return;
 		}
 		if (other.CompareTag ("Ground") && transform.parent != null && parentCollider != null) {
+			float otherSize = 1.0f;
 			if (other.GetComponent<SpriteRenderer> () != null) {
-				float otherSize = Vector3.Dot (other.GetComponent<SpriteRenderer> ().bounds.size, rejectVector);
-				float parentSize = Vector3.Dot (parentCollider.bounds.size, rejectVector);
-				float difference = Vector3.Dot  (transform.parent.position - other.transform.position, rejectVector);
-				float moveUpAbs = (otherSize + parentSize) * 0.5f - Mathf.Abs (difference);
-				transform.parent.position +=  moveUpAbs * rejectVector * Mathf.Sign(difference);
+				otherSize = Vector3.Dot (other.GetComponent<SpriteRenderer> ().bounds.size, rejectVector);
+			} else if (other.GetComponent<BoxCollider2D> () != null) {
+				otherSize = Vector3.Dot (other.GetComponent<BoxCollider2D> ().bounds.size, rejectVector);
 			}
+			float parentSize = Vector3.Dot (parentCollider.bounds.size, rejectVector);
+			float difference = Vector3.Dot  (transform.parent.position - other.transform.position, rejectVector);
+			float moveUpAbs = (otherSize + parentSize) * 0.5f - Mathf.Abs (difference);
+			transform.parent.position +=  moveUpAbs * rejectVector * Mathf.Sign(difference);
+
 		}
 	}
 }

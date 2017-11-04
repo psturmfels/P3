@@ -21,6 +21,9 @@ public class InputJump : MonoBehaviour {
     private PlayerActions controls;
     private PlayerDeviceManager deviceManager;
     private int playerID = 0;
+	private bool shouldCountFrames = false;
+	private int framesCountedTotal = 0;
+	private int framesCountedInput = 0;
 
     public void StartJump(float forceModifier = 1.0f) {
 		if (!ms.canJump || ms.canWallJumpLeft || ms.canWallJumpRight) {
@@ -36,6 +39,7 @@ public class InputJump : MonoBehaviour {
 			ma.InterruptMovementAnimation (negativeJumpSprites, timeBetweenJumpSprites);
 		}
 
+		shouldCountFrames = true;
 		DidJump ();
 		Invoke ("Jump", jumpDelay);
 	}
@@ -57,8 +61,28 @@ public class InputJump : MonoBehaviour {
     }
 		
 	void Jump() {
+		float frameInputRatio = (float)(Mathf.Min(framesCountedInput + 1, framesCountedTotal) + 1) / (float)(framesCountedTotal + 1);
 		rb.velocity = new Vector2 (rb.velocity.x, 0.0f);
-		rb.AddRelativeForce (Vector2.up * jumpForce * jumpForceModifier, ForceMode2D.Impulse);	
+		rb.AddRelativeForce (Vector2.up * jumpForce * jumpForceModifier * frameInputRatio, ForceMode2D.Impulse);
+		shouldCountFrames = false;
+		framesCountedInput = 0;
+		framesCountedTotal = 0;
+
+		ms.canJump = false;
+		if (ms.rightSideInContact) {
+			ms.SetState (MellowStates.State.WallJumpLeft, true);
+		} else if (ms.leftSideInContact) {
+			ms.SetState (MellowStates.State.WallJumpRight, true);
+		}
+	}
+
+	void FixedUpdate() {
+		if (shouldCountFrames) {
+			framesCountedTotal += 1;
+			if (controls != null && controls.Jump.IsPressed) {
+				framesCountedInput += 1;
+			}
+		}
 	}
 
 	void Update () {

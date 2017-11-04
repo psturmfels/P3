@@ -18,6 +18,9 @@ public class InputWallJump : MonoBehaviour {
 	private MoveAnimate ma;
     private PlayerActions controls;
     private PlayerDeviceManager deviceManager;
+	private bool shouldCountFrames = false;
+	private int framesCountedTotal = 0;
+	private int framesCountedInput = 0;
 
     private int playerID = 0;
 
@@ -40,6 +43,7 @@ public class InputWallJump : MonoBehaviour {
 		ms.SetState (MellowStates.State.Move, false);
 
 
+		shouldCountFrames = true;
 		Invoke ("Jump", jumpDelay);
 		Invoke ("BeginStillMovement", jumpNoStillDuration);
 		Invoke ("BeginMovement", jumpLockMovementDuration);
@@ -60,6 +64,15 @@ public class InputWallJump : MonoBehaviour {
         }
     }
 
+	void FixedUpdate() {
+		if (shouldCountFrames) {
+			framesCountedTotal += 1;
+			if (controls != null && controls.Jump.IsPressed) {
+				framesCountedInput += 1;
+			}
+		}
+	}
+
 	void Update () {
         //Find the controls bound to this player
         if (deviceManager != null)
@@ -78,9 +91,13 @@ public class InputWallJump : MonoBehaviour {
 	}
 
 	void Jump() {
+		float frameInputRatio = (float)(Mathf.Min(framesCountedInput + 1, framesCountedTotal) + 1) / (float)(framesCountedTotal + 1);
 		rb.velocity = Vector2.zero;
-		Vector2 modifiedJumpVector = new Vector2 (jumpVector.x * jumpForceModifier, jumpVector.y);
+		Vector2 modifiedJumpVector = new Vector2 (jumpVector.x * jumpForceModifier, jumpVector.y) * frameInputRatio;
 		rb.AddRelativeForce (modifiedJumpVector, ForceMode2D.Impulse);	
+		shouldCountFrames = false;
+		framesCountedInput = 0;
+		framesCountedTotal = 0;
 	}
 
 	void BeginStillMovement() {

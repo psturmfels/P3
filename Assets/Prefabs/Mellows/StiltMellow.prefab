@@ -546,7 +546,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 1}
+  m_Size: {x: 0.15, y: 1}
   m_EdgeRadius: 0
 --- !u!61 &61674626281536700
 BoxCollider2D:
@@ -621,7 +621,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 1}
+  m_Size: {x: 0.15, y: 1}
   m_EdgeRadius: 0
 --- !u!61 &61997200196125478
 BoxCollider2D:
@@ -688,7 +688,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 8c47ed748db434a448f74632c359ebc9, type: 3}
   - {fileID: 21300000, guid: 1f8d544bded964cc19c90d12f2535cd3, type: 3}
   - {fileID: 21300000, guid: c6fb4eccc5a0f4341b8775e19b477c8d, type: 3}
-  timeBetweenJumpSprites: 0.015
+  timeBetweenJumpSprites: 0.02
 --- !u!114 &114046962856386750
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -840,7 +840,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b40c766010a8c45eea8c528e56a20404, type: 3}
   - {fileID: 21300000, guid: ce5ab54f9f03e4ddfada0a34b3555f25, type: 3}
   - {fileID: 21300000, guid: 44f781ec1738d490ca96228d01bbab44, type: 3}
-  timeBetweenJumpSprites: 0.01
+  timeBetweenJumpSprites: 0.014
 --- !u!114 &114483611017446980
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -927,6 +927,8 @@ MonoBehaviour:
   canPickup: 1
   isDead: 0
   isTransformed: 0
+  leftSideInContact: 0
+  rightSideInContact: 0
   playerID: 1
 --- !u!114 &114820232096155222
 MonoBehaviour:

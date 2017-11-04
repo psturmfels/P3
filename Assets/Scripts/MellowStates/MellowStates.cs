@@ -23,6 +23,9 @@ public class MellowStates : MonoBehaviour {
 	public bool isDead = false;
 	public bool isTransformed = false;
 
+	public bool leftSideInContact = false;
+	public bool rightSideInContact = false;
+
     public int playerID = 0;
 
 	private WallClingAnimate wca;
@@ -67,6 +70,7 @@ public class MellowStates : MonoBehaviour {
 			break;
 
 		case State.WallJumpLeft:
+			rightSideInContact = newValue;
 			if (canJump && newValue) {
 				break;
 			}
@@ -79,6 +83,7 @@ public class MellowStates : MonoBehaviour {
 			break;
 
 		case State.WallJumpRight:
+			leftSideInContact = newValue;
 			if (canJump && newValue) {
 				break;
 			}
