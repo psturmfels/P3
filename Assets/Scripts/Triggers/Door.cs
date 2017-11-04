@@ -21,11 +21,26 @@ public class Door : MonoBehaviour {
             }
             else if (t.GetComponent<SwitchLatch>() != null) {
                 SwitchLatch sl = t.GetComponent<SwitchLatch>();
-                sl.OnSwitchTrigger += TriggerPressed;
+				sl.OnSwitchTrigger += LatchSwitched;
             }
         }
 		SetDefault ();
     }
+
+	private void LatchSwitched() {
+		++unlockedTriggers;
+		if (unlockedTriggers == triggers.Length) {
+			DestroyBlocks ();
+		}
+	}
+
+	private void DestroyBlocks() {
+		foreach (Transform child in transform)
+		{
+			FadeOutAndDie foad = child.gameObject.GetComponent<FadeOutAndDie> ();
+			foad.StartFadeOut ();
+		}
+	}
 
     private void TriggerPressed() {
         unlockedTriggers++;

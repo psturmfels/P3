@@ -9,6 +9,7 @@ public class SwitchLatch : MonoBehaviour {
     public Sprite switchTriggeredSprite;
     
     private SpriteRenderer sr;
+	private bool hasBeenSwitched = false;
 
 	// Use this for initialization
 	void Start () {
@@ -17,11 +18,17 @@ public class SwitchLatch : MonoBehaviour {
 	}
 
     private void OnTriggerEnter2D(Collider2D other) {
-        OnSwitchTrigger();
+		if (!hasBeenSwitched) {
+			OnSwitchTrigger ();
+		}
     }
 
     private void SwitchTriggered()
     {
+		if (GetComponent<FadeOutAndDie> () != null) {
+			GetComponent<FadeOutAndDie> ().StartFadeOut ();
+		}
         sr.sprite = switchTriggeredSprite;
+		hasBeenSwitched = true;
     }
 }
