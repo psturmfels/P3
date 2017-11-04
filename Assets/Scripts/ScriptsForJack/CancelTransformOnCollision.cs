@@ -13,4 +13,8 @@ public class CancelTransformOnCollision : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other) {
 		tranBeh.RegisterCancelContact (cancelID);
 	}
+
+	void OnTriggerStay2D(Collider2D other) {
+		tranBeh.RegisterCancelContact (cancelID);
+	}
 }
