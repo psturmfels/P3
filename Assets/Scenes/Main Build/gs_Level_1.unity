@@ -872,7 +872,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4847377526447634, guid: 1b08569e148a34786af2b413e8d4002e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -12
       objectReference: {fileID: 0}
     - target: {fileID: 4847377526447634, guid: 1b08569e148a34786af2b413e8d4002e, type: 2}
       propertyPath: m_LocalPosition.y
@@ -907,12 +907,7 @@ Prefab:
   m_IsPrefabParent: 0
 --- !u!4 &289152573 stripped
 Transform:
-  m_PrefabParentObject: {fileID: 4531536203354712, guid: 1b08569e148a34786af2b413e8d4002e,
-    type: 2}
-  m_PrefabInternal: {fileID: 289152572}
---- !u!4 &289152574 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4550340420390282, guid: 1b08569e148a34786af2b413e8d4002e,
+  m_PrefabParentObject: {fileID: 4847377526447634, guid: 1b08569e148a34786af2b413e8d4002e,
     type: 2}
   m_PrefabInternal: {fileID: 289152572}
 --- !u!1001 &299518806
@@ -4722,7 +4717,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1801110016}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12, y: 0, z: -10}
+  m_LocalPosition: {x: -13, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 672469693}
@@ -4740,10 +4735,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4128bf382c117436f8b350d264ec7c28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stiltTransform: {fileID: 1829304830}
-  bridgeTransform: {fileID: 289152574}
-  stiltTransformed: {fileID: 1829304829}
-  bridgeTransformed: {fileID: 289152573}
+  stiltTransform: {fileID: 1829304829}
+  bridgeTransform: {fileID: 289152573}
   minSizeY: 5
   maxSizeY: 7
 --- !u!1 &1810619358
@@ -4829,7 +4822,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4143125017040974, guid: 1343c3c487d508e41813d3ed441976e3, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -14
       objectReference: {fileID: 0}
     - target: {fileID: 4143125017040974, guid: 1343c3c487d508e41813d3ed441976e3, type: 2}
       propertyPath: m_LocalPosition.y
@@ -4864,12 +4857,7 @@ Prefab:
   m_IsPrefabParent: 0
 --- !u!4 &1829304829 stripped
 Transform:
-  m_PrefabParentObject: {fileID: 4950746258390594, guid: 1343c3c487d508e41813d3ed441976e3,
-    type: 2}
-  m_PrefabInternal: {fileID: 1829304828}
---- !u!4 &1829304830 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4411986174989108, guid: 1343c3c487d508e41813d3ed441976e3,
+  m_PrefabParentObject: {fileID: 4143125017040974, guid: 1343c3c487d508e41813d3ed441976e3,
     type: 2}
   m_PrefabInternal: {fileID: 1829304828}
 --- !u!1 &1867673633

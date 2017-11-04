@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4143125017040974}
   - component: {fileID: 114639551587385128}
+  - component: {fileID: 50393339376666588}
   m_Layer: 0
   m_Name: StiltMellow
   m_TagString: Player
@@ -109,7 +110,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4411986174989108}
   - component: {fileID: 212798158729016050}
-  - component: {fileID: 50371160800007512}
   - component: {fileID: 114263482426765878}
   - component: {fileID: 114954587388497768}
   - component: {fileID: 114477529527920814}
@@ -203,7 +203,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1364072912395016}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4950746258390594}
@@ -257,7 +257,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1930481493294822}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -14, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4305317062507962}
@@ -348,13 +348,13 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!50 &50371160800007512
+--- !u!50 &50393339376666588
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1930481493294822}
+  m_GameObject: {fileID: 1364072912395016}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0

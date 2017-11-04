@@ -21,21 +21,21 @@ public class Checkpoint : MonoBehaviour {
     void Start () {
         sr = GetComponent<SpriteRenderer>();
 
-        bridgeMellow = GameObject.Find("BridgeMellowMove");
-        stiltMellow = GameObject.Find("StiltMellowMove");
+        bridgeMellow = GameObject.Find("BridgeMellow");
+        stiltMellow = GameObject.Find("StiltMellow");
         CheckpointPos = bridgeMellow.transform.position + Vector3.left;
         cm = Camera.main.gameObject.GetComponent<CameraMovement>();
 
         controllerActions = PlayerActions.CreateWithControllerBindings();
         keyboardActions = PlayerActions.CreateWithKeyboardBindings();
 
-        if (bridgeMellow.GetComponent<MellowCrushed>() != null) {
-            bridgeMellow.GetComponent<MellowCrushed>().Respawn += ResetBridgeToCheckpoint;
-            bridgeMellow.GetComponent<MellowCrushed>().Remove += RegisterMellowRemoved;
+		if (bridgeMellow.GetComponentInChildren<MellowCrushed>() != null) {
+            bridgeMellow.GetComponentInChildren<MellowCrushed>().Respawn += ResetBridgeToCheckpoint;
+			bridgeMellow.GetComponentInChildren<MellowCrushed>().Remove += RegisterMellowRemoved;
         }
-        if (stiltMellow.GetComponent<MellowCrushed>() != null) {
-            stiltMellow.GetComponent<MellowCrushed>().Respawn += ResetStiltToCheckpoint;
-            stiltMellow.GetComponent<MellowCrushed>().Remove += RegisterMellowRemoved;
+		if (stiltMellow.GetComponentInChildren<MellowCrushed>() != null) {
+			stiltMellow.GetComponentInChildren<MellowCrushed>().Respawn += ResetStiltToCheckpoint;
+			stiltMellow.GetComponentInChildren<MellowCrushed>().Remove += RegisterMellowRemoved;
         }
     }
     // Update is called once per frame
@@ -51,13 +51,13 @@ public class Checkpoint : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        if (!bridgeAtCheckpoint && collision.gameObject == bridgeMellow) {
+		if (!bridgeAtCheckpoint && collision.gameObject.name.Contains("Bridge")) {
             bridgeAtCheckpoint = true;
             if (stiltAtCheckpoint) {
                 SetCheckpoint(transform.position);
             }
         }
-        else if (!stiltAtCheckpoint && collision.gameObject == stiltMellow) {
+		else if (!stiltAtCheckpoint && collision.gameObject.name.Contains("Stilt")) {
             stiltAtCheckpoint = true;
             if (bridgeAtCheckpoint) {
                 SetCheckpoint(transform.position);

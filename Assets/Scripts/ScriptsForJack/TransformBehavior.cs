@@ -46,7 +46,18 @@ public class TransformBehavior: MonoBehaviour {
 		if (ma != null) {
 			ma.DisableRenderer ();
 		}
-		otherBehavior.transform.position = transform.position;
+		if (normalSetState == StateMachineForJack.State.Normal) {
+			if (GetComponentInParent<Rigidbody2D> () != null) {
+				GetComponentInParent<Rigidbody2D> ().velocity = Vector2.zero;
+				GetComponentInParent<Rigidbody2D> ().isKinematic = true;
+			}
+		} else if (normalSetState == StateMachineForJack.State.Transformed) {
+			if (GetComponentInParent<Rigidbody2D> () != null) {
+				GetComponentInParent<Rigidbody2D> ().velocity = Vector2.zero;
+				GetComponentInParent<Rigidbody2D> ().isKinematic = false;
+			}
+		}
+
 		otherBehavior.gameObject.SetActive (true);
 		otherBehavior.ScaleToNormal ();
 

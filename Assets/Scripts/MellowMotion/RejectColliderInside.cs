@@ -7,10 +7,12 @@ public class RejectColliderInside : MonoBehaviour {
 	private BoxCollider2D parentCollider;
 	private Vector3 oppositeVector;
 	private TransformBehavior tb;
+	private Transform grandparentTransform;
 
 	void Awake() {
 		parentCollider = transform.parent.GetComponent<BoxCollider2D> ();
 		tb = transform.parent.GetComponent<TransformBehavior> (); 
+		grandparentTransform = transform.parent.parent;
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
@@ -22,6 +24,9 @@ public class RejectColliderInside : MonoBehaviour {
 	}
 
 	void RejectOther(GameObject other) {
+		if (tb == null || grandparentTransform == null || parentCollider == null) {
+			return;
+		}
 		if (!tb.IsTransforming ()) {
 			return;
 		}
@@ -33,9 +38,9 @@ public class RejectColliderInside : MonoBehaviour {
 				otherSize = Vector3.Dot (other.GetComponent<BoxCollider2D> ().bounds.size, rejectVector);
 			}
 			float parentSize = Vector3.Dot (parentCollider.bounds.size, rejectVector);
-			float difference = Vector3.Dot  (transform.parent.position - other.transform.position, rejectVector);
+			float difference = Vector3.Dot  (grandparentTransform.position - other.transform.position, rejectVector);
 			float moveUpAbs = (otherSize + parentSize) * 0.5f - Mathf.Abs (difference);
-			transform.parent.position +=  moveUpAbs * rejectVector * Mathf.Sign(difference);
+			grandparentTransform.position +=  moveUpAbs * rejectVector * Mathf.Sign(difference);
 
 		}
 	}
