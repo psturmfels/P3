@@ -9,7 +9,7 @@ public class PlayerReadyUp : MonoBehaviour
     private PlayerActions playerControls;
     public GameObject Player1Ready;
     public GameObject Player2Ready;
-    public bool ready = true;
+    public bool ready = false;
     int playerID;
 
     //When this is enabled, find this players controls and enable their ready up sign.
@@ -29,6 +29,19 @@ public class PlayerReadyUp : MonoBehaviour
             Player2Ready.SetActive(true);
         }
 	}
+
+    private void OnDisable()
+    {
+        if(playerID == 0)
+        {
+            Player1Ready.SetActive(false);
+        }
+
+        else if(playerID == 1)
+        {
+            Player2Ready.SetActive(false);
+        }
+    }
 
     //If this player presses join, make them as ready.
     private void Update()

@@ -9,21 +9,21 @@ public class CharacterSelectKillPlane : MonoBehaviour
 
     private void Start()
     {
-        Player1OriginalPosition = GameObject.Find("BridgeMellowMove").GetComponent<Transform>().position;
-        Player2OriginalPosition = GameObject.Find("StiltMellowMove").GetComponent<Transform>().position;
+        Player1OriginalPosition = GameObject.Find("BridgeMellow").GetComponent<Transform>().position;
+        Player2OriginalPosition = GameObject.Find("StiltMellow").GetComponent<Transform>().position;
     }
 
     //Check if the thing colliding is player 1 or two, and move if necessary.
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.collider.gameObject.name == "BridgeMellowMove")
+        if(collision.rigidbody.gameObject.name == "BridgeMellow")
         {
-            collision.collider.transform.position = Player1OriginalPosition;
+            collision.rigidbody.transform.position = Player1OriginalPosition;
         }
 
-        else if(collision.collider.gameObject.name == "StiltMellowMove")
+        else if(collision.rigidbody.gameObject.name == "StiltMellow")
         {
-            collision.collider.transform.position = Player2OriginalPosition;
+            collision.rigidbody.transform.position = Player2OriginalPosition;
         }
     }
 }
