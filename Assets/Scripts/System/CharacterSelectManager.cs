@@ -61,6 +61,7 @@ public class CharacterSelectManager : MonoBehaviour
         {
             //TODO: Scene Transition
             Debug.Log("Both players ready.");
+            SceneLoader.instance.LoadMenu();
         }
     }
 }
