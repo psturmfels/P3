@@ -64,8 +64,6 @@ public class TransformBehavior: MonoBehaviour {
 		transform.localScale = transformScale;
 		scaleToTransform = false;
 		gameObject.SetActive (false);
-
-		Invoke ("IsNotTransforming", 1.0f);
 	}
 
 	void ReachedNormalScale() {
@@ -81,7 +79,7 @@ public class TransformBehavior: MonoBehaviour {
 			ma.ReturnMovementAnimation ();
 		}
 
-		Invoke ("IsNotTransforming", 1.0f);
+		Invoke ("IsNotTransforming", 1.5f);
 	}
 
 	void ResetCancelChecks() {
@@ -102,6 +100,11 @@ public class TransformBehavior: MonoBehaviour {
 
 	void CancelTransform() {
 		ResetCancelChecks ();
+		if (isTransforming && normalSetState == StateMachineForJack.State.Transformed) {
+			ScaleToTransform ();
+			return;
+		}
+
 		if (!scaleToNormal && !scaleToTransform) {
 			return;
 		}
@@ -126,7 +129,6 @@ public class TransformBehavior: MonoBehaviour {
 			
 		scaleToNormal = false;
 		scaleToTransform = true;
-		isTransforming = true;
 	}
 
 	public void ScaleToNormal() {

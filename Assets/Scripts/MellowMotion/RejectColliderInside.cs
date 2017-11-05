@@ -8,6 +8,7 @@ public class RejectColliderInside : MonoBehaviour {
 	private Vector3 oppositeVector;
 	private TransformBehavior tb;
 	private Transform grandparentTransform;
+	private int maxIterations = 6;
 
 	void Awake() {
 		parentCollider = transform.parent.GetComponent<BoxCollider2D> ();
@@ -31,16 +32,27 @@ public class RejectColliderInside : MonoBehaviour {
 			return;
 		}
 		if (other.CompareTag ("Ground") && transform.parent != null && parentCollider != null) {
-			float otherSize = 1.0f;
-			if (other.GetComponent<SpriteRenderer> () != null) {
-				otherSize = Vector3.Dot (other.GetComponent<SpriteRenderer> ().bounds.size, rejectVector);
-			} else if (other.GetComponent<BoxCollider2D> () != null) {
-				otherSize = Vector3.Dot (other.GetComponent<BoxCollider2D> ().bounds.size, rejectVector);
+			grandparentTransform.position += 0.1f * rejectVector;
+
+			int numIterations = 0;
+			if (other.GetComponent<BoxCollider2D> () != null) {
+				Bounds otherBounds = other.GetComponent<BoxCollider2D> ().bounds;
+				while (otherBounds.Intersects (parentCollider.bounds) && numIterations < maxIterations) {
+					grandparentTransform.position += 0.1f * rejectVector;
+					numIterations += 1;
+				}
+			} else if (other.GetComponent<PolygonCollider2D> () != null) {
+				PolygonCollider2D otherColl = other.GetComponent<PolygonCollider2D> ();
+				float sizeOffset = 0.5f * Vector3.Dot (parentCollider.bounds.size, rejectVector);
+				Vector2 parentExtrema = grandparentTransform.position - Mathf.Abs(sizeOffset) * rejectVector; 
+				while (otherColl.OverlapPoint (parentExtrema) && numIterations < maxIterations) {
+					grandparentTransform.position += 0.1f * rejectVector;
+					sizeOffset = 0.5f * Vector3.Dot (parentCollider.bounds.size, rejectVector);
+					parentExtrema = grandparentTransform.position + Mathf.Abs(sizeOffset) * rejectVector;  
+					numIterations += 1; 
+				}
 			}
-			float parentSize = Vector3.Dot (parentCollider.bounds.size, rejectVector);
-			float difference = Vector3.Dot  (grandparentTransform.position - other.transform.position, rejectVector);
-			float moveUpAbs = (otherSize + parentSize) * 0.5f - Mathf.Abs (difference);
-			grandparentTransform.position +=  moveUpAbs * rejectVector * Mathf.Sign(difference);
+
 
 		}
 	}

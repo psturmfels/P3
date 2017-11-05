@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Door : MonoBehaviour {
-
+	public bool DefaultActive = true;
     public GameObject[] triggers;
     private int unlockedTriggers;
+
 
 	// Use this for initialization
 	void Start () {
@@ -20,24 +21,58 @@ public class Door : MonoBehaviour {
             }
             else if (t.GetComponent<SwitchLatch>() != null) {
                 SwitchLatch sl = t.GetComponent<SwitchLatch>();
-                sl.OnSwitchTrigger += TriggerPressed;
+				sl.OnSwitchTrigger += LatchSwitched;
             }
         }
+		SetDefault ();
     }
+
+	private void LatchSwitched() {
+		++unlockedTriggers;
+		if (unlockedTriggers == triggers.Length) {
+			DestroyBlocks ();
+		}
+	}
+
+	private void DestroyBlocks() {
+		foreach (Transform child in transform)
+		{
+			FadeOutAndDie foad = child.gameObject.GetComponent<FadeOutAndDie> ();
+			foad.StartFadeOut ();
+		}
+	}
 
     private void TriggerPressed() {
         unlockedTriggers++;
         if (unlockedTriggers == triggers.Length) {
-            ChangeAlphaOfSprite(0.5f);
-            ChangeColliders(false);
+			SetHighlighted ();
         }
     }
 
     private void TriggerReleased() {
         unlockedTriggers--;
-        ChangeAlphaOfSprite(1.0f);
-        ChangeColliders(true);
+		SetDefault ();
     }
+
+	private void SetHighlighted() {
+		if (DefaultActive) {
+			ChangeAlphaOfSprite (0.5f);
+			ChangeColliders (false);
+		} else {
+			ChangeAlphaOfSprite (1.0f);
+			ChangeColliders (true);
+		}
+	}
+
+	private void SetDefault() {
+		if (DefaultActive) {
+			ChangeAlphaOfSprite (1.0f);
+			ChangeColliders (true);
+		} else {
+			ChangeAlphaOfSprite (0.5f);
+			ChangeColliders (false);
+		}
+	}
 
     private void ChangeAlphaOfSprite(float alpha)
     {

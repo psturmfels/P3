@@ -7,7 +7,8 @@ public class StateMachineForJack : MonoBehaviour {
 	public enum State {
 		Normal,
 		Transformed,
-		InTransition
+		InTransition,
+		Disabled
 	};
 
 	public GameObject normalObject;

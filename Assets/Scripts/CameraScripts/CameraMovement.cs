@@ -6,6 +6,8 @@ using UnityEngine.Events;
 public class CameraMovement : MonoBehaviour {
 	public Transform stiltTransform;
 	public Transform bridgeTransform;
+	public GameObject stiltCircle;
+	public GameObject bridgeCircle;
 	public event UnityAction reachedCheckpoint;
 	public float minSizeY = 5.0f;
 	public float maxSizeY = 7f;
@@ -13,8 +15,8 @@ public class CameraMovement : MonoBehaviour {
 	private Camera mainCamera;
 	private float playerTwiceOffset = 3.0f;
 
-	private Vector3 lastPlayer1Position;
-	private Vector3 lastPlayer2Position;
+	private Vector3 lastStiltPosition;
+	private Vector3 lastBridgePosition;
 	private float startLerpWaitTime = 1.0f;
 	private float smoothSpeed = 1.5f;
 	private float upOffset = 1.0f;
@@ -23,6 +25,7 @@ public class CameraMovement : MonoBehaviour {
 	private bool isLerping = false;
 	private float eps = 3.0f;
 	private float lerpSpeed = 0.03f;
+	private float viewportHalf = 0.45f;
 
 	void Start() {
 		mainCamera = GetComponent<Camera> ();
@@ -30,15 +33,15 @@ public class CameraMovement : MonoBehaviour {
 
 	void SetLastPositions() {
 		if (stiltTransform.gameObject.activeSelf) {
-			lastPlayer1Position = stiltTransform.position;
+			lastStiltPosition = stiltTransform.position;
 		}
 		if (bridgeTransform.gameObject.activeSelf) {
-			lastPlayer2Position = bridgeTransform.position;
+			lastBridgePosition = bridgeTransform.position;
 		}
 	}
 
 	void SetCameraPos() {
-		Vector3 middle = (lastPlayer1Position + lastPlayer2Position) * 0.5f;
+		Vector3 middle = (lastBridgePosition + lastStiltPosition) * 0.5f;
 
 		Vector3 targetCameraPosition = new Vector3(
 			middle.x,
@@ -54,8 +57,8 @@ public class CameraMovement : MonoBehaviour {
 		float minSizeX = minSizeY * Screen.width / Screen.height;
 
 		//multiplying by 0.5, because the ortographicSize is actually half the height
-		float width = Mathf.Abs (lastPlayer1Position.x - lastPlayer2Position.x) * 0.5f + playerTwiceOffset;
-		float height = Mathf.Abs (lastPlayer1Position.y - lastPlayer2Position.y) * 0.5f + playerTwiceOffset;
+		float width = Mathf.Abs (lastStiltPosition.x - lastBridgePosition.x) * 0.5f + playerTwiceOffset;
+		float height = Mathf.Abs (lastStiltPosition.y - lastBridgePosition.y) * 0.5f + playerTwiceOffset;
 
 		//computing the size
 		float camSizeX = Mathf.Max(width, minSizeX);
@@ -115,6 +118,56 @@ public class CameraMovement : MonoBehaviour {
 //		player2.position = Camera.main.ViewportToWorldPoint(player2CameraPos);
 //	}
 
+
+	void SetBubbles() {
+		Vector3 stiltCameraPos = Camera.main.WorldToViewportPoint (lastStiltPosition);
+		Vector3 bridgeCameraPos = Camera.main.WorldToViewportPoint (lastBridgePosition);
+
+//		Debug.Log (stiltCameraPos.ToString ());
+		if (stiltCameraPos.x < 0.0f ||
+		    stiltCameraPos.x > 1.0f ||
+		    stiltCameraPos.y > 1.0f ||
+		    stiltCameraPos.y < 0.0f) {
+
+			stiltCircle.SetActive (true);
+
+			if (stiltCameraPos.y > stiltCameraPos.x && stiltCameraPos.y > 1.0f - stiltCameraPos.x || 
+				stiltCameraPos.y < stiltCameraPos.x && stiltCameraPos.y < 1.0f - stiltCameraPos.x) {
+				Vector3 stiltCircleCameraPosition = new Vector3 (stiltCameraPos.x, 0.5f + viewportHalf * Mathf.Sign(stiltCameraPos.y), 0);
+				Vector3 transformedCirclePos = Camera.main.ViewportToWorldPoint (stiltCircleCameraPosition);
+				stiltCircle.transform.position = new Vector3(transformedCirclePos.x, transformedCirclePos.y, stiltCircle.transform.position.z);
+			} else {
+				Vector3 stiltCircleCameraPosition = new Vector3 (0.5f + viewportHalf * Mathf.Sign (stiltCameraPos.x), stiltCameraPos.y, 0);
+				Vector3 transformedCirclePos = Camera.main.ViewportToWorldPoint (stiltCircleCameraPosition);
+				stiltCircle.transform.position = new Vector3(transformedCirclePos.x, transformedCirclePos.y, stiltCircle.transform.position.z);
+			}
+		} else {
+			stiltCircle.SetActive (false);
+		}
+
+
+		if (bridgeCameraPos.x < 0.0f ||
+			bridgeCameraPos.x > 1.0f ||
+			bridgeCameraPos.y > 1.0f ||
+			bridgeCameraPos.y < 0.0f) {
+
+			bridgeCircle.SetActive (true);
+
+			if (bridgeCameraPos.y > bridgeCameraPos.x && bridgeCameraPos.y > 1.0f - bridgeCameraPos.x || 
+				bridgeCameraPos.y < bridgeCameraPos.x && bridgeCameraPos.y < 1.0f - bridgeCameraPos.x) {
+				Vector3 bridgeCircleCameraPosition = new Vector3 (bridgeCameraPos.x, 0.5f + viewportHalf * Mathf.Sign(bridgeCameraPos.y), 0);
+				Vector3 transformedCirclePos = Camera.main.ViewportToWorldPoint (bridgeCircleCameraPosition);
+				bridgeCircle.transform.position = new Vector3(transformedCirclePos.x, transformedCirclePos.y, bridgeCircle.transform.position.z);
+			} else {
+				Vector3 bridgeCircleCameraPosition = new Vector3 (0.5f + viewportHalf * Mathf.Sign(bridgeCameraPos.x), bridgeCameraPos.y, 0);
+				Vector3 transformedCirclePos = Camera.main.ViewportToWorldPoint (bridgeCircleCameraPosition);
+				bridgeCircle.transform.position = new Vector3(transformedCirclePos.x, transformedCirclePos.y, bridgeCircle.transform.position.z);
+			}
+		} else {
+			bridgeCircle.SetActive (false);
+		}
+	}
+
 	void Update() {
 		if (stiltTransform == null || bridgeTransform == null) { 
 			return;
@@ -126,6 +179,9 @@ public class CameraMovement : MonoBehaviour {
 		if (resizeCamera) {
 			SetCameraSize ();
 		}
+
+		SetBubbles ();
+
 
 //		ClampPlayers ();
 	}
