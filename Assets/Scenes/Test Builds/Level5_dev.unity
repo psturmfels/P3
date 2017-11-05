@@ -4402,6 +4402,19 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 4510258524456856, guid: 22f53d36ef0a56b46af73e9439dc194f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 68.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510258524456856, guid: 22f53d36ef0a56b46af73e9439dc194f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 114423799904278390, guid: 22f53d36ef0a56b46af73e9439dc194f,
+        type: 2}
+      propertyPath: cell_size
+      value: 0.25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 22f53d36ef0a56b46af73e9439dc194f, type: 2}
   m_IsPrefabParent: 0
@@ -6885,11 +6898,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
---- !u!1 &828036068 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1896530445491730, guid: 1b08569e148a34786af2b413e8d4002e,
-    type: 2}
-  m_PrefabInternal: {fileID: 289152572}
 --- !u!1001 &846926814
 Prefab:
   m_ObjectHideFlags: 0
@@ -13258,8 +13266,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stiltTransform: {fileID: 1829304829}
   bridgeTransform: {fileID: 289152573}
-  stiltCircle: {fileID: 2138212830}
-  bridgeCircle: {fileID: 828036068}
   minSizeY: 8
   maxSizeY: 10
 --- !u!1 &1802393275
@@ -15706,11 +15712,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4933128345745098, guid: 9e4a629dfdc1544b3a2aba6051e7d7b1,
     type: 2}
   m_PrefabInternal: {fileID: 2134141737}
---- !u!1 &2138212830 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1364072912395016, guid: 1343c3c487d508e41813d3ed441976e3,
-    type: 2}
-  m_PrefabInternal: {fileID: 1829304828}
 --- !u!1001 &2141091734
 Prefab:
   m_ObjectHideFlags: 0

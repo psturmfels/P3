@@ -21,7 +21,11 @@ public class Door : MonoBehaviour {
             }
             else if (t.GetComponent<SwitchLatch>() != null) {
                 SwitchLatch sl = t.GetComponent<SwitchLatch>();
-				sl.OnSwitchTrigger += LatchSwitched;
+				if (DefaultActive) {
+					sl.OnSwitchTrigger += LatchSwitched;
+				} else {
+					sl.OnSwitchTrigger += TriggerPressed;
+				}
             }
         }
 		SetDefault ();
