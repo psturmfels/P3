@@ -36,12 +36,14 @@ public class PlayerReadyUp : MonoBehaviour
     {
         if(playerID == 0)
         {
-            Player1Ready.SetActive(false);
+            if(Player1Ready != null)
+                Player1Ready.SetActive(false);
         }
 
         else if(playerID == 1)
         {
-            Player2Ready.SetActive(false);
+            if(Player2Ready != null)
+                Player2Ready.SetActive(false);
         }
     }
 

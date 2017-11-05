@@ -40,8 +40,10 @@ public class PlayerDeviceManager : MonoBehaviour
     private void OnDisable()
     {
         InputManager.OnDeviceDetached -= OnDeviceDetached;
-        keyboardListener.Destroy();
-        controllerListener.Destroy();
+        if(keyboardListener != null)
+            keyboardListener.Destroy();
+        if(controllerListener != null)
+            controllerListener.Destroy();
     }
 
     void Awake ()
