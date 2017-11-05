@@ -8,26 +8,23 @@ public class LevelFinish : MonoBehaviour {
 	private bool hasFinishedlevel = false;
 	private int numUniqueMellowsFinished = 0;
 
-    public SpriteRenderer firstFlag;
-    public SpriteRenderer secondFlag;
-    public Sprite greenFlagSprite;
     public GameObject finishPanel;
 
     private GameObject firstPlayer;
 
-    void OnTriggerEnter2D(Collider2D other) {
-        if (other.gameObject.GetComponent<MellowStates>() != null) {
-            if (firstPlayer == null) {
-                firstPlayer = other.gameObject;
-                firstFlag.sprite = greenFlagSprite;
-            }
-            else if (other.gameObject != firstPlayer) {
-                secondFlag.sprite = greenFlagSprite;
-                finishPanel.SetActive(true);
-                Invoke("BackToMenu", 3.0f);
-            }
-        }
-    }
+    //void OnTriggerEnter2D(Collider2D other) {
+    //    if (other.gameObject.GetComponent<MellowStates>() != null) {
+    //        if (firstPlayer == null) {
+    //            firstPlayer = other.gameObject;
+    //            firstFlag.sprite = greenFlagSprite;
+    //        }
+    //        else if (other.gameObject != firstPlayer) {
+    //            secondFlag.sprite = greenFlagSprite;
+                
+    //            Invoke("BackToMenu", 3.0f);
+    //        }
+    //    }
+    //}
 
 	void Start() {
 		EnableChocolateOnTrigger[] smores = GetComponentsInChildren<EnableChocolateOnTrigger> ();
@@ -55,12 +52,14 @@ public class LevelFinish : MonoBehaviour {
 
 	void CheckFinishCondition() {
 		if (!hasFinishedlevel && firstSmore.mellowName != secondSmore.mellowName) {
-			Invoke ("BackToMenu", 3.0f);
+            
+            Invoke ("BackToMenu", 3.0f);
 
 			hasFinishedlevel = true;
 			firstSmore.EnableChocolate ();
 			secondSmore.EnableChocolate ();
-		}
+            finishPanel.SetActive(true);
+        }
 	}
 
     private void BackToMenu() {
