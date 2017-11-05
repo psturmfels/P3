@@ -123,7 +123,7 @@ public class CameraMovement : MonoBehaviour {
 		Vector3 stiltCameraPos = Camera.main.WorldToViewportPoint (lastStiltPosition);
 		Vector3 bridgeCameraPos = Camera.main.WorldToViewportPoint (lastBridgePosition);
 
-		Debug.Log (stiltCameraPos.ToString ());
+//		Debug.Log (stiltCameraPos.ToString ());
 		if (stiltCameraPos.x < 0.0f ||
 		    stiltCameraPos.x > 1.0f ||
 		    stiltCameraPos.y > 1.0f ||
