@@ -32,7 +32,7 @@ public class EyeMovement : MonoBehaviour {
     }
     
     private void Blink() {
-        Debug.Log("Blinkink " + gameObject.name + " " + Time.time);
+//        Debug.Log("Blinkink " + gameObject.name + " " + Time.time);
         GetComponentInParent<Animator>().SetTrigger("blink");
         Invoke("Blink", 4.0f + Random.Range(0f, 4f));
     }
