@@ -6,14 +6,17 @@ using UnityEngine.Events;
 public class CameraMovement : MonoBehaviour {
 	public Transform stiltTransform;
 	public Transform bridgeTransform;
-	public GameObject stiltCircle;
-	public GameObject bridgeCircle;
+
 	public event UnityAction reachedCheckpoint;
 	public float minSizeY = 5.0f;
 	public float maxSizeY = 7f;
 
 	private Camera mainCamera;
 	private float playerTwiceOffset = 3.0f;
+
+	private GameObject cameraCanvas;
+	private GameObject stiltCamera;
+	private GameObject bridgeCamera;
 
 	private Vector3 lastStiltPosition;
 	private Vector3 lastBridgePosition;
@@ -25,10 +28,25 @@ public class CameraMovement : MonoBehaviour {
 	private bool isLerping = false;
 	private float eps = 3.0f;
 	private float lerpSpeed = 0.03f;
-	private float viewportHalf = 0.45f;
+	private float viewportHalf = 0.43f;
+	private float viewportMax = 1.02f;
+	private float viewportMin = -0.02f;
+
 
 	void Start() {
 		mainCamera = GetComponent<Camera> ();
+		if (cameraCanvas == null) {
+			cameraCanvas = Instantiate (Resources.Load ("CameraCanvas") as GameObject);
+			foreach (Transform child in cameraCanvas.transform) {
+				if (child.gameObject.name == "StiltCamera") {
+					stiltCamera = child.gameObject;
+					stiltCamera.SetActive (false);
+				} else if (child.gameObject.name == "BridgeCamera") {
+					bridgeCamera = child.gameObject;
+					bridgeCamera.SetActive (false);
+				}
+			}
+		}
 	}
 
 	void SetLastPositions() {
@@ -124,47 +142,56 @@ public class CameraMovement : MonoBehaviour {
 		Vector3 bridgeCameraPos = Camera.main.WorldToViewportPoint (lastBridgePosition);
 
 //		Debug.Log (stiltCameraPos.ToString ());
-		if (stiltCameraPos.x < 0.0f ||
-		    stiltCameraPos.x > 1.0f ||
-		    stiltCameraPos.y > 1.0f ||
-		    stiltCameraPos.y < 0.0f) {
+		if (stiltCameraPos.x < viewportMin ||
+			stiltCameraPos.x > viewportMax ||
+			stiltCameraPos.y > viewportMax ||
+			stiltCameraPos.y < viewportMin) {
 
-			stiltCircle.SetActive (true);
+			if (stiltCamera != null) {
+				stiltCamera.SetActive (true);
+			}
+
 
 			if (stiltCameraPos.y > stiltCameraPos.x && stiltCameraPos.y > 1.0f - stiltCameraPos.x || 
 				stiltCameraPos.y < stiltCameraPos.x && stiltCameraPos.y < 1.0f - stiltCameraPos.x) {
-				Vector3 stiltCircleCameraPosition = new Vector3 (stiltCameraPos.x, 0.5f + viewportHalf * Mathf.Sign(stiltCameraPos.y), 0);
-				Vector3 transformedCirclePos = Camera.main.ViewportToWorldPoint (stiltCircleCameraPosition);
-				stiltCircle.transform.position = new Vector3(transformedCirclePos.x, transformedCirclePos.y, stiltCircle.transform.position.z);
+				Vector3 transformedCirclePos = new Vector3 (stiltCameraPos.x, 0.5f + viewportHalf * Mathf.Sign(stiltCameraPos.y), 0);
+				stiltCamera.GetComponent<RectTransform>().anchorMin = new Vector2(transformedCirclePos.x, transformedCirclePos.y);
+				stiltCamera.GetComponent<RectTransform>().anchorMax = new Vector2(transformedCirclePos.x, transformedCirclePos.y);
 			} else {
-				Vector3 stiltCircleCameraPosition = new Vector3 (0.5f + viewportHalf * Mathf.Sign (stiltCameraPos.x), stiltCameraPos.y, 0);
-				Vector3 transformedCirclePos = Camera.main.ViewportToWorldPoint (stiltCircleCameraPosition);
-				stiltCircle.transform.position = new Vector3(transformedCirclePos.x, transformedCirclePos.y, stiltCircle.transform.position.z);
+				Vector3 transformedCirclePos = new Vector3 (0.5f + viewportHalf * Mathf.Sign (stiltCameraPos.x), stiltCameraPos.y, 0);
+				stiltCamera.GetComponent<RectTransform>().anchorMin = new Vector2(transformedCirclePos.x, transformedCirclePos.y);
+				stiltCamera.GetComponent<RectTransform>().anchorMax = new Vector2(transformedCirclePos.x, transformedCirclePos.y);			
 			}
 		} else {
-			stiltCircle.SetActive (false);
+			if (stiltCamera != null) {
+				stiltCamera.SetActive (false);
+			}
 		}
 
 
-		if (bridgeCameraPos.x < 0.0f ||
-			bridgeCameraPos.x > 1.0f ||
-			bridgeCameraPos.y > 1.0f ||
-			bridgeCameraPos.y < 0.0f) {
+		if (bridgeCameraPos.x < viewportMin ||
+			bridgeCameraPos.x > viewportMax ||
+			bridgeCameraPos.y > viewportMax ||
+			bridgeCameraPos.y < viewportMin) {
 
-			bridgeCircle.SetActive (true);
+			if (bridgeCamera != null) {
+				bridgeCamera.SetActive (true);
+			}
 
 			if (bridgeCameraPos.y > bridgeCameraPos.x && bridgeCameraPos.y > 1.0f - bridgeCameraPos.x || 
 				bridgeCameraPos.y < bridgeCameraPos.x && bridgeCameraPos.y < 1.0f - bridgeCameraPos.x) {
-				Vector3 bridgeCircleCameraPosition = new Vector3 (bridgeCameraPos.x, 0.5f + viewportHalf * Mathf.Sign(bridgeCameraPos.y), 0);
-				Vector3 transformedCirclePos = Camera.main.ViewportToWorldPoint (bridgeCircleCameraPosition);
-				bridgeCircle.transform.position = new Vector3(transformedCirclePos.x, transformedCirclePos.y, bridgeCircle.transform.position.z);
+				Vector3 transformedCirclePos = new Vector3 (bridgeCameraPos.x, 0.5f + viewportHalf * Mathf.Sign(bridgeCameraPos.y), 0);
+				bridgeCamera.GetComponent<RectTransform>().anchorMin = new Vector2(transformedCirclePos.x, transformedCirclePos.y);
+				bridgeCamera.GetComponent<RectTransform>().anchorMax = new Vector2(transformedCirclePos.x, transformedCirclePos.y);
 			} else {
-				Vector3 bridgeCircleCameraPosition = new Vector3 (0.5f + viewportHalf * Mathf.Sign(bridgeCameraPos.x), bridgeCameraPos.y, 0);
-				Vector3 transformedCirclePos = Camera.main.ViewportToWorldPoint (bridgeCircleCameraPosition);
-				bridgeCircle.transform.position = new Vector3(transformedCirclePos.x, transformedCirclePos.y, bridgeCircle.transform.position.z);
+				Vector3 transformedCirclePos = new Vector3 (0.5f + viewportHalf * Mathf.Sign(bridgeCameraPos.x), bridgeCameraPos.y, 0);
+				bridgeCamera.GetComponent<RectTransform>().anchorMin = new Vector2(transformedCirclePos.x, transformedCirclePos.y);
+				bridgeCamera.GetComponent<RectTransform>().anchorMax = new Vector2(transformedCirclePos.x, transformedCirclePos.y);
 			}
 		} else {
-			bridgeCircle.SetActive (false);
+			if (bridgeCamera != null) {
+				bridgeCamera.SetActive (false);
+			}
 		}
 	}
 
