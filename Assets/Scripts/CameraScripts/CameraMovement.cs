@@ -89,7 +89,18 @@ public class CameraMovement : MonoBehaviour {
 		}
 		StopAllCoroutines ();
 		Vector2 checkpointTargetPos = new Vector3 (checkpointPosition.x, checkpointPosition.y); 
+		StartCoroutine (RemoveCameraAfterTime(0.5f));
 		StartCoroutine (LerpToTargetPosition (checkpointTargetPos));
+	}
+
+	IEnumerator RemoveCameraAfterTime(float time) {
+		yield return new WaitForSeconds (time);
+		if (stiltCamera != null) {
+			stiltCamera.SetActive (false);
+		}
+		if (bridgeCamera != null) {
+			bridgeCamera.SetActive (false);
+		}
 	}
 
 	IEnumerator LerpToTargetPosition(Vector2 targetPosition) {
@@ -102,10 +113,10 @@ public class CameraMovement : MonoBehaviour {
 		
 		int iterationNumber = 1;
 		while (Vector2.Distance (cameraPos, targetPosition) > eps || mainCamera.orthographicSize > minSizeY) {
+
 			Vector2 newPosition = Vector2.Lerp (cameraPos, targetPosition, lerpSpeed);
 			cameraPos = newPosition;
 			transform.position = new Vector3 (cameraPos.x, cameraPos.y, transform.position.z);
-
 
 			if (iterationNumber > 30) {
 				mainCamera.orthographicSize = minSizeY;
@@ -138,6 +149,9 @@ public class CameraMovement : MonoBehaviour {
 
 
 	void SetBubbles() {
+		if (isLerping) {
+			return;
+		}
 		Vector3 stiltCameraPos = Camera.main.WorldToViewportPoint (lastStiltPosition);
 		Vector3 bridgeCameraPos = Camera.main.WorldToViewportPoint (lastBridgePosition);
 
