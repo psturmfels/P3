@@ -3132,11 +3132,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4847377526447634, guid: 1b08569e148a34786af2b413e8d4002e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 35
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 4847377526447634, guid: 1b08569e148a34786af2b413e8d4002e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4847377526447634, guid: 1b08569e148a34786af2b413e8d4002e, type: 2}
       propertyPath: m_LocalPosition.z
@@ -6885,6 +6885,11 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!1 &828036068 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1896530445491730, guid: 1b08569e148a34786af2b413e8d4002e,
+    type: 2}
+  m_PrefabInternal: {fileID: 289152572}
 --- !u!1001 &846926814
 Prefab:
   m_ObjectHideFlags: 0
@@ -13253,8 +13258,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stiltTransform: {fileID: 1829304829}
   bridgeTransform: {fileID: 289152573}
-  stiltCircle: {fileID: 0}
-  bridgeCircle: {fileID: 0}
+  stiltCircle: {fileID: 2138212830}
+  bridgeCircle: {fileID: 828036068}
   minSizeY: 8
   maxSizeY: 10
 --- !u!1 &1802393275
@@ -13397,11 +13402,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4143125017040974, guid: 1343c3c487d508e41813d3ed441976e3, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 40
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4143125017040974, guid: 1343c3c487d508e41813d3ed441976e3, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4143125017040974, guid: 1343c3c487d508e41813d3ed441976e3, type: 2}
       propertyPath: m_LocalPosition.z
@@ -15701,6 +15706,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4933128345745098, guid: 9e4a629dfdc1544b3a2aba6051e7d7b1,
     type: 2}
   m_PrefabInternal: {fileID: 2134141737}
+--- !u!1 &2138212830 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1364072912395016, guid: 1343c3c487d508e41813d3ed441976e3,
+    type: 2}
+  m_PrefabInternal: {fileID: 1829304828}
 --- !u!1001 &2141091734
 Prefab:
   m_ObjectHideFlags: 0
