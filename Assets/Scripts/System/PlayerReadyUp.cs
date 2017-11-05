@@ -9,6 +9,7 @@ public class PlayerReadyUp : MonoBehaviour
     private PlayerActions playerControls;
     public GameObject Player1Ready;
     public GameObject Player2Ready;
+    public GameObject YButton;
     public bool ready = false;
     int playerID;
     private float delay = 0;
@@ -56,12 +57,14 @@ public class PlayerReadyUp : MonoBehaviour
         if((playerID == 0) && (playerControls.Join.WasPressed))
         {
             Player1Ready.GetComponentInChildren<Text>().text = "Player 1 Ready!";
+            YButton.SetActive(false);
             ready = true;
         }
 
         else if((playerID == 1) && (playerControls.Join.WasPressed))
         {
             Player2Ready.GetComponentInChildren<Text>().text = "Player 2 Ready!";
+            YButton.SetActive(false);
             ready = true;
         }
     }
