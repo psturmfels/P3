@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class CameraMovement : MonoBehaviour {
-	public Transform stiltTransform;
-	public Transform bridgeTransform;
+	private Transform stiltTransform;
+	private Transform bridgeTransform;
 
 	public event UnityAction reachedCheckpoint;
 	public float minSizeY = 5.0f;
@@ -34,6 +34,13 @@ public class CameraMovement : MonoBehaviour {
 
 
 	void Start() {
+		if (GameObject.Find ("StiltMellow") != null) {
+			stiltTransform = GameObject.Find ("StiltMellow").transform;
+		} 
+		if (GameObject.Find ("BridgeMellow") != null) {
+			bridgeTransform = GameObject.Find ("BridgeMellow").transform;
+		}
+
 		mainCamera = GetComponent<Camera> ();
 		if (cameraCanvas == null) {
 			cameraCanvas = Instantiate (Resources.Load ("CameraCanvas") as GameObject);
