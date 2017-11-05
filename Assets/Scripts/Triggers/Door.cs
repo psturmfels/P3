@@ -11,7 +11,7 @@ public class Door : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 	    unlockedTriggers = 0;
-        foreach (var t in triggers)
+		foreach (GameObject t in triggers)
         {
             if (t.GetComponent<ButtonActivate>() != null)
             {

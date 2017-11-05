@@ -3396,6 +3396,11 @@ Transform:
   m_Father: {fileID: 1408857353}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &301188405 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1446673729756628, guid: 604ce380e4fb94d49a7e4d95f6e6ed41,
+    type: 2}
+  m_PrefabInternal: {fileID: 355894105}
 --- !u!1001 &303911119
 Prefab:
   m_ObjectHideFlags: 0
@@ -4761,8 +4766,8 @@ Transform:
   m_Children:
   - {fileID: 1669155503}
   - {fileID: 965805128}
-  - {fileID: 1259777904}
   - {fileID: 109045696}
+  - {fileID: 1259777904}
   m_Father: {fileID: 532090202}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12500,6 +12505,11 @@ Prefab:
       propertyPath: m_Name
       value: CaveDoor
       objectReference: {fileID: 0}
+    - target: {fileID: 114319366735044128, guid: d50f4b7be20ef4ae388eb734dabafd47,
+        type: 2}
+      propertyPath: triggers.Array.data[0]
+      value: 
+      objectReference: {fileID: 301188405}
     m_RemovedComponents:
     - {fileID: 114200366638680820, guid: d50f4b7be20ef4ae388eb734dabafd47, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: d50f4b7be20ef4ae388eb734dabafd47, type: 2}
