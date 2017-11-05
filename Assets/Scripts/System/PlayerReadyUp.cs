@@ -11,6 +11,7 @@ public class PlayerReadyUp : MonoBehaviour
     public GameObject Player2Ready;
     public bool ready = false;
     int playerID;
+    private float delay = 0;
 
     //When this is enabled, find this players controls and enable their ready up sign.
     private void OnEnable ()
@@ -46,6 +47,12 @@ public class PlayerReadyUp : MonoBehaviour
     //If this player presses join, make them as ready.
     private void Update()
     {
+        if(delay < .3f)
+        {
+            delay += Time.deltaTime;
+            return;
+        }
+
         if((playerID == 0) && (playerControls.Join.WasPressed))
         {
             Player1Ready.GetComponentInChildren<Text>().text = "Player 1 Ready!";
