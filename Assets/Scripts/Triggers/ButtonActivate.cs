@@ -14,6 +14,7 @@ public class ButtonActivate : MonoBehaviour {
     public bool locked = true;
 
     private SpriteRenderer sr;
+    private int numPlayersOnButton = 0;
 
     // Use this for initialization
     void Start()
@@ -25,12 +26,18 @@ public class ButtonActivate : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        OnButtonPress();
+        numPlayersOnButton++;
+        if (numPlayersOnButton == 1) {
+            OnButtonPress();
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        OnButtonRelease();
+        numPlayersOnButton--;
+        if (numPlayersOnButton == 0) {
+            OnButtonRelease();
+        }
     }
 
     private void ButtonPressed() {
