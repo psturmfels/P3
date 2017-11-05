@@ -5,10 +5,10 @@ using UnityEngine;
 public class EyeMovement : MonoBehaviour {
 
     public GameObject mellowMove;
-    public MellowCrushed mellowCrushed;
     public Transform iris;
     public Transform smallIris;
 
+    private MellowCrushed mellowCrushed;
     private Rigidbody2D rb;
     private bool transformed = false;
     private float irisDisplacementFactor = 20f;
@@ -17,6 +17,7 @@ public class EyeMovement : MonoBehaviour {
 	void Start () {
 	    rb = GetComponentInParent<Rigidbody2D>();
         Invoke("Blink", 4.0f + Random.Range(0f, 4f));
+	    mellowCrushed = mellowMove.GetComponent<MellowCrushed>();
         mellowCrushed.Remove += DisableEyes;
         mellowCrushed.Respawn += EnableEyes;
     }
