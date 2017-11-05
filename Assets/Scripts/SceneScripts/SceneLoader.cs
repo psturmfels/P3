@@ -7,11 +7,26 @@ public class SceneLoader : MonoBehaviour {
 
     public static SceneLoader instance;
 
+    private PlayerActions controllerActions;
+    private PlayerActions keyboardActions;
+
     void Awake() {
         if (instance != null)
             Destroy(gameObject);
         else {
             instance = this;
+        }
+    }
+
+    void Start() {
+        controllerActions = PlayerActions.CreateWithControllerBindings();
+        keyboardActions = PlayerActions.CreateWithKeyboardBindings();
+    }
+
+    // Update is called once per frame
+    void Update() {
+        if (controllerActions.BackLevel.WasPressed || keyboardActions.BackLevel.WasPressed) {
+            LoadMenu();
         }
     }
 
@@ -25,8 +40,7 @@ public class SceneLoader : MonoBehaviour {
         SceneManager.LoadScene("Level Select Menu");
     }
 
-    public void LoadEnd()
-    {
+    public void LoadEnd() {
         SceneManager.LoadScene("gs_endGame");
     }
 }
