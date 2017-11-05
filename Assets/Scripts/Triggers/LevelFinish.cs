@@ -7,6 +7,7 @@ public class LevelFinish : MonoBehaviour {
     public SpriteRenderer firstFlag;
     public SpriteRenderer secondFlag;
     public Sprite greenFlagSprite;
+    public GameObject finishPanel;
 
     private GameObject firstPlayer;
 
@@ -18,6 +19,7 @@ public class LevelFinish : MonoBehaviour {
             }
             else if (other.gameObject != firstPlayer) {
                 secondFlag.sprite = greenFlagSprite;
+                finishPanel.SetActive(true);
                 Invoke("BackToMenu", 3.0f);
             }
         }
