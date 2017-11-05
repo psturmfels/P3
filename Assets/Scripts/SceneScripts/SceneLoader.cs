@@ -26,7 +26,9 @@ public class SceneLoader : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         if (controllerActions.BackLevel.WasPressed || keyboardActions.BackLevel.WasPressed) {
-            LoadMenu();
+            if (SceneManager.GetActiveScene().buildIndex != 0) {
+                LoadMenu();
+            }
         }
     }
 
