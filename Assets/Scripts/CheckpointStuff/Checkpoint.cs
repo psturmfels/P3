@@ -7,6 +7,11 @@ public class Checkpoint : MonoBehaviour {
     public static GameObject bridgeMellow;
     public static GameObject stiltMellow;
     public static CameraMovement cm;
+	public static List<Checkpoint> currentCheckpoints = new List<Checkpoint> ();
+
+	public Vector3 stiltOffset = new Vector3 (-1.0f, 0.0f, 0.0f);
+	public Vector3 bridgeOffset = new Vector3 (1.0f, 0.0f, 0.0f);
+	public bool isActive = false;
 
     private static Vector3 CheckpointPos;
     private static PlayerActions controllerActions;
@@ -20,6 +25,11 @@ public class Checkpoint : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+		if (gameObject.name == "SceneLoader") {
+			isActive = true;
+		}
+		currentCheckpoints.Add (this);
+
 		foreach (AnimateShrinkScale coin in GetComponentsInChildren<AnimateShrinkScale> ()) {
 			if (coin.gameObject.name == "CheckpointBridge") {
 				bridgeCoin = coin;
@@ -47,6 +57,9 @@ public class Checkpoint : MonoBehaviour {
     }
     // Update is called once per frame
     void Update() {
+		if (!isActive) {
+			return;
+		}
         if (controllerActions.ResetCheckpoint.WasPressed || keyboardActions.ResetCheckpoint.WasPressed) {
             ResetStiltToCheckpoint();
             ResetBridgeToCheckpoint();
@@ -58,11 +71,16 @@ public class Checkpoint : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-		Debug.Log ("Registered trigger");
+		if (isActive) {
+			return;
+		}
+
 		if (!bridgeAtCheckpoint && collision.gameObject.name.Contains("Bridge")) {
             bridgeAtCheckpoint = true;
 			bridgeCoin.StartAnimation ();
             if (stiltAtCheckpoint) {
+				DisableAllOtherCheckpoints ();
+				isActive = true;
                 SetCheckpoint(transform.position);
             }
         }
@@ -70,28 +88,53 @@ public class Checkpoint : MonoBehaviour {
             stiltAtCheckpoint = true;
 			stiltCoin.StartAnimation ();
             if (bridgeAtCheckpoint) {
+				DisableAllOtherCheckpoints ();
+				isActive = true;
                 SetCheckpoint(transform.position);
             }
         }
     }
 
+	void DisableAllOtherCheckpoints () {
+		foreach (Checkpoint check in currentCheckpoints) {
+			if (check != this) {
+				check.isActive = false;
+			}
+		}
+	}
+
     public void SetCheckpoint(Vector3 pos) {
+		if (!isActive) {
+			return;
+		}
         CheckpointPos = pos;
     }
 
     void RegisterMellowRemoved() {
+		if (!isActive) {
+			return;
+		}
         cm.RegisterMellowRemoved(CheckpointPos);
     }
 
     void ResetStiltToCheckpoint() {
-        stiltMellow.transform.position = CheckpointPos - new Vector3(1, 0, 0);
+		if (!isActive) {
+			return;
+		}
+		stiltMellow.transform.position = CheckpointPos + stiltOffset;
     }
 
     void ResetBridgeToCheckpoint() {
-        bridgeMellow.transform.position = CheckpointPos + new Vector3(1, 0, 0);
+		if (!isActive) {
+			return;
+		}
+		bridgeMellow.transform.position = CheckpointPos + bridgeOffset;
     }
 
     public void ResetToBeginning() {
+		if (!isActive) {
+			return;
+		}
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
