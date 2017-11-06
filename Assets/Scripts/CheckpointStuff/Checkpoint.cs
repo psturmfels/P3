@@ -77,7 +77,9 @@ public class Checkpoint : MonoBehaviour {
 
 		if (!bridgeAtCheckpoint && collision.gameObject.name.Contains("Bridge")) {
             bridgeAtCheckpoint = true;
-			bridgeCoin.StartAnimation ();
+			if (bridgeCoin != null && bridgeCoin.gameObject.activeSelf) {
+				bridgeCoin.StartAnimation ();
+			}
             if (stiltAtCheckpoint) {
 				DisableAllOtherCheckpoints ();
 				isActive = true;
@@ -86,7 +88,9 @@ public class Checkpoint : MonoBehaviour {
         }
 		else if (!stiltAtCheckpoint && collision.gameObject.name.Contains("Stilt")) {
             stiltAtCheckpoint = true;
-			stiltCoin.StartAnimation ();
+			if (stiltCoin != null && stiltCoin.gameObject.activeSelf) { 
+				stiltCoin.StartAnimation ();
+			}
             if (bridgeAtCheckpoint) {
 				DisableAllOtherCheckpoints ();
 				isActive = true;
