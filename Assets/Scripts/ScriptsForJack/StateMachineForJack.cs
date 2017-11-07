@@ -14,7 +14,7 @@ public class StateMachineForJack : MonoBehaviour {
 	public GameObject normalObject;
 	public GameObject transformedObject;
 
-	private State currentState = State.Normal;
+	public State currentState = State.Normal;
     private PlayerActions controls;
     private PlayerDeviceManager deviceManager;
     private MellowStates ms;
@@ -59,7 +59,19 @@ public class StateMachineForJack : MonoBehaviour {
             playerID = ms.playerID;
         }
 
+		if (GetComponentInChildren<MellowCrushed> () != null) {
+			GetComponentInChildren<MellowCrushed> ().DisableTransform += DisableTransform;
+			GetComponentInChildren<MellowCrushed> ().Respawn += EnableTransform;
+		}
     }
+
+	void DisableTransform() {
+		currentState = State.Disabled;
+	}
+
+	void EnableTransform() {
+		currentState = State.Normal;
+	}
 
     void Update () {
         //Find the controls bound to this player

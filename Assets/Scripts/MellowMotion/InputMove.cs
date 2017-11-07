@@ -17,6 +17,7 @@ public class InputMove : MonoBehaviour {
 	public float moveIncrement;
 	public float maxMoveSpeed;
 
+
 	public void SetCurrentHorzAxis(float newHorzAxis) {
 		if (newHorzAxis != 0.0f) {
 			currentFaceDirection = newHorzAxis;
@@ -63,7 +64,7 @@ public class InputMove : MonoBehaviour {
             controls = deviceManager.GetControls(playerID);
         }
 
-		if (controls != null && controls.Move.X != 0.0f) {
+		if (controls != null && controls.Move.X != 0.0f && ms.canMove) {
 			SetCurrentHorzAxis (Mathf.Sign(controls.Move.X));
 		} else {
 			SetCurrentHorzAxis (0.0f);

@@ -5,7 +5,7 @@ using UnityEngine;
 public class MouthMovement : MonoBehaviour {
 
     public InputJump inputJump;
-    public MellowCrushed mellowCrushed;
+    private MellowCrushed mellowCrushed;
 
     public Sprite defaultSprite;
     public Sprite smileSprite;
@@ -18,6 +18,7 @@ public class MouthMovement : MonoBehaviour {
 	void Start () {
         sr = GetComponent<SpriteRenderer>();
         inputJump.DidJump += Smile;
+		mellowCrushed = GetComponentInParent<MellowCrushed> ();
         mellowCrushed.Remove += DisableMouth;
         mellowCrushed.Respawn += EnableMouth;
     }

@@ -29,7 +29,11 @@ public class InputJump : MonoBehaviour {
 		if (!ms.canJump || ms.canWallJumpLeft || ms.canWallJumpRight) {
 			return;
 		}
+			
+		StartCoroutine (JumpRoutine (forceModifier));
+	}
 
+	IEnumerator JumpRoutine(float forceModifier) {
 		ms.canJump = false;
 
 		jumpForceModifier = forceModifier;
@@ -41,7 +45,24 @@ public class InputJump : MonoBehaviour {
 
 		shouldCountFrames = true;
 		DidJump ();
-		Invoke ("Jump", jumpDelay);
+		yield return new WaitForSeconds (jumpDelay);
+		if (ms.isDead) {
+			yield break;
+		}
+
+		float frameInputRatio = (float)(Mathf.Min(framesCountedInput + 1, framesCountedTotal) + 1) / (float)(framesCountedTotal + 1);
+		rb.velocity = new Vector2 (rb.velocity.x, 0.0f);
+		rb.AddRelativeForce (Vector2.up * jumpForce * jumpForceModifier * frameInputRatio, ForceMode2D.Impulse);
+		shouldCountFrames = false;
+		framesCountedInput = 0;
+		framesCountedTotal = 0;
+
+		ms.canJump = false;
+		if (ms.rightSideInContact) {
+			ms.SetState (MellowStates.State.WallJumpLeft, true);
+		} else if (ms.leftSideInContact) {
+			ms.SetState (MellowStates.State.WallJumpRight, true);
+		}
 	}
 
 	void Start () {
@@ -59,22 +80,6 @@ public class InputJump : MonoBehaviour {
             playerID = ms.playerID;	
         }
     }
-		
-	void Jump() {
-		float frameInputRatio = (float)(Mathf.Min(framesCountedInput + 1, framesCountedTotal) + 1) / (float)(framesCountedTotal + 1);
-		rb.velocity = new Vector2 (rb.velocity.x, 0.0f);
-		rb.AddRelativeForce (Vector2.up * jumpForce * jumpForceModifier * frameInputRatio, ForceMode2D.Impulse);
-		shouldCountFrames = false;
-		framesCountedInput = 0;
-		framesCountedTotal = 0;
-
-		ms.canJump = false;
-		if (ms.rightSideInContact) {
-			ms.SetState (MellowStates.State.WallJumpLeft, true);
-		} else if (ms.leftSideInContact) {
-			ms.SetState (MellowStates.State.WallJumpRight, true);
-		}
-	}
 
 	void FixedUpdate() {
 		if (shouldCountFrames) {

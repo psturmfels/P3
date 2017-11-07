@@ -10,6 +10,8 @@ public class CameraMovement : MonoBehaviour {
 	public event UnityAction reachedCheckpoint;
 	public float minSizeY = 5.0f;
 	public float maxSizeY = 7f;
+	public bool lockYPos = false;
+	public bool ignoreCheckpointY = false;
 
 	private Camera mainCamera;
 	private float playerTwiceOffset = 3.0f;
@@ -74,6 +76,11 @@ public class CameraMovement : MonoBehaviour {
 			mainCamera.transform.position.z
 		);
 
+		if (lockYPos) {
+			targetCameraPosition.y = mainCamera.transform.position.y;
+		}
+
+
 		mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, targetCameraPosition, smoothSpeed*Time.deltaTime);
 	}
 
@@ -95,9 +102,13 @@ public class CameraMovement : MonoBehaviour {
 			return;
 		}
 		StopAllCoroutines ();
-		Vector2 checkpointTargetPos = new Vector3 (checkpointPosition.x, checkpointPosition.y); 
 		StartCoroutine (RemoveCameraAfterTime(0.5f));
-		StartCoroutine (LerpToTargetPosition (checkpointTargetPos));
+
+		if (ignoreCheckpointY) {
+			StartCoroutine (LerpToTargetPosition (new Vector3(checkpointPosition.x, mainCamera.transform.position.y)));
+		} else {
+			StartCoroutine (LerpToTargetPosition (new Vector2(checkpointPosition.x, checkpointPosition.y)));
+		}
 	}
 
 	IEnumerator RemoveCameraAfterTime(float time) {
