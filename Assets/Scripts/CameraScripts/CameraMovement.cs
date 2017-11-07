@@ -87,14 +87,25 @@ public class CameraMovement : MonoBehaviour {
 	void SetCameraSize() {
 		//horizontal size is based on actual screen ratio
 		float minSizeX = minSizeY * Screen.width / Screen.height;
+		Vector3 topRightScreen = Camera.main.ViewportToWorldPoint (new Vector3 (1.0f, 1.0f, 0.0f));
+		Vector3 bottomLeftScreen = Camera.main.ViewportToWorldPoint (Vector3.zero);
 
 		//multiplying by 0.5, because the ortographicSize is actually half the height
-		float width = Mathf.Abs (lastStiltPosition.x - lastBridgePosition.x) * 0.5f + playerTwiceOffset;
-		float height = Mathf.Abs (lastStiltPosition.y - lastBridgePosition.y) * 0.5f + playerTwiceOffset;
+		float playerWidths = Mathf.Abs (lastStiltPosition.x - lastBridgePosition.x) * 0.5f + playerTwiceOffset;
+		float stiltWidthToBoundary = Mathf.Max (Mathf.Abs (lastStiltPosition.x - topRightScreen.x), Mathf.Abs (lastStiltPosition.x - bottomLeftScreen.x));
+		float bridgeWidthToBoundary = Mathf.Max (Mathf.Abs (lastBridgePosition.x - topRightScreen.x), Mathf.Abs (lastBridgePosition.x - bottomLeftScreen.x));
+		float width = Mathf.Max (playerWidths, stiltWidthToBoundary * 0.6f, bridgeWidthToBoundary * 0.6f);
+
+		float playerHeights = Mathf.Abs (lastStiltPosition.y - lastBridgePosition.y) * 0.5f + playerTwiceOffset;
+		float stiltHeightToBoundary = Mathf.Max (Mathf.Abs (lastStiltPosition.y - topRightScreen.y), Mathf.Abs (lastStiltPosition.y - bottomLeftScreen.y));
+		float bridgeHeightToBoundary = Mathf.Max (Mathf.Abs (lastBridgePosition.y - topRightScreen.y), Mathf.Abs (lastBridgePosition.y - bottomLeftScreen.y));
+		float height = Mathf.Max (playerHeights, stiltHeightToBoundary * 0.6f, bridgeHeightToBoundary * 0.6f);
+
 
 		//computing the size
 		float camSizeX = Mathf.Max(width, minSizeX);
-		mainCamera.orthographicSize = Mathf.Clamp (Mathf.Max (height,   camSizeX * Screen.height / Screen.width, minSizeY), minSizeY, maxSizeY);
+		float targetSize = Mathf.Clamp (Mathf.Max (height,   camSizeX * Screen.height / Screen.width, minSizeY), minSizeY, maxSizeY);
+		mainCamera.orthographicSize = Mathf.MoveTowards(mainCamera.orthographicSize, targetSize, 0.1f);
 	}
 
 	public void RegisterMellowRemoved (Vector3 checkpointPosition) {
