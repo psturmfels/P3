@@ -52,7 +52,7 @@ public class MellowCrushed : MonoBehaviour {
 			while (stateMachine.GetState () != StateMachineForJack.State.Dead) {
 				yield return null;
 			}
-		} else {
+		} else if (DisableTransform != null) {
 			DisableTransform ();
 		}
 
