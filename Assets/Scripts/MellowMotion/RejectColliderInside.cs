@@ -31,7 +31,8 @@ public class RejectColliderInside : MonoBehaviour {
 		if (!tb.IsTransforming ()) {
 			return;
 		}
-		if (other.CompareTag ("Ground") && transform.parent != null && parentCollider != null) {
+		if ((other.CompareTag ("Ground") || other.CompareTag("Player")) && 
+			transform.parent != null && parentCollider != null) {
 			grandparentTransform.position += 0.1f * rejectVector;
 
 			int numIterations = 0;
@@ -44,16 +45,14 @@ public class RejectColliderInside : MonoBehaviour {
 			} else if (other.GetComponent<PolygonCollider2D> () != null) {
 				PolygonCollider2D otherColl = other.GetComponent<PolygonCollider2D> ();
 				float sizeOffset = 0.5f * Vector3.Dot (parentCollider.bounds.size, rejectVector);
-				Vector2 parentExtrema = grandparentTransform.position - Mathf.Abs(sizeOffset) * rejectVector; 
+				Vector2 parentExtrema = grandparentTransform.position - Mathf.Abs (sizeOffset) * rejectVector; 
 				while (otherColl.OverlapPoint (parentExtrema) && numIterations < maxIterations) {
 					grandparentTransform.position += 0.1f * rejectVector;
 					sizeOffset = 0.5f * Vector3.Dot (parentCollider.bounds.size, rejectVector);
-					parentExtrema = grandparentTransform.position + Mathf.Abs(sizeOffset) * rejectVector;  
+					parentExtrema = grandparentTransform.position + Mathf.Abs (sizeOffset) * rejectVector;  
 					numIterations += 1; 
 				}
 			}
-
-
 		}
 	}
 }
