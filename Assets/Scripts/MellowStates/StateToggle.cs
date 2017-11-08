@@ -6,7 +6,10 @@ public class StateToggle : MonoBehaviour {
 	public MellowStates.State toggleState;
 	public bool OnTriggerEnable;
 	public bool RegisterStay;
+	public bool AccumulateContacts = false;
 	public float DelayBeforeExit = 0.0f;
+
+	private int numContacts = 0;
 
 	private MellowStates ms;
 
@@ -27,7 +30,7 @@ public class StateToggle : MonoBehaviour {
 	
 	void OnTriggerEnter2D(Collider2D other) {
 		if (ms != null) {
-			ms.SetState (toggleState, OnTriggerEnable);
+			SetAssignedState ();
 		}
 	}
 
@@ -48,6 +51,21 @@ public class StateToggle : MonoBehaviour {
 	}
 
 	void ExitAssignedState() {
-		ms.SetState (toggleState, !OnTriggerEnable);
+		if (AccumulateContacts) {
+			numContacts -= 1;
+			if (numContacts == 0) {
+				ms.SetState (toggleState, !OnTriggerEnable);
+			}
+		} else {
+			ms.SetState (toggleState, !OnTriggerEnable);
+		}
+	}
+
+	void SetAssignedState() {
+		if (AccumulateContacts) {
+			numContacts += 1;
+		}
+
+		ms.SetState (toggleState, OnTriggerEnable);
 	}
 }

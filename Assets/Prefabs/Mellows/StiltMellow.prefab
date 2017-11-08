@@ -424,7 +424,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1364072912395016}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14, y: 0, z: 0}
+  m_LocalPosition: {x: -7, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4950746258390594}
@@ -1156,7 +1156,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34d1b2037d9c74619b1922aa213ab752, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horzAxisName: StiltHorizontal
   moveIncrement: 1
   maxMoveSpeed: 5
 --- !u!114 &114348521844316588
@@ -1222,6 +1221,7 @@ MonoBehaviour:
   toggleState: 3
   OnTriggerEnable: 1
   RegisterStay: 1
+  AccumulateContacts: 1
   DelayBeforeExit: 0.1
 --- !u!114 &114416100237868554
 MonoBehaviour:
@@ -1251,6 +1251,7 @@ MonoBehaviour:
   toggleState: 1
   OnTriggerEnable: 1
   RegisterStay: 1
+  AccumulateContacts: 0
   DelayBeforeExit: 0.1
 --- !u!114 &114477529527920814
 MonoBehaviour:
@@ -1312,6 +1313,7 @@ MonoBehaviour:
   toggleState: 2
   OnTriggerEnable: 1
   RegisterStay: 1
+  AccumulateContacts: 1
   DelayBeforeExit: 0.1
 --- !u!114 &114639189997116298
 MonoBehaviour:
@@ -1336,6 +1338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d72b2cd84a3f54555ac3a3ce700aaedd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doesAcceptInput: 1
   normalObject: {fileID: 1930481493294822}
   transformedObject: {fileID: 1590013140230094}
   currentState: 0
@@ -1372,7 +1375,6 @@ MonoBehaviour:
   shouldStillMovement: 1
   canPickup: 1
   isDead: 0
-  isTransformed: 0
   leftSideInContact: 0
   rightSideInContact: 0
   playerID: 1

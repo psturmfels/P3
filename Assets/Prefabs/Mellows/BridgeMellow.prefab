@@ -648,7 +648,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1896530445491730}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12, y: 0, z: 0}
+  m_LocalPosition: {x: -5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4531536203354712}
@@ -1130,7 +1130,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34d1b2037d9c74619b1922aa213ab752, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horzAxisName: BridgeHorizontal
   moveIncrement: 1
   maxMoveSpeed: 5
 --- !u!114 &114274350941339936
@@ -1147,6 +1146,7 @@ MonoBehaviour:
   toggleState: 1
   OnTriggerEnable: 1
   RegisterStay: 1
+  AccumulateContacts: 0
   DelayBeforeExit: 0.1
 --- !u!114 &114286038366221480
 MonoBehaviour:
@@ -1254,6 +1254,7 @@ MonoBehaviour:
   toggleState: 3
   OnTriggerEnable: 1
   RegisterStay: 1
+  AccumulateContacts: 1
   DelayBeforeExit: 0.1
 --- !u!114 &114578948761562710
 MonoBehaviour:
@@ -1281,6 +1282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d72b2cd84a3f54555ac3a3ce700aaedd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doesAcceptInput: 1
   normalObject: {fileID: 1918495302005248}
   transformedObject: {fileID: 1956724992226718}
   currentState: 0
@@ -1370,7 +1372,6 @@ MonoBehaviour:
   shouldStillMovement: 1
   canPickup: 1
   isDead: 0
-  isTransformed: 0
   leftSideInContact: 0
   rightSideInContact: 0
   playerID: 0
@@ -1400,6 +1401,7 @@ MonoBehaviour:
   toggleState: 2
   OnTriggerEnable: 1
   RegisterStay: 1
+  AccumulateContacts: 1
   DelayBeforeExit: 0.1
 --- !u!114 &114962895045559700
 MonoBehaviour:
