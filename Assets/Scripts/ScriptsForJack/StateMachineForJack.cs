@@ -8,7 +8,8 @@ public class StateMachineForJack : MonoBehaviour {
 		Normal,
 		Transformed,
 		InTransition,
-		Disabled
+		Disabled,
+		Dead
 	};
 
 	public GameObject normalObject;
@@ -51,12 +52,13 @@ public class StateMachineForJack : MonoBehaviour {
 		if (transformedObject.GetComponent <TransformBehavior> () != null) {
 			TransformBehavior transBeh = transformedObject.GetComponent <TransformBehavior> ();
 			transBeh.ReachedNormal += EnableMovementObject;
-			
+			transBeh.ReachedDeath += ReachedDeath;
+			transBeh.ReachedDeath += EnableMovementObject;
 		}
     }
 
 	public void GoToTransform() {
-		if (currentState == State.Disabled || currentState == State.Transformed) {
+		if (currentState == State.Disabled || currentState == State.Dead || currentState == State.Transformed) {
 			return;
 		}
 
@@ -67,7 +69,7 @@ public class StateMachineForJack : MonoBehaviour {
 	}
 
 	public void GoToNormal() {
-		if (currentState == State.Disabled || currentState == State.Normal) {
+		if (currentState == State.Disabled || currentState == State.Dead || currentState == State.Normal) {
 			return;
 		}
 
@@ -88,6 +90,10 @@ public class StateMachineForJack : MonoBehaviour {
 		transformedObject.SetActive (false);
 		rb.isKinematic = false;
 		rb.velocity = Vector2.zero;
+	}
+
+	void ReachedDeath() {
+		currentState = State.Dead;
 	}
 
 	void DisableTransform() {

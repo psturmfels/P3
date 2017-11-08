@@ -12,6 +12,7 @@ public class TransformBehavior: MonoBehaviour {
 	public UnityAction ReachedNormal;
 	public UnityAction StartTowardsTransform;
 	public UnityAction StartTowardsNormal;
+	public UnityAction ReachedDeath;
 
 	private StateMachineForJack parentStateMachine;
 	private bool firstCancel = false;
@@ -86,12 +87,16 @@ public class TransformBehavior: MonoBehaviour {
 		return isTransforming;
 	}
 		
-	IEnumerator LerpToNormalScale() {
+	IEnumerator LerpToNormalScale(bool shouldDie = false) {
 		while (transform.localScale != normalScale) {
 			transform.localScale = Vector3.MoveTowards (transform.localScale, normalScale, transformSpeed);
 			yield return null;
 		}
-		ReachedNormal ();
+		if (shouldDie) {
+			ReachedDeath ();
+		} else {
+			ReachedNormal ();
+		}
 	}
 
 	IEnumerator LerpToTransformScale() {
@@ -102,4 +107,12 @@ public class TransformBehavior: MonoBehaviour {
 		ReachedTransform ();
 	}
 
+	public void TransformIntoDeath() {
+		if (isTransforming) {
+			StopAllCoroutines ();
+		}
+		isTransforming = true; 
+		parentStateMachine.SetState (StateMachineForJack.State.Disabled);
+		StartCoroutine (LerpToNormalScale (true));
+	}
 }

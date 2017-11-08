@@ -46,22 +46,16 @@ public class MellowCrushed : MonoBehaviour {
 	IEnumerator DieRoutine() {
 		DisableInput ();
 
-		if (stateMachine != null && stateMachine.GetState() == StateMachineForJack.State.Transformed) {
-			stateMachine.GoToNormal ();
-		} else if (stateMachine.GetState() != StateMachineForJack.State.Normal) {
-			if (transformStateTransform != null) {
-				transformStateTransform.RegisterCancelContact (1);
-				transformStateTransform.RegisterCancelContact (2); 
+		if (stateMachine != null && stateMachine.GetState () != StateMachineForJack.State.Normal && transformStateTransform != null) {
+			transformStateTransform.TransformIntoDeath ();
+			while (stateMachine.GetState () != StateMachineForJack.State.Dead) {
+				yield return null;
 			}
-		}
-			
-		while (stateMachine.GetState () != StateMachineForJack.State.Normal) {
-			yield return null;
+		} else {
+			DisableTransform ();
 		}
 
 		rb.velocity = Vector2.zero;
-
-		DisableTransform ();
 		ma.InterruptMovementAnimation (crushSprites, timeBetweenCrushSprites);
 
 		yield return new WaitForSeconds (removeDelay);
