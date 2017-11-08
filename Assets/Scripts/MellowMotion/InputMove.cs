@@ -13,11 +13,10 @@ public class InputMove : MonoBehaviour {
     private int playerID = 0;
     private PlayerActions controls;
 	private float deadZone = 0.2f;
+	private float currentMaxSpeed;
 
-	public string horzAxisName;
 	public float moveIncrement;
 	public float maxMoveSpeed;
-
 
 	public void SetCurrentHorzAxis(float newHorzAxis) {
 		if (newHorzAxis != 0.0f) {
@@ -57,6 +56,7 @@ public class InputMove : MonoBehaviour {
             playerID = ms.playerID;
         }
 
+		currentMaxSpeed = maxMoveSpeed;
 	}
 	
 	void Update () {
@@ -66,7 +66,8 @@ public class InputMove : MonoBehaviour {
         }
 
 		if (controls != null && Mathf.Abs(controls.Move.X) > deadZone && ms.canMove) {
-			Debug.Log (controls.Move.X);
+			float currentInputModifier = Mathf.Min (1.0f, (Mathf.Abs(controls.Move.X) + deadZone));
+			currentMaxSpeed = maxMoveSpeed * currentInputModifier;
 			SetCurrentHorzAxis (Mathf.Sign(controls.Move.X));
 		} else {
 			SetCurrentHorzAxis (0.0f);
@@ -80,9 +81,9 @@ public class InputMove : MonoBehaviour {
 
 		if (ms.canMove) {
 			if (currentHorzAxis > 0.0f) {
-				rb.velocity = new Vector2 (Mathf.Min (rb.velocity.x + moveIncrement, maxMoveSpeed), rb.velocity.y);
+				rb.velocity = new Vector2 (Mathf.Min (rb.velocity.x + moveIncrement, currentMaxSpeed), rb.velocity.y);
 			} else if (currentHorzAxis < 0.0f) {
-				rb.velocity = new Vector2 (Mathf.Max (rb.velocity.x - moveIncrement, -maxMoveSpeed), rb.velocity.y);
+				rb.velocity = new Vector2 (Mathf.Max (rb.velocity.x - moveIncrement, -currentMaxSpeed), rb.velocity.y);
 			}
 		}
 	}
