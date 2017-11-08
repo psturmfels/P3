@@ -30,23 +30,6 @@ public class StateMachineForJack : MonoBehaviour {
 		return currentState;
 	}
 
-	public void TransitionToState(State newState) {
-		if (newState == currentState || currentState == State.InTransition) {
-			return;
-		}
-
-		if (newState == State.Transformed) {
-			EnableTransformedObject ();
-			if (transformedObject.GetComponent <TransformBehavior> () != null) {
-				transformedObject.GetComponent <TransformBehavior> ().StartTowardsTransform ();
-			}
-		} else if (newState == State.Normal) {
-			if (transformedObject.GetComponent <TransformBehavior> () != null) {
-				transformedObject.GetComponent <TransformBehavior> ().StartTowardsNormal ();
-			}
-		}
-	}
-
     void Start()
     {
         ms = GetComponentInChildren<MellowStates>();
@@ -71,6 +54,27 @@ public class StateMachineForJack : MonoBehaviour {
 			
 		}
     }
+
+	public void GoToTransform() {
+		if (currentState == State.Disabled || currentState == State.Transformed) {
+			return;
+		}
+
+		EnableTransformedObject ();
+		if (transformedObject.GetComponent <TransformBehavior> () != null) {
+			transformedObject.GetComponent <TransformBehavior> ().StartTowardsTransform ();
+		}
+	}
+
+	public void GoToNormal() {
+		if (currentState == State.Disabled || currentState == State.Normal) {
+			return;
+		}
+
+		if (transformedObject.GetComponent <TransformBehavior> () != null) {
+			transformedObject.GetComponent <TransformBehavior> ().StartTowardsNormal ();
+		}
+	}
 
 	void EnableTransformedObject() {
 		normalObject.SetActive (false);
@@ -103,17 +107,11 @@ public class StateMachineForJack : MonoBehaviour {
 
         if(controls != null)
         {
-            if(controls.Transform.WasPressed)
-            {
-                if(currentState == State.Normal)
-                {
-                    TransitionToState(State.Transformed);
-                }
-                else if(currentState == State.Transformed)
-                {
-                    TransitionToState(State.Normal);
-                }
-            }
+			if (controls.Transform.IsPressed) {
+				GoToTransform ();
+			} else {
+				GoToNormal ();
+			}
         }
 	}
 }

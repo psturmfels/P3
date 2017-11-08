@@ -65,12 +65,18 @@ public class TransformBehavior: MonoBehaviour {
 	}
 
 	void ScaleToTransform () {
+		if (isTransforming) {
+			StopAllCoroutines ();
+		}
 		isTransforming = true;
 		parentStateMachine.SetState (StateMachineForJack.State.InTransition);
 		StartCoroutine (LerpToTransformScale ());
 	}
 
 	void ScaleToNormal() {
+		if (isTransforming) {
+			StopAllCoroutines ();
+		}
 		isTransforming = true; 
 		parentStateMachine.SetState (StateMachineForJack.State.InTransition);
 		StartCoroutine (LerpToNormalScale ());

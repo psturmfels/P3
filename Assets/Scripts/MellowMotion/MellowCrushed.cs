@@ -24,7 +24,6 @@ public class MellowCrushed : MonoBehaviour {
 	private BoxCollider2D normalStateCollider;
 	private PickUpAction normalStatePickup;
 	private SpriteRenderer normalStateRenderer;
-	private TransformBehavior normalStateTransform;
 	private TransformBehavior transformStateTransform;
     private PlayerDeviceManager deviceManager;
 	private Rigidbody2D rb;
@@ -48,12 +47,8 @@ public class MellowCrushed : MonoBehaviour {
 		DisableInput ();
 
 		if (stateMachine != null && stateMachine.GetState() == StateMachineForJack.State.Transformed) {
-			stateMachine.TransitionToState (StateMachineForJack.State.Normal);
+			stateMachine.GoToNormal ();
 		} else if (stateMachine.GetState() != StateMachineForJack.State.Normal) {
-			if (normalStateTransform != null) {
-				normalStateTransform.RegisterCancelContact (1);
-				normalStateTransform.RegisterCancelContact (2);
-			}
 			if (transformStateTransform != null) {
 				transformStateTransform.RegisterCancelContact (1);
 				transformStateTransform.RegisterCancelContact (2); 
@@ -94,13 +89,7 @@ public class MellowCrushed : MonoBehaviour {
 				normalStateRenderer = sr;
 			}
 		}
-		foreach (TransformBehavior transformer in GetComponentsInChildren<TransformBehavior> (includeInactive: true)) {
-			if (transformer.gameObject.name.Contains ("Move")) {
-				normalStateTransform = transformer;
-			} else if (transformer.gameObject.name.Contains ("Transformed")) {
-				transformStateTransform = transformer;
-			}
-		}
+		transformStateTransform = GetComponentInChildren<TransformBehavior> (true);
 
 		removeDelay = (crushSprites.Length - 1) * timeBetweenCrushSprites;
 		if (isStilt) {
