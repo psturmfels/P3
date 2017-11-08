@@ -50,6 +50,7 @@ public class StateMachineForJack : MonoBehaviour {
 		if (GetComponentInChildren<MellowCrushed> () != null) {
 			GetComponentInChildren<MellowCrushed> ().DisableTransform += DisableTransform;
 			GetComponentInChildren<MellowCrushed> ().Respawn += EnableTransform;
+			GetComponentInChildren<MellowCrushed> ().Respawn += ReloadTransform;
 		}
 		if (transformedObject.GetComponent <TransformBehavior> () != null) {
 			TransformBehavior transBeh = transformedObject.GetComponent <TransformBehavior> ();

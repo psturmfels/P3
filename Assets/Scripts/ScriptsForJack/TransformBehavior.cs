@@ -58,9 +58,11 @@ public class TransformBehavior: MonoBehaviour {
 	}
 
 	void CancelTransform() {
-		ResetCancelChecks ();
-		StopAllCoroutines ();
-		WasCanceled ();
+		if (parentStateMachine.GetState () == StateMachineForJack.State.InTransition) {
+			ResetCancelChecks ();
+			StopAllCoroutines ();
+			WasCanceled ();
+		}
 	}
 
 	void IsNotTransforming() {
