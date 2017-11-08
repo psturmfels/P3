@@ -13,6 +13,7 @@ public class TransformBehavior: MonoBehaviour {
 	public UnityAction StartTowardsTransform;
 	public UnityAction StartTowardsNormal;
 	public UnityAction ReachedDeath;
+	public UnityAction WasCanceled;
 
 	private StateMachineForJack parentStateMachine;
 	private bool firstCancel = false;
@@ -25,6 +26,7 @@ public class TransformBehavior: MonoBehaviour {
 		ReachedNormal += ReachedNormalScale;
 		StartTowardsTransform += ScaleToTransform;
 		StartTowardsNormal += ScaleToNormal;
+		WasCanceled += ScaleToNormal;
 	}
 
 	void ReachedTransformScale() {
@@ -58,7 +60,7 @@ public class TransformBehavior: MonoBehaviour {
 	void CancelTransform() {
 		ResetCancelChecks ();
 		StopAllCoroutines ();
-		ScaleToNormal ();
+		WasCanceled ();
 	}
 
 	void IsNotTransforming() {

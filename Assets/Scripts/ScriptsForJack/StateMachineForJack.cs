@@ -4,6 +4,7 @@ using UnityEngine;
 using InControl;
 
 public class StateMachineForJack : MonoBehaviour {
+	public bool doesAcceptInput = true;
 	public enum State {
 		Normal,
 		Transformed,
@@ -20,6 +21,7 @@ public class StateMachineForJack : MonoBehaviour {
     private PlayerDeviceManager deviceManager;
     private MellowStates ms;
 	private Rigidbody2D rb;
+	private float reloadAfterCancelTime = 0.5f;
 
     private int playerID = 0;
 
@@ -54,6 +56,7 @@ public class StateMachineForJack : MonoBehaviour {
 			transBeh.ReachedNormal += EnableMovementObject;
 			transBeh.ReachedDeath += ReachedDeath;
 			transBeh.ReachedDeath += EnableMovementObject;
+			transBeh.WasCanceled += ReloadTransform;
 		}
     }
 
@@ -76,6 +79,16 @@ public class StateMachineForJack : MonoBehaviour {
 		if (transformedObject.GetComponent <TransformBehavior> () != null) {
 			transformedObject.GetComponent <TransformBehavior> ().StartTowardsNormal ();
 		}
+	}
+
+	void ReloadTransform() {
+		doesAcceptInput = false;
+		StartCoroutine (EnableAcceptInputAfterTime ());
+	}
+
+	IEnumerator EnableAcceptInputAfterTime() {
+		yield return new WaitForSeconds (reloadAfterCancelTime);
+		doesAcceptInput = true;
 	}
 
 	void EnableTransformedObject() {
@@ -113,7 +126,7 @@ public class StateMachineForJack : MonoBehaviour {
 
         if(controls != null)
         {
-			if (controls.Transform.IsPressed) {
+			if (controls.Transform.IsPressed && doesAcceptInput) {
 				GoToTransform ();
 			} else {
 				GoToNormal ();
