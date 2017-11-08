@@ -97,6 +97,7 @@ public class StateMachineForJack : MonoBehaviour {
 		normalObject.SetActive (false);
 		transformedObject.SetActive (true);
 		rb.velocity = Vector2.zero;
+		rb.gravityScale = 0.0f;
 	}
 
 	void ReachedFullTransform () {
@@ -107,6 +108,7 @@ public class StateMachineForJack : MonoBehaviour {
 		normalObject.SetActive (true);
 		transformedObject.SetActive (false);
 		rb.isKinematic = false;
+		rb.gravityScale = 3.0f; 
 		rb.velocity = Vector2.zero;
 	}
 
