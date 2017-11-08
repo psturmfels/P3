@@ -12,6 +12,7 @@ public class InputMove : MonoBehaviour {
 	private float currentFaceDirection;
     private int playerID = 0;
     private PlayerActions controls;
+	private float deadZone = 0.2f;
 
 	public string horzAxisName;
 	public float moveIncrement;
@@ -64,7 +65,8 @@ public class InputMove : MonoBehaviour {
             controls = deviceManager.GetControls(playerID);
         }
 
-		if (controls != null && controls.Move.X != 0.0f && ms.canMove) {
+		if (controls != null && Mathf.Abs(controls.Move.X) > deadZone && ms.canMove) {
+			Debug.Log (controls.Move.X);
 			SetCurrentHorzAxis (Mathf.Sign(controls.Move.X));
 		} else {
 			SetCurrentHorzAxis (0.0f);
