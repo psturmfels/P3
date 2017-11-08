@@ -29,6 +29,7 @@ public class MellowCrushed : MonoBehaviour {
 	private Rigidbody2D rb;
     private int playerID = 0;
 	private float fadeInSpeed = 0.1f;
+	private float shrinkInSpeed = 0.5f;
 
     public void StartDie() {
 		if (ms.isDead) {
@@ -137,6 +138,7 @@ public class MellowCrushed : MonoBehaviour {
 	private void EnableInput() {
 		if (rb != null) {
 			rb.simulated = true;
+			rb.velocity = Vector2.zero;
 		}
 		if (normalStateCollider != null) {
 			normalStateCollider.enabled = true;
@@ -161,13 +163,11 @@ public class MellowCrushed : MonoBehaviour {
 			normalStateRenderer.color = new Color (normalStateRenderer.color.r, normalStateRenderer.color.g, normalStateRenderer.color.b, 0.0f);
 		}
 
-		int iterationNumber = 1;
-
-		while (transform.localScale != targetScale || normalStateRenderer.color != targetColor) {
-			transform.localScale = Vector3.Lerp (transform.localScale, targetScale, fadeInSpeed * iterationNumber);
-			normalStateRenderer.color = Color.Lerp (normalStateRenderer.color, targetColor, fadeInSpeed * iterationNumber);
+		while (transform.localScale != targetScale || normalStateRenderer.color.a != targetColor.a) {
+			transform.localScale = Vector3.MoveTowards (transform.localScale, targetScale, shrinkInSpeed);
+			float newAlpha = Mathf.MoveTowards (normalStateRenderer.color.a, targetColor.a, fadeInSpeed);
+			normalStateRenderer.color = new Color (normalStateRenderer.color.r, normalStateRenderer.color.g, normalStateRenderer.color.b, newAlpha);
 			yield return null;
-			iterationNumber += 1;
 		}
 
 		EnableInput ();

@@ -10,8 +10,7 @@ public class MellowStates : MonoBehaviour {
 		WallJumpRight,
 		StillMovement,
 		Dead, 
-		PickUp,
-		Transformed
+		PickUp
 	};
 
 	public bool canMove = true;
@@ -21,7 +20,6 @@ public class MellowStates : MonoBehaviour {
 	public bool shouldStillMovement = true;
 	public bool canPickup = true;
 	public bool isDead = false;
-	public bool isTransformed = false;
 
 	public bool leftSideInContact = false;
 	public bool rightSideInContact = false;
@@ -45,13 +43,14 @@ public class MellowStates : MonoBehaviour {
 	public void EnableMovementInput() {
 		canMove = true;
 		canPickup = true;
+		canJump = false;
+		canWallJumpLeft = false;
+		canWallJumpRight = false;
+		shouldStillMovement = true;
 	}
 
 	public void SetState(State SwitchState, bool newValue) {
 		if (isDead && SwitchState != State.Dead) {
-			return;
-		}
-		if (isTransformed && SwitchState != State.Transformed) {
 			return;
 		}
 
@@ -108,15 +107,6 @@ public class MellowStates : MonoBehaviour {
 
 		case State.PickUp:
 			canPickup = newValue;
-			break;
-
-		case State.Transformed:
-			isTransformed = newValue;
-			if (isTransformed) {
-				DisableMovementInput ();
-			} else {
-				EnableMovementInput ();
-			}
 			break;
 		}
 	}
