@@ -202,7 +202,6 @@ GameObject:
   - component: {fileID: 4410448499653158}
   - component: {fileID: 50938228273198748}
   - component: {fileID: 61109985449434766}
-  - component: {fileID: 114866009627325346}
   m_Layer: 11
   m_Name: TopCollider
   m_TagString: StiltCollider
@@ -313,7 +312,6 @@ GameObject:
   - component: {fileID: 114037763767387580}
   - component: {fileID: 114681144689556242}
   - component: {fileID: 114820232096155222}
-  - component: {fileID: 114008891899914874}
   - component: {fileID: 61728594376160588}
   m_Layer: 9
   m_Name: StiltMellowMove
@@ -333,7 +331,6 @@ GameObject:
   - component: {fileID: 50151935977036570}
   - component: {fileID: 61146188829074336}
   - component: {fileID: 114452526381056204}
-  - component: {fileID: 114483611017446980}
   m_Layer: 11
   m_Name: BottomCollider
   m_TagString: StiltCollider
@@ -427,7 +424,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1364072912395016}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 103, y: -6, z: 0}
+  m_LocalPosition: {x: -14, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4950746258390594}
@@ -681,7 +678,7 @@ Transform:
   m_GameObject: {fileID: 1590013140230094}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.1, y: 0.5, z: 1}
+  m_LocalScale: {x: 1.2, y: 0.19, z: 1}
   m_Children:
   - {fileID: 4786495446929242}
   - {fileID: 4710256542702298}
@@ -1101,24 +1098,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114008891899914874
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1930481493294822}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 633028bfe048d477e86d04207f2449ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transformScale: {x: 0.95, y: 2.5, z: 1}
-  normalScale: {x: 1, y: 1, z: 1}
-  transformSpeed: 0.3
-  standing: {fileID: 21300000, guid: b8e3eeffec25f4a07a6e28e450205b45, type: 3}
-  otherBehavior: {fileID: 114352727909810016}
-  parentStateMachine: {fileID: 114639551587385128}
-  normalSetState: 0
 --- !u!114 &114037763767387580
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1214,13 +1193,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 633028bfe048d477e86d04207f2449ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transformScale: {x: 1.1, y: 0.5, z: 1}
-  normalScale: {x: 0.7, y: 1, z: 1}
-  transformSpeed: 0.15
-  standing: {fileID: 0}
-  otherBehavior: {fileID: 114008891899914874}
-  parentStateMachine: {fileID: 114639551587385128}
-  normalSetState: 1
+  transformScale: {x: 0.7, y: 1, z: 1}
+  normalScale: {x: 1.2, y: 0.19, z: 1}
+  transformSpeed: 0.2
 --- !u!114 &114378722797910650
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1308,18 +1283,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ce5ab54f9f03e4ddfada0a34b3555f25, type: 3}
   - {fileID: 21300000, guid: 44f781ec1738d490ca96228d01bbab44, type: 3}
   timeBetweenJumpSprites: 0.014
---- !u!114 &114483611017446980
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1934389695660376}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4075fa2763aef4208a2caff7f98a1c6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cancelID: 1
 --- !u!114 &114580935870367998
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1427,18 +1390,6 @@ MonoBehaviour:
   disableObjectColliderWhileHeld: 1
   lerpObjectToIdentity: 1
   holdOffset: {x: 0.4, y: 0.2}
---- !u!114 &114866009627325346
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1541136788536962}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4075fa2763aef4208a2caff7f98a1c6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cancelID: 2
 --- !u!114 &114954587388497768
 MonoBehaviour:
   m_ObjectHideFlags: 1

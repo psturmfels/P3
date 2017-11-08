@@ -1,85 +1,41 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class TransformBehavior: MonoBehaviour {
 	public Vector3 transformScale;
 	public Vector3 normalScale;
 	public float transformSpeed;
-	public Sprite standing;
-	public TransformBehavior otherBehavior;
-	public StateMachineForJack parentStateMachine;
-	public StateMachineForJack.State normalSetState;
 
-	private MoveAnimate ma;
-	private MellowStates ms;
-	private bool scaleToNormal = false;
-	private bool scaleToTransform = false;
-	private float eps = 0.1f;
-	private Vector3 largestScaleDirection;
+	public UnityAction ReachedTransform;
+	public UnityAction ReachedNormal;
+	public UnityAction StartTowardsTransform;
+	public UnityAction StartTowardsNormal;
+
+	private StateMachineForJack parentStateMachine;
 	private bool firstCancel = false;
 	private bool secondCancel = false;
 	private bool isTransforming = false;
 
-	void Start () {
-		ms = GetComponent<MellowStates> ();
-		ma = GetComponent<MoveAnimate> ();
-	}
-
-	void FixedUpdate () {
-		if (scaleToNormal) {
-			transform.localScale = Vector3.Lerp (transform.localScale, normalScale, transformSpeed);
-			if (Vector3.SqrMagnitude(transform.localScale - normalScale) < eps) {
-				ReachedNormalScale ();
-			}
-		} else if (scaleToTransform) {
-			transform.localScale = Vector3.Lerp (transform.localScale, transformScale, transformSpeed);
-			if (Vector3.SqrMagnitude(transform.localScale - transformScale) < eps) {
-				ReachedTransformScale ();
-			}
-		}
+	void Awake () {
+		parentStateMachine = GetComponentInParent<StateMachineForJack> ();
+		ReachedTransform += ReachedTransformScale;
+		ReachedNormal += ReachedNormalScale;
+		StartTowardsTransform += ScaleToTransform;
+		StartTowardsNormal += ScaleToNormal;
 	}
 
 	void ReachedTransformScale() {
+		isTransforming = false;
 		ResetCancelChecks ();
-
-		if (ma != null) {
-			ma.DisableRenderer ();
-		}
-		if (normalSetState == StateMachineForJack.State.Normal) {
-			if (GetComponentInParent<Rigidbody2D> () != null) {
-				GetComponentInParent<Rigidbody2D> ().velocity = Vector2.zero;
-				GetComponentInParent<Rigidbody2D> ().isKinematic = true;
-			}
-		} else if (normalSetState == StateMachineForJack.State.Transformed) {
-			if (GetComponentInParent<Rigidbody2D> () != null) {
-				GetComponentInParent<Rigidbody2D> ().velocity = Vector2.zero;
-				GetComponentInParent<Rigidbody2D> ().isKinematic = false;
-			}
-		}
-
-		otherBehavior.gameObject.SetActive (true);
-		otherBehavior.ScaleToNormal ();
-
-		transform.localScale = transformScale;
-		scaleToTransform = false;
-		gameObject.SetActive (false);
+		parentStateMachine.SetState (StateMachineForJack.State.Transformed);
 	}
 
 	void ReachedNormalScale() {
+		isTransforming = false;
 		ResetCancelChecks ();
-
-		transform.localScale = normalScale;
-		scaleToNormal = false;
-		parentStateMachine.SetState (normalSetState);
-		if (ms != null) {
-			ms.SetState (MellowStates.State.Transformed, false);
-		}
-		if (ma != null) {
-			ma.ReturnMovementAnimation ();
-		}
-
-		Invoke ("IsNotTransforming", 1.5f);
+		parentStateMachine.SetState (StateMachineForJack.State.Normal);
 	}
 
 	void ResetCancelChecks() {
@@ -100,49 +56,44 @@ public class TransformBehavior: MonoBehaviour {
 
 	void CancelTransform() {
 		ResetCancelChecks ();
-		if (isTransforming && normalSetState == StateMachineForJack.State.Transformed) {
-			ScaleToTransform ();
-			return;
-		}
-
-		if (!scaleToNormal && !scaleToTransform) {
-			return;
-		}
-		if (normalSetState == StateMachineForJack.State.Normal) {
-			ScaleToNormal ();
-		} else if (normalSetState == StateMachineForJack.State.Transformed){
-			ScaleToTransform ();
-		}
+		StopAllCoroutines ();
+		ScaleToNormal ();
 	}
 
 	void IsNotTransforming() {
 		isTransforming = false;
 	}
 
-	public void ScaleToTransform () {
-		if (ma != null) {
-			ma.OverrideMovementAnimation (standing);
-		}
-		if (GetComponent<PickUpAction> () != null) {
-			GetComponent<PickUpAction> ().DropItem ();
-		}
-			
-		scaleToNormal = false;
-		scaleToTransform = true;
-	}
-
-	public void ScaleToNormal() {
-		if (ma != null) {
-			ma.ReturnMovementAnimation ();
-		}
-
-		scaleToTransform = false;
-		scaleToNormal = true;
+	void ScaleToTransform () {
 		isTransforming = true;
+		parentStateMachine.SetState (StateMachineForJack.State.InTransition);
+		StartCoroutine (LerpToTransformScale ());
 	}
-		
+
+	void ScaleToNormal() {
+		isTransforming = true; 
+		parentStateMachine.SetState (StateMachineForJack.State.InTransition);
+		StartCoroutine (LerpToNormalScale ());
+	}
 
 	public bool IsTransforming() {
 		return isTransforming;
 	}
+		
+	IEnumerator LerpToNormalScale() {
+		while (transform.localScale != normalScale) {
+			transform.localScale = Vector3.MoveTowards (transform.localScale, normalScale, transformSpeed);
+			yield return null;
+		}
+		ReachedNormal ();
+	}
+
+	IEnumerator LerpToTransformScale() {
+		while (transform.localScale != transformScale) {
+			transform.localScale = Vector3.MoveTowards (transform.localScale, transformScale, transformSpeed);
+			yield return null;
+		}
+		ReachedTransform ();
+	}
+
 }

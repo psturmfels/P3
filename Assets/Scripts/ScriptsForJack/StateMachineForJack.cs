@@ -18,6 +18,7 @@ public class StateMachineForJack : MonoBehaviour {
     private PlayerActions controls;
     private PlayerDeviceManager deviceManager;
     private MellowStates ms;
+	private Rigidbody2D rb;
 
     private int playerID = 0;
 
@@ -34,14 +35,14 @@ public class StateMachineForJack : MonoBehaviour {
 			return;
 		}
 
-		currentState = State.InTransition;
 		if (newState == State.Transformed) {
-			if (normalObject.GetComponent<TransformBehavior> () != null) {
-				normalObject.GetComponent<TransformBehavior> ().ScaleToTransform ();
+			EnableTransformedObject ();
+			if (transformedObject.GetComponent <TransformBehavior> () != null) {
+				transformedObject.GetComponent <TransformBehavior> ().StartTowardsTransform ();
 			}
 		} else if (newState == State.Normal) {
 			if (transformedObject.GetComponent <TransformBehavior> () != null) {
-				transformedObject.GetComponent <TransformBehavior> ().ScaleToTransform ();
+				transformedObject.GetComponent <TransformBehavior> ().StartTowardsNormal ();
 			}
 		}
 	}
@@ -49,6 +50,7 @@ public class StateMachineForJack : MonoBehaviour {
     void Start()
     {
         ms = GetComponentInChildren<MellowStates>();
+		rb = GetComponent<Rigidbody2D> ();
 
         //Find PlayerDeviceManager
         deviceManager = GameObject.Find("PlayerDeviceManager").GetComponent<PlayerDeviceManager>();
@@ -63,7 +65,26 @@ public class StateMachineForJack : MonoBehaviour {
 			GetComponentInChildren<MellowCrushed> ().DisableTransform += DisableTransform;
 			GetComponentInChildren<MellowCrushed> ().Respawn += EnableTransform;
 		}
+		if (transformedObject.GetComponent <TransformBehavior> () != null) {
+			TransformBehavior transBeh = transformedObject.GetComponent <TransformBehavior> ();
+			transBeh.ReachedNormal += EnableMovementObject;
+			
+		}
     }
+
+	void EnableTransformedObject() {
+		normalObject.SetActive (false);
+		transformedObject.SetActive (true);
+		rb.velocity = Vector2.zero;
+		rb.isKinematic = true;
+	}
+
+	void EnableMovementObject() {
+		normalObject.SetActive (true);
+		transformedObject.SetActive (false);
+		rb.isKinematic = false;
+		rb.velocity = Vector2.zero;
+	}
 
 	void DisableTransform() {
 		currentState = State.Disabled;

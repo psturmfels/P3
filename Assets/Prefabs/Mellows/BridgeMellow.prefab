@@ -140,7 +140,6 @@ GameObject:
   - component: {fileID: 50254980385897248}
   - component: {fileID: 61487368655889358}
   - component: {fileID: 114873237194368446}
-  - component: {fileID: 114596244372139832}
   m_Layer: 12
   m_Name: RightCollider
   m_TagString: BridgeCollider
@@ -224,7 +223,6 @@ GameObject:
   - component: {fileID: 50119258189655006}
   - component: {fileID: 61421331135308292}
   - component: {fileID: 114542074174330174}
-  - component: {fileID: 114573661247360206}
   m_Layer: 12
   m_Name: LeftCollider
   m_TagString: BridgeCollider
@@ -367,7 +365,6 @@ GameObject:
   - component: {fileID: 114483878606941734}
   - component: {fileID: 114490437044214766}
   - component: {fileID: 114727126200560278}
-  - component: {fileID: 114058107025241488}
   - component: {fileID: 61933724002933380}
   m_Layer: 10
   m_Name: BridgeMellowMove
@@ -525,7 +522,7 @@ Transform:
   m_GameObject: {fileID: 1956724992226718}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.45, y: 1.3, z: 1}
+  m_LocalScale: {x: 0.12, y: 1.8, z: 1}
   m_Children:
   - {fileID: 4291500942211712}
   - {fileID: 4821015526747274}
@@ -651,7 +648,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1896530445491730}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 103, y: 2, z: 0}
+  m_LocalPosition: {x: -12, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4531536203354712}
@@ -1101,24 +1098,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114058107025241488
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1918495302005248}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 633028bfe048d477e86d04207f2449ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transformScale: {x: 4.25, y: 0.75, z: 1}
-  normalScale: {x: 1, y: 1, z: 1}
-  transformSpeed: 0.4
-  standing: {fileID: 21300000, guid: b8e3eeffec25f4a07a6e28e450205b45, type: 3}
-  otherBehavior: {fileID: 114360568735575172}
-  parentStateMachine: {fileID: 114632385916016572}
-  normalSetState: 0
 --- !u!114 &114120497094797838
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1192,13 +1171,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 633028bfe048d477e86d04207f2449ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transformScale: {x: 0.5, y: 1.4, z: 1}
-  normalScale: {x: 1, y: 0.7, z: 1}
-  transformSpeed: 0.15
-  standing: {fileID: 0}
-  otherBehavior: {fileID: 114058107025241488}
-  parentStateMachine: {fileID: 114632385916016572}
-  normalSetState: 1
+  transformScale: {x: 1, y: 0.7, z: 1}
+  normalScale: {x: 0.12, y: 1.8, z: 1}
+  transformSpeed: 0.23
 --- !u!114 &114418437241455334
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1280,18 +1255,6 @@ MonoBehaviour:
   OnTriggerEnable: 1
   RegisterStay: 1
   DelayBeforeExit: 0.1
---- !u!114 &114573661247360206
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1650373141671118}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4075fa2763aef4208a2caff7f98a1c6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cancelID: 1
 --- !u!114 &114578948761562710
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1307,18 +1270,6 @@ MonoBehaviour:
   defaultSprite: {fileID: 21300002, guid: 69bc8237631a8104f8e440d5736c25b4, type: 3}
   smileSprite: {fileID: 21300000, guid: 69bc8237631a8104f8e440d5736c25b4, type: 3}
   smileDuration: 0.5
---- !u!114 &114596244372139832
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1482405776652814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4075fa2763aef4208a2caff7f98a1c6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cancelID: 2
 --- !u!114 &114632385916016572
 MonoBehaviour:
   m_ObjectHideFlags: 1
