@@ -58,6 +58,7 @@ public class StateMachineForJack : MonoBehaviour {
 			transBeh.ReachedDeath += ReachedDeath;
 			transBeh.ReachedDeath += EnableMovementObject;
 			transBeh.WasCanceled += ReloadTransform;
+			transBeh.ReachedTransform += ReachedFullTransform;
 		}
     }
 
@@ -96,6 +97,9 @@ public class StateMachineForJack : MonoBehaviour {
 		normalObject.SetActive (false);
 		transformedObject.SetActive (true);
 		rb.velocity = Vector2.zero;
+	}
+
+	void ReachedFullTransform () {
 		rb.isKinematic = true;
 	}
 

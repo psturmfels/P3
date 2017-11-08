@@ -8,7 +8,7 @@ public class RejectColliderInside : MonoBehaviour {
 	private Vector3 oppositeVector;
 	private TransformBehavior tb;
 	private Transform grandparentTransform;
-	private int maxIterations = 6;
+	private int maxIterations = 3;
 
 	void Awake() {
 		parentCollider = transform.parent.GetComponent<BoxCollider2D> ();
@@ -37,19 +37,15 @@ public class RejectColliderInside : MonoBehaviour {
 
 			int numIterations = 0;
 			if (other.GetComponent<BoxCollider2D> () != null) {
-				Bounds otherBounds = other.GetComponent<BoxCollider2D> ().bounds;
-				while (otherBounds.Intersects (parentCollider.bounds) && numIterations < maxIterations) {
+				BoxCollider2D otherColl = other.GetComponent<BoxCollider2D> ();
+				while (otherColl.IsTouching(parentCollider) && numIterations < maxIterations) {					
 					grandparentTransform.position += 0.1f * rejectVector;
 					numIterations += 1;
 				}
 			} else if (other.GetComponent<PolygonCollider2D> () != null) {
 				PolygonCollider2D otherColl = other.GetComponent<PolygonCollider2D> ();
-				float sizeOffset = 0.5f * Vector3.Dot (parentCollider.bounds.size, rejectVector);
-				Vector2 parentExtrema = grandparentTransform.position - Mathf.Abs (sizeOffset) * rejectVector; 
-				while (otherColl.OverlapPoint (parentExtrema) && numIterations < maxIterations) {
+				while (otherColl.IsTouching(parentCollider) && numIterations < maxIterations) {
 					grandparentTransform.position += 0.1f * rejectVector;
-					sizeOffset = 0.5f * Vector3.Dot (parentCollider.bounds.size, rejectVector);
-					parentExtrema = grandparentTransform.position + Mathf.Abs (sizeOffset) * rejectVector;  
 					numIterations += 1; 
 				}
 			}
