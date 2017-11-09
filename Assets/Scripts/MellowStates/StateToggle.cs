@@ -9,7 +9,7 @@ public class StateToggle : MonoBehaviour {
 	public bool AccumulateContacts = false;
 	public float DelayBeforeExit = 0.0f;
 
-	public int numContacts = 0;
+	private int numContacts = 0;
 
 	private MellowStates ms;
 
