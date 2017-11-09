@@ -6689,8 +6689,8 @@ Canvas:
   m_GameObject: {fileID: 948764820}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 1801110020}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -6698,7 +6698,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 1150994397
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &948764824
@@ -10761,11 +10761,6 @@ MonoBehaviour:
   Player2Ready: {fileID: 932255191}
   YButton: {fileID: 1888392123}
   ready: 0
---- !u!4 &1517802612 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4847377526447634, guid: 1b08569e148a34786af2b413e8d4002e,
-    type: 2}
-  m_PrefabInternal: {fileID: 289152572}
 --- !u!4 &1524027745 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4257043121333152, guid: b89625ab0bc83cd46bbc41084df2871e,
@@ -12977,10 +12972,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4128bf382c117436f8b350d264ec7c28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stiltTransform: {fileID: 1959734791}
-  bridgeTransform: {fileID: 1517802612}
   minSizeY: 5
   maxSizeY: 7
+  lockYPos: 0
+  ignoreCheckpointY: 0
 --- !u!4 &1809461069 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4257043121333152, guid: b89625ab0bc83cd46bbc41084df2871e,
@@ -13836,11 +13831,6 @@ MonoBehaviour:
   Player2Ready: {fileID: 932255191}
   YButton: {fileID: 712662937}
   ready: 0
---- !u!4 &1959734791 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4143125017040974, guid: 1343c3c487d508e41813d3ed441976e3,
-    type: 2}
-  m_PrefabInternal: {fileID: 1829304828}
 --- !u!4 &1962250440 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4257043121333152, guid: b89625ab0bc83cd46bbc41084df2871e,
