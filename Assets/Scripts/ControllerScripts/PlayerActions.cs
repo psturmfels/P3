@@ -94,17 +94,6 @@ public class PlayerActions : PlayerActionSet
         actions.Up.AddDefaultBinding(InputControlType.LeftStickUp);
         actions.Down.AddDefaultBinding(InputControlType.LeftStickDown);
 
-        actions.ResetLevel.AddDefaultBinding(InputControlType.DPadUp);
-        actions.ResetCheckpoint.AddDefaultBinding(InputControlType.DPadDown);
-
-        //Developer Actions -- These commands remain unbound if not for a dev build.
-        if(developmentMode)
-        {
-            actions.AdvanceLevel.AddDefaultBinding(InputControlType.DPadRight);
-            actions.BackLevel.AddDefaultBinding(InputControlType.DPadLeft);
-            actions.SwitchCharacters.AddDefaultBinding(InputControlType.LeftBumper);
-        }
-
         return actions;
     }
 }
