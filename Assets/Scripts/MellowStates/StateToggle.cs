@@ -9,9 +9,10 @@ public class StateToggle : MonoBehaviour {
 	public bool AccumulateContacts = false;
 	public float DelayBeforeExit = 0.0f;
 
-	private int numContacts = 0;
+	public int numContacts = 0;
 
 	private MellowStates ms;
+
 
 	void Start () {
 		ms = GetComponentInParent<MellowStates> ();
@@ -53,6 +54,7 @@ public class StateToggle : MonoBehaviour {
 	void ExitAssignedState() {
 		if (AccumulateContacts) {
 			numContacts -= 1;
+			StartCoroutine (RemoveAllContacts ());
 			if (numContacts == 0) {
 				ms.SetState (toggleState, !OnTriggerEnable);
 			}
@@ -64,8 +66,14 @@ public class StateToggle : MonoBehaviour {
 	void SetAssignedState() {
 		if (AccumulateContacts) {
 			numContacts += 1;
+			StopAllCoroutines ();
 		}
 
 		ms.SetState (toggleState, OnTriggerEnable);
+	}
+
+	IEnumerator RemoveAllContacts() {
+		yield return new WaitForSeconds (0.5f);
+		numContacts = 0;
 	}
 }

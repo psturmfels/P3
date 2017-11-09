@@ -58,6 +58,8 @@ public class InputJump : MonoBehaviour {
 		framesCountedTotal = 0;
 
 		ms.canJump = false;
+		ms.canWallJumpLeft = false;
+		ms.canWallJumpRight = false;
 		if (ms.rightSideInContact) {
 			ms.SetState (MellowStates.State.WallJumpLeft, true);
 		} else if (ms.leftSideInContact) {
