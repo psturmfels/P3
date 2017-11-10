@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using InControl;
 
 public class InputWallJump : MonoBehaviour {
@@ -8,6 +9,8 @@ public class InputWallJump : MonoBehaviour {
 	public Sprite[] positiveJumpSprites;
 	public Sprite[] negativeJumpSprites;
 	public float timeBetweenJumpSprites;
+
+	public UnityAction DidWallJump;
 
 	private float jumpForceModifier = 1.0f;
 	private float jumpNoStillDuration = 0.25f;
@@ -25,6 +28,9 @@ public class InputWallJump : MonoBehaviour {
     private int playerID = 0;
 
     public void StartJump(float forceModifier = 1.0f) {
+		if (ms.canJump) {
+			return;
+		}
 		if (ms.canWallJumpLeft) {
 			ma.InterruptMovementAnimation (negativeJumpSprites, timeBetweenJumpSprites);
 			jumpForceModifier = -forceModifier;
@@ -34,6 +40,8 @@ public class InputWallJump : MonoBehaviour {
 		} else {
 			return;
 		}
+		CancelInvoke ();
+		DidWallJump ();
 
 		ms.SetState (MellowStates.State.WallJumpLeft, false);
 		ms.SetState (MellowStates.State.WallJumpRight, false);
@@ -82,7 +90,7 @@ public class InputWallJump : MonoBehaviour {
 
         if(controls != null)
         {
-            if(controls.Jump.WasPressed)
+			if(controls.Jump.WasPressed)
             {
                 StartJump();
             }

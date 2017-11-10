@@ -29,7 +29,7 @@ public class InputJump : MonoBehaviour {
 		if (!ms.canJump || ms.canWallJumpLeft || ms.canWallJumpRight) {
 			return;
 		}
-			
+		StopAllCoroutines ();
 		StartCoroutine (JumpRoutine (forceModifier));
 	}
 
@@ -101,7 +101,7 @@ public class InputJump : MonoBehaviour {
 
         if(controls != null)
         {
-            if(controls.Jump.WasPressed)
+			if(controls.Jump.WasPressed)
             {
                 StartJump();
             }

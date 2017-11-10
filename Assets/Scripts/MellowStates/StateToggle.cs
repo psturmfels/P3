@@ -6,10 +6,7 @@ public class StateToggle : MonoBehaviour {
 	public MellowStates.State toggleState;
 	public bool OnTriggerEnable;
 	public bool RegisterStay;
-	public bool AccumulateContacts = false;
 	public float DelayBeforeExit = 0.0f;
-
-	private int numContacts = 0;
 
 	private MellowStates ms;
 
@@ -17,15 +14,21 @@ public class StateToggle : MonoBehaviour {
 	void Start () {
 		ms = GetComponentInParent<MellowStates> ();
 		InputJump ij = GetComponentInParent<InputJump> ();
-		ij.DidJump += DisableRegisterStay;
-	}
+		ij.DidJump += StartCycleStayBehavior;
 
-	void DisableRegisterStay() {
+		InputWallJump iwj = GetComponentInParent<InputWallJump> ();
+		iwj.DidWallJump += StartCycleStayBehavior;
+	}
+		
+	void StartCycleStayBehavior() {
+		ExitAssignedState ();
+		StopAllCoroutines ();
+		StartCoroutine (CycleStayBehavior ());
+	}
+		
+	IEnumerator CycleStayBehavior() {
 		RegisterStay = false;
-		Invoke ("EnableRegisterStay", 0.5f);
-	}
-
-	void EnableRegisterStay() {
+		yield return new WaitForSeconds (0.3f);
 		RegisterStay = true;
 	}
 	
@@ -37,7 +40,7 @@ public class StateToggle : MonoBehaviour {
 
 	void OnTriggerStay2D(Collider2D other) {
 		if (ms != null && RegisterStay) {
-			ms.SetState (toggleState, OnTriggerEnable);
+			SetAssignedState ();
 		}
 	}
 
@@ -52,28 +55,11 @@ public class StateToggle : MonoBehaviour {
 	}
 
 	void ExitAssignedState() {
-		if (AccumulateContacts) {
-			numContacts -= 1;
-			StartCoroutine (RemoveAllContacts ());
-			if (numContacts == 0) {
-				ms.SetState (toggleState, !OnTriggerEnable);
-			}
-		} else {
-			ms.SetState (toggleState, !OnTriggerEnable);
-		}
+		ms.SetState (toggleState, !OnTriggerEnable);
 	}
 
 	void SetAssignedState() {
-		if (AccumulateContacts) {
-			numContacts += 1;
-			StopAllCoroutines ();
-		}
-
+		CancelInvoke ();
 		ms.SetState (toggleState, OnTriggerEnable);
-	}
-
-	IEnumerator RemoveAllContacts() {
-		yield return new WaitForSeconds (0.5f);
-		numContacts = 0;
 	}
 }
