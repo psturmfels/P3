@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class TransformBehavior: MonoBehaviour {
 	public Vector3 transformScale;
 	public Vector3 normalScale;
+    public Vector3 slideOffset = new Vector3(1.0f, 0, 0);
 	public float transformSpeed;
 
 	public UnityAction ReachedTransform;
@@ -20,6 +21,10 @@ public class TransformBehavior: MonoBehaviour {
 	private bool secondCancel = false;
 	private bool isTransforming = false;
 
+    //Sliding behavior members
+    private Vector3 target;
+    private float lerpSpeed;
+
 	void Awake () {
 		parentStateMachine = GetComponentInParent<StateMachineForJack> ();
 		ReachedTransform += ReachedTransformScale;
@@ -28,6 +33,11 @@ public class TransformBehavior: MonoBehaviour {
 		StartTowardsNormal += ScaleToNormal;
 		WasCanceled += ScaleToNormal;
 	}
+
+    void Start() {
+        float numScalingFrames = (transformScale.x - normalScale.x) / transformSpeed;
+        lerpSpeed = (transform.parent.position - slideOffset).magnitude / numScalingFrames;
+    }
 
 	void ReachedTransformScale() {
 		isTransforming = false;
@@ -75,8 +85,9 @@ public class TransformBehavior: MonoBehaviour {
 		}
 		isTransforming = true;
 		parentStateMachine.SetState (StateMachineForJack.State.InTransition);
-		StartCoroutine (LerpToTransformScale ());
-	}
+	    UpdateTargetPosition();
+        StartCoroutine(LerpToTransformScale());
+    }
 
 	void ScaleToNormal() {
 		if (isTransforming) {
@@ -84,8 +95,9 @@ public class TransformBehavior: MonoBehaviour {
 		}
 		isTransforming = true; 
 		parentStateMachine.SetState (StateMachineForJack.State.InTransition);
-		StartCoroutine (LerpToNormalScale ());
-	}
+        UpdateTargetPosition();
+        StartCoroutine (LerpToNormalScale ());
+    }
 
 	public bool IsTransforming() {
 		return isTransforming;
@@ -93,8 +105,9 @@ public class TransformBehavior: MonoBehaviour {
 		
 	IEnumerator LerpToNormalScale(bool shouldDie = false) {
 		while (transform.localScale != normalScale) {
-			transform.localScale = Vector3.MoveTowards (transform.localScale, normalScale, transformSpeed);
-			yield return null;
+			transform.localScale = Vector3.MoveTowards(transform.localScale, normalScale, transformSpeed);
+            transform.parent.position = Vector3.MoveTowards(transform.parent.position, target, lerpSpeed);
+            yield return null;
 		}
 		if (shouldDie) {
 			ReachedDeath ();
@@ -104,14 +117,15 @@ public class TransformBehavior: MonoBehaviour {
 	}
 
 	IEnumerator LerpToTransformScale() {
-		while (transform.localScale != transformScale) {
-			transform.localScale = Vector3.MoveTowards (transform.localScale, transformScale, transformSpeed);
-			yield return null;
+        while (transform.localScale != transformScale) {
+			transform.localScale = Vector3.MoveTowards(transform.localScale, transformScale, transformSpeed);
+            transform.parent.position = Vector3.MoveTowards(transform.parent.position, target, lerpSpeed);
+            yield return null;
 		}
 		ReachedTransform ();
 	}
 
-	public void TransformIntoDeath() {
+    public void TransformIntoDeath() {
 		if (isTransforming) {
 			StopAllCoroutines ();
 		}
@@ -119,4 +133,15 @@ public class TransformBehavior: MonoBehaviour {
 		parentStateMachine.SetState (StateMachineForJack.State.Disabled);
 		StartCoroutine (LerpToNormalScale (true));
 	}
+
+    private void UpdateTargetPosition() {
+        InputDirectional im = GetComponent<InputDirectional>();
+        if (im == null) return;
+        if (im.GetCurrentHorzAxis() > 0) {
+            target = transform.position + slideOffset;
+        }
+        else if (im.GetCurrentHorzAxis() < 0) {
+            target = transform.position - slideOffset;
+        }
+    }
 }
