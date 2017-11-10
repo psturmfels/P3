@@ -6,6 +6,7 @@ public class InputDirectional : MonoBehaviour {
 
     private int playerID = 0;
     private PlayerDeviceManager deviceManager;
+    private float deadZone = 0.2f;
     private float horizontalAxis;
     private float verticalAxis;
 
@@ -15,12 +16,12 @@ public class InputDirectional : MonoBehaviour {
         deviceManager = GameObject.Find("PlayerDeviceManager").GetComponent<PlayerDeviceManager>();
     }
 
-    public void SetCurrentHorzAxis(float newHorzAxis) {
-        horizontalAxis = newHorzAxis;
-    }
-
     public float GetCurrentHorzAxis() {
         return horizontalAxis;
+    }
+
+    public float GetCurrentVertAxis() {
+        return verticalAxis;
     }
 
     void Update() {
@@ -28,10 +29,12 @@ public class InputDirectional : MonoBehaviour {
         if (deviceManager != null) {
             PlayerActions controls = deviceManager.GetControls(playerID);
             if (controls != null) {
-                SetCurrentHorzAxis(controls.Move.X);
+                horizontalAxis = Mathf.Abs(controls.Move.X) > deadZone ? controls.Move.X : 0.0f;
+                verticalAxis = Mathf.Abs(controls.Move.Y) > deadZone ? controls.Move.Y : 0.0f;
             }
             else {
-                SetCurrentHorzAxis(0.0f);
+                horizontalAxis = 0.0f;
+                verticalAxis = 0.0f;
             }
         }
     }

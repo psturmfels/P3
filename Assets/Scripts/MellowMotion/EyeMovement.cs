@@ -4,51 +4,32 @@ using UnityEngine;
 
 public class EyeMovement : MonoBehaviour {
 
-    public GameObject mellowMove;
-    public Transform iris;
-    public Transform smallIris;
-
-    private MellowCrushed mellowCrushed;
-    private Rigidbody2D rb;
-    private bool transformed = false;
-    private float irisDisplacementFactor = 20f;
+    private Vector3 originalPosition;
+    private float dispFactor = 70f;
+    private float eyeMoveSpeed = 10f;
 
 	// Use this for initialization
 	void Start () {
-	    rb = GetComponentInParent<Rigidbody2D>();
-        Invoke("Blink", 4.0f + Random.Range(0f, 4f));
-		mellowCrushed = mellowMove.GetComponentInParent<MellowCrushed>();
-        mellowCrushed.Remove += DisableEyes;
-        mellowCrushed.Respawn += EnableEyes;
-    }
-	
-	// Update is called once per frame
-	void Update () {
-	    if (mellowMove.activeSelf) {
-	        iris.position = (Vector2) transform.position + new Vector2(0.03f, 0.03f) + rb.velocity.normalized / irisDisplacementFactor;
-            if (smallIris != null)
-                smallIris.position = (Vector2)transform.position + new Vector2(-0.05f, -0.05f) - rb.velocity.normalized / irisDisplacementFactor;
-        }
-	    else {
-	        Vector3 targetMellow = mellowMove.name == "BridgeMellowMove" ? 
-                GameObject.Find("StiltMellow").transform.position : 
-                GameObject.Find("BridgeMellow").transform.position;
-	        Vector3 irisRelativePos = targetMellow - transform.position;
-            iris.position = transform.position + irisRelativePos.normalized / irisDisplacementFactor;
-//            smallIris.position = (Vector2)transform.position - rb.velocity.normalized / irisDisplacementFactor;
-        }
-    }
-    
-    private void Blink() {
-        GetComponentInParent<Animator>().SetTrigger("blink");
-        Invoke("Blink", 4.0f + Random.Range(0f, 4f));
+	    originalPosition = transform.localPosition;
+	}
+
+    public void LookAt(Vector3 direction) {
+        if (direction.y < 0)
+            direction.y = 0;
+        transform.localPosition = originalPosition + direction/dispFactor;
     }
 
-    private void DisableEyes() {
-        gameObject.SetActive(false);
+    public void Translate(Vector3 position) {
+        StartCoroutine(LerpToTransformPosition(position));
+//        transform.localPosition = Vector3.Lerp(transform.localPosition, originalPosition + position, Time.deltaTime);
+//        transform.localPosition = originalPosition + position;
     }
 
-    private void EnableEyes() {
-        gameObject.SetActive(true);
+    IEnumerator LerpToTransformPosition(Vector3 position) {
+        while (transform.localPosition != position) {
+            transform.localPosition = Vector3.MoveTowards(transform.localPosition, originalPosition + position, eyeMoveSpeed);
+            yield return null;
+        }
+//        ReachedTransform();
     }
 }

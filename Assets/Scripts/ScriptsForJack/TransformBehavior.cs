@@ -143,5 +143,8 @@ public class TransformBehavior: MonoBehaviour {
         else if (im.GetCurrentHorzAxis() < 0) {
             target = transform.position - slideOffset;
         }
+        else {
+            target = transform.position;
+        }
     }
 }
