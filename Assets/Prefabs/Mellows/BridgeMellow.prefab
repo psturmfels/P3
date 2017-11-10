@@ -55,6 +55,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4001809856531688}
   - component: {fileID: 95530845480540992}
+  - component: {fileID: 114215449156720320}
+  - component: {fileID: 114962681547630222}
   m_Layer: 0
   m_Name: Eyes
   m_TagString: Untagged
@@ -382,8 +384,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4531536203354712}
   - component: {fileID: 212955249788912522}
-  - component: {fileID: 114360568735575172}
   - component: {fileID: 61968348915846552}
+  - component: {fileID: 114360568735575172}
+  - component: {fileID: 114593553784732530}
   m_Layer: 10
   m_Name: BridgeMellowTransformed
   m_TagString: Ground
@@ -622,7 +625,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1005852778404432}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1.69, y: 0, z: 0}
   m_LocalScale: {x: 0.9, y: 0.9, z: 1}
   m_Children: []
   m_Father: {fileID: 4196649662554798}
@@ -648,7 +651,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1896530445491730}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5, y: 0, z: 0}
+  m_LocalPosition: {x: 1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4531536203354712}
@@ -1132,6 +1135,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveIncrement: 1
   maxMoveSpeed: 5
+--- !u!114 &114215449156720320
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1098069576407640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 620bbf97ff0d8224a857895248449355, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mellowMove: {fileID: 1918495302005248}
+  leftEye: {fileID: 114418437241455334}
+  rightEye: {fileID: 114525171738557244}
 --- !u!114 &114274350941339936
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1146,7 +1163,6 @@ MonoBehaviour:
   toggleState: 1
   OnTriggerEnable: 1
   RegisterStay: 1
-  AccumulateContacts: 0
   DelayBeforeExit: 0.1
 --- !u!114 &114286038366221480
 MonoBehaviour:
@@ -1173,6 +1189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transformScale: {x: 1, y: 0.7, z: 1}
   normalScale: {x: 0.12, y: 1.8, z: 1}
+  slideOffset: {x: 0.5, y: 0, z: 0}
   transformSpeed: 0.23
 --- !u!114 &114418437241455334
 MonoBehaviour:
@@ -1185,9 +1202,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ea3bb2255c745849bec9862cc256bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mellowMove: {fileID: 1918495302005248}
-  iris: {fileID: 4166100774899300}
-  smallIris: {fileID: 4362705126114406}
 --- !u!114 &114483878606941734
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1237,9 +1251,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ea3bb2255c745849bec9862cc256bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mellowMove: {fileID: 1918495302005248}
-  iris: {fileID: 4293080310392208}
-  smallIris: {fileID: 4656180818790086}
 --- !u!114 &114542074174330174
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1254,7 +1265,6 @@ MonoBehaviour:
   toggleState: 3
   OnTriggerEnable: 1
   RegisterStay: 1
-  AccumulateContacts: 1
   DelayBeforeExit: 0.1
 --- !u!114 &114578948761562710
 MonoBehaviour:
@@ -1271,6 +1281,17 @@ MonoBehaviour:
   defaultSprite: {fileID: 21300002, guid: 69bc8237631a8104f8e440d5736c25b4, type: 3}
   smileSprite: {fileID: 21300000, guid: 69bc8237631a8104f8e440d5736c25b4, type: 3}
   smileDuration: 0.5
+--- !u!114 &114593553784732530
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1956724992226718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61134bbf238965245adff0a88447a70a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114632385916016572
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1401,8 +1422,18 @@ MonoBehaviour:
   toggleState: 2
   OnTriggerEnable: 1
   RegisterStay: 1
-  AccumulateContacts: 1
   DelayBeforeExit: 0.1
+--- !u!114 &114962681547630222
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1098069576407640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61134bbf238965245adff0a88447a70a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114962895045559700
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1464,7 +1495,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1225908759
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b8e3eeffec25f4a07a6e28e450205b45, type: 3}
   m_Color: {r: 0.8161765, g: 0.9619676, b: 1, a: 1}
@@ -1506,7 +1537,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1225908759
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: c60732cd832d9b943b10901febf0b8db, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1548,7 +1579,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1225908759
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: c60732cd832d9b943b10901febf0b8db, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1590,7 +1621,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1225908759
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: c60732cd832d9b943b10901febf0b8db, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1632,7 +1663,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1225908759
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: c60732cd832d9b943b10901febf0b8db, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
@@ -1674,7 +1705,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1225908759
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: c60732cd832d9b943b10901febf0b8db, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1716,7 +1747,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1225908759
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: c60732cd832d9b943b10901febf0b8db, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1758,7 +1789,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1225908759
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: c60732cd832d9b943b10901febf0b8db, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
@@ -1800,7 +1831,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1225908759
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: c60732cd832d9b943b10901febf0b8db, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1842,7 +1873,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1225908759
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: cc13536addd2242ceb1780b4cd071f92, type: 3}
   m_Color: {r: 0.8156863, g: 0.9607843, b: 1, a: 1}
@@ -1884,7 +1915,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1225908759
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300002, guid: 69bc8237631a8104f8e440d5736c25b4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
