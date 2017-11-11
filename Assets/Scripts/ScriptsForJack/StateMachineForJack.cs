@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using InControl;
 
 public class StateMachineForJack : MonoBehaviour {
@@ -15,13 +16,14 @@ public class StateMachineForJack : MonoBehaviour {
 
 	public GameObject normalObject;
 	public GameObject transformedObject;
+	public UnityAction InitiateTransformReload;
+	public UnityAction BeganInputTransform;
 
 	public State currentState = State.Normal;
     private PlayerActions controls;
     private PlayerDeviceManager deviceManager;
     private MellowStates ms;
 	private Rigidbody2D rb;
-	private float reloadAfterCancelTime = 0.5f;
 	private float reloadAfterTransformTime = 0.5f;
 
     private int playerID = 0;
@@ -51,14 +53,13 @@ public class StateMachineForJack : MonoBehaviour {
 		if (GetComponentInChildren<MellowCrushed> () != null) {
 			GetComponentInChildren<MellowCrushed> ().DisableTransform += DisableTransform;
 			GetComponentInChildren<MellowCrushed> ().Respawn += EnableTransform;
-			GetComponentInChildren<MellowCrushed> ().Respawn += ReloadTransform;
+			GetComponentInChildren<MellowCrushed> ().Respawn += RefreshTransform;
 		}
 		if (transformedObject.GetComponent <TransformBehavior> () != null) {
 			TransformBehavior transBeh = transformedObject.GetComponent <TransformBehavior> ();
 			transBeh.ReachedNormal += EnableMovementObject;
 			transBeh.ReachedDeath += ReachedDeath;
 			transBeh.ReachedDeath += EnableMovementObject;
-			transBeh.WasCanceled += ReloadTransform;
 			transBeh.ReachedTransform += ReachedFullTransform;
 			transBeh.ReachedNormal += RefreshTransform;
 		}
@@ -68,7 +69,7 @@ public class StateMachineForJack : MonoBehaviour {
 		if (currentState != State.Normal) {
 			return;
 		}
-			
+		BeganInputTransform ();
 		EnableTransformedObject ();
 		if (transformedObject.GetComponent <TransformBehavior> () != null) {
 			transformedObject.GetComponent <TransformBehavior> ().StartTowardsTransform ();
@@ -86,15 +87,11 @@ public class StateMachineForJack : MonoBehaviour {
 	}
 
 	void RefreshTransform() {
+		InitiateTransformReload ();
 		doesAcceptInput = false;
 		StartCoroutine (EnableAcceptInputAfterTime (reloadAfterTransformTime));
 	}
-
-	void ReloadTransform() {
-		doesAcceptInput = false;
-		StartCoroutine (EnableAcceptInputAfterTime (reloadAfterCancelTime));
-	}
-
+		
 	IEnumerator EnableAcceptInputAfterTime(float timeToWait) {
 		yield return new WaitForSeconds (timeToWait);
 		doesAcceptInput = true;
