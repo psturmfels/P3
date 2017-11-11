@@ -22,6 +22,7 @@ public class StateMachineForJack : MonoBehaviour {
     private MellowStates ms;
 	private Rigidbody2D rb;
 	private float reloadAfterCancelTime = 0.5f;
+	private float reloadAfterTransformTime = 0.5f;
 
     private int playerID = 0;
 
@@ -59,6 +60,7 @@ public class StateMachineForJack : MonoBehaviour {
 			transBeh.ReachedDeath += EnableMovementObject;
 			transBeh.WasCanceled += ReloadTransform;
 			transBeh.ReachedTransform += ReachedFullTransform;
+			transBeh.ReachedNormal += RefreshTransform;
 		}
     }
 
@@ -66,7 +68,7 @@ public class StateMachineForJack : MonoBehaviour {
 		if (currentState != State.Normal) {
 			return;
 		}
-
+			
 		EnableTransformedObject ();
 		if (transformedObject.GetComponent <TransformBehavior> () != null) {
 			transformedObject.GetComponent <TransformBehavior> ().StartTowardsTransform ();
@@ -83,13 +85,18 @@ public class StateMachineForJack : MonoBehaviour {
 		}
 	}
 
-	void ReloadTransform() {
+	void RefreshTransform() {
 		doesAcceptInput = false;
-		StartCoroutine (EnableAcceptInputAfterTime ());
+		StartCoroutine (EnableAcceptInputAfterTime (reloadAfterTransformTime));
 	}
 
-	IEnumerator EnableAcceptInputAfterTime() {
-		yield return new WaitForSeconds (reloadAfterCancelTime);
+	void ReloadTransform() {
+		doesAcceptInput = false;
+		StartCoroutine (EnableAcceptInputAfterTime (reloadAfterCancelTime));
+	}
+
+	IEnumerator EnableAcceptInputAfterTime(float timeToWait) {
+		yield return new WaitForSeconds (timeToWait);
 		doesAcceptInput = true;
 	}
 
@@ -135,7 +142,7 @@ public class StateMachineForJack : MonoBehaviour {
         {
 			if (controls.Transform.IsPressed && doesAcceptInput) {
 				GoToTransform ();
-			} else {
+			} else if (!controls.Transform.IsPressed) {
 				GoToNormal ();
 			}
         }
