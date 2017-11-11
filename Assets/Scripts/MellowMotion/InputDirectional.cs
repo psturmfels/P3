@@ -7,8 +7,6 @@ public class InputDirectional : MonoBehaviour {
     public int playerID = 0;
     private PlayerDeviceManager deviceManager;
     private float deadZone = 0.2f;
-//    private float horizontalAxis;
-//    private float verticalAxis;
     private PlayerActions controls;
 
     // Use this for initialization
@@ -18,6 +16,10 @@ public class InputDirectional : MonoBehaviour {
         if (deviceManager != null) {
             controls = deviceManager.GetControls(playerID);
         }
+    }
+
+    void EarlyUpdate() {
+        
     }
 
     public float GetCurrentHorzAxis() {

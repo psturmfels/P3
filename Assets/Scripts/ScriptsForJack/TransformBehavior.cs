@@ -23,6 +23,7 @@ public class TransformBehavior: MonoBehaviour {
     //Sliding behavior members
     public bool canSlide;
     public Vector3 slideOffset = new Vector3(1.0f, 0, 0);
+    private Vector3 transformedFrom;
     private Vector3 target;
     private float lerpSpeed;
 
@@ -86,7 +87,8 @@ public class TransformBehavior: MonoBehaviour {
 		}
 		isTransforming = true;
 		parentStateMachine.SetState (StateMachineForJack.State.InTransition);
-	    UpdateTargetPosition();
+        transformedFrom = transform.position;
+        UpdateTargetPosition(true);
         StartCoroutine(LerpToTransformScale());
     }
 
@@ -96,11 +98,11 @@ public class TransformBehavior: MonoBehaviour {
 		}
 		isTransforming = true; 
 		parentStateMachine.SetState (StateMachineForJack.State.InTransition);
-        UpdateTargetPosition();
+	    UpdateTargetPosition(false);
         StartCoroutine (LerpToNormalScale ());
     }
 
-	public bool IsTransforming() {
+    public bool IsTransforming() {
 		return isTransforming;
 	}
 		
@@ -139,28 +141,74 @@ public class TransformBehavior: MonoBehaviour {
 		StartCoroutine (LerpToNormalScale (true));
 	}
 
-    private void UpdateTargetPosition() {
-        InputDirectional im = GetComponent<InputDirectional>();
-        if (im == null) return;
-        target = transform.position;
+    private void UpdateTargetPosition(bool transforming) {
+        InputDirectional id = GetComponent<InputDirectional>();
+        if (id == null) return;
         if (gameObject.name == "BridgeMellowTransformed") {
-            float horzAxis = im.GetCurrentHorzAxis();
-            if (horzAxis > 0) {
-//                Debug.Log(GetComponent<Renderer>().bounds.ToString());
-                target = transform.position + slideOffset;
+            BridgeTargetPositionUpdate(id, transforming);
+        }
+        else {
+            StiltTargetPositionUpdate(id, transforming);
+        }
+    }
+
+    private void BridgeTargetPositionUpdate(InputDirectional id, bool transforming) {
+        float horzAxis = id.GetCurrentHorzAxis();
+        if (horzAxis < 0) {
+            if (!transforming && !PlayerFitsAt(2)) { // Collider check for left side
+                target = transformedFrom;
             }
-            else if (horzAxis < 0) {
-                target = transform.position - slideOffset;
+            else {
+                target = transform.position - new Vector3(3.3f, 0, 0);
+            }
+        }
+        else if (horzAxis > 0) {
+            if (!transforming && !PlayerFitsAt(3)) { // Collider check for right side
+                target = transformedFrom;
+            }
+            else {
+                target = transform.position + new Vector3(3.3f, 0, 0);
             }
         }
         else {
-            float vertAxis = im.GetCurrentVertAxis();
-            if (vertAxis > 0) {
-                target = transform.position - slideOffset;
+            if (!transforming && !PlayerFitsAt(4)) { // Collider check for middle side
+                target = transformedFrom;
             }
-            else if (vertAxis < 0) {
-                target = transform.position + slideOffset;
+            else {
+                target = transform.position;
             }
         }
+    }
+
+    private void StiltTargetPositionUpdate(InputDirectional id, bool transforming) {
+        float vertAxis = id.GetCurrentVertAxis();
+        if (vertAxis > 0) {
+            if (!transforming && !PlayerFitsAt(2)) { // Collider check for top side
+                target = transformedFrom;
+            }
+            else {
+                target = transform.position - new Vector3(0, 3.1f, 0);
+            }
+        }
+        else if (vertAxis < 0) {
+            if (!transforming && !PlayerFitsAt(3)) { // Collider check for bottom side
+                target = transformedFrom;
+            }
+            else {
+                target = transform.position + new Vector3(0, 3.1f, 0);
+            }
+        }
+        else {
+            if (!transforming && !PlayerFitsAt(4)) { // Collider check for middle side
+                target = transformedFrom;
+            }
+            else {
+                target = transform.position;
+            }
+        }
+    }
+
+    private bool PlayerFitsAt(int colliderChildIndex) {
+        return transform.GetChild(colliderChildIndex).gameObject.GetComponent<PlayerFitCheck>().playerCanFit();
     }
 }
