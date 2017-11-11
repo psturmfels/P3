@@ -159,6 +159,6 @@ public class TransformBehavior: MonoBehaviour {
                 target = transform.position - slideOffset;
             }
         }
-        Debug.Log(target);
+//        Debug.Log(target);
     }
 }

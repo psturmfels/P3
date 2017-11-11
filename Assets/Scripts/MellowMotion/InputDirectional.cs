@@ -28,6 +28,9 @@ public class InputDirectional : MonoBehaviour {
     }
 
     public float GetCurrentVertAxis() {
-        return Mathf.Abs(controls.Move.Y) > deadZone ? controls.Move.Y : 0.0f;
+        if (controls != null && Mathf.Abs(controls.Move.Y) > deadZone) {
+            return controls.Move.Y;
+        }
+        return 0.0f;
     }
 }
