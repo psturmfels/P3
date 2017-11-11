@@ -235,8 +235,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4950746258390594}
   - component: {fileID: 212314927200731866}
-  - component: {fileID: 114352727909810016}
   - component: {fileID: 61997200196125478}
+  - component: {fileID: 114352727909810016}
   - component: {fileID: 114613404315827152}
   m_Layer: 9
   m_Name: StiltMellowTransformed
@@ -1196,8 +1196,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transformScale: {x: 0.7, y: 1, z: 1}
   normalScale: {x: 1.2, y: 0.19, z: 1}
-  slideOffset: {x: 0, y: 0.5, z: 0}
   transformSpeed: 0.2
+  canSlide: 0
+  slideOffset: {x: 0, y: 0.5, z: 0}
 --- !u!114 &114378722797910650
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1320,6 +1321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61134bbf238965245adff0a88447a70a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerID: 1
 --- !u!114 &114621312353239256
 MonoBehaviour:
   m_ObjectHideFlags: 1

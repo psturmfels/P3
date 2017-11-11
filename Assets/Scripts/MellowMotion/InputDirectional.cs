@@ -4,38 +4,30 @@ using UnityEngine;
 
 public class InputDirectional : MonoBehaviour {
 
-    private int playerID = 0;
+    public int playerID = 0;
     private PlayerDeviceManager deviceManager;
     private float deadZone = 0.2f;
-    private float horizontalAxis;
-    private float verticalAxis;
+//    private float horizontalAxis;
+//    private float verticalAxis;
+    private PlayerActions controls;
 
     // Use this for initialization
     void Start() {
         //Find PlayerDeviceManager
         deviceManager = GameObject.Find("PlayerDeviceManager").GetComponent<PlayerDeviceManager>();
+        if (deviceManager != null) {
+            controls = deviceManager.GetControls(playerID);
+        }
     }
 
     public float GetCurrentHorzAxis() {
-        return horizontalAxis;
+        if (controls != null && Mathf.Abs(controls.Move.X) > deadZone) {
+            return controls.Move.X;
+        }
+        return 0.0f;
     }
 
     public float GetCurrentVertAxis() {
-        return verticalAxis;
-    }
-
-    void Update() {
-        //Find the controls bound to this player
-        if (deviceManager != null) {
-            PlayerActions controls = deviceManager.GetControls(playerID);
-            if (controls != null) {
-                horizontalAxis = Mathf.Abs(controls.Move.X) > deadZone ? controls.Move.X : 0.0f;
-                verticalAxis = Mathf.Abs(controls.Move.Y) > deadZone ? controls.Move.Y : 0.0f;
-            }
-            else {
-                horizontalAxis = 0.0f;
-                verticalAxis = 0.0f;
-            }
-        }
+        return Mathf.Abs(controls.Move.Y) > deadZone ? controls.Move.Y : 0.0f;
     }
 }

@@ -6,7 +6,6 @@ using UnityEngine.Events;
 public class TransformBehavior: MonoBehaviour {
 	public Vector3 transformScale;
 	public Vector3 normalScale;
-    public Vector3 slideOffset = new Vector3(1.0f, 0, 0);
 	public float transformSpeed;
 
 	public UnityAction ReachedTransform;
@@ -22,6 +21,8 @@ public class TransformBehavior: MonoBehaviour {
 	private bool isTransforming = false;
 
     //Sliding behavior members
+    public bool canSlide;
+    public Vector3 slideOffset = new Vector3(1.0f, 0, 0);
     private Vector3 target;
     private float lerpSpeed;
 
@@ -106,7 +107,9 @@ public class TransformBehavior: MonoBehaviour {
 	IEnumerator LerpToNormalScale(bool shouldDie = false) {
 		while (transform.localScale != normalScale) {
 			transform.localScale = Vector3.MoveTowards(transform.localScale, normalScale, transformSpeed);
-            transform.parent.position = Vector3.MoveTowards(transform.parent.position, target, lerpSpeed);
+		    if (canSlide) {
+                transform.parent.position = Vector3.MoveTowards(transform.parent.position, target, lerpSpeed);
+            }
             yield return null;
 		}
 		if (shouldDie) {
@@ -119,7 +122,9 @@ public class TransformBehavior: MonoBehaviour {
 	IEnumerator LerpToTransformScale() {
         while (transform.localScale != transformScale) {
 			transform.localScale = Vector3.MoveTowards(transform.localScale, transformScale, transformSpeed);
-            transform.parent.position = Vector3.MoveTowards(transform.parent.position, target, lerpSpeed);
+            if (canSlide) {
+                transform.parent.position = Vector3.MoveTowards(transform.parent.position, target, lerpSpeed);
+            }
             yield return null;
 		}
 		ReachedTransform ();
@@ -137,14 +142,23 @@ public class TransformBehavior: MonoBehaviour {
     private void UpdateTargetPosition() {
         InputDirectional im = GetComponent<InputDirectional>();
         if (im == null) return;
-        if (im.GetCurrentHorzAxis() > 0) {
-            target = transform.position + slideOffset;
-        }
-        else if (im.GetCurrentHorzAxis() < 0) {
-            target = transform.position - slideOffset;
+        target = transform.position;
+        if (gameObject.name == "BridgeMellowTransformed") {
+            if (im.GetCurrentHorzAxis() > 0) {
+                target = transform.position + slideOffset;
+            }
+            else if (im.GetCurrentHorzAxis() < 0) {
+                target = transform.position - slideOffset;
+            }
         }
         else {
-            target = transform.position;
+            if (im.GetCurrentVertAxis() > 0) {
+                target = transform.position + slideOffset;
+            }
+            else if (im.GetCurrentVertAxis() < 0) {
+                target = transform.position - slideOffset;
+            }
         }
+        Debug.Log(target);
     }
 }
