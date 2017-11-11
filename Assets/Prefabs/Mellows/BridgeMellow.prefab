@@ -344,6 +344,7 @@ GameObject:
   - component: {fileID: 114632385916016572}
   - component: {fileID: 50295019988268352}
   - component: {fileID: 114782386702303864}
+  - component: {fileID: 114894549633582014}
   m_Layer: 0
   m_Name: BridgeMellow
   m_TagString: Player
@@ -1423,6 +1424,18 @@ MonoBehaviour:
   OnTriggerEnable: 1
   RegisterStay: 1
   DelayBeforeExit: 0.1
+--- !u!114 &114894549633582014
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1896530445491730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9e32fdeed9d641d1b2b0b880c988fb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  snapColor: {r: 0.6255407, g: 0.8855968, b: 0.9558824, a: 1}
 --- !u!114 &114962681547630222
 MonoBehaviour:
   m_ObjectHideFlags: 1
