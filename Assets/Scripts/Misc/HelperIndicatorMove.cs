@@ -21,11 +21,13 @@ public class HelperIndicatorMove : MonoBehaviour {
 
 		int index = 0;
 		while (index < targetObjects.Length) {
-			Vector3 targetPosition = targetObjects [index].transform.position;
-			targetPosition.z = 0.0f;
-			while (transform.position != targetPosition) {
-				transform.position = Vector3.MoveTowards (transform.position, targetPosition, speed);
-				yield return null;
+			if (targetObjects [index] != null) {
+				Vector3 targetPosition = targetObjects [index].transform.position;
+				targetPosition.z = 0.0f;
+				while (transform.position != targetPosition) {
+					transform.position = Vector3.MoveTowards (transform.position, targetPosition, speed);
+					yield return null;
+				}
 			}
 			index += 1;
 		}
