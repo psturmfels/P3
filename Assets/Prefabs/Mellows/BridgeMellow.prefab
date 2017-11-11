@@ -1190,8 +1190,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transformScale: {x: 1, y: 0.7, z: 1}
   normalScale: {x: 0.12, y: 1.8, z: 1}
-  slideOffset: {x: 0.5, y: 0, z: 0}
-  transformSpeed: 0.23
+  transformSpeed: 0.1
+  canSlide: 1
+  slideOffset: {x: 5, y: 0, z: 0}
 --- !u!114 &114418437241455334
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1293,6 +1294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61134bbf238965245adff0a88447a70a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerID: 0
 --- !u!114 &114632385916016572
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1447,6 +1449,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61134bbf238965245adff0a88447a70a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerID: 0
 --- !u!114 &114962895045559700
 MonoBehaviour:
   m_ObjectHideFlags: 1

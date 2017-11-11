@@ -144,21 +144,23 @@ public class TransformBehavior: MonoBehaviour {
         if (im == null) return;
         target = transform.position;
         if (gameObject.name == "BridgeMellowTransformed") {
-            if (im.GetCurrentHorzAxis() > 0) {
+            float horzAxis = im.GetCurrentHorzAxis();
+            if (horzAxis > 0) {
+//                Debug.Log(GetComponent<Renderer>().bounds.ToString());
                 target = transform.position + slideOffset;
             }
-            else if (im.GetCurrentHorzAxis() < 0) {
+            else if (horzAxis < 0) {
                 target = transform.position - slideOffset;
             }
         }
         else {
-            if (im.GetCurrentVertAxis() > 0) {
-                target = transform.position + slideOffset;
-            }
-            else if (im.GetCurrentVertAxis() < 0) {
+            float vertAxis = im.GetCurrentVertAxis();
+            if (vertAxis > 0) {
                 target = transform.position - slideOffset;
             }
+            else if (vertAxis < 0) {
+                target = transform.position + slideOffset;
+            }
         }
-//        Debug.Log(target);
     }
 }

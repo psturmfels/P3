@@ -69,6 +69,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4386721343951926}
   - component: {fileID: 95298471992765098}
+  - component: {fileID: 114732225860151204}
+  - component: {fileID: 114737253960520972}
   m_Layer: 0
   m_Name: Eyes
   m_TagString: Untagged
@@ -1196,9 +1198,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transformScale: {x: 0.7, y: 1, z: 1}
   normalScale: {x: 1.2, y: 0.19, z: 1}
-  transformSpeed: 0.2
-  canSlide: 0
-  slideOffset: {x: 0, y: 0.5, z: 0}
+  transformSpeed: 0.1
+  canSlide: 1
+  slideOffset: {x: 0, y: 0.1, z: 0}
 --- !u!114 &114378722797910650
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1400,6 +1402,32 @@ MonoBehaviour:
   leftSideInContact: 0
   rightSideInContact: 0
   playerID: 1
+--- !u!114 &114732225860151204
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1291501297939754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61134bbf238965245adff0a88447a70a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerID: 1
+--- !u!114 &114737253960520972
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1291501297939754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 620bbf97ff0d8224a857895248449355, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mellowMove: {fileID: 1930481493294822}
+  leftEye: {fileID: 114957071747995636}
+  rightEye: {fileID: 114416100237868554}
 --- !u!114 &114820232096155222
 MonoBehaviour:
   m_ObjectHideFlags: 1

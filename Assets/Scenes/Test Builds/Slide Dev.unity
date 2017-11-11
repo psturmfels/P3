@@ -272,16 +272,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114360568735575172, guid: 1b08569e148a34786af2b413e8d4002e,
-        type: 2}
-      propertyPath: canSlide
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114360568735575172, guid: 1b08569e148a34786af2b413e8d4002e,
-        type: 2}
-      propertyPath: slideOffset.x
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1b08569e148a34786af2b413e8d4002e, type: 2}
   m_IsPrefabParent: 0
@@ -437,43 +427,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3f19bff544d82ce48b4198a597e9e0da, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1119701277 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1291501297939754, guid: 1343c3c487d508e41813d3ed441976e3,
-    type: 2}
-  m_PrefabInternal: {fileID: 1829304828}
---- !u!114 &1119701279
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1119701277}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61134bbf238965245adff0a88447a70a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerID: 1
---- !u!114 &1119701280
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1119701277}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 620bbf97ff0d8224a857895248449355, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mellowMove: {fileID: 1420369333}
-  leftEye: {fileID: 1168180178}
-  rightEye: {fileID: 1786219868}
---- !u!114 &1168180178 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114957071747995636, guid: 1343c3c487d508e41813d3ed441976e3,
-    type: 2}
-  m_PrefabInternal: {fileID: 1829304828}
-  m_Script: {fileID: 11500000, guid: 0ea3bb2255c745849bec9862cc256bd8, type: 3}
 --- !u!1001 &1322711189
 Prefab:
   m_ObjectHideFlags: 0
@@ -573,11 +526,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1420369333 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1930481493294822, guid: 1343c3c487d508e41813d3ed441976e3,
-    type: 2}
-  m_PrefabInternal: {fileID: 1829304828}
 --- !u!1001 &1466331225
 Prefab:
   m_ObjectHideFlags: 0
@@ -781,12 +729,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4117712363108904, guid: 348d74df819e7428fbdf1ae76a83a895,
     type: 2}
   m_PrefabInternal: {fileID: 1733415950}
---- !u!114 &1786219868 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114416100237868554, guid: 1343c3c487d508e41813d3ed441976e3,
-    type: 2}
-  m_PrefabInternal: {fileID: 1829304828}
-  m_Script: {fileID: 11500000, guid: 0ea3bb2255c745849bec9862cc256bd8, type: 3}
 --- !u!1001 &1829304828
 Prefab:
   m_ObjectHideFlags: 0
@@ -825,16 +767,6 @@ Prefab:
     - target: {fileID: 4143125017040974, guid: 1343c3c487d508e41813d3ed441976e3, type: 2}
       propertyPath: m_RootOrder
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114352727909810016, guid: 1343c3c487d508e41813d3ed441976e3,
-        type: 2}
-      propertyPath: canSlide
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114352727909810016, guid: 1343c3c487d508e41813d3ed441976e3,
-        type: 2}
-      propertyPath: slideOffset.y
-      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1343c3c487d508e41813d3ed441976e3, type: 2}
