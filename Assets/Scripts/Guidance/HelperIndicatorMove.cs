@@ -7,12 +7,16 @@ public class HelperIndicatorMove : MonoBehaviour {
 	public GameObject[] movePositionIndicators;
 	public float speed;
 
+	private SpriteRenderer sr;
+
 	void Start () {
-		StartMoveRoutine (movePositionIndicators);
+		sr = GetComponent<SpriteRenderer> ();
+		sr.enabled = false;
 	}
 
-	public void StartMoveRoutine(GameObject[] targetObjects) {
-		StartCoroutine (MoveOverPositions (targetObjects));
+	public void StartMoveRoutine() {
+		StopAllCoroutines ();
+		StartCoroutine (MoveOverPositions (movePositionIndicators));
 	}
 
 	IEnumerator MoveOverPositions(GameObject[] targetObjects) {
@@ -36,6 +40,6 @@ public class HelperIndicatorMove : MonoBehaviour {
 			yield return null;
 		}
 
-		Destroy (gameObject);
+		sr.enabled = false;
 	}
 }
