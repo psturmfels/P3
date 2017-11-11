@@ -63,7 +63,7 @@ public class StateMachineForJack : MonoBehaviour {
     }
 
 	public void GoToTransform() {
-		if (currentState == State.Disabled || currentState == State.Dead || currentState == State.Transformed) {
+		if (currentState != State.Normal) {
 			return;
 		}
 
@@ -74,7 +74,7 @@ public class StateMachineForJack : MonoBehaviour {
 	}
 
 	public void GoToNormal() {
-		if (currentState == State.Disabled || currentState == State.Dead || currentState == State.Normal) {
+		if (currentState != State.Transformed) {
 			return;
 		}
 

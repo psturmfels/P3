@@ -28,7 +28,7 @@ public class TransformBehavior: MonoBehaviour {
 	void Awake () {
 		parentStateMachine = GetComponentInParent<StateMachineForJack> ();
 		ReachedTransform += ReachedTransformScale;
-		ReachedNormal += ReachedNormalScale;
+		ReachedNormal += ReachedNormalScale; 
 		StartTowardsTransform += ScaleToTransform;
 		StartTowardsNormal += ScaleToNormal;
 		WasCanceled += ScaleToNormal;
