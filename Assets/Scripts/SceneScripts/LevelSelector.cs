@@ -13,13 +13,13 @@ public class LevelSelector : MonoBehaviour {
     // Use this for initialization
     void Start () {
         deviceManager = GameObject.Find("PlayerDeviceManager").GetComponent<PlayerDeviceManager>();
-        p1Controls = deviceManager.GetControls(0);
-        p2Controls = deviceManager.GetControls(1);
     }
 	
 	// Update is called once per frame
 	void Update () {
-	    if (p1Controls.Jump.WasPressed || p2Controls.Jump.WasPressed) {
+        p1Controls = deviceManager.GetControls(0);
+        p2Controls = deviceManager.GetControls(1);
+        if (p1Controls.Jump.WasPressed || p2Controls.Jump.WasPressed) {
 	        Button btn = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
             btn.onClick.Invoke();
 	    }

@@ -110,6 +110,7 @@ public class StateMachineForJack : MonoBehaviour {
 	}
 
 	void ReachedFullTransform () {
+	    rb.velocity = Vector2.zero;
 		rb.isKinematic = true;
 	}
 

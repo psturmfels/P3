@@ -36,7 +36,7 @@ public class EyeController : MonoBehaviour {
         else {
             if (fmwt.offsetAxis == Vector2.right) {
                 if (transform.parent.localPosition.x > 0) {
-                    Debug.Log("Looking right");
+//                    Debug.Log("Looking right");
                     lookingDirection = Vector3.right;
                 }
                 else if (transform.parent.localPosition.x < 0) {
