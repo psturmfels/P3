@@ -13,6 +13,9 @@ public class Checkpoint : MonoBehaviour {
 	public Vector3 bridgeOffset = new Vector3 (1.0f, 0.0f, 0.0f);
 	public bool isActive = false;
 
+    public AudioSource bridgeCPSound;
+    public AudioSource stiltCPSound;
+
     private static Vector3 CheckpointPos;
     private static PlayerActions controllerActions;
     private static PlayerActions keyboardActions;
@@ -76,6 +79,7 @@ public class Checkpoint : MonoBehaviour {
 		}
 
 		if (!bridgeAtCheckpoint && collision.gameObject.name.Contains("Bridge")) {
+            bridgeCPSound.Play();
             bridgeAtCheckpoint = true;
 			if (bridgeCoin != null && bridgeCoin.gameObject.activeSelf) {
 				bridgeCoin.StartAnimation ();
@@ -87,6 +91,7 @@ public class Checkpoint : MonoBehaviour {
             }
         }
 		else if (!stiltAtCheckpoint && collision.gameObject.name.Contains("Stilt")) {
+            stiltCPSound.Play();
             stiltAtCheckpoint = true;
 			if (stiltCoin != null && stiltCoin.gameObject.activeSelf) { 
 				stiltCoin.StartAnimation ();

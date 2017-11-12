@@ -7,7 +7,9 @@ public class SwitchLatch : MonoBehaviour {
 
     public UnityAction OnSwitchTrigger;
     public Sprite switchTriggeredSprite;
-    
+
+    public AudioSource leverSound;
+
     private SpriteRenderer sr;
 	private bool hasBeenSwitched = false;
 
@@ -29,6 +31,7 @@ public class SwitchLatch : MonoBehaviour {
 			GetComponent<FadeOutAndDie> ().StartFadeOut ();
 		}
         sr.sprite = switchTriggeredSprite;
+        leverSound.Play();
 		hasBeenSwitched = true;
     }
 }

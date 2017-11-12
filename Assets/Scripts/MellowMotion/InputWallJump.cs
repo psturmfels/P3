@@ -12,6 +12,7 @@ public class InputWallJump : MonoBehaviour {
 
 	public UnityAction DidWallJump;
 
+    public AudioSource wallJumpSound;
 	private float jumpForceModifier = 1.0f;
 	private float jumpNoStillDuration = 0.25f;
 	private float jumpLockMovementDuration = 0.15f;
@@ -102,8 +103,9 @@ public class InputWallJump : MonoBehaviour {
 		float frameInputRatio = (float)(Mathf.Min(framesCountedInput + 1, framesCountedTotal) + 1) / (float)(framesCountedTotal + 1);
 		rb.velocity = Vector2.zero;
 		Vector2 modifiedJumpVector = new Vector2 (jumpVector.x * jumpForceModifier, jumpVector.y) * frameInputRatio;
-		rb.AddRelativeForce (modifiedJumpVector, ForceMode2D.Impulse);	
-		shouldCountFrames = false;
+		rb.AddRelativeForce (modifiedJumpVector, ForceMode2D.Impulse);
+        wallJumpSound.Play();
+        shouldCountFrames = false;
 		framesCountedInput = 0;
 		framesCountedTotal = 0;
 	}
