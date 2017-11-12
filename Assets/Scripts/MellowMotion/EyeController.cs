@@ -35,7 +35,7 @@ public class EyeController : MonoBehaviour {
             if (mellowMove.name == "BridgeMellowMove") {
                 targetMellow = GameObject.Find("StiltMellow").transform.position;
                 float horzAxis = im.GetCurrentHorzAxis();
-                Debug.Log(horzAxis);
+//                Debug.Log(horzAxis);
                 if (horzAxis > 0) {
                     transform.localPosition = originalPosition + new Vector3(3f, 0, 0);
                 }
