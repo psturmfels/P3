@@ -39,8 +39,12 @@ public class FaceMoveWhenTransformed : MonoBehaviour {
 	}
 	
 	void Update () {
+	    TransformBehavior tb = transformObject.GetComponent<TransformBehavior>();
 		if (id != null && transformObject != null && transformObject.activeSelf) {
-			if (transformObject.GetComponent<BoxCollider2D> () != null) {
+            if (tb != null && !tb.canSlide) {
+                return;
+            }
+            if (transformObject.GetComponent<BoxCollider2D> () != null) {
 				float normDiff = Vector3.Distance (normalScale, transformScale);
 				float currentDiff = Vector3.Distance (normalScale, transformObject.transform.localScale);
 				offsetHalfMultiplier = Mathf.Sqrt(currentDiff / normDiff) * 0.4f;
