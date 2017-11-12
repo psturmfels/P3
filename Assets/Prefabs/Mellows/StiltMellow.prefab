@@ -1368,7 +1368,7 @@ MonoBehaviour:
   transformScale: {x: 0.7, y: 1, z: 1}
   normalScale: {x: 1.2, y: 0.19, z: 1}
   transformSpeed: 0.1
-  canSlide: 1
+  canSlide: 0
   slideOffset: {x: 0, y: 0.1, z: 0}
 --- !u!114 &114327959215322884
 MonoBehaviour:
@@ -1420,6 +1420,7 @@ MonoBehaviour:
   doesAcceptInput: 1
   normalObject: {fileID: 1615765397725236}
   transformedObject: {fileID: 1549959158310806}
+  shiftSound: {fileID: 0}
   currentState: 0
 --- !u!114 &114634455493853848
 MonoBehaviour:
@@ -1466,6 +1467,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ce5ab54f9f03e4ddfada0a34b3555f25, type: 3}
   - {fileID: 21300000, guid: 44f781ec1738d490ca96228d01bbab44, type: 3}
   timeBetweenJumpSprites: 0.014
+  jumpSound: {fileID: 0}
 --- !u!114 &114638854267519014
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1540,6 +1542,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1f8d544bded964cc19c90d12f2535cd3, type: 3}
   - {fileID: 21300000, guid: c6fb4eccc5a0f4341b8775e19b477c8d, type: 3}
   timeBetweenJumpSprites: 0.02
+  wallJumpSound: {fileID: 0}
 --- !u!114 &114776982090901282
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1584,6 +1587,8 @@ MonoBehaviour:
   deathExplosion: {fileID: 1301474835221234, guid: b246ceb7c468a447da15a77cf94af46c,
     type: 2}
   isStilt: 1
+  deathSound: {fileID: 0}
+  spawnSound: {fileID: 0}
 --- !u!114 &114812068914068180
 MonoBehaviour:
   m_ObjectHideFlags: 1

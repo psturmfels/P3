@@ -3830,6 +3830,11 @@ Prefab:
       propertyPath: wallJumpSound
       value: 
       objectReference: {fileID: 1295997301}
+    - target: {fileID: 114898579054238578, guid: 2cd2e09d4f0914a79bf55ce4992e64bd,
+        type: 2}
+      propertyPath: shiftSound
+      value: 
+      objectReference: {fileID: 919476443}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2cd2e09d4f0914a79bf55ce4992e64bd, type: 2}
   m_IsPrefabParent: 0
@@ -4014,6 +4019,16 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8f23d1ced251e436cbb2fecb35e85ef8, type: 2}
   m_IsPrefabParent: 0
+--- !u!82 &919476442 stripped
+AudioSource:
+  m_PrefabParentObject: {fileID: 82586514394011492, guid: 8f23d1ced251e436cbb2fecb35e85ef8,
+    type: 2}
+  m_PrefabInternal: {fileID: 919476441}
+--- !u!82 &919476443 stripped
+AudioSource:
+  m_PrefabParentObject: {fileID: 82236444733065696, guid: 8f23d1ced251e436cbb2fecb35e85ef8,
+    type: 2}
+  m_PrefabInternal: {fileID: 919476441}
 --- !u!1001 &920145899
 Prefab:
   m_ObjectHideFlags: 0
@@ -6634,6 +6649,11 @@ Prefab:
       propertyPath: wallJumpSound
       value: 
       objectReference: {fileID: 1714108174}
+    - target: {fileID: 114595082383274670, guid: a23ed95ca9fa94a11bf221e36145b7cc,
+        type: 2}
+      propertyPath: shiftSound
+      value: 
+      objectReference: {fileID: 919476442}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a23ed95ca9fa94a11bf221e36145b7cc, type: 2}
   m_IsPrefabParent: 0
