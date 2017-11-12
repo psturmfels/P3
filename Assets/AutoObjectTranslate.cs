@@ -7,6 +7,7 @@ using UnityEngine;
 public class AutoObjectTranslate : MonoBehaviour
 {
     private Transform selfTransform;
+    private Rigidbody2D selfRigidbody2D;
     private float traveledDistance = 0;                 //Keeps track of how far along its path this has moved
     private float pathDistance = 0;                     //Distance that the platform must travel.
     private float speed = 0;                            //Scalar speed
@@ -29,29 +30,35 @@ public class AutoObjectTranslate : MonoBehaviour
     {
         DisableEditorGrids();
         selfTransform = this.GetComponent<Transform>();
+        selfRigidbody2D = this.GetComponent<Rigidbody2D>();
         startingPosition = selfTransform.position;
         speed = originalVelocity;
         nextNode = nodes[0];
         previousNode = nodes[1];
         ComputePathDistance();
+        
     }
 
     private void FixedUpdate()
-    {
-        
+    {        
         UpdateNodes();
 
-        
         if(accelerationOffset < 1)
         {
             ComputeSpeed();
         }
-        
 
-        
         ComputeDisplacement();
-        
-        
+    }
+
+    private void OnEnable()
+    {
+        selfRigidbody2D.velocity = Vector3.Normalize(nextNode - previousNode) * speed;
+    }
+
+    private void OnDisable()
+    {
+        selfRigidbody2D.velocity = Vector3.zero;
     }
 
     //Make sure that editor grid components are disabled on this object and all children.
@@ -130,26 +137,19 @@ public class AutoObjectTranslate : MonoBehaviour
         }
     }
 
-    //Clamping is to prevent gradual offset over time.
+    //Clamping to prevent gradual offset over time.
     private void ComputeDisplacement()
     {
-        //Determine distance between two active nodes and also distance from previous node.
-        float distanceBetween = Vector3.Magnitude(nextNode - previousNode);
-        float distanceFromPrevious = Vector3.Magnitude(selfTransform.position - (previousNode + startingPosition));
+        selfRigidbody2D.velocity = Vector3.Normalize(nextNode - previousNode) * speed;
+        
+        float distanceToNext = Vector3.Magnitude(selfTransform.position - (nextNode + startingPosition));
+        if(distanceToNext <= (speed * Time.fixedDeltaTime))
+        {
+            selfTransform.position = startingPosition + nextNode;
+            selfRigidbody2D.velocity = Vector3.zero;
+        }
 
-        //Increment distance, and normalize for distance between two active nodes.
-        distanceFromPrevious += speed * Time.fixedDeltaTime;
-        float displacementFactor = Mathf.Clamp01(distanceFromPrevious / distanceBetween);
-
-        //Update distance from previous node
-        Vector3 displacementFromPrevious = (nextNode - previousNode) * displacementFactor;
-        Vector3 globalPosition = displacementFromPrevious + startingPosition + previousNode;
-
-        //Update distance traveled
-        traveledDistance += Vector3.Magnitude(globalPosition - selfTransform.position);
-
-        //Update the position of this object.
-        selfTransform.position = globalPosition;
+        traveledDistance += speed * Time.fixedDeltaTime;
     }
     
 }
