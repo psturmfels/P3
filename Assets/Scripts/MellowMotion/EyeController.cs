@@ -35,16 +35,16 @@ public class EyeController : MonoBehaviour {
             if (mellowMove.name == "BridgeMellowMove") {
                 targetMellow = GameObject.Find("StiltMellow").transform.position;
                 float horzAxis = im.GetCurrentHorzAxis();
-//                Debug.Log(originalPosition);
-//                if (horzAxis > 0) {
-//                    leftEye.Translate(new Vector3(3f, 0, 0));
-//                }
-//                else if (horzAxis < 0) {
-//                    transform.localPosition = originalPosition - new Vector3(3f, 0, 0);
-//                }
-//                else {
-//                    transform.localPosition = originalPosition;
-//                }
+                Debug.Log(horzAxis);
+                if (horzAxis > 0) {
+                    transform.localPosition = originalPosition + new Vector3(3f, 0, 0);
+                }
+                else if (horzAxis < 0) {
+                    transform.localPosition = originalPosition - new Vector3(3f, 0, 0);
+                }
+                else {
+                    transform.localPosition = originalPosition;
+                }
             }
             else {
                 targetMellow = GameObject.Find("BridgeMellow").transform.position;
