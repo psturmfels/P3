@@ -4,25 +4,30 @@ using UnityEngine;
 
 public class InputDirectional : MonoBehaviour {
 
-    public int playerID = 0;
+	private int playerID = 0;
     private PlayerDeviceManager deviceManager;
     private float deadZone = 0.2f;
     private PlayerActions controls;
 
     // Use this for initialization
-    void Start() {
-        //Find PlayerDeviceManager
+    void Awake () {
         deviceManager = GameObject.Find("PlayerDeviceManager").GetComponent<PlayerDeviceManager>();
-        if (deviceManager != null) {
-            controls = deviceManager.GetControls(playerID);
-        }
-    }
+		if (deviceManager != null)
+		{
+			controls = deviceManager.GetControls(playerID);
+		}
 
-    void EarlyUpdate() {
-        
+		if (GetComponentInParent<StateMachineForJack> () != null) {
+			playerID = GetComponentInParent<StateMachineForJack> ().GetPlayerID();
+		}
     }
 
     public float GetCurrentHorzAxis() {
+		if (deviceManager != null)
+		{
+			controls = deviceManager.GetControls(playerID);
+		}
+
         if (controls != null && Mathf.Abs(controls.Move.X) > deadZone) {
             return controls.Move.X;
         }
@@ -30,6 +35,11 @@ public class InputDirectional : MonoBehaviour {
     }
 
     public float GetCurrentVertAxis() {
+		if (deviceManager != null)
+		{
+			controls = deviceManager.GetControls(playerID);
+		}
+		
         if (controls != null && Mathf.Abs(controls.Move.Y) > deadZone) {
             return controls.Move.Y;
         }

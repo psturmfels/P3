@@ -30,21 +30,9 @@ public class EyeController : MonoBehaviour {
             lookingDirection = rb.velocity;
         }
         else {
-            InputDirectional im = GetComponent<InputDirectional>();
             Vector3 targetMellow = Vector3.zero;
             if (mellowMove.name == "BridgeMellowMove") {
                 targetMellow = GameObject.Find("StiltMellow").transform.position;
-                float horzAxis = im.GetCurrentHorzAxis();
-//                Debug.Log(horzAxis);
-                if (horzAxis > 0) {
-                    transform.localPosition = originalPosition + new Vector3(3f, 0, 0);
-                }
-                else if (horzAxis < 0) {
-                    transform.localPosition = originalPosition - new Vector3(3f, 0, 0);
-                }
-                else {
-                    transform.localPosition = originalPosition;
-                }
             }
             else {
                 targetMellow = GameObject.Find("BridgeMellow").transform.position;

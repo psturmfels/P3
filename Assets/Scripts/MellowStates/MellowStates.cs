@@ -24,7 +24,7 @@ public class MellowStates : MonoBehaviour {
 	public bool leftSideInContact = false;
 	public bool rightSideInContact = false;
 
-    public int playerID = 0;
+	public int playerID = 0;
 
 	private WallClingAnimate wca;
 
