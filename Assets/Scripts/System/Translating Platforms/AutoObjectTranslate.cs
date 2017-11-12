@@ -20,22 +20,30 @@ public class AutoObjectTranslate : MonoBehaviour
     public List<Vector3> nodes;             //Nodes are defined relative to the starting position of the platform.
 
     //Movement Parameters
-    public float originalVelocity = 1;      //Velocity of the platform
-    public float minimumVelocity = .5f;
-    public float accelerationOffset = 0;    //Between [0,1] Distance that the platform must be from its path midpoint
+    public float originalVelocity = 2;      //Velocity of the platform
+    public float minimumVelocity = .1f;
+    public float accelerationOffset = .5f;    //Between [0,1] Distance that the platform must be from its path midpoint
                                             //prior to experiencing acceleration.
 
 
     private void Awake()
     {
         DisableEditorGrids();
+
         selfTransform = this.GetComponent<Transform>();
         selfRigidbody2D = this.GetComponent<Rigidbody2D>();
+
+        EnforceRigidbodyConstraints();
+
         startingPosition = selfTransform.position;
         speed = originalVelocity;
         nextNode = nodes[0];
         previousNode = nodes[1];
+
+
+
         ComputePathDistance();
+
         
     }
 
@@ -140,16 +148,27 @@ public class AutoObjectTranslate : MonoBehaviour
     //Clamping to prevent gradual offset over time.
     private void ComputeDisplacement()
     {
-        selfRigidbody2D.velocity = Vector3.Normalize(nextNode - previousNode) * speed;
-        
         float distanceToNext = Vector3.Magnitude(selfTransform.position - (nextNode + startingPosition));
+        
         if(distanceToNext <= (speed * Time.fixedDeltaTime))
         {
-            selfTransform.position = startingPosition + nextNode;
             selfRigidbody2D.velocity = Vector3.zero;
+            selfTransform.position = startingPosition + nextNode;
+            return;
         }
 
+        selfRigidbody2D.velocity = Vector3.Normalize(nextNode - previousNode) * speed;
         traveledDistance += speed * Time.fixedDeltaTime;
+    }
+
+    private void EnforceRigidbodyConstraints()
+    {
+        selfRigidbody2D.bodyType = RigidbodyType2D.Dynamic;
+        selfRigidbody2D.mass = 100000;
+        selfRigidbody2D.gravityScale = 0;
+        selfRigidbody2D.drag = 0;
+        selfRigidbody2D.angularDrag = 0;
+        selfRigidbody2D.freezeRotation = true;
     }
     
 }
