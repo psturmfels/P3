@@ -24,7 +24,7 @@ public class StateMachineForJack : MonoBehaviour {
     private PlayerDeviceManager deviceManager;
     private MellowStates ms;
 	private Rigidbody2D rb;
-	private float reloadAfterTransformTime = 0.5f;
+	private float reloadAfterTransformTime = 0.75f;
 
     private int playerID = 0;
 
@@ -34,6 +34,10 @@ public class StateMachineForJack : MonoBehaviour {
 
 	public StateMachineForJack.State GetState() {
 		return currentState;
+	}
+
+	public int GetPlayerID () {
+		return playerID;
 	}
 
     void Start()

@@ -15,7 +15,6 @@ public class MellowCrushed : MonoBehaviour {
 	public event UnityAction Respawn;
 	public event UnityAction Remove;
 
-
 	private float removeDelay;
 	private StateMachineForJack stateMachine; 
 	private MoveAnimate ma;
