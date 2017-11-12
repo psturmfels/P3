@@ -1151,6 +1151,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 901b9351ca218a64b93be93885ee2a85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  traveledDistance: 0
+  pathDistance: 0
+  nodeDistance: 0
+  speed: 0
+  startingPosition: {x: 0, y: 0, z: 0}
+  previousNode: {x: 0, y: 0, z: 0}
+  nextNode: {x: 0, y: 0, z: 0}
+  nextIndex: 0
+  reverse: 1
   nodes:
   - {x: 0, y: 0, z: 0}
   - {x: -4, y: 0, z: 0}
@@ -1657,6 +1666,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 901b9351ca218a64b93be93885ee2a85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  traveledDistance: 0
+  pathDistance: 0
+  nodeDistance: 0
+  speed: 0
+  startingPosition: {x: 0, y: 0, z: 0}
+  previousNode: {x: 0, y: 0, z: 0}
+  nextNode: {x: 0, y: 0, z: 0}
+  nextIndex: 0
+  reverse: 1
   nodes:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: -4, z: 0}
@@ -4768,6 +4786,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 500cfe50b8959454db110cace07993ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stopped: 0
 --- !u!114 &1046367054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4792,6 +4811,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 901b9351ca218a64b93be93885ee2a85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  traveledDistance: 0
+  pathDistance: 0
+  nodeDistance: 0
+  speed: 0
+  startingPosition: {x: 0, y: 0, z: 0}
+  previousNode: {x: 0, y: 0, z: 0}
+  nextNode: {x: 0, y: 0, z: 0}
+  nextIndex: 0
+  reverse: 1
   nodes:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 6, z: 0}
@@ -5363,6 +5391,10 @@ Prefab:
       propertyPath: m_Name
       value: MidTranslator
       objectReference: {fileID: 0}
+    - target: {fileID: 1172216767780844, guid: 3879ed9024abc42e4ac16faf8006aaec, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3879ed9024abc42e4ac16faf8006aaec, type: 2}
   m_IsPrefabParent: 0
@@ -5387,6 +5419,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 901b9351ca218a64b93be93885ee2a85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  traveledDistance: 0
+  pathDistance: 0
+  nodeDistance: 0
+  speed: 0
+  startingPosition: {x: 0, y: 0, z: 0}
+  previousNode: {x: 0, y: 0, z: 0}
+  nextNode: {x: 0, y: 0, z: 0}
+  nextIndex: 0
+  reverse: 1
   nodes:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 6, z: 0}
@@ -5616,6 +5657,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 901b9351ca218a64b93be93885ee2a85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  traveledDistance: 0
+  pathDistance: 0
+  nodeDistance: 0
+  speed: 0
+  startingPosition: {x: 0, y: 0, z: 0}
+  previousNode: {x: 0, y: 0, z: 0}
+  nextNode: {x: 0, y: 0, z: 0}
+  nextIndex: 0
+  reverse: 1
   nodes:
   - {x: 0, y: 0, z: 0}
   - {x: -4, y: 0, z: 0}
@@ -8231,6 +8281,10 @@ Prefab:
       propertyPath: m_Name
       value: RightTranslator
       objectReference: {fileID: 0}
+    - target: {fileID: 1172216767780844, guid: 3879ed9024abc42e4ac16faf8006aaec, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3879ed9024abc42e4ac16faf8006aaec, type: 2}
   m_IsPrefabParent: 0
@@ -8255,6 +8309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 500cfe50b8959454db110cace07993ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stopped: 0
 --- !u!114 &1832507796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8266,6 +8321,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 901b9351ca218a64b93be93885ee2a85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  traveledDistance: 0
+  pathDistance: 0
+  nodeDistance: 0
+  speed: 0
+  startingPosition: {x: 0, y: 0, z: 0}
+  previousNode: {x: 0, y: 0, z: 0}
+  nextNode: {x: 0, y: 0, z: 0}
+  nextIndex: 0
+  reverse: 1
   nodes:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 6, z: 0}
@@ -9266,6 +9330,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 901b9351ca218a64b93be93885ee2a85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  traveledDistance: 0
+  pathDistance: 0
+  nodeDistance: 0
+  speed: 0
+  startingPosition: {x: 0, y: 0, z: 0}
+  previousNode: {x: 0, y: 0, z: 0}
+  nextNode: {x: 0, y: 0, z: 0}
+  nextIndex: 0
+  reverse: 1
   nodes:
   - {x: 0, y: 0, z: 0}
   - {x: 4, y: 0, z: 0}
@@ -9444,6 +9517,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 901b9351ca218a64b93be93885ee2a85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  traveledDistance: 0
+  pathDistance: 0
+  nodeDistance: 0
+  speed: 0
+  startingPosition: {x: 0, y: 0, z: 0}
+  previousNode: {x: 0, y: 0, z: 0}
+  nextNode: {x: 0, y: 0, z: 0}
+  nextIndex: 0
+  reverse: 1
   nodes:
   - {x: 0, y: 0, z: 0}
   - {x: 4, y: 0, z: 0}

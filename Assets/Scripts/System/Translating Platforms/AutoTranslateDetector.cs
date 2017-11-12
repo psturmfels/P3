@@ -6,7 +6,7 @@ using UnityEngine;
 public class AutoTranslateDetector : MonoBehaviour
 {
     private AutoObjectTranslate selfAutoObjectTranslate;
-    private bool stopped = false;
+    public bool stopped = false;
 
     private void Awake()
     {

@@ -8,14 +8,15 @@ public class AutoObjectTranslate : MonoBehaviour
 {
     private Transform selfTransform;
     private Rigidbody2D selfRigidbody2D;
-    private float traveledDistance = 0;                 //Keeps track of how far along its path this has moved
-    private float pathDistance = 0;                     //Distance that the platform must travel.
-    private float speed = 0;                            //Scalar speed
-    private Vector3 startingPosition = Vector3.zero;    //Starting position
-    private Vector3 previousNode = Vector3.zero;        //Last visted node
-    private Vector3 nextNode = Vector3.zero;            //Next node
-    private int nextIndex = 0;                          //Index of the next node
-    private bool reverse = true;                       //Whether the direciton of traversal has been reversed
+    public float traveledDistance = 0;                 //Keeps track of how far along its path this has moved
+    public float pathDistance = 0;                     //Distance that the platform must travel.
+    public float nodeDistance = 0;                     //Distance to be traveled until the next node.
+    public float speed = 0;                            //Scalar speed
+    public Vector3 startingPosition = Vector3.zero;    //Starting position
+    public Vector3 previousNode = Vector3.zero;        //Last visted node
+    public Vector3 nextNode = Vector3.zero;            //Next node
+    public int nextIndex = 0;                          //Index of the next node
+    public bool reverse = true;                       //Whether the direciton of traversal has been reversed
 
     public List<Vector3> nodes;             //Nodes are defined relative to the starting position of the platform.
 
@@ -48,7 +49,9 @@ public class AutoObjectTranslate : MonoBehaviour
     }
 
     private void FixedUpdate()
-    {        
+    {
+        traveledDistance += selfRigidbody2D.velocity.magnitude * Time.fixedDeltaTime;
+
         UpdateNodes();
 
         if(accelerationOffset < 1)
@@ -61,7 +64,7 @@ public class AutoObjectTranslate : MonoBehaviour
 
     private void OnEnable()
     {
-        selfRigidbody2D.velocity = Vector3.Normalize(nextNode - previousNode) * speed;
+        //selfRigidbody2D.velocity = Vector3.Normalize(nextNode - previousNode) * speed;
     }
 
     private void OnDisable()
@@ -142,6 +145,7 @@ public class AutoObjectTranslate : MonoBehaviour
             previousNode = nextNode;
             nextIndex += (reverse ? -1 : 1);
             nextNode = nodes[nextIndex];
+            nodeDistance = traveledDistance + Vector3.Distance(previousNode, nextNode);
         }
     }
 
@@ -149,16 +153,18 @@ public class AutoObjectTranslate : MonoBehaviour
     private void ComputeDisplacement()
     {
         float distanceToNext = Vector3.Magnitude(selfTransform.position - (nextNode + startingPosition));
+
+        Debug.Log(distanceToNext);
         
-        if(distanceToNext <= (speed * Time.fixedDeltaTime))
+        if(traveledDistance >= nodeDistance)
         {
             selfRigidbody2D.velocity = Vector3.zero;
             selfTransform.position = startingPosition + nextNode;
+            traveledDistance = nodeDistance;
             return;
         }
 
         selfRigidbody2D.velocity = Vector3.Normalize(nextNode - previousNode) * speed;
-        traveledDistance += speed * Time.fixedDeltaTime;
     }
 
     private void EnforceRigidbodyConstraints()
