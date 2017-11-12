@@ -9,7 +9,8 @@ public class LevelFinish : MonoBehaviour {
 	private int numUniqueMellowsFinished = 0;
 
     public GameObject finishPanel;
-
+    public AudioSource finishSound;
+    public AudioSource mainTheme;
     private GameObject firstPlayer;
 
     //void OnTriggerEnter2D(Collider2D other) {
@@ -59,6 +60,8 @@ public class LevelFinish : MonoBehaviour {
 			firstSmore.EnableChocolate ();
 			secondSmore.EnableChocolate ();
             finishPanel.SetActive(true);
+            mainTheme.Pause();
+            finishSound.Play();
         }
 	}
 
