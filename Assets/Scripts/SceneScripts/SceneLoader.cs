@@ -16,6 +16,7 @@ public class SceneLoader : MonoBehaviour {
         else {
             instance = this;
         }
+        Application.targetFrameRate = 30;
     }
 
     void Start() {
