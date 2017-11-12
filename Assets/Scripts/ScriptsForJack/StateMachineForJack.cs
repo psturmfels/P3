@@ -18,7 +18,7 @@ public class StateMachineForJack : MonoBehaviour {
 	public GameObject transformedObject;
 	public UnityAction InitiateTransformReload;
 	public UnityAction BeganInputTransform;
-
+    public AudioSource shiftSound;
 	public State currentState = State.Normal;
     private PlayerActions controls;
     private PlayerDeviceManager deviceManager;
@@ -73,7 +73,8 @@ public class StateMachineForJack : MonoBehaviour {
 		if (currentState != State.Normal) {
 			return;
 		}
-		BeganInputTransform ();
+        shiftSound.Play();
+        BeganInputTransform ();
 		EnableTransformedObject ();
 		if (transformedObject.GetComponent <TransformBehavior> () != null) {
 			transformedObject.GetComponent <TransformBehavior> ().StartTowardsTransform ();

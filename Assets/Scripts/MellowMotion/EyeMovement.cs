@@ -5,7 +5,7 @@ using UnityEngine;
 public class EyeMovement : MonoBehaviour {
 
     private Vector3 originalPosition;
-    private float dispFactor = 70f;
+    private float dispFactor = 20f;
     private float eyeMoveSpeed = 10f;
 
 	// Use this for initialization
@@ -16,7 +16,7 @@ public class EyeMovement : MonoBehaviour {
     public void LookAt(Vector3 direction) {
         if (direction.y < 0)
             direction.y = 0;
-        transform.localPosition = originalPosition + direction/dispFactor;
+        transform.localPosition = originalPosition + direction.normalized/dispFactor;
     }
 
     public void Translate(Vector3 position) {

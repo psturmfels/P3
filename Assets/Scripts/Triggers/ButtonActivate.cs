@@ -8,6 +8,9 @@ public class ButtonActivate : MonoBehaviour {
     public UnityAction OnButtonPress;
     public UnityAction OnButtonRelease;
 
+    public AudioSource buttonPressSound;
+    public AudioSource buttonUnpressSound;
+
 //    public GameObject TriggeredObject;
     public Sprite buttonUnpressedSprite;
     public Sprite buttonPressedSprite;
@@ -42,10 +45,12 @@ public class ButtonActivate : MonoBehaviour {
 
     private void ButtonPressed() {
         sr.sprite = buttonPressedSprite;
+        buttonPressSound.Play();
     }
 
     private void ButtonReleased() {
         sr.sprite = buttonUnpressedSprite;
+        buttonUnpressSound.Play();
     }
 
 

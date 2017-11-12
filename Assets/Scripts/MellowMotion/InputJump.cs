@@ -11,7 +11,7 @@ public class InputJump : MonoBehaviour {
 	public float timeBetweenJumpSprites;
 
 	public event UnityAction DidJump;
-
+    public AudioSource jumpSound;
 	private float jumpForceModifier = 1.0f;
 	private float jumpDelay = 0.0f;
 	private Rigidbody2D rb;
@@ -56,6 +56,8 @@ public class InputJump : MonoBehaviour {
 		shouldCountFrames = false;
 		framesCountedInput = 0;
 		framesCountedTotal = 0;
+
+        jumpSound.Play();
 
 		ms.canJump = false;
 		ms.canWallJumpLeft = false;

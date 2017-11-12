@@ -15,6 +15,8 @@ public class MellowCrushed : MonoBehaviour {
 	public event UnityAction Respawn;
 	public event UnityAction Remove;
 
+    public AudioSource deathSound;
+    public AudioSource spawnSound;
 	private float removeDelay;
 	private StateMachineForJack stateMachine; 
 	private MoveAnimate ma;
@@ -59,6 +61,8 @@ public class MellowCrushed : MonoBehaviour {
 		ma.InterruptMovementAnimation (crushSprites, timeBetweenCrushSprites);
 
 		yield return new WaitForSeconds (removeDelay);
+
+        deathSound.Play();
 
 		ma.DisableRenderer ();
 		if (deathExplosion != null) {
@@ -148,7 +152,7 @@ public class MellowCrushed : MonoBehaviour {
 
 	void RespawnSelf() {
 		Respawn ();
-
+        spawnSound.Play();
 		StartCoroutine (FadeAndScaleIn ());
 	}
 
