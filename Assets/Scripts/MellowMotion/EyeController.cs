@@ -7,6 +7,8 @@ public class EyeController : MonoBehaviour {
     public EyeMovement leftEye;
     public EyeMovement rightEye;
 
+    private Transform face;
+    private FaceMoveWhenTransformed fmwt;
     private MellowCrushed mellowCrushed;
     private Rigidbody2D rb;
     private Vector3 originalPosition;
@@ -14,6 +16,8 @@ public class EyeController : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
+        face = GetComponentInParent<Transform>();
+        fmwt = GetComponentInParent<FaceMoveWhenTransformed>();
         rb = GetComponentInParent<Rigidbody2D>();
         Invoke("Blink", 4.0f + Random.Range(0f, 4f));
         mellowCrushed = mellowMove.GetComponentInParent<MellowCrushed>();
@@ -30,14 +34,29 @@ public class EyeController : MonoBehaviour {
             lookingDirection = rb.velocity;
         }
         else {
-            Vector3 targetMellow = Vector3.zero;
-            if (mellowMove.name == "BridgeMellowMove") {
-                targetMellow = GameObject.Find("StiltMellow").transform.position;
+            if (fmwt.offsetAxis == Vector2.right) {
+                if (transform.parent.localPosition.x > 0) {
+                    Debug.Log("Looking right");
+                    lookingDirection = Vector3.right;
+                }
+                else if (transform.parent.localPosition.x < 0) {
+                    lookingDirection = Vector3.left;
+                }
+                else {
+                    lookingDirection = Vector3.zero;
+                }
             }
-            else {
-                targetMellow = GameObject.Find("BridgeMellow").transform.position;
+            else if (fmwt.offsetAxis == Vector2.up) {
+                if (transform.parent.localPosition.y > 0) {
+                    lookingDirection = Vector3.up;
+                }
+                else if (transform.parent.localPosition.y < 0) {
+                    lookingDirection = Vector3.down;
+                }
+                else {
+                    lookingDirection = Vector3.zero;
+                }
             }
-            lookingDirection = targetMellow - transform.position;
         }
         leftEye.LookAt(lookingDirection);
         rightEye.LookAt(lookingDirection);
