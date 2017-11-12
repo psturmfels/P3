@@ -3,20 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerFitCheck : MonoBehaviour {
-
-//    private BoxCollider2D bc;
     private int numOfCollisions = 0;
     private bool playerFits = true;
 
-	// Use this for initialization
-	void Start () {
-//	    bc = GetComponent<BoxCollider2D>();
-	}
-
     public bool playerCanFit() {
-//        if (numOfCollisions != 0) {
-//            Debug.Log(gameObject.name + "is in ground");
-//        }
         return numOfCollisions == 0;
     }
 
