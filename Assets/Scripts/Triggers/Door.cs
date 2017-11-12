@@ -16,15 +16,19 @@ public class Door : MonoBehaviour {
             if (t.GetComponent<ButtonActivate>() != null)
             {
                 ButtonActivate ba = t.GetComponent<ButtonActivate>();
-                ba.OnButtonPress += TriggerPressed;
-                ba.OnButtonRelease += TriggerReleased;
+				if (ba != null) {
+					ba.OnButtonPress += TriggerPressed;
+					ba.OnButtonRelease += TriggerReleased;
+				}
             }
             else if (t.GetComponent<SwitchLatch>() != null) {
                 SwitchLatch sl = t.GetComponent<SwitchLatch>();
-				if (DefaultActive) {
-					sl.OnSwitchTrigger += LatchSwitched;
-				} else {
-					sl.OnSwitchTrigger += TriggerPressed;
+				if (sl != null) {
+					if (DefaultActive) {
+						sl.OnSwitchTrigger += LatchSwitched;
+					} else {
+						sl.OnSwitchTrigger += TriggerPressed;
+					}
 				}
             }
         }
@@ -42,7 +46,9 @@ public class Door : MonoBehaviour {
 		foreach (Transform child in transform)
 		{
 			FadeOutAndDie foad = child.gameObject.GetComponent<FadeOutAndDie> ();
-			foad.StartFadeOut ();
+			if (foad != null) {
+				foad.StartFadeOut ();
+			}
 		}
 	}
 
@@ -83,9 +89,11 @@ public class Door : MonoBehaviour {
         foreach (Transform child in transform)
         {
             SpriteRenderer sr = child.gameObject.GetComponent<SpriteRenderer>();
-            Color color = sr.color;
-            color.a = alpha;
-            sr.color = color;
+			if (sr != null) {
+				Color color = sr.color;
+				color.a = alpha;
+				sr.color = color;
+			}
         }
     }
 
@@ -94,7 +102,9 @@ public class Door : MonoBehaviour {
         foreach (Transform child in transform)
         {
             BoxCollider2D bc = child.gameObject.GetComponent<BoxCollider2D>();
-            bc.enabled = doorlocked;
+			if (bc != null) {
+				bc.enabled = doorlocked;
+			}
         }
     }
 }
