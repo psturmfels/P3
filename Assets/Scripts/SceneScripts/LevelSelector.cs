@@ -19,7 +19,9 @@ public class LevelSelector : MonoBehaviour {
 	void Update () {
         p1Controls = deviceManager.GetControls(0);
         p2Controls = deviceManager.GetControls(1);
-        if (p1Controls.Jump.WasPressed || p2Controls.Jump.WasPressed) {
+		
+		if ((p1Controls != null && p1Controls.Jump.WasPressed) || 
+			(p2Controls != null && p2Controls.Jump.WasPressed)) {
 	        Button btn = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
             btn.onClick.Invoke();
 	    }

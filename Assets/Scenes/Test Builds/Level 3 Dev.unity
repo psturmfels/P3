@@ -42,7 +42,7 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 11
+  serializedVersion: 9
   m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
@@ -54,7 +54,7 @@ LightmapSettings:
     m_EnableBakedLightmaps: 0
     m_EnableRealtimeLightmaps: 0
   m_LightmapEditorSettings:
-    serializedVersion: 9
+    serializedVersion: 8
     m_Resolution: 2
     m_BakeResolution: 40
     m_TextureWidth: 1024
@@ -77,17 +77,19 @@ LightmapSettings:
     m_PVRDirectSampleCount: 32
     m_PVRSampleCount: 500
     m_PVRBounces: 2
-    m_PVRFiltering: 0
+    m_PVRFilterTypeDirect: 0
+    m_PVRFilterTypeIndirect: 0
+    m_PVRFilterTypeAO: 0
     m_PVRFilteringMode: 1
     m_PVRCulling: 1
     m_PVRFilteringGaussRadiusDirect: 1
     m_PVRFilteringGaussRadiusIndirect: 5
     m_PVRFilteringGaussRadiusAO: 2
-    m_PVRFilteringAtrousColorSigma: 1
-    m_PVRFilteringAtrousNormalSigma: 1
-    m_PVRFilteringAtrousPositionSigma: 1
+    m_PVRFilteringAtrousPositionSigmaDirect: 0.5
+    m_PVRFilteringAtrousPositionSigmaIndirect: 2
+    m_PVRFilteringAtrousPositionSigmaAO: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_ShadowMaskMode: 2
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1209,7 +1211,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &260783139
 GameObject:
   m_ObjectHideFlags: 0
@@ -1283,58 +1284,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
---- !u!1001 &276813911
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 565138467}
-    m_Modifications:
-    - target: {fileID: 4382663274102944, guid: 592cadb6d61244633ab39679c2c31548, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 1.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 4382663274102944, guid: 592cadb6d61244633ab39679c2c31548, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4382663274102944, guid: 592cadb6d61244633ab39679c2c31548, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4382663274102944, guid: 592cadb6d61244633ab39679c2c31548, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4382663274102944, guid: 592cadb6d61244633ab39679c2c31548, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4382663274102944, guid: 592cadb6d61244633ab39679c2c31548, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4382663274102944, guid: 592cadb6d61244633ab39679c2c31548, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4382663274102944, guid: 592cadb6d61244633ab39679c2c31548, type: 2}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1576960229869986, guid: 592cadb6d61244633ab39679c2c31548, type: 2}
-      propertyPath: m_Name
-      value: BackgroundPanelParallax1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 592cadb6d61244633ab39679c2c31548, type: 2}
-  m_IsPrefabParent: 0
---- !u!4 &276813912 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4382663274102944, guid: 592cadb6d61244633ab39679c2c31548,
-    type: 2}
-  m_PrefabInternal: {fileID: 276813911}
 --- !u!1001 &279974403
 Prefab:
   m_ObjectHideFlags: 0
@@ -1585,7 +1534,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &407199828
 Prefab:
   m_ObjectHideFlags: 0
@@ -1930,7 +1878,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &504084145
 Prefab:
   m_ObjectHideFlags: 0
@@ -2206,8 +2153,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 276813912}
-  - {fileID: 605103157}
+  - {fileID: 2027235955}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2412,57 +2358,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 348d74df819e7428fbdf1ae76a83a895, type: 2}
   m_IsPrefabParent: 0
---- !u!1001 &605103156
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 565138467}
-    m_Modifications:
-    - target: {fileID: 4382663274102944, guid: 592cadb6d61244633ab39679c2c31548, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 83.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4382663274102944, guid: 592cadb6d61244633ab39679c2c31548, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4382663274102944, guid: 592cadb6d61244633ab39679c2c31548, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4382663274102944, guid: 592cadb6d61244633ab39679c2c31548, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4382663274102944, guid: 592cadb6d61244633ab39679c2c31548, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4382663274102944, guid: 592cadb6d61244633ab39679c2c31548, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4382663274102944, guid: 592cadb6d61244633ab39679c2c31548, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4382663274102944, guid: 592cadb6d61244633ab39679c2c31548, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1576960229869986, guid: 592cadb6d61244633ab39679c2c31548, type: 2}
-      propertyPath: m_Name
-      value: BackgroundPanelParallax2
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 592cadb6d61244633ab39679c2c31548, type: 2}
-  m_IsPrefabParent: 0
---- !u!4 &605103157 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4382663274102944, guid: 592cadb6d61244633ab39679c2c31548,
-    type: 2}
-  m_PrefabInternal: {fileID: 605103156}
 --- !u!1001 &621845692
 Prefab:
   m_ObjectHideFlags: 0
@@ -2875,7 +2770,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &740250357
 Prefab:
   m_ObjectHideFlags: 0
@@ -3315,7 +3209,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &843798947
 GameObject:
   m_ObjectHideFlags: 0
@@ -3452,7 +3345,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &855941161
 Prefab:
   m_ObjectHideFlags: 0
@@ -3604,7 +3496,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &916916320
 Prefab:
   m_ObjectHideFlags: 0
@@ -3792,7 +3683,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &917474179
 Prefab:
   m_ObjectHideFlags: 0
@@ -4378,7 +4268,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &1044372883
 GameObject:
   m_ObjectHideFlags: 0
@@ -4572,7 +4461,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &1107766080
 Prefab:
   m_ObjectHideFlags: 0
@@ -5430,7 +5318,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &1331741325
 Prefab:
   m_ObjectHideFlags: 0
@@ -5592,7 +5479,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &1341111608
 Prefab:
   m_ObjectHideFlags: 0
@@ -5976,7 +5862,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &1406619130
 Prefab:
   m_ObjectHideFlags: 0
@@ -6936,7 +6821,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &1631944264
 Prefab:
   m_ObjectHideFlags: 0
@@ -7739,7 +7623,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!82 &1833081947 stripped
 AudioSource:
   m_PrefabParentObject: {fileID: 82369719562595184, guid: 8f23d1ced251e436cbb2fecb35e85ef8,
@@ -8357,7 +8240,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &1957163618
 Prefab:
   m_ObjectHideFlags: 0
@@ -8509,7 +8391,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &1985973179
 Prefab:
   m_ObjectHideFlags: 0
@@ -8734,6 +8615,53 @@ Transform:
   m_PrefabParentObject: {fileID: 4017637054202978, guid: 0075903777fd64ab9a6c48a54ae4b9b1,
     type: 2}
   m_PrefabInternal: {fileID: 2021267601}
+--- !u!1001 &2027235954
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 565138467}
+    m_Modifications:
+    - target: {fileID: 4416408660140082, guid: cdfd13a56aed545b1b855c5db87df5fc, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4416408660140082, guid: cdfd13a56aed545b1b855c5db87df5fc, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -2.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4416408660140082, guid: cdfd13a56aed545b1b855c5db87df5fc, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4416408660140082, guid: cdfd13a56aed545b1b855c5db87df5fc, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4416408660140082, guid: cdfd13a56aed545b1b855c5db87df5fc, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4416408660140082, guid: cdfd13a56aed545b1b855c5db87df5fc, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4416408660140082, guid: cdfd13a56aed545b1b855c5db87df5fc, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4416408660140082, guid: cdfd13a56aed545b1b855c5db87df5fc, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: cdfd13a56aed545b1b855c5db87df5fc, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &2027235955 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4416408660140082, guid: cdfd13a56aed545b1b855c5db87df5fc,
+    type: 2}
+  m_PrefabInternal: {fileID: 2027235954}
 --- !u!1001 &2051078395
 Prefab:
   m_ObjectHideFlags: 0
@@ -8932,7 +8860,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &2104682905
 Prefab:
   m_ObjectHideFlags: 0
@@ -9080,7 +9007,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &2132552930
 Prefab:
   m_ObjectHideFlags: 0
