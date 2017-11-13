@@ -6,7 +6,7 @@ public class PlayerDeathOnContact : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-		if ((other.CompareTag("Player") || other.CompareTag("StiltCollider") || other.CompareTag("BridgeCollider"))
+		if ((other.GetComponent<MellowStates> () != null || other.GetComponent <TransformBehavior> () != null)
 			&& other.gameObject.GetComponentInParent<MellowCrushed>() != null)
 		{
             other.gameObject.GetComponentInParent<MellowCrushed>().StartDie();
