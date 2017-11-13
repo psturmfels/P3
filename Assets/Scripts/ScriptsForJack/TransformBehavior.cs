@@ -30,6 +30,7 @@ public class TransformBehavior: MonoBehaviour {
 	private bool isGoingToTransform = false;
 	private bool shouldSlideFromReject = false;
 	private bool isCanceling = false;
+	private bool isDying = false;
 
 	void Awake () {
 		id = GetComponent<InputDirectional> ();
@@ -120,6 +121,7 @@ public class TransformBehavior: MonoBehaviour {
 			ReachedNormal ();
 		}
 		isCanceling = false;
+		isDying = false;
 	}
 
 	IEnumerator LerpToTransformScale() {
@@ -140,7 +142,7 @@ public class TransformBehavior: MonoBehaviour {
 	}
 
 	public void LerpFromRejectInDirection(float signOfReject) {
-		if (!isGoingToTransform || isCanceling) {
+		if (!isGoingToTransform || isCanceling || isDying) {
 			return;
 		}
 
@@ -155,6 +157,7 @@ public class TransformBehavior: MonoBehaviour {
 			StopAllCoroutines ();
 		}
 		isTransforming = true; 
+		isDying = true;
 		parentStateMachine.SetState (StateMachineForJack.State.Disabled);
 		StartCoroutine (LerpToNormalScale (true));
 	}

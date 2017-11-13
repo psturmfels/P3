@@ -46,7 +46,7 @@ public class Door : MonoBehaviour {
 		foreach (Transform child in transform)
 		{
 			FadeOutAndDie foad = child.gameObject.GetComponent<FadeOutAndDie> ();
-			if (foad != null) {
+			if (foad != null && child.gameObject.activeSelf) {
 				foad.StartFadeOut ();
 			}
 		}
