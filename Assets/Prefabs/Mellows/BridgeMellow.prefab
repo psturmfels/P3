@@ -212,6 +212,7 @@ GameObject:
   - component: {fileID: 50747821420958582}
   - component: {fileID: 61180702440271184}
   - component: {fileID: 114390649792592030}
+  - component: {fileID: 114016388573579288}
   m_Layer: 12
   m_Name: BottomCollider
   m_TagString: BridgeCollider
@@ -898,7 +899,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 3
-  m_Material: {fileID: 6200000, guid: 7ec96ddf0aa9141e9a252c279f76a8a5, type: 2}
+  m_Material: {fileID: 6200000, guid: 25a8e6ab4de64472cabee070d624befc, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -1111,7 +1112,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1623707715409482}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 7ec96ddf0aa9141e9a252c279f76a8a5, type: 2}
+  m_Material: {fileID: 6200000, guid: 25a8e6ab4de64472cabee070d624befc, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -1302,6 +1303,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114016388573579288
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1386989851272872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f3a740f8eed54ddfb8e3d2de30da5c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114057482735137370
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1759,7 +1771,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!212 &212117717161406398
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -1801,7 +1812,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!212 &212135938618764166
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -1843,7 +1853,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!212 &212218927758843862
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -1885,7 +1894,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!212 &212721819001636930
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -1927,7 +1935,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!212 &212775623570768712
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -1969,7 +1976,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!212 &212779348013721142
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -2011,7 +2017,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!212 &212809695614738910
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -2053,7 +2058,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!212 &212813407084666574
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -2095,4 +2099,3 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0

@@ -152,10 +152,7 @@ public class AutoObjectTranslate : MonoBehaviour
     //Clamping to prevent gradual offset over time.
     private void ComputeDisplacement()
     {
-        float distanceToNext = Vector3.Magnitude(selfTransform.position - (nextNode + startingPosition));
-
-        Debug.Log(distanceToNext);
-        
+        float distanceToNext = Vector3.Magnitude(selfTransform.position - (nextNode + startingPosition));        
         if(traveledDistance >= nodeDistance)
         {
             selfRigidbody2D.velocity = Vector3.zero;
