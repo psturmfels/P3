@@ -8,7 +8,6 @@ public class RejectColliderInside : MonoBehaviour {
 	private Vector3 oppositeVector;
 	private TransformBehavior tb;
 	private Transform grandparentTransform;
-	private int maxIterations = 3;
 
 	void Awake() {
 		parentCollider = transform.parent.GetComponent<BoxCollider2D> ();
@@ -28,27 +27,10 @@ public class RejectColliderInside : MonoBehaviour {
 		if (tb == null || grandparentTransform == null || parentCollider == null) {
 			return;
 		}
-		if (!tb.IsTransforming ()) {
-			return;
-		}
-		if ((other.CompareTag ("Ground") || other.CompareTag("Player")) && 
-			transform.parent != null && parentCollider != null) {
-			grandparentTransform.position += 0.1f * rejectVector;
-
-			int numIterations = 0;
-			if (other.GetComponent<BoxCollider2D> () != null) {
-				BoxCollider2D otherColl = other.GetComponent<BoxCollider2D> ();
-				while (otherColl.IsTouching(parentCollider) && numIterations < maxIterations) {					
-					grandparentTransform.position += 0.1f * rejectVector;
-					numIterations += 1;
-				}
-			} else if (other.GetComponent<PolygonCollider2D> () != null) {
-				PolygonCollider2D otherColl = other.GetComponent<PolygonCollider2D> ();
-				while (otherColl.IsTouching(parentCollider) && numIterations < maxIterations) {
-					grandparentTransform.position += 0.1f * rejectVector;
-					numIterations += 1; 
-				}
-			}
+		if (Mathf.Abs (rejectVector.x) > 0.0f) {
+			tb.LerpFromRejectInDirection (rejectVector.x * 0.45f);
+		} else if (Mathf.Abs (rejectVector.y) > 0.0f) {
+			tb.LerpFromRejectInDirection (rejectVector.y * 0.45f);
 		}
 	}
 }

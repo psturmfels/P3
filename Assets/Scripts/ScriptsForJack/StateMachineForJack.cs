@@ -107,11 +107,18 @@ public class StateMachineForJack : MonoBehaviour {
 		transformedObject.SetActive (true);
 		rb.velocity = Vector2.zero;
 		rb.gravityScale = 0.0f;
+		if (gameObject.name.Contains ("Stilt")) {
+			rb.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionX;
+		} else if (gameObject.name.Contains("Bridge")) {
+			rb.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionY;
+		}
+
 	}
 
 	void ReachedFullTransform () {
 	    rb.velocity = Vector2.zero;
 		rb.isKinematic = true;
+		rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 	}
 
 	void EnableMovementObject() {
@@ -120,6 +127,7 @@ public class StateMachineForJack : MonoBehaviour {
 		rb.isKinematic = false;
 		rb.gravityScale = 3.0f; 
 		rb.velocity = Vector2.zero;
+		rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 	}
 
 	void ReachedDeath() {

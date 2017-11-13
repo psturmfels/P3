@@ -26,6 +26,10 @@ public class TransformBehavior: MonoBehaviour {
     public Vector3 slideOffset = new Vector3(1.0f, 0, 0);
     private Vector3 transformedFrom;
     private Vector3 target;
+	private Vector3 targetOffset;
+	private bool isGoingToTransform = false;
+	private bool shouldSlideFromReject = false;
+	private bool isCanceling = false;
 
 	void Awake () {
 		id = GetComponent<InputDirectional> ();
@@ -70,11 +74,8 @@ public class TransformBehavior: MonoBehaviour {
 			ResetCancelChecks ();
 			StopAllCoroutines ();
 			WasCanceled ();
+			isCanceling = true;
 		}
-	}
-
-	void IsNotTransforming() {
-		isTransforming = false;
 	}
 
 	void ScaleToTransform () {
@@ -83,7 +84,7 @@ public class TransformBehavior: MonoBehaviour {
 		}
 		isTransforming = true;
 		parentStateMachine.SetState (StateMachineForJack.State.InTransition);
-        transformedFrom = transform.position;
+		transformedFrom = transform.parent.position;
         UpdateTargetPosition(true);
         StartCoroutine(LerpToTransformScale());
     }
@@ -118,20 +119,35 @@ public class TransformBehavior: MonoBehaviour {
 		} else {
 			ReachedNormal ();
 		}
+		isCanceling = false;
 	}
 
 	IEnumerator LerpToTransformScale() {
+		isGoingToTransform = true;
 		float transformIterations = Vector3.Distance (transform.localScale, transformScale) / transformSpeed;
 		float moveLerpSpeed = Vector3.Distance (transform.parent.position, target) / transformIterations;
 
         while (transform.localScale != transformScale) {
 			transform.localScale = Vector3.MoveTowards(transform.localScale, transformScale, transformSpeed);
-            if (canSlide) {
+			if (canSlide || shouldSlideFromReject) {
 				transform.parent.position = Vector3.MoveTowards(transform.parent.position, target, moveLerpSpeed);
             }
             yield return null;
 		}
 		ReachedTransform ();
+		isGoingToTransform = false;
+		shouldSlideFromReject = false;
+	}
+
+	public void LerpFromRejectInDirection(float signOfReject) {
+		if (!isGoingToTransform || isCanceling) {
+			return;
+		}
+
+		StopAllCoroutines ();
+		target = transform.parent.position + slideOffset * signOfReject;
+		shouldSlideFromReject = true;
+		StartCoroutine (LerpToTransformScale ());
 	}
 
     public void TransformIntoDeath() {
@@ -148,30 +164,30 @@ public class TransformBehavior: MonoBehaviour {
 			return;
 		}
         
-		if (gameObject.name == "BridgeMellowTransformed") {
-            BridgeTargetPositionUpdate(transforming);
-        }
-        else {
-            StiltTargetPositionUpdate(transforming);
-        }
+		TargetPositionUpdate (transforming);
     }
 
-    private void BridgeTargetPositionUpdate(bool transforming) {
-        float horzAxis = id.GetCurrentHorzAxis();
-        if (horzAxis < 0) {
+    private void TargetPositionUpdate(bool transforming) {
+		float axis = 0.0f;
+		if (slideOffset.normalized == Vector3.right) {
+			axis = id.GetCurrentHorzAxis ();
+		} else {
+			axis = id.GetCurrentVertAxis ();
+		}
+		if (axis < 0) {
             if (!transforming && !PlayerFitsAt(2)) { // Collider check for left side
                 target = transformedFrom;
             }
             else {
-                target = transform.position - new Vector3(3.3f, 0, 0);
+				target = transform.parent.position - slideOffset;
             }
         }
-        else if (horzAxis > 0) {
+		else if (axis > 0) {
             if (!transforming && !PlayerFitsAt(3)) { // Collider check for right side
                 target = transformedFrom;
             }
             else {
-                target = transform.position + new Vector3(3.3f, 0, 0);
+				target = transform.parent.position + slideOffset;
             }
         }
         else {
@@ -179,35 +195,7 @@ public class TransformBehavior: MonoBehaviour {
                 target = transformedFrom;
             }
             else {
-                target = transform.position;
-            }
-        }
-    }
-
-    private void StiltTargetPositionUpdate(bool transforming) {
-        float vertAxis = id.GetCurrentVertAxis();
-        if (vertAxis > 0) {
-            if (!transforming && !PlayerFitsAt(2)) { // Collider check for top side
-                target = transformedFrom;
-            }
-            else {
-                target = transform.position + new Vector3(0, 3.1f, 0);
-            }
-        }
-        else if (vertAxis < 0) {
-            if (!transforming && !PlayerFitsAt(3)) { // Collider check for bottom side
-                target = transformedFrom;
-            }
-            else {
-                target = transform.position - new Vector3(0, 3.1f, 0);
-            }
-        }
-        else {
-            if (!transforming && !PlayerFitsAt(4)) { // Collider check for middle side
-                target = transformedFrom;
-            }
-            else {
-                target = transform.position;
+				target = transform.parent.position;
             }
         }
     }
