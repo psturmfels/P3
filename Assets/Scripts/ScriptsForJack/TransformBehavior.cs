@@ -147,9 +147,6 @@ public class TransformBehavior: MonoBehaviour {
 		if (id == null) {
 			return;
 		}
-		if (id != null) {
-			Debug.Log ("Horizontal: " + id.GetCurrentHorzAxis ().ToString() + " Vertical: " + id.GetCurrentVertAxis ().ToString ());
-		}
         
 		if (gameObject.name == "BridgeMellowTransformed") {
             BridgeTargetPositionUpdate(transforming);
