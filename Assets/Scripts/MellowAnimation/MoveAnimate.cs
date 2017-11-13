@@ -11,8 +11,6 @@ public class MoveAnimate : MonoBehaviour {
 	private InputMove im;
 	private SpriteRenderer sr;
 	private Sprite[] interruptSprites;
-	private float timeBetweenInterruptSprites = 0.0f;
-	private int currentInterruptIndex = 0;
 
 	public void ReturnMovementAnimation() {
 		sr.enabled = true;
@@ -30,25 +28,26 @@ public class MoveAnimate : MonoBehaviour {
 		sr.enabled = false;
 	}
 
-	public void InterruptMovementAnimation(Sprite[] newInterruptSprites, float timeBetweenSprites) {
+	public void InterruptMovementAnimation(Sprite[] newInterruptSprites, float timeBetweenSprites, bool trackMovementOnComplete = true) {
 		CancelInvoke ();
 		interruptSprites = newInterruptSprites;
 		trackMovement = false;
-		timeBetweenInterruptSprites = timeBetweenSprites;
-		currentInterruptIndex = 0;
-		CycleInterruptSprites ();
+		StartCoroutine (CycleInterruptSprites (trackMovementOnComplete, timeBetweenSprites));
 	}
 
-	void CycleInterruptSprites() {
-		if (currentInterruptIndex == interruptSprites.Length) {
-			trackMovement = true;
-			currentInterruptIndex = 0;
-			return;
+
+	IEnumerator CycleInterruptSprites(bool trackMovementOnComplete, float timeBetweenSprites) {
+		int currentInterruptIndex = 0;
+
+		while (currentInterruptIndex < interruptSprites.Length) {
+			sr.sprite = interruptSprites [currentInterruptIndex];
+			currentInterruptIndex += 1;
+			yield return new WaitForSeconds (timeBetweenSprites);
 		}
 
-		sr.sprite = interruptSprites [currentInterruptIndex];
-		currentInterruptIndex += 1;
-		Invoke ("CycleInterruptSprites", timeBetweenInterruptSprites);
+		if (trackMovementOnComplete) {
+			trackMovement = true;
+		}
 	}
 
 	void Start () {
