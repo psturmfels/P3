@@ -66,7 +66,7 @@ public class LevelFinish : MonoBehaviour {
 	}
 
     private void BackToMenu() {
-        SceneLoader.instance.LoadMenu();
+        SceneLoader.instance.LoadNextLevel();
     }
 
 }

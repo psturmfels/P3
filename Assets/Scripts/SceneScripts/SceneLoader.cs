@@ -9,6 +9,8 @@ public class SceneLoader : MonoBehaviour {
 
     private PlayerActions controllerActions;
     private PlayerActions keyboardActions;
+    private List<string> levels = new List<string>();
+    private int currentLevel;
 
     void Awake() {
         if (instance != null)
@@ -17,11 +19,24 @@ public class SceneLoader : MonoBehaviour {
             instance = this;
         }
         Application.targetFrameRate = 30;
+
+        levels.Add("Level Select Menu"); //this will eventually become hub
+        levels.Add("gs_Level_1");
+        levels.Add("gs_Level_2");
+        levels.Add("Level 3 Dev");
+        levels.Add("Level 4 Dev");
+        levels.Add("Level5_dev");
+        levels.Add("Level6_dev");
+        levels.Add("Level 7 Dev");
+        levels.Add("Level Select Menu"); //TODO: fill with level 8
+        levels.Add("Level Select Menu"); //what do we do about this? return to hub?
     }
 
     void Start() {
         controllerActions = PlayerActions.CreateWithControllerBindings();
         keyboardActions = PlayerActions.CreateWithKeyboardBindings();
+
+        currentLevel = levels.IndexOf(SceneManager.GetActiveScene().name);
     }
 
     // Update is called once per frame
@@ -36,7 +51,12 @@ public class SceneLoader : MonoBehaviour {
     public void LoadLevel(string levelNumber) {
         int level = 0;
         int.TryParse(levelNumber, out level);
-        SceneManager.LoadScene(level);
+        var scenes = SceneManager.GetAllScenes();
+        SceneManager.LoadScene(levels[level]);
+    }
+
+    public void LoadNextLevel() {
+        SceneManager.LoadScene(levels[currentLevel + 1]);
     }
 
     public void LoadMenu() {
