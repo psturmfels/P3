@@ -21,13 +21,20 @@ public class LevelFinish : MonoBehaviour {
     //        }
     //        else if (other.gameObject != firstPlayer) {
     //            secondFlag.sprite = greenFlagSprite;
-                
+
     //            Invoke("BackToMenu", 3.0f);
     //        }
     //    }
     //}
 
-	void Start() {
+    private void Awake()
+    {
+        var cam = GameObject.Find("GameCamera");
+        mainTheme = cam.GetComponent<AudioSource>();
+        finishSound = cam.transform.Find("SFX").Find("Finish").GetComponent<AudioSource>();
+    }
+
+    void Start() {
 		EnableChocolateOnTrigger[] smores = GetComponentsInChildren<EnableChocolateOnTrigger> ();
 		if (smores.Length == 2) {
 			firstSmore = smores [0];
