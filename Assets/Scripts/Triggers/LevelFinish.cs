@@ -29,9 +29,12 @@ public class LevelFinish : MonoBehaviour {
 
     private void Awake()
     {
-        var cam = GameObject.Find("GameCamera");
-        mainTheme = cam.GetComponent<AudioSource>();
-        finishSound = cam.transform.Find("SFX").Find("Finish").GetComponent<AudioSource>();
+        if (mainTheme == null || finishSound == null) {
+            var cam = GameObject.Find("GameCamera");
+            mainTheme = cam.GetComponent<AudioSource>();
+            finishSound = cam.transform.Find("SFX").Find("Finish").GetComponent<AudioSource>();
+        }
+        
     }
 
     void Start() {
