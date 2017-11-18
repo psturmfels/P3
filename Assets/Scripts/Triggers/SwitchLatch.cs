@@ -16,6 +16,12 @@ public class SwitchLatch : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 	    sr = GetComponent<SpriteRenderer>();
+
+        if (leverSound == null)
+        {
+            leverSound = GameObject.Find("GameCamera").transform.Find("SFX").Find("Lever").GetComponent<AudioSource>();
+        }
+
 	    OnSwitchTrigger += SwitchTriggered;
 	}
 

@@ -23,6 +23,14 @@ public class ButtonActivate : MonoBehaviour {
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
+
+        if (buttonPressSound == null || buttonUnpressSound == null)
+        {
+            var cam = GameObject.Find("GameCamera");
+            buttonPressSound = cam.transform.Find("SFX").Find("Button").GetComponent<AudioSource>();
+            buttonUnpressSound = cam.transform.Find("SFX").Find("ButtonOff").GetComponent<AudioSource>();
+        }
+
         OnButtonPress += ButtonPressed;
         OnButtonRelease += ButtonReleased;
     }
