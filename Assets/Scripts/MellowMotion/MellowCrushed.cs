@@ -89,6 +89,13 @@ public class MellowCrushed : MonoBehaviour {
 		}
 		transformStateTransform = GetComponentInChildren<TransformBehavior> (true);
 
+        if (spawnSound == null || deathSound == null)
+        {
+            var cam = GameObject.Find("GameCamera");
+            spawnSound = cam.transform.Find("SFX").Find("Spawn").GetComponent<AudioSource>();
+            deathSound = cam.transform.Find("SFX").Find("Death").GetComponent<AudioSource>();
+        }
+
 		removeDelay = (crushSprites.Length - 1) * timeBetweenCrushSprites;
 		if (isStilt) {
 			GameObject bridgeMellow = GameObject.Find ("BridgeMellow");
