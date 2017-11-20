@@ -23,8 +23,8 @@ public class LevelSelector : MonoBehaviour {
 	    if (playerInRange) {
             p1Controls = deviceManager.GetControls(0);
             p2Controls = deviceManager.GetControls(1);
-            if ((p1Controls != null && p1Controls.Jump.WasPressed) ||
-                (p2Controls != null && p2Controls.Jump.WasPressed)) {
+            if ((p1Controls != null && p1Controls.Join.WasPressed) ||
+                (p2Controls != null && p2Controls.Join.WasPressed)) {
                 SceneLoader.instance.LoadLevel(levelNo.ToString());
             }
         }

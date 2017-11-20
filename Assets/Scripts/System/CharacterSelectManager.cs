@@ -20,7 +20,7 @@ public class CharacterSelectManager : MonoBehaviour
         BridgeMellow = GameObject.Find("BridgeMellow");
         StiltMellow = GameObject.Find("StiltMellow");
         PlayerDeviceManager = GameObject.Find("PlayerDeviceManager").GetComponent<PlayerDeviceManager>();
-        Directions = GameObject.Find("Directions");
+        Directions = GameObject.Find("HelperText Join");
 
         //Hide both characters after finding them.
         BridgeMellow.SetActive(false);
@@ -61,7 +61,7 @@ public class CharacterSelectManager : MonoBehaviour
         {
             //TODO: Scene Transition
             Debug.Log("Both players ready.");
-            SceneLoader.instance.LoadMenu();
+//            SceneLoader.instance.LoadMenu();
         }
     }
 }
