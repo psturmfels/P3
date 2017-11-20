@@ -20,7 +20,7 @@ public class SceneLoader : MonoBehaviour {
         }
         Application.targetFrameRate = 30;
 
-        levels.Add("Level Select Menu"); //this will eventually become hub
+        levels.Add("Hub World"); //this will eventually become hub
         levels.Add("gs_Level_1");
         levels.Add("gs_Level_2");
         levels.Add("Level 3 Dev");
@@ -28,8 +28,8 @@ public class SceneLoader : MonoBehaviour {
         levels.Add("Level5_dev");
         levels.Add("Level6_dev");
         levels.Add("Level 7 Dev");
-        levels.Add("Level Select Menu"); //TODO: fill with level 8
-        levels.Add("Level Select Menu"); //what do we do about this? return to hub?
+        levels.Add("Hub World"); //TODO: fill with level 8
+        levels.Add("Hub World"); //what do we do about this? return to hub?
     }
 
     void Start() {
@@ -60,10 +60,19 @@ public class SceneLoader : MonoBehaviour {
     }
 
     public void LoadMenu() {
-        SceneManager.LoadScene("Level Select Menu");
+        SceneManager.LoadScene("Hub World");
     }
 
     public void LoadEnd() {
         SceneManager.LoadScene("gs_endGame");
+    }
+
+    public void RestartLevel() {
+        Debug.Log(currentLevel);
+        SceneManager.LoadScene(levels[currentLevel]);
+    }
+
+    public void ExitGame() {
+        Application.Quit();
     }
 }
