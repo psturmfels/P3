@@ -64,14 +64,16 @@ public class EyeController : MonoBehaviour {
 
     private void Blink() {
         GetComponent<Animator>().SetTrigger("blink");
-        Invoke("Blink", 4.0f + Random.Range(0f, 4f));
+        Invoke("Blink", 4f + Random.Range(0f, 4f));
     }
 
     private void DisableEyes() {
         gameObject.SetActive(false);
+        transform.localScale = Vector3.one;
     }
 
     private void EnableEyes() {
         gameObject.SetActive(true);
+        transform.localScale = Vector3.one;
     }
 }

@@ -64,6 +64,18 @@ public class InputWallJump : MonoBehaviour {
 		ma = GetComponent<MoveAnimate> ();
 		jumpDelay = timeBetweenJumpSprites * positiveJumpSprites.Length;
 
+        if (wallJumpSound == null)
+        {
+            if (this.transform.parent.name == "BridgeMellow")
+            {
+                wallJumpSound = GameObject.Find("GameCamera").transform.Find("SFX").Find("BridgeJump").GetComponent<AudioSource>();
+            }
+            else
+            {
+                wallJumpSound = GameObject.Find("GameCamera").transform.Find("SFX").Find("StiltJump").GetComponent<AudioSource>();
+            }
+        }
+
         //Find PlayerDeviceManager
         deviceManager = GameObject.Find("PlayerDeviceManager").GetComponent<PlayerDeviceManager>();
 

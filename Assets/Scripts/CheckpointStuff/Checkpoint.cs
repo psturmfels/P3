@@ -33,7 +33,14 @@ public class Checkpoint : MonoBehaviour {
 		}
 		currentCheckpoints.Add (this);
 
-		foreach (AnimateShrinkScale coin in GetComponentsInChildren<AnimateShrinkScale> ()) {
+        if (stiltCPSound == null || bridgeCPSound == null)
+        {
+            var cam = GameObject.Find("GameCamera");
+            stiltCPSound = cam.transform.Find("SFX").Find("StiltCheckpoint").GetComponent<AudioSource>();
+            bridgeCPSound = cam.transform.Find("SFX").Find("BridgeCheckpoint").GetComponent<AudioSource>();
+        }
+
+        foreach (AnimateShrinkScale coin in GetComponentsInChildren<AnimateShrinkScale> ()) {
 			if (coin.gameObject.name == "CheckpointBridge") {
 				bridgeCoin = coin;
 			} else if (coin.gameObject.name == "CheckpointStilt") {

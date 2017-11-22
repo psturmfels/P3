@@ -45,6 +45,18 @@ public class StateMachineForJack : MonoBehaviour {
         ms = GetComponentInChildren<MellowStates>();
 		rb = GetComponent<Rigidbody2D> ();
 
+        if (shiftSound == null)
+        {
+            if (this.gameObject.name == "BridgeMellow")
+            {
+                shiftSound = GameObject.Find("GameCamera").transform.Find("SFX").Find("BridgeShift").GetComponent<AudioSource>();
+            }
+            else
+            {
+                shiftSound = GameObject.Find("GameCamera").transform.Find("SFX").Find("StiltShift").GetComponent<AudioSource>();
+            }
+        }
+
         //Find PlayerDeviceManager
         deviceManager = GameObject.Find("PlayerDeviceManager").GetComponent<PlayerDeviceManager>();
 

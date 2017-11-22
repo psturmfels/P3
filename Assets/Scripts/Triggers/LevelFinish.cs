@@ -11,6 +11,7 @@ public class LevelFinish : MonoBehaviour {
     public GameObject finishPanel;
     public AudioSource finishSound;
     public AudioSource mainTheme;
+    public GameObject candyWave;
     private GameObject firstPlayer;
 
     //void OnTriggerEnter2D(Collider2D other) {
@@ -21,13 +22,24 @@ public class LevelFinish : MonoBehaviour {
     //        }
     //        else if (other.gameObject != firstPlayer) {
     //            secondFlag.sprite = greenFlagSprite;
-                
+
     //            Invoke("BackToMenu", 3.0f);
     //        }
     //    }
     //}
 
-	void Start() {
+    private void Awake()
+    {
+        if (mainTheme == null || finishSound == null || candyWave == null) {
+            var cam = GameObject.Find("GameCamera");
+            mainTheme = cam.GetComponent<AudioSource>();
+            finishSound = cam.transform.Find("SFX").Find("Finish").GetComponent<AudioSource>();
+            candyWave = cam.transform.Find("CandyWave").gameObject;
+        }
+        
+    }
+
+    void Start() {
 		EnableChocolateOnTrigger[] smores = GetComponentsInChildren<EnableChocolateOnTrigger> ();
 		if (smores.Length == 2) {
 			firstSmore = smores [0];
@@ -62,11 +74,17 @@ public class LevelFinish : MonoBehaviour {
             finishPanel.SetActive(true);
             mainTheme.Pause();
             finishSound.Play();
+            StartCoroutine("StartDecay");
         }
 	}
 
+    private IEnumerator StartDecay() {
+        yield return new WaitForSeconds(1);
+        candyWave.GetComponent<ReverseDecay>().ReverseWaveDecay();
+    }
+
     private void BackToMenu() {
-        SceneLoader.instance.LoadMenu();
+        SceneLoader.instance.LoadNextLevel();
     }
 
 }

@@ -20,15 +20,14 @@ public class CharacterSelectManager : MonoBehaviour
         BridgeMellow = GameObject.Find("BridgeMellow");
         StiltMellow = GameObject.Find("StiltMellow");
         PlayerDeviceManager = GameObject.Find("PlayerDeviceManager").GetComponent<PlayerDeviceManager>();
-        Directions = GameObject.Find("Directions");
+        Directions = GameObject.Find("HelperText Join");
 
         //Hide both characters after finding them.
         BridgeMellow.SetActive(false);
         StiltMellow.SetActive(false);
     }
 	
-	private void Update ()
-    {
+	private void Update () {
         int checkPlayers = 0;
 
         //Check how many players are spawned in.
@@ -56,12 +55,18 @@ public class CharacterSelectManager : MonoBehaviour
         }
 
         //Check if both players are ready
-        if((BridgeMellow.GetComponent<PlayerReadyUp>().ready == true) &&
-            (StiltMellow.GetComponent<PlayerReadyUp>().ready == true))
-        {
+        if (BridgeMellow.GetComponent<PlayerReadyUp>().ready &&
+           StiltMellow.GetComponent<PlayerReadyUp>().ready) {
             //TODO: Scene Transition
             Debug.Log("Both players ready.");
-            SceneLoader.instance.LoadMenu();
+            GameObject spBarrier = GameObject.Find("SPBarrier");
+            if (spBarrier != null) {
+                for (int i = 0; i < spBarrier.transform.childCount; ++i) {
+                    spBarrier.transform.GetChild(i).gameObject.GetComponent<FadeOutAndDie>().StartFadeOut();
+                }
+                spBarrier.GetComponent<BoxCollider2D>().enabled = false;
+            }
+//            SceneLoader.instance.LoadMenu();
         }
     }
 }

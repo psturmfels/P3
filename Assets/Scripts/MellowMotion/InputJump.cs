@@ -75,7 +75,19 @@ public class InputJump : MonoBehaviour {
 		ma = GetComponent<MoveAnimate> ();
 		im = GetComponent<InputMove> ();
 		jumpDelay = timeBetweenJumpSprites * positiveJumpSprites.Length;
-
+        if (jumpSound == null)
+        {
+            if (this.transform.parent.name == "BridgeMellow")
+            {
+                jumpSound = GameObject.Find("GameCamera").transform.Find("SFX").Find("BridgeJump").GetComponent<AudioSource>();
+            }
+            else
+            {
+                jumpSound = GameObject.Find("GameCamera").transform.Find("SFX").Find("StiltJump").GetComponent<AudioSource>();
+            }
+        }
+        
+        
         //Find PlayerDeviceManager
         deviceManager = GameObject.Find("PlayerDeviceManager").GetComponent<PlayerDeviceManager>();
 
