@@ -7,16 +7,13 @@ public class EyeController : MonoBehaviour {
     public EyeMovement leftEye;
     public EyeMovement rightEye;
 
-    private Transform face;
     private FaceMoveWhenTransformed fmwt;
     private MellowCrushed mellowCrushed;
     private Rigidbody2D rb;
     private Vector3 originalPosition;
-    private bool transformed = false;
 
     // Use this for initialization
     void Start() {
-        face = GetComponentInParent<Transform>();
         fmwt = GetComponentInParent<FaceMoveWhenTransformed>();
         rb = GetComponentInParent<Rigidbody2D>();
         Invoke("Blink", 4.0f + Random.Range(0f, 4f));
