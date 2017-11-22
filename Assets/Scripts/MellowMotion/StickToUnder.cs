@@ -5,8 +5,10 @@ using UnityEngine;
 public class StickToUnder : MonoBehaviour {
 	private Rigidbody2D rb;
 	private Transform topLevelTransform;
-	private GameObject current = null;
+	public GameObject current = null;
+	private int numberInContactWithCurrent = 0;
 	private float previousX = 0.0f;
+	private float eps = 0.1f;
 
 	void Start () {
 		if (transform.parent != null && transform.parent.parent != null) {
@@ -16,26 +18,34 @@ public class StickToUnder : MonoBehaviour {
 	}
 
 	void Update() {
-		if (rb != null && rb.gameObject.activeSelf && rb.velocity.x == 0.0f && current != null) {
-			if (previousX != current.transform.position.x) {
-				float difference = current.transform.position.x - previousX;
-				topLevelTransform.position += Vector3.right * difference;
+		if (rb != null && rb.gameObject.activeSelf && current != null) {
+			if (Mathf.Abs(rb.velocity.x) < eps) {
+				if (previousX != current.transform.position.x) {
+					float difference = current.transform.position.x - previousX;
+					topLevelTransform.position += Vector3.right * difference;
+				}
 			}
 			previousX = current.transform.position.x;
-		}
+		} 
 	}
 
 	void OnTriggerEnter2D (Collider2D other) {
-		if (current == null && other.gameObject.CompareTag("Ground") && other.gameObject.GetComponentInParent<AutoObjectTranslate> () != null) {
-			current = other.gameObject;
+		if (current == null && other.gameObject.CompareTag ("Ground") && other.gameObject.GetComponentInParent<AutoObjectTranslate> () != null) {
+			current = other.gameObject.GetComponentInParent<AutoObjectTranslate> ().gameObject;
 			previousX = current.transform.position.x;
+			numberInContactWithCurrent = 1;
+		} else if (other.gameObject.GetComponentInParent<AutoObjectTranslate> () != null && current == other.gameObject.GetComponentInParent<AutoObjectTranslate> ().gameObject) {
+			numberInContactWithCurrent += 1;
 		}
 	}
 
 	void OnTriggerExit2D (Collider2D other) {
-		if (current == other.gameObject) {
-			previousX = 0.0f;
-			current = null;
+		if (other.gameObject.GetComponentInParent<AutoObjectTranslate> () != null && current == other.gameObject.GetComponentInParent<AutoObjectTranslate> ().gameObject) {
+			numberInContactWithCurrent -= 1;
+			if (numberInContactWithCurrent == 0) {
+				previousX = 0.0f;
+				current = null;
+			}
 		}
 	}
 }
