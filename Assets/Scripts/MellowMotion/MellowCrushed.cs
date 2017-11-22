@@ -32,7 +32,7 @@ public class MellowCrushed : MonoBehaviour {
 	private float fadeInSpeed = 0.1f;
 	private float shrinkInSpeed = 0.5f;
 
-    public void StartDie() {
+	public void StartDie() {
 		if (ms.isDead) {
 			return;
 		}

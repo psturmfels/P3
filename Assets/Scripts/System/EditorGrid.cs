@@ -11,7 +11,6 @@ public class EditorGrid : MonoBehaviour {
         x = 0f;
         y = 0f;
         z = 0f;
-
     }
 
     void Update() {

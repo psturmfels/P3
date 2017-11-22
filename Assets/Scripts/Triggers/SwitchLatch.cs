@@ -17,6 +17,12 @@ public class SwitchLatch : MonoBehaviour {
 	void Start () {
 	    sr = GetComponent<SpriteRenderer>();
 	    OnSwitchTrigger += SwitchTriggered;
+		if (leverSound == null) {
+			GameObject leverAudioObject = GameObject.Find ("Lever");
+			if (leverAudioObject.GetComponent<AudioSource> () != null) {
+				leverSound = leverAudioObject.GetComponent<AudioSource> ();
+			}
+		}
 	}
 
     private void OnTriggerEnter2D(Collider2D other) {

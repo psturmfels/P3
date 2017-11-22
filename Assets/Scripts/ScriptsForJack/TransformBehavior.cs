@@ -58,7 +58,7 @@ public class TransformBehavior: MonoBehaviour {
 		firstCancel = false;
 		secondCancel = false;
 	}
-
+		
 	public void RegisterCancelContact(int cancelID) {
 		if (cancelID == 1) {
 			firstCancel = true;

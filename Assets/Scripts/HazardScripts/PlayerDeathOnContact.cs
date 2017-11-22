@@ -9,7 +9,7 @@ public class PlayerDeathOnContact : MonoBehaviour {
 		if ((other.GetComponent<MellowStates> () != null || other.GetComponent <TransformBehavior> () != null)
 			&& other.gameObject.GetComponentInParent<MellowCrushed>() != null)
 		{
-            other.gameObject.GetComponentInParent<MellowCrushed>().StartDie();
+			other.gameObject.GetComponentInParent<MellowCrushed>().StartDie();
         }
     }
 }
