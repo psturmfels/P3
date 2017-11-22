@@ -64,7 +64,7 @@ public class EyeController : MonoBehaviour {
 
     private void Blink() {
         GetComponent<Animator>().SetTrigger("blink");
-        Invoke("Blink", 0.1f + Random.Range(0f, 0.1f));
+        Invoke("Blink", 4f + Random.Range(0f, 4f));
     }
 
     private void DisableEyes() {
