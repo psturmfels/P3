@@ -5,6 +5,9 @@ using UnityEngine;
 public class SnapCameraOnTrigger : MonoBehaviour {
 	public bool snapX = true;
 	public bool snapY = false;
+	public bool shouldSnapSize = false;
+	public float minSizeY = 5.0f;
+	public float maxSizeY = 7.0f;
 	private bool bridgeTriggered = false;
 	private bool stiltTriggered = false;
 	private bool isTriggered = false;
@@ -39,6 +42,14 @@ public class SnapCameraOnTrigger : MonoBehaviour {
 		}
 	}
 
+	void SnapSize(CameraMovement cm) {
+		if (!shouldSnapSize) {
+			return;
+		}
+		cm.minSizeY = minSizeY;
+		cm.maxSizeY = maxSizeY;
+	}
+	
 	void SnapCameraY() {
 		if (isTriggered) {
 			return;
@@ -46,7 +57,9 @@ public class SnapCameraOnTrigger : MonoBehaviour {
 		if (Camera.main != null && Camera.main.gameObject.GetComponent<CameraMovement> () != null) {
 			CameraMovement cm = Camera.main.gameObject.GetComponent<CameraMovement> ();
 			cm.SetNewFixedYPosition (transform.position.y);
+			SnapSize (cm);
 		}
+		
 	}
 
 	void SnapCameraX() {
@@ -56,6 +69,7 @@ public class SnapCameraOnTrigger : MonoBehaviour {
 		if (Camera.main != null && Camera.main.gameObject.GetComponent<CameraMovement> () != null) {
 			CameraMovement cm = Camera.main.gameObject.GetComponent<CameraMovement> ();
 			cm.SetNewFixedXPosition (transform.position.x);
+			SnapSize (cm);
 		}
 	}
 }

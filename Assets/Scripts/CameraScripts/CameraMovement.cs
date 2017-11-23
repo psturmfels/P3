@@ -9,7 +9,7 @@ public class CameraMovement : MonoBehaviour {
 
 	public event UnityAction reachedCheckpoint;
 	public float minSizeY = 5.0f;
-	public float maxSizeY = 7f;
+	public float maxSizeY = 7.0f;
 	public bool lockYPos = false;
 	public bool lockXPos = false;
 	public bool ignoreCheckpointY = false;
