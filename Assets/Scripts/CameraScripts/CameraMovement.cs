@@ -11,6 +11,7 @@ public class CameraMovement : MonoBehaviour {
 	public float minSizeY = 5.0f;
 	public float maxSizeY = 7f;
 	public bool lockYPos = false;
+	public bool lockXPos = false;
 	public bool ignoreCheckpointY = false;
 
 	private Camera mainCamera;
@@ -33,7 +34,21 @@ public class CameraMovement : MonoBehaviour {
 	private float viewportHalf = 0.43f;
 	private float viewportMax = 1.02f;
 	private float viewportMin = -0.02f;
+	private float fixedYPosition;
+	private float fixedXPosition;
 
+
+	public void SetNewFixedYPosition (float newFixedYPos) {
+		lockYPos = true;
+		lockXPos = false;
+		fixedYPosition = newFixedYPos;
+	}
+
+	public void SetNewFixedXPosition (float newFixedXPos) {
+		lockYPos = false;
+		lockXPos = true;
+		fixedXPosition = newFixedXPos;
+	}
 
 	void Start() {
 		if (GameObject.Find ("StiltMellow") != null) {
@@ -44,6 +59,7 @@ public class CameraMovement : MonoBehaviour {
 		}
 
 		mainCamera = GetComponent<Camera> ();
+		fixedYPosition = mainCamera.transform.position.y;
 		if (cameraCanvas == null) {
 			cameraCanvas = Instantiate (Resources.Load ("CameraCanvas") as GameObject);
 			foreach (Transform child in cameraCanvas.transform) {
@@ -77,7 +93,11 @@ public class CameraMovement : MonoBehaviour {
 		);
 
 		if (lockYPos) {
-			targetCameraPosition.y = mainCamera.transform.position.y;
+			targetCameraPosition.y = fixedYPosition;
+		}
+
+		if (lockXPos) {
+			targetCameraPosition.x = fixedXPosition;
 		}
 
 
