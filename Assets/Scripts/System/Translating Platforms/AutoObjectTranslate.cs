@@ -8,23 +8,20 @@ public class AutoObjectTranslate : MonoBehaviour
 {
     private Transform selfTransform;
     private Rigidbody2D selfRigidbody2D;
-    public float traveledDistance = 0;                 //Keeps track of how far along its path this has moved
-    public float pathDistance = 0;                     //Distance that the platform must travel.
-    public float nodeDistance = 0;                     //Distance to be traveled until the next node.
-    public float speed = 0;                            //Scalar speed
-    public Vector3 startingPosition = Vector3.zero;    //Starting position
-    public Vector3 previousNode = Vector3.zero;        //Last visted node
-    public Vector3 nextNode = Vector3.zero;            //Next node
-    public int nextIndex = 0;                          //Index of the next node
-    public bool reverse = true;                       //Whether the direciton of traversal has been reversed
-
-    public List<Vector3> nodes;             //Nodes are defined relative to the starting position of the platform.
+    private float traveledDistance = 0;                 //Keeps track of how far along its path this has moved
+    private float pathDistance = 0;                     //Distance that the platform must travel.
+    private float speed = 0;                            //Current Scalar speed
+    private Vector3 basePosition = Vector3.zero;        //Base position
+    private int nextIndex = 0;                          //Index of the next node
+    
+    public List<Vector3> nodes;                         //Nodes are defined relative to the starting position of the platform.
 
     //Movement Parameters
-    public float originalVelocity = 2;      //Velocity of the platform
-    public float minimumVelocity = .1f;
-    public float accelerationOffset = .5f;    //Between [0,1] Distance that the platform must be from its path midpoint
-                                            //prior to experiencing acceleration.
+    public float maxSpeed = 2;                          //Maximum Speed of the platform
+    public float minimumSpeed = .1f;                    //Minimum Speed of the platform
+    public float startingOffset = 0;                    //Between [0,1] starting offset along path from 0th node.
+    public float accelerationOffset = .5f;              //Between [0,1] Distance that the platform must be from its path midpoint
+                                                        //prior to experiencing acceleration.
 
 
     private void Awake()
@@ -36,40 +33,136 @@ public class AutoObjectTranslate : MonoBehaviour
 
         EnforceRigidbodyConstraints();
 
-        startingPosition = selfTransform.position;
-        speed = originalVelocity;
-        nextNode = nodes[0];
-        previousNode = nodes[1];
-
-
+        //Set the base position.
+        basePosition = selfTransform.position;
 
         ComputePathDistance();
 
-        
+        EmplaceEntity();
     }
 
     private void FixedUpdate()
     {
-        traveledDistance += selfRigidbody2D.velocity.magnitude * Time.fixedDeltaTime;
-
+        //Update the next node
         UpdateNodes();
 
+        //Compute the speed if acceleration at path terminus is desired
         if(accelerationOffset < 1)
         {
             ComputeSpeed();
         }
 
-        ComputeDisplacement();
+        //Displace the entity
+        DisplaceEntity();
     }
 
-    private void OnEnable()
+    //Compute the total path distance defined by the nodes.
+    private void ComputePathDistance()
     {
-        //selfRigidbody2D.velocity = Vector3.Normalize(nextNode - previousNode) * speed;
+        Vector3 current = nodes[0];
+        Vector3 next = nodes[0];
+
+        //Look at the next pair of nodes, and add their distance to the total.
+        foreach(Vector3 targetNode in nodes)
+        {
+            current = next;
+            next = targetNode;
+            pathDistance += Vector3.Distance(current, next);
+        }
     }
 
-    private void OnDisable()
+    //Emplace the entity at the position along the path based on its starting offset
+    private void EmplaceEntity()
     {
-        selfRigidbody2D.velocity = Vector3.zero;
+        if(startingOffset == 0)
+        {
+            selfRigidbody2D.position = nodes[0] + basePosition;
+            return;
+        }
+
+        float emplacedDistance = startingOffset * pathDistance;     //Emplaced distance traveled
+        float nodeDistance = 0;                                     //Distance of currently considered node from 0th node.
+
+        //Determine which index ought to be the next index
+        while(nodeDistance < emplacedDistance)
+        {
+            ++nextIndex;
+            nodeDistance += Vector3.Distance(nodes[nextIndex - 1], nodes[nextIndex]);
+        }
+
+        
+        float distanceBetweenNodes = Vector3.Distance(nodes[nextIndex - 1], nodes[nextIndex]);      //Distance between the most previous node and next one
+        float previousNodeDistance = nodeDistance - distanceBetweenNodes;                           //Distance from start to previous node
+        float emplacedOffset = (emplacedDistance - previousNodeDistance) / distanceBetweenNodes;    //Normalized offset from previous node to next node
+
+        //Emplace entity at the correct position.
+        selfRigidbody2D.position = (Vector3.Lerp(nodes[nextIndex - 1], nodes[nextIndex], emplacedOffset) + basePosition);
+
+        return;
+    }
+
+    //Update Nodes - Return true if nodes needed to be updated
+    private void UpdateNodes()
+    {
+        Vector3 nextPosition = basePosition + nodes[nextIndex];
+        if(selfTransform.position == nextPosition)
+        {
+            //Increment next node
+            ++nextIndex;
+
+            //Reached the final node, reverse the list and start from 1.
+            if(nextIndex == nodes.Count)
+            {
+                nodes.Reverse();
+                nextIndex = 1;
+                traveledDistance = 0;
+            }
+        }
+    }
+
+    //Compute the speed
+    private void ComputeSpeed()
+    {
+        //Determine whether or not the entity is far enough from its path midpoint to be accelerating.
+        float pathOffset = ComputePathOffset();
+        if(pathOffset >= accelerationOffset)
+        {
+            //Determine the distance from the start of the acceleration zone
+            float accelerationZoneSize = 1 - accelerationOffset;
+            float accelerationZoneTraversal = pathOffset - accelerationOffset;
+            float speedFactor = accelerationZoneTraversal / accelerationZoneSize;
+
+            //Lerp the speed based on this.
+            speed = Mathf.Lerp(maxSpeed, minimumSpeed, speedFactor);
+        }
+
+        else
+        {
+            speed = maxSpeed;
+        }
+
+        return;
+    }
+
+    //Displace the entity
+    private void DisplaceEntity()
+    {
+        //Move towards next node via step
+        float step = speed * Time.fixedDeltaTime;
+        Vector3 nextPosition = Vector3.MoveTowards(selfRigidbody2D.position, nodes[nextIndex] + basePosition, step);
+
+        //Update distance traveled
+        traveledDistance += Vector3.Distance(selfRigidbody2D.position, nextPosition);
+
+        selfRigidbody2D.position = nextPosition;
+        return;
+    }
+
+    //Compute the current distance from the midpoint.
+    private float ComputePathOffset()
+    {
+        float distanceFromMidpoint = traveledDistance - (pathDistance / 2);
+        return Mathf.Abs(distanceFromMidpoint / (pathDistance / 2));
     }
 
     //Make sure that editor grid components are disabled on this object and all children.
@@ -92,78 +185,7 @@ public class AutoObjectTranslate : MonoBehaviour
         return;
     }
 
-    //Compute the path distance defined by the nodes.
-    private void ComputePathDistance()
-    {
-        Vector3 current = nodes[0];
-        Vector3 next = nodes[0];
-
-        //Look at the next pair of nodes, and add their distance to the total.
-        foreach(Vector3 targetNode in nodes)
-        {
-            current = next;
-            next = targetNode;
-            pathDistance += Vector3.Distance(current, next);
-        }
-    }
-
-    //Compute the speed
-    private void ComputeSpeed()
-    {
-        float pathOffset = ComputePathOffset();
-
-        if(pathOffset > accelerationOffset)
-        {
-            //How far along the region in which it should accelerate that the platform is.
-            float accelerationFactor = (pathOffset - accelerationOffset) / (1 - accelerationOffset);
-            speed = Mathf.Lerp(originalVelocity, minimumVelocity, accelerationFactor);
-        }
-    }
-
-    //Compute the offset from path midpoint.
-    private float ComputePathOffset()
-    {
-        float travelFactor = traveledDistance / pathDistance;
-        return Mathf.Abs(travelFactor - .5f) / .5f;
-        
-    }
-
-    //Update Nodes
-    private void UpdateNodes()
-    {
-        //If we have reached the next node
-        if(selfTransform.position == startingPosition + nextNode)
-        {
-            //If the final node, reverse direction and reset traveled distance
-            if( (((nextIndex + 1) == nodes.Count) && !reverse) ||
-                ((nextIndex == 0) && reverse))
-            {
-                reverse = !reverse;
-                traveledDistance = 0;
-            }
-
-            previousNode = nextNode;
-            nextIndex += (reverse ? -1 : 1);
-            nextNode = nodes[nextIndex];
-            nodeDistance = traveledDistance + Vector3.Distance(previousNode, nextNode);
-        }
-    }
-
-    //Clamping to prevent gradual offset over time.
-    private void ComputeDisplacement()
-    {
-        float distanceToNext = Vector3.Magnitude(selfTransform.position - (nextNode + startingPosition));        
-        if(traveledDistance >= nodeDistance)
-        {
-            selfRigidbody2D.velocity = Vector3.zero;
-            selfTransform.position = startingPosition + nextNode;
-            traveledDistance = nodeDistance;
-            return;
-        }
-
-        selfRigidbody2D.velocity = Vector3.Normalize(nextNode - previousNode) * speed;
-    }
-
+    //Ensure that the attached rigidbody follows the necessary constraints
     private void EnforceRigidbodyConstraints()
     {
         selfRigidbody2D.bodyType = RigidbodyType2D.Dynamic;
@@ -173,5 +195,5 @@ public class AutoObjectTranslate : MonoBehaviour
         selfRigidbody2D.angularDrag = 0;
         selfRigidbody2D.freezeRotation = true;
     }
-    
+
 }
