@@ -178,7 +178,7 @@ public class TransformBehavior: MonoBehaviour {
 			axis = id.GetCurrentVertAxis ();
 		}
 		if (axis < 0) {
-            if (!transforming && !PlayerFitsAt(2)) { // Collider check for left side
+			if (!transforming && !PlayerCanTransformTo(-slideOffset)) { //!PlayerFitsAt(2)) { // Collider check for left side
                 target = transformedFrom;
             }
             else {
@@ -186,7 +186,7 @@ public class TransformBehavior: MonoBehaviour {
             }
         }
 		else if (axis > 0) {
-            if (!transforming && !PlayerFitsAt(3)) { // Collider check for right side
+			if (!transforming && !PlayerCanTransformTo(slideOffset)) { // Collider check for right side
                 target = transformedFrom;
             }
             else {
@@ -194,7 +194,7 @@ public class TransformBehavior: MonoBehaviour {
             }
         }
         else {
-            if (!transforming && !PlayerFitsAt(4)) { // Collider check for middle side
+			if (!transforming && !PlayerCanTransformTo(Vector3.zero)) { // Collider check for middle side
                 target = transformedFrom;
             }
             else {
@@ -203,7 +203,57 @@ public class TransformBehavior: MonoBehaviour {
         }
     }
 
-    private bool PlayerFitsAt(int colliderChildIndex) {
-        return transform.GetChild(colliderChildIndex).gameObject.GetComponent<PlayerFitCheck>().playerCanFit();
-    }
+	private bool PlayerCanTransformTo(Vector3 offset) {
+		int countedIntersections = 0;
+		float horzBoxOffset = 0.3f;
+		float vertBoxOffset = 0.5f;
+		Vector2 boxSize = new Vector2 (0.4f, 0.4f);
+		Vector3 newTransformPosition = transform.parent.position + offset;
+
+		Vector2 transformPositionTopLeft = new Vector2 (newTransformPosition.x - horzBoxOffset, newTransformPosition.y + vertBoxOffset);
+		Collider2D[] TopLeftOverlap = Physics2D.OverlapBoxAll (transformPositionTopLeft, boxSize, 0.0f);
+		foreach (Collider2D coll in TopLeftOverlap) {
+			if (coll.gameObject.GetComponentInParent<StateMachineForJack> () == null && coll.gameObject.CompareTag ("Ground")) {
+				countedIntersections += 1;
+				break;
+			}
+		}
+
+		Vector2 transformPositionTopRight = new Vector2 (newTransformPosition.x + horzBoxOffset, newTransformPosition.y + vertBoxOffset);
+		Collider2D[] TopRightOverlap = Physics2D.OverlapBoxAll (transformPositionTopRight, boxSize, 0.0f);
+		foreach (Collider2D coll in TopRightOverlap) {
+			if (coll.gameObject.GetComponentInParent<StateMachineForJack> () == null && coll.gameObject.CompareTag ("Ground")) {
+				countedIntersections += 1;
+				break;
+			}
+		}
+
+		Vector2 transformPositionBotLeft = new Vector2 (newTransformPosition.x - horzBoxOffset, newTransformPosition.y - vertBoxOffset);
+		Collider2D[] BotLeftOverlap = Physics2D.OverlapBoxAll (transformPositionBotLeft, boxSize, 0.0f);
+		foreach (Collider2D coll in BotLeftOverlap) {
+			if (coll.gameObject.GetComponentInParent<StateMachineForJack> () == null && coll.gameObject.CompareTag ("Ground")) {
+				countedIntersections += 1;
+				break;
+			}
+		}
+
+		Vector2 transformPositionBotRight = new Vector2 (newTransformPosition.x + horzBoxOffset, newTransformPosition.y - vertBoxOffset);
+		Collider2D[] BotRightOverlap = Physics2D.OverlapBoxAll (transformPositionBotRight, boxSize, 0.0f);
+		foreach (Collider2D coll in BotRightOverlap) {
+			if (coll.gameObject.GetComponentInParent<StateMachineForJack> () == null && coll.gameObject.CompareTag ("Ground")) {
+				countedIntersections += 1;
+				break;
+			}
+		}
+
+		if (countedIntersections == 4) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+//
+//    private bool PlayerFitsAt(int colliderChildIndex) {
+//        return transform.GetChild(colliderChildIndex).gameObject.GetComponent<PlayerFitCheck>().playerCanFit();
+//    }
 }
