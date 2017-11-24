@@ -74,8 +74,8 @@ public class TransformBehavior: MonoBehaviour {
 		if (parentStateMachine.GetState () == StateMachineForJack.State.InTransition) {
 			ResetCancelChecks ();
 			StopAllCoroutines ();
-			WasCanceled ();
 			isCanceling = true;
+			WasCanceled ();
 		}
 	}
 
@@ -177,7 +177,10 @@ public class TransformBehavior: MonoBehaviour {
 		} else {
 			axis = id.GetCurrentVertAxis ();
 		}
-		if (axis < 0) {
+		if (isCanceling) {
+			target = transformedFrom;
+		} 
+		else if (axis < 0) {
 			if (!transforming && !PlayerCanTransformTo(-slideOffset)) { //!PlayerFitsAt(2)) { // Collider check for left side
                 target = transformedFrom;
             }
@@ -206,8 +209,8 @@ public class TransformBehavior: MonoBehaviour {
 	private bool PlayerCanTransformTo(Vector3 offset) {
 		int countedIntersections = 0;
 		float horzBoxOffset = 0.3f;
-		float vertBoxOffset = 0.5f;
-		Vector2 boxSize = new Vector2 (0.4f, 0.4f);
+		float vertBoxOffset = 0.55f;
+		Vector2 boxSize = new Vector2 (0.5f, 0.5f);
 		Vector3 newTransformPosition = transform.parent.position + offset;
 
 		Vector2 transformPositionTopLeft = new Vector2 (newTransformPosition.x - horzBoxOffset, newTransformPosition.y + vertBoxOffset);
@@ -251,6 +254,7 @@ public class TransformBehavior: MonoBehaviour {
 		} else {
 			return true;
 		}
+
 	}
 //
 //    private bool PlayerFitsAt(int colliderChildIndex) {

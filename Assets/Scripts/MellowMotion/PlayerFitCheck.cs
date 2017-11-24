@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerFitCheck : MonoBehaviour {
     private int numOfCollisions = 0;
-    private bool playerFits = true;
 
     public bool playerCanFit() {
         return numOfCollisions == 0;
