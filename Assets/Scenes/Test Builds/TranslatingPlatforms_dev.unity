@@ -204,7 +204,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1472924374387150, guid: 8d8649a4cb6bd46c29a214240a7935f3, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8d8649a4cb6bd46c29a214240a7935f3, type: 2}
@@ -268,16 +268,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 271699152}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 901b9351ca218a64b93be93885ee2a85, type: 3}
+  m_Script: {fileID: 11500000, guid: c092ac88cab337a4fa3665c87c792603, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nodes:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 2, z: 0}
-  - {x: 2, y: 2, z: 0}
+  activeTriggers: 0
+  activated: 0
+  basePosition: {x: 0, y: 0, z: 0}
+  pathDistance: 0
+  speed: 0
+  Activators:
+  - {fileID: 2073234444}
+  endPoint: {x: 2, y: 0, z: 0}
   maxSpeed: 2
   minimumSpeed: 0.1
-  startingOffset: 0.5
   accelerationOffset: 0.5
 --- !u!50 &271699154
 Rigidbody2D:
@@ -299,45 +302,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &271699155
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 271699152}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6ac34f464366a245b4769258abcdab9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startEnabled: 1
-  Activators:
-  - {fileID: 2073234444}
---- !u!114 &271699156
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 271699152}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 500cfe50b8959454db110cace07993ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stopped: 0
---- !u!114 &271699157
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 271699152}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a41877ce9b27eb43a1ba45f46ccb4be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LinkedTranslators:
-  - {fileID: 1973893721}
 --- !u!1001 &289152572
 Prefab:
   m_ObjectHideFlags: 0
