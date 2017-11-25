@@ -40,6 +40,11 @@ public class ControllerTest : MonoBehaviour
         {
             changeColors();
             drawStick();
+
+            if(controls.Menu.WasPressed)
+            {
+                Debug.Log("menu was pressed");
+            }
         }
 	}
 
