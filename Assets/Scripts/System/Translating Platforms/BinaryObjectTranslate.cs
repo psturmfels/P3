@@ -7,11 +7,11 @@ public class BinaryObjectTranslate : MonoBehaviour
 {
     private Transform selfTransform;
     private Rigidbody2D selfRigidbody2D;
-    public int activeTriggers = 0;
-    public bool activated = false;
-    public Vector3 basePosition = Vector3.zero;        //Base position
-    public float pathDistance = 0;                     //Distance that the platform must travel.
-    public float speed = 0;                            //Current Scalar speed
+    private int activeTriggers = 0;
+    private bool activated = false;
+    private Vector3 basePosition = Vector3.zero;        //Base position
+    private float pathDistance = 0;                     //Distance that the platform must travel.
+    private float speed = 0;                            //Current Scalar speed
 
     public List<GameObject> Activators = new List<GameObject>();
     public Vector3 endPoint = Vector3.zero;
