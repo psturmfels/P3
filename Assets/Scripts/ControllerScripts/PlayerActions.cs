@@ -17,6 +17,7 @@ public class PlayerActions : PlayerActionSet
     public PlayerAction Down;
     public PlayerTwoAxisAction Move;
 	public PlayerAction SwitchCharacters;
+    public PlayerAction Menu;
 
     //Developer actions
     public PlayerAction ResetLevel;         //Reset the current level
@@ -46,6 +47,7 @@ public class PlayerActions : PlayerActionSet
         AdvanceLevel    = CreatePlayerAction("AdvanceLevel");
         BackLevel       = CreatePlayerAction("BackLevel");
 		SwitchCharacters = CreatePlayerAction ("SwitchCharacters");
+        Menu            = CreatePlayerAction("Menu");
     }
 
     //Define Player actions for keyboard. DO NOT CHANGE THESE.
@@ -66,6 +68,7 @@ public class PlayerActions : PlayerActionSet
 
         actions.ResetLevel.AddDefaultBinding(Key.I);
         actions.ResetCheckpoint.AddDefaultBinding(Key.K);
+        actions.Menu.AddDefaultBinding(Key.Escape);
 
         //Developer Actions -- These commands remain unbound if not for a dev build.
         if(developmentMode)
@@ -93,6 +96,7 @@ public class PlayerActions : PlayerActionSet
         actions.Right.AddDefaultBinding(InputControlType.LeftStickRight);
         actions.Up.AddDefaultBinding(InputControlType.LeftStickUp);
         actions.Down.AddDefaultBinding(InputControlType.LeftStickDown);
+        actions.Menu.AddDefaultBinding(InputControlType.Command);
 
         return actions;
     }
