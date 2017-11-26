@@ -66,11 +66,13 @@ public class EyeController : MonoBehaviour {
 
     private void DisableEyes() {
         gameObject.SetActive(false);
-        transform.localScale = Vector3.one;
+        leftEye.transform.localScale = Vector3.one;
+        rightEye.transform.localScale = Vector3.one;
     }
 
     private void EnableEyes() {
         gameObject.SetActive(true);
-        transform.localScale = Vector3.one;
+        leftEye.transform.localScale = Vector3.one;
+        rightEye.transform.localScale = Vector3.one;
     }
 }
