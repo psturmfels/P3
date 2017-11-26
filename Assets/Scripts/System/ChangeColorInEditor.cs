@@ -16,6 +16,11 @@ public class ChangeColorInEditor : MonoBehaviour {
 	public Sprite[] greenSprites;
 	public Sprite[] blueSprites;
 
+	private Color blueSpikesColor = new Color (108.0f / 255.0f, 194.0f / 255.0f, 236.0f / 255.0f);
+	private Color redSpikesColor = new Color (1.0f, 1.0f, 1.0f);
+	private Color greenSpikesColor = new Color (176.0f / 255.0f, 156.0f / 255.0f, 0.0f);
+	private string spikeSpriteName = "AbstractPlatformer_351";
+
 	private string[] redValues = new string[] { 
 		"AbstractPlatformer_324",
 		"AbstractPlatformer_285",
@@ -101,6 +106,8 @@ public class ChangeColorInEditor : MonoBehaviour {
 								sr.sprite = blueSprites [redIndex];
 							} else if (greenIndex != -1) {
 								sr.sprite = blueSprites [greenIndex];
+							} else if (objSpriteName == spikeSpriteName) {
+								sr.color = blueSpikesColor;
 							}
 						}
 						break;
@@ -113,6 +120,8 @@ public class ChangeColorInEditor : MonoBehaviour {
 								sr.sprite = greenSprites [redIndex];
 							} else if (blueIndex != -1) {
 								sr.sprite = greenSprites [blueIndex];
+							} else if (objSpriteName == spikeSpriteName) {
+								sr.color = greenSpikesColor;
 							}
 						}
 						break;
@@ -125,6 +134,8 @@ public class ChangeColorInEditor : MonoBehaviour {
 								sr.sprite = redSprites [blueIndex];
 							} else if (greenIndex != -1) {
 								sr.sprite = redSprites [greenIndex];
+							} else if (objSpriteName == spikeSpriteName) {
+								sr.color = redSpikesColor;
 							}
 						}
 						break;
