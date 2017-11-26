@@ -18,6 +18,11 @@ public class AutoTranslateDetector : MonoBehaviour
         if(stopped)
         {
             selfAutoObjectTranslate.enabled = false;
+            AutoTranslateLinker selfLinker = this.GetComponent<AutoTranslateLinker>();
+            if(selfLinker != null)
+            {
+                selfLinker.DisableLinkedTranslators();
+            }
         }
 
         else

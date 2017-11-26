@@ -37,7 +37,7 @@ public class AutoTranslateLinker : MonoBehaviour
         return true;
     }
 
-    private void DisableLinkedTranslators()
+    public void DisableLinkedTranslators()
     {
         foreach(AutoObjectTranslate target in LinkedTranslators)
         {
