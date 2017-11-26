@@ -6,7 +6,6 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]     //Must be attached to a kinematic rigidbody.
 public class AutoObjectTranslate : MonoBehaviour
 {
-    private Transform selfTransform;
     private Rigidbody2D selfRigidbody2D;
     private float traveledDistance = 0;                 //Keeps track of how far along its path this has moved
     private float pathDistance = 0;                     //Distance that the platform must travel.
@@ -28,13 +27,12 @@ public class AutoObjectTranslate : MonoBehaviour
     {
         DisableEditorGrids();
 
-        selfTransform = this.GetComponent<Transform>();
         selfRigidbody2D = this.GetComponent<Rigidbody2D>();
 
         EnforceRigidbodyConstraints();
 
         //Set the base position.
-        basePosition = selfTransform.position;
+        basePosition = selfRigidbody2D.position;
 
         ComputePathDistance();
 
@@ -105,7 +103,8 @@ public class AutoObjectTranslate : MonoBehaviour
     private void UpdateNodes()
     {
         Vector3 nextPosition = basePosition + nodes[nextIndex];
-        if(selfTransform.position == nextPosition)
+        Vector3 currentPosition = selfRigidbody2D.position;
+        if(currentPosition == nextPosition)
         {
             //Increment next node
             ++nextIndex;
