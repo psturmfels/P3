@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[ExecuteInEditMode]
 public class ChangeColorInEditor : MonoBehaviour {
 	public enum TileColor {
 		Red,
@@ -89,25 +90,43 @@ public class ChangeColorInEditor : MonoBehaviour {
 
 			foreach (GameObject obj in objects) {
 				if (obj.GetComponent<SpriteRenderer> () != null) {
-					SpriteRenderer sr = GetComponent<SpriteRenderer> ();
+					SpriteRenderer sr = obj.GetComponent<SpriteRenderer> ();
 					string objSpriteName = sr.sprite.name;
-
 					switch (currentTileColor) {
 					case TileColor.Blue:
-						int redIndex = FindIndexIn (ref redValues, ref objSpriteName);
-						int greenIndex = FindIndexIn (ref greenValues, ref objSpriteName);
-						if (redIndex != -1) {
-							
-						} else if (greenIndex != -1) {
-
+						{
+							int redIndex = FindIndexIn (ref redValues, ref objSpriteName);
+							int greenIndex = FindIndexIn (ref greenValues, ref objSpriteName);
+							if (redIndex != -1) {
+								sr.sprite = blueSprites [redIndex];
+							} else if (greenIndex != -1) {
+								sr.sprite = blueSprites [greenIndex];
+							}
 						}
-							
 						break;
 
 					case TileColor.Green:
+						{
+							int redIndex = FindIndexIn (ref redValues, ref objSpriteName);
+							int blueIndex = FindIndexIn (ref blueValues, ref objSpriteName);
+							if (redIndex != -1) {
+								sr.sprite = greenSprites [redIndex];
+							} else if (blueIndex != -1) {
+								sr.sprite = greenSprites [blueIndex];
+							}
+						}
 						break;
 
 					case TileColor.Red:
+						{
+							int blueIndex = FindIndexIn (ref blueValues, ref objSpriteName);
+							int greenIndex = FindIndexIn (ref greenValues, ref objSpriteName);
+							if (blueIndex != -1) {
+								sr.sprite = redSprites [blueIndex];
+							} else if (greenIndex != -1) {
+								sr.sprite = redSprites [greenIndex];
+							}
+						}
 						break;
 
 					}
