@@ -41,4 +41,22 @@ public class PauseMenuController : MonoBehaviour {
     public void Unpause() {
         paused = false;
     }
+
+    public void Restart() {
+        if (paused) {
+            SceneLoader.instance.RestartLevel();
+        }
+    }
+
+    public void BackToHub() {
+        if (paused) {
+            SceneLoader.instance.LoadMenu();
+        }
+    }
+
+    public void ExitGame() {
+        if (paused) {
+            SceneLoader.instance.ExitGame();
+        }
+    }
 }
