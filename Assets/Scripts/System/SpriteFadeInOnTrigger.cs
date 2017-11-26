@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using NUnit.Framework.Constraints;
 using UnityEngine;
 
 public class SpriteFadeInOnTrigger : MonoBehaviour {
@@ -45,9 +44,9 @@ public class SpriteFadeInOnTrigger : MonoBehaviour {
     IEnumerator FadeOut() {
         bool mainButtonDone = false;
         bool childrenDone = false;
-        while (!mainButtonDone && !childrenDone) {
+        while (!mainButtonDone || !childrenDone) {
             if (buttonSr != null) {
-                if (buttonSr.color.a > 0f) {
+                if (buttonSr.color.a == 0.0f) {
                     mainButtonDone = true;
                 }
                 Color buttonColor = buttonSr.color;
@@ -74,7 +73,7 @@ public class SpriteFadeInOnTrigger : MonoBehaviour {
     IEnumerator FadeIn() {
         bool mainButtonDone = false;
         bool childrenDone = false;
-        while (!mainButtonDone && !childrenDone) {
+        while (!mainButtonDone || !childrenDone) {
             if (buttonSr != null) {
                 if (buttonSr.color.a > 0.8f) {
                     mainButtonDone = true;
