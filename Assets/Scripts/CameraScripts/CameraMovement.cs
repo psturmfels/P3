@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class CameraMovement : MonoBehaviour {
-	private Transform stiltTransform;
-	private Transform bridgeTransform;
+	public Transform stiltTransform;
+	public Transform bridgeTransform;
 
 	public event UnityAction reachedCheckpoint;
 	public float minSizeY = 5.0f;
@@ -18,8 +18,8 @@ public class CameraMovement : MonoBehaviour {
 	private float playerTwiceOffset = 3.0f;
 
 	private GameObject cameraCanvas;
-	private GameObject stiltCamera;
-	private GameObject bridgeCamera;
+    private GameObject stiltCamera;
+    private GameObject bridgeCamera;
 
 	private Vector3 lastStiltPosition;
 	private Vector3 lastBridgePosition;
@@ -259,9 +259,16 @@ public class CameraMovement : MonoBehaviour {
 	}
 
 	void Update() {
-		if (stiltTransform == null || bridgeTransform == null) { 
+        if (stiltTransform == null && GameObject.Find("StiltMellow") != null) {
+            stiltTransform = GameObject.Find("StiltMellow").transform;
+        }
+        if (bridgeTransform == null && GameObject.Find("BridgeMellow") != null) {
+            bridgeTransform = GameObject.Find("BridgeMellow").transform;
+        }
+        if (stiltTransform == null || bridgeTransform == null) { 
 			return;
 		}
+        
 		SetLastPositions ();
 		if (trackPlayers) {
 			SetCameraPos ();

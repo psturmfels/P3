@@ -58,7 +58,7 @@ public class CharacterSelectManager : MonoBehaviour
         if (BridgeMellow.GetComponent<PlayerReadyUp>().ready &&
            StiltMellow.GetComponent<PlayerReadyUp>().ready) {
             //TODO: Scene Transition
-            Debug.Log("Both players ready.");
+//            Debug.Log("Both players ready.");
             GameObject spBarrier = GameObject.Find("SPBarrier");
             if (spBarrier != null) {
                 for (int i = 0; i < spBarrier.transform.childCount; ++i) {
