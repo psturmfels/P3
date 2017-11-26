@@ -16,7 +16,7 @@ public class ChangeColorInEditor : MonoBehaviour {
 	public Sprite[] greenSprites;
 	public Sprite[] blueSprites;
 
-	private Color blueSpikesColor = new Color (108.0f / 255.0f, 194.0f / 255.0f, 236.0f / 255.0f);
+	private Color blueSpikesColor = new Color (216.0f / 255.0f, 242.0f / 255.0f, 255.0f / 255.0f);
 	private Color redSpikesColor = new Color (1.0f, 1.0f, 1.0f);
 	private Color greenSpikesColor = new Color (176.0f / 255.0f, 156.0f / 255.0f, 0.0f);
 	private string spikeSpriteName = "AbstractPlatformer_351";
