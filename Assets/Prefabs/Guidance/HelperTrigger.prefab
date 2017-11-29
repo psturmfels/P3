@@ -109,7 +109,6 @@ GameObject:
   - component: {fileID: 4855510137716556}
   - component: {fileID: 212066978646901846}
   - component: {fileID: 114486290696421540}
-  - component: {fileID: 114795929009803740}
   - component: {fileID: 114814946094490708}
   m_Layer: 9
   m_Name: HelperMove
@@ -575,7 +574,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeBetweenRepeatedHelp: 15
-  shouldHelp: 1
+  timeBeforeFirstHelp: 10
+  delayBeforeHelp: 1
 --- !u!114 &114096516757978572
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -643,17 +643,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cell_size: 0.5
---- !u!114 &114795929009803740
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1686367190078956}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6174757bb417843238efa4cdd7a26da9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114814946094490708
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -751,7 +740,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!212 &212408682045056360
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -793,7 +781,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!212 &212574330903431472
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -835,7 +822,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!212 &212801074057407126
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -877,7 +863,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!212 &212888572870193006
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -919,4 +904,3 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
