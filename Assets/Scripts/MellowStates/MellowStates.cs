@@ -43,7 +43,7 @@ public class MellowStates : MonoBehaviour {
 	public void EnableMovementInput() {
 		canMove = true;
 		canPickup = true;
-		canJump = false;
+		canJump = true;
 		canWallJumpLeft = false;
 		canWallJumpRight = false;
 		shouldStillMovement = true;
