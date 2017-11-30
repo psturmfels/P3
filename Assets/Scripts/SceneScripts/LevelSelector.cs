@@ -25,7 +25,9 @@ public class LevelSelector : MonoBehaviour {
             p2Controls = deviceManager.GetControls(1);
             if ((p1Controls != null && p1Controls.Join.WasPressed) ||
                 (p2Controls != null && p2Controls.Join.WasPressed)) {
-                SceneLoader.instance.LoadLevel(levelNo.ToString());
+                GameObject candyWave = GameObject.Find("CandyWave").gameObject;
+                candyWave.GetComponent<ReverseDecay>().ReverseWaveDecay();
+                Invoke("EnterLevel", 2);
             }
         }
 	}
@@ -40,6 +42,11 @@ public class LevelSelector : MonoBehaviour {
         if (other.gameObject.CompareTag("Player")) {
             playerInRange = false;
         }
+    }
+
+    //this exists so it can be invoked and allow the transition animation to fire
+    void EnterLevel() {
+        SceneLoader.instance.LoadLevel(levelNo.ToString());
     }
 
 }
