@@ -129,8 +129,9 @@ public class StateMachineForJack : MonoBehaviour {
 
 	void ReachedFullTransform () {
 	    rb.velocity = Vector2.zero;
-		rb.isKinematic = true;
-		rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+//		rb.isKinematic = true;
+//		rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+		rb.constraints = RigidbodyConstraints2D.FreezeAll;
 	}
 
 	void EnableMovementObject() {
