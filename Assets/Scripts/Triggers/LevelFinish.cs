@@ -39,17 +39,16 @@ public class LevelFinish : MonoBehaviour {
 	}
 
 	void AddMellow() {
-        
 		numUniqueMellowsFinished += 1;
 		if (numUniqueMellowsFinished == 2) {
 			CheckFinishCondition ();
 		}
-        Debug.Log("Adding mellow, now mellow numbers is: " + numUniqueMellowsFinished);
+//        Debug.Log("Adding mellow, now mellow numbers is: " + numUniqueMellowsFinished);
     }
 
 	void SubtractMellow() {
 		numUniqueMellowsFinished -= 1;
-        Debug.Log("Removing mellow, now mellow numbers is: " + numUniqueMellowsFinished);
+//        Debug.Log("Removing mellow, now mellow numbers is: " + numUniqueMellowsFinished);
     }
 
 	void CheckFinishCondition() {
