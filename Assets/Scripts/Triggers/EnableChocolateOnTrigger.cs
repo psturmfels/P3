@@ -25,21 +25,26 @@ public class EnableChocolateOnTrigger : MonoBehaviour {
 	}
 	
 	void OnTriggerEnter2D(Collider2D other) {
-		if (other.gameObject.name == "BridgeMellowMove" || other.gameObject.name == "StiltMellowMove") {
-			if (mellowName != "") {
-				lostMellow ();
-			}
-
-			mellowName = other.gameObject.name;
-			mellow = other.gameObject;
-			registeredMellow ();
-		}
+	    if (other.gameObject.name == "BridgeMellowMove" || other.gameObject.name == "StiltMellowMove") {
+	        if (mellowName == "") {
+	            mellowName = other.gameObject.name;
+	            mellow = other.gameObject;
+	            registeredMellow();
+	        }
+	        else if ((other.gameObject.name == "BridgeMellowMove" && mellowName == "StiltMellowMove") ||
+	                 (other.gameObject.name == "StiltMellowMove" && mellowName == "BridgeMellowMove")) {
+	            mellowName = other.gameObject.name;
+	            mellow = other.gameObject;
+	        }
+	    }
 	}
 
 	void OnTriggerExit2D(Collider2D other) {
 		if (other.gameObject.name == "BridgeMellowMove" || other.gameObject.name == "StiltMellowMove") {
-			mellowName = "";
-			lostMellow ();
+		    if (other.gameObject.name == mellowName) {
+                mellowName = "";
+                lostMellow();
+            }
 		}
 	}
 

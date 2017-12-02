@@ -14,20 +14,6 @@ public class LevelFinish : MonoBehaviour {
     public GameObject candyWave;
     private GameObject firstPlayer;
 
-    //void OnTriggerEnter2D(Collider2D other) {
-    //    if (other.gameObject.GetComponent<MellowStates>() != null) {
-    //        if (firstPlayer == null) {
-    //            firstPlayer = other.gameObject;
-    //            firstFlag.sprite = greenFlagSprite;
-    //        }
-    //        else if (other.gameObject != firstPlayer) {
-    //            secondFlag.sprite = greenFlagSprite;
-
-    //            Invoke("BackToMenu", 3.0f);
-    //        }
-    //    }
-    //}
-
     private void Awake()
     {
         if (mainTheme == null || finishSound == null || candyWave == null) {
@@ -53,15 +39,18 @@ public class LevelFinish : MonoBehaviour {
 	}
 
 	void AddMellow() {
+        
 		numUniqueMellowsFinished += 1;
 		if (numUniqueMellowsFinished == 2) {
 			CheckFinishCondition ();
 		}
-	}
+        Debug.Log("Adding mellow, now mellow numbers is: " + numUniqueMellowsFinished);
+    }
 
 	void SubtractMellow() {
 		numUniqueMellowsFinished -= 1;
-	}
+        Debug.Log("Removing mellow, now mellow numbers is: " + numUniqueMellowsFinished);
+    }
 
 	void CheckFinishCondition() {
 		if (!hasFinishedlevel && firstSmore.mellowName != secondSmore.mellowName) {
