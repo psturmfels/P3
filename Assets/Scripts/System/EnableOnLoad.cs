@@ -6,7 +6,7 @@ public class EnableOnLoad : MonoBehaviour {
     public GameObject[] objects;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 	    foreach (var obj in objects) {
 	        obj.SetActive(true);
 	    }

@@ -23,10 +23,16 @@ public class LevelSelector : MonoBehaviour {
 	    if (playerInRange) {
             p1Controls = deviceManager.GetControls(0);
             p2Controls = deviceManager.GetControls(1);
-            if ((p1Controls != null && p1Controls.Join.WasPressed) ||
-                (p2Controls != null && p2Controls.Join.WasPressed)) {
-                GameObject candyWave = GameObject.Find("CandyWave").gameObject;
-                candyWave.GetComponent<ReverseDecay>().ReverseWaveDecay();
+            if ((p1Controls != null && p1Controls.Join.IsPressed) ||
+                (p2Controls != null && p2Controls.Join.IsPressed)) {
+
+                GameObject candyWave = GameObject.Find("CandyWave");
+                if (candyWave != null) {
+                    ReverseDecay rd = candyWave.GetComponent<ReverseDecay>();
+                    if (rd != null) {
+                        rd.ReverseWaveDecay();
+                    }
+                }
                 Invoke("EnterLevel", 2);
             }
         }
