@@ -58,6 +58,7 @@ public class SceneLoader : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.R)) {
             PlayerPrefs.SetInt("Last Level", 0);
             Debug.Log("Restarting the scene with last level: 0");
+            Destroy(GameObject.Find("PlayerDeviceManager"));
             RestartLevel();
         }
     }
