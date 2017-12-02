@@ -4,7 +4,7 @@ using System.Collections;
 [ExecuteInEditMode]
 public class EditorGrid : MonoBehaviour {
 
-    public float cell_size = 1f; // = larghezza/altezza delle celle
+    public float cell_size = 1f;
     private float x, y, z;
 
     void Start() {
