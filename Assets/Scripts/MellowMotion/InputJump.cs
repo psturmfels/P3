@@ -13,7 +13,6 @@ public class InputJump : MonoBehaviour {
 	public event UnityAction DidJump;
     public AudioSource jumpSound;
 	private float jumpForceModifier = 1.0f;
-	private float jumpDelay = 0.0f;
 	private Rigidbody2D rb;
 	private MoveAnimate ma;
 	private InputMove im;
@@ -21,9 +20,11 @@ public class InputJump : MonoBehaviour {
     private PlayerActions controls;
     private PlayerDeviceManager deviceManager;
     private int playerID = 0;
-	private bool shouldCountFrames = false;
-	private int framesCountedTotal = 0;
-	private int framesCountedInput = 0;
+	private Vector2 dampenForce = Vector2.down * 50.0f;
+	private bool shouldDampenFrames = false;
+	private int framesCountedDampen = 0;
+	private int framesDampenTotal = 7;
+	private bool isJumping = false;
 
     public void StartJump(float forceModifier = 1.0f) {
 		if (!ms.canJump || ms.canWallJumpLeft || ms.canWallJumpRight) {
@@ -43,19 +44,17 @@ public class InputJump : MonoBehaviour {
 			ma.InterruptMovementAnimation (negativeJumpSprites, timeBetweenJumpSprites);
 		}
 
-		shouldCountFrames = true;
-		DidJump ();
-		yield return new WaitForSeconds (jumpDelay);
+			DidJump ();
 		if (ms.isDead) {
 			yield break;
 		}
 
-		float frameInputRatio = (float)(Mathf.Min(framesCountedInput + 1, framesCountedTotal) + 1) / (float)(framesCountedTotal + 1);
 		rb.velocity = new Vector2 (rb.velocity.x, 0.0f);
-		rb.AddRelativeForce (Vector2.up * jumpForce * jumpForceModifier * frameInputRatio, ForceMode2D.Impulse);
-		shouldCountFrames = false;
-		framesCountedInput = 0;
-		framesCountedTotal = 0;
+		rb.AddRelativeForce (Vector2.up * jumpForce * jumpForceModifier, ForceMode2D.Impulse);
+		shouldDampenFrames = true;
+		dampenForce = Vector2.down * 50.0f;
+		framesCountedDampen = 0; 
+		isJumping = true;
 
         jumpSound.Play();
 
@@ -74,7 +73,6 @@ public class InputJump : MonoBehaviour {
 		rb = GetComponentInParent<Rigidbody2D> ();
 		ma = GetComponent<MoveAnimate> ();
 		im = GetComponent<InputMove> ();
-		jumpDelay = timeBetweenJumpSprites * positiveJumpSprites.Length;
         if (jumpSound == null)
         {
             if (this.transform.parent.name == "BridgeMellow")
@@ -87,7 +85,6 @@ public class InputJump : MonoBehaviour {
             }
         }
         
-        
         //Find PlayerDeviceManager
         deviceManager = GameObject.Find("PlayerDeviceManager").GetComponent<PlayerDeviceManager>();
 
@@ -98,11 +95,11 @@ public class InputJump : MonoBehaviour {
     }
 
 	void FixedUpdate() {
-		if (shouldCountFrames) {
-			framesCountedTotal += 1;
-			if (controls != null && controls.Jump.IsPressed) {
-				framesCountedInput += 1;
-			}
+		if (isJumping && rb.velocity.y < 0.1f) {
+			isJumping = false;
+			framesCountedDampen = 0; 
+			dampenForce = Vector2.up * 17.0f;
+			shouldDampenFrames = true;
 		}
 	}
 
@@ -114,9 +111,18 @@ public class InputJump : MonoBehaviour {
         }
 
         if(controls != null)
-        {
+        {	
+			if (shouldDampenFrames) {
+				if (!controls.Jump.IsPressed) {
+					rb.AddRelativeForce (dampenForce, ForceMode2D.Force);
+				}
+				framesCountedDampen += 1;
+				if (framesCountedDampen >= framesDampenTotal) {
+					shouldDampenFrames = false;
+				}
+			}
 			if(controls.Jump.WasPressed)
-            {
+			{
                 StartJump();
             }
         }

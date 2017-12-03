@@ -471,7 +471,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1598089949792214}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 71.3, y: -1.8999996, z: 0}
+  m_LocalPosition: {x: -5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4347891320563212}
@@ -1450,7 +1450,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68f852624a8794fe5b5779fd9a9a60a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpVector: {x: 14, y: 13}
+  jumpVector: {x: 9, y: 14}
   positiveJumpSprites:
   - {fileID: 21300000, guid: 2db19d37dfbb54f1eb9be2ff93e0549a, type: 3}
   - {fileID: 21300000, guid: 9edcf4c5d4c534b21b70b27a9d83060d, type: 3}
@@ -1461,7 +1461,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 8c47ed748db434a448f74632c359ebc9, type: 3}
   - {fileID: 21300000, guid: 1f8d544bded964cc19c90d12f2535cd3, type: 3}
   - {fileID: 21300000, guid: c6fb4eccc5a0f4341b8775e19b477c8d, type: 3}
-  timeBetweenJumpSprites: 0.02
+  timeBetweenJumpSprites: 0.01
   wallJumpSound: {fileID: 0}
 --- !u!114 &114197631011215428
 MonoBehaviour:
@@ -1605,7 +1605,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b40c766010a8c45eea8c528e56a20404, type: 3}
   - {fileID: 21300000, guid: ce5ab54f9f03e4ddfada0a34b3555f25, type: 3}
   - {fileID: 21300000, guid: 44f781ec1738d490ca96228d01bbab44, type: 3}
-  timeBetweenJumpSprites: 0.014
+  timeBetweenJumpSprites: 0.01
   jumpSound: {fileID: 0}
 --- !u!114 &114596488635360266
 MonoBehaviour:
