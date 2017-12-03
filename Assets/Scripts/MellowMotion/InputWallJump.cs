@@ -29,6 +29,7 @@ public class InputWallJump : MonoBehaviour {
 	private bool isJumping = false;
 	private Vector2 dampenForce = Vector2.down * 50.0f;
 	private bool jumpWasPressed = false;
+	private bool ignoreNextFrame = true;
 	private int inputBufferFrames = 8;
 	private int inputFramesCounted = 0;
 	private float lastJumpForceModifier = 1.0f;
@@ -49,6 +50,7 @@ public class InputWallJump : MonoBehaviour {
 			return;
 		}
 
+		Debug.Log ("Jumped on frame " + inputFramesCounted.ToString ());
 		inputFramesCounted = 0;
 		jumpWasPressed = false;
 		lastJumpForceModifier = jumpForceModifier;
@@ -121,23 +123,25 @@ public class InputWallJump : MonoBehaviour {
 					shouldDampenFrames = false;
 				}
 			}
-			if(controls.Jump.WasPressed)
+			if(controls.Jump.WasPressed && !ignoreNextFrame)
 			{
 				jumpWasPressed = true;
 			}
+			ignoreNextFrame = false;
 			if (jumpWasPressed) {
 				StartJump ();
-				Debug.Log ("Atempting jump on try " + inputFramesCounted.ToString ());
 				inputFramesCounted += 1;
 				if (inputFramesCounted >= inputBufferFrames) {
 					jumpWasPressed = false;
 					inputFramesCounted = 0;
 				}
 			}
-        }   
+        }  
+
 	}
 
 	void ResetBufferFrames() {
+		ignoreNextFrame = true;
 		jumpWasPressed = false;
 		inputFramesCounted = 0;
 	}

@@ -33,6 +33,7 @@ public class InputJump : MonoBehaviour {
 		if (!ms.canJump || ms.canWallJumpLeft || ms.canWallJumpRight) {
 			return;
 		}
+		DidJump ();
 		inputFramesCounted = 0;
 		jumpWasPressed = false;
 		StopAllCoroutines ();
@@ -48,8 +49,7 @@ public class InputJump : MonoBehaviour {
 		} else {
 			ma.InterruptMovementAnimation (negativeJumpSprites, timeBetweenJumpSprites);
 		}
-
-			DidJump ();
+			
 		if (ms.isDead) {
 			yield break;
 		}
