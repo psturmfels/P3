@@ -9,6 +9,7 @@ public class MellowCrushed : MonoBehaviour {
 	public float timeBetweenCrushSprites;
 	public GameObject deathExplosion;
 	public bool isStilt;
+    public int numberOfDeaths;
 
 	public event UnityAction DisableOther;
 	public event UnityAction DisableTransform;
@@ -37,7 +38,8 @@ public class MellowCrushed : MonoBehaviour {
 			return;
 		}
 
-		BeginDieRoutine ();
+	    numberOfDeaths++;
+        BeginDieRoutine ();
 		DisableOther ();
 	}
 
@@ -48,7 +50,7 @@ public class MellowCrushed : MonoBehaviour {
 	IEnumerator DieRoutine() {
 		DisableInput ();
 
-		if (stateMachine != null && stateMachine.GetState () != StateMachineForJack.State.Normal && transformStateTransform != null) {
+        if (stateMachine != null && stateMachine.GetState () != StateMachineForJack.State.Normal && transformStateTransform != null) {
 			transformStateTransform.TransformIntoDeath ();
 			while (stateMachine.GetState () != StateMachineForJack.State.Dead) {
 				yield return null;
@@ -77,7 +79,9 @@ public class MellowCrushed : MonoBehaviour {
 		ms = GetComponentInChildren<MellowStates> ();
 		rb = GetComponent<Rigidbody2D> ();
 		normalStatePickup = GetComponentInChildren<PickUpAction> ();
-		foreach (BoxCollider2D box in GetComponentsInChildren<BoxCollider2D> ()) {
+	    numberOfDeaths = 0;
+
+        foreach (BoxCollider2D box in GetComponentsInChildren<BoxCollider2D> ()) {
 			if (box.gameObject.name.Contains ("Move")) {
 				normalStateCollider = box;
 			}

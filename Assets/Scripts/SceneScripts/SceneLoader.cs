@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour {
@@ -10,8 +11,10 @@ public class SceneLoader : MonoBehaviour {
     private int currentLevel;
     private PlayerActions controllerActions;
     private PlayerActions keyboardActions;
-    private List<string> levels = new List<string>();
-    
+    private List<string> levels;
+    private List<string> levelNames = new List<string>();
+    private GameObject topLargeText;
+    private GameObject mediumLargeText;
 
     void Awake() {
         if (instance != null)
@@ -20,17 +23,31 @@ public class SceneLoader : MonoBehaviour {
             instance = this;
         }
         Application.targetFrameRate = 30;
+        levels = new List<string> {
+            "Hub World", // Start at hub
+            "Level 1",
+            "Level 2",
+            "Level 3",
+            "Level 4",
+            "Level 5",
+            "Level 6",
+            "Level 7",
+            "Level 8",
+            "Hub World" // Return to hub
+        };
 
-        levels.Add("Hub World"); // Start at hub
-        levels.Add("Level 1");
-        levels.Add("Level 2");
-        levels.Add("Level 3");
-        levels.Add("Level 4");
-        levels.Add("Level 5");
-        levels.Add("Level 6");
-        levels.Add("Level 7");
-        levels.Add("Level 8");
-        levels.Add("Hub World"); // Return to hub
+        levelNames = new List<string> {
+            "Hub World",
+            "Minty Meadows",
+            "Gummy Gardens",
+            "Strawberry Shortcake",
+            "Cookie Crumbles",
+            "Red Velvet Ravine",
+            "Frosty Flakes",
+            "Popsicle Plummet",
+            "Winter Wonderland",
+            "Hub World"
+        };
 
         if (SceneManager.GetActiveScene().name == "Hub World") {
             // Placing players to correct position
@@ -41,10 +58,9 @@ public class SceneLoader : MonoBehaviour {
     void Start() {
         controllerActions = PlayerActions.CreateWithControllerBindings();
         keyboardActions = PlayerActions.CreateWithKeyboardBindings();
-
         currentLevel = levels.IndexOf(SceneManager.GetActiveScene().name);
-        
 
+        StartCoroutine(DisplayLevelName());
     }
 
     // Update is called once per frame
@@ -59,7 +75,36 @@ public class SceneLoader : MonoBehaviour {
             PlayerPrefs.SetInt("Last Level", 0);
             Debug.Log("Restarting the scene with last level: 0");
             Destroy(GameObject.Find("PlayerDeviceManager"));
-            RestartLevel();
+            LoadMenu();
+        }
+    }
+
+    IEnumerator DisplayLevelName() {
+        yield return new WaitForSeconds(3.0f);
+        GameObject topLargeText = GameObject.Find("Top Large Text");
+        if (topLargeText != null) {
+            Text[] txts = topLargeText.GetComponentsInChildren<Text>();
+            if (txts.Length > 0) {
+                foreach (var txt in txts) {
+                    txt.text = levelNames[currentLevel];
+                }
+            }
+            topLargeText.GetComponent<ImageFadeInOut>().FadeIn();
+        }
+        GameObject topMediumText = GameObject.Find("Top Medium Text");
+        if (topMediumText != null) {
+            Text[] txts = topMediumText.GetComponentsInChildren<Text>();
+            if (txts.Length > 0) {
+                foreach (var txt in txts) {
+                    txt.text = levels[currentLevel];
+                }
+            }
+            topMediumText.GetComponent<ImageFadeInOut>().FadeIn();
+        }
+        yield return new WaitForSeconds(5.0f);
+        if (topLargeText != null && topMediumText != null) {
+            topLargeText.GetComponent<ImageFadeInOut>().FadeOut();
+            topMediumText.GetComponent<ImageFadeInOut>().FadeOut();
         }
     }
 
@@ -110,12 +155,7 @@ public class SceneLoader : MonoBehaviour {
         int level = 0;
         int.TryParse(levelNumber, out level);
         PlayerPrefs.SetInt("Last Level", level);
-        //        var scenes = SceneManager.GetAllScenes();
         SceneManager.LoadScene(levels[level]);
-    }
-
-    public void LoadNextLevel() {
-        SceneManager.LoadScene(levels[currentLevel + 1]);
     }
 
     public void LoadMenu() {
