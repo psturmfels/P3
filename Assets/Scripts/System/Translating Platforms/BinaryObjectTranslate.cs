@@ -154,11 +154,11 @@ public class BinaryObjectTranslate : MonoBehaviour
     //Ensure that the attached rigidbody follows the necessary constraints
     private void EnforceRigidbodyConstraints()
     {
-        selfRigidbody2D.bodyType = RigidbodyType2D.Dynamic;
-        selfRigidbody2D.mass = 100000;
-        selfRigidbody2D.gravityScale = 0;
-        selfRigidbody2D.drag = 0;
-        selfRigidbody2D.angularDrag = 0;
+        selfRigidbody2D.bodyType = RigidbodyType2D.Kinematic;
+        //selfRigidbody2D.mass = 100000;
+        //selfRigidbody2D.gravityScale = 0;
+        //selfRigidbody2D.drag = 0;
+        //selfRigidbody2D.angularDrag = 0;
         selfRigidbody2D.freezeRotation = true;
     }
 
