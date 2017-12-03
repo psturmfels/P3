@@ -21,12 +21,17 @@ public class InputWallJump : MonoBehaviour {
 	private MoveAnimate ma;
     private PlayerActions controls;
     private PlayerDeviceManager deviceManager;
+	private InputJump jumpScript;
     private int playerID = 0;
 	private bool shouldDampenFrames = false;
 	private int framesCountedDampen = 0;
 	private int framesDampenTotal = 7;
 	private bool isJumping = false;
 	private Vector2 dampenForce = Vector2.down * 50.0f;
+	private bool jumpWasPressed = false;
+	private int inputBufferFrames = 8;
+	private int inputFramesCounted = 0;
+	private float lastJumpForceModifier = 1.0f;
 
     public void StartJump(float forceModifier = 1.0f) {
 		if (ms.canJump) {
@@ -43,6 +48,11 @@ public class InputWallJump : MonoBehaviour {
 		} else {
 			return;
 		}
+
+		inputFramesCounted = 0;
+		jumpWasPressed = false;
+		lastJumpForceModifier = jumpForceModifier;
+
 		CancelInvoke ();
 		DidWallJump ();
 		shouldDampenFrames = true;
@@ -66,6 +76,8 @@ public class InputWallJump : MonoBehaviour {
 		ms = GetComponent<MellowStates> ();
 		rb = GetComponentInParent<Rigidbody2D> ();
 		ma = GetComponent<MoveAnimate> ();
+		jumpScript = GetComponent<InputJump> ();
+		jumpScript.DidJump += ResetBufferFrames;
 
 		if (wallJumpSound == null)
         {
@@ -100,7 +112,9 @@ public class InputWallJump : MonoBehaviour {
         {
 			if (shouldDampenFrames) {
 				if (!controls.Jump.IsPressed) {
-					rb.AddRelativeForce (dampenForce, ForceMode2D.Force);
+					if (dampenForce.normalized != Vector2.up || Mathf.Sign (rb.velocity.x) == Mathf.Sign (lastJumpForceModifier)) {
+						rb.AddRelativeForce (dampenForce, ForceMode2D.Force);
+					}
 				}
 				framesCountedDampen += 1;
 				if (framesCountedDampen >= framesDampenTotal) {
@@ -108,11 +122,24 @@ public class InputWallJump : MonoBehaviour {
 				}
 			}
 			if(controls.Jump.WasPressed)
-            {
-                StartJump();
-            }
-        }
-            
+			{
+				jumpWasPressed = true;
+			}
+			if (jumpWasPressed) {
+				StartJump ();
+				Debug.Log ("Atempting jump on try " + inputFramesCounted.ToString ());
+				inputFramesCounted += 1;
+				if (inputFramesCounted >= inputBufferFrames) {
+					jumpWasPressed = false;
+					inputFramesCounted = 0;
+				}
+			}
+        }   
+	}
+
+	void ResetBufferFrames() {
+		jumpWasPressed = false;
+		inputFramesCounted = 0;
 	}
 
 	void FixedUpdate() {

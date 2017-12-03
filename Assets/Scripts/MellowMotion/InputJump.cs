@@ -25,11 +25,16 @@ public class InputJump : MonoBehaviour {
 	private int framesCountedDampen = 0;
 	private int framesDampenTotal = 7;
 	private bool isJumping = false;
+	private bool jumpWasPressed = false;
+	private int inputBufferFrames = 6;
+	private int inputFramesCounted = 0;
 
     public void StartJump(float forceModifier = 1.0f) {
 		if (!ms.canJump || ms.canWallJumpLeft || ms.canWallJumpRight) {
 			return;
 		}
+		inputFramesCounted = 0;
+		jumpWasPressed = false;
 		StopAllCoroutines ();
 		StartCoroutine (JumpRoutine (forceModifier));
 	}
@@ -123,8 +128,16 @@ public class InputJump : MonoBehaviour {
 			}
 			if(controls.Jump.WasPressed)
 			{
-                StartJump();
+				jumpWasPressed = true;
             }
+			if (jumpWasPressed) {
+				StartJump ();
+				inputFramesCounted += 1;
+				if (inputFramesCounted >= inputBufferFrames) {
+					jumpWasPressed = false;
+					inputFramesCounted = 0;
+				}
+			}
         }
 	}
 }
