@@ -90,13 +90,13 @@ public class PlayerActions : PlayerActionSet
         actions.Jump.AddDefaultBinding(InputControlType.Action1);
         actions.Transform.AddDefaultBinding(InputControlType.Action2);
         actions.Interact.AddDefaultBinding(InputControlType.Action3);
-        actions.Join.AddDefaultBinding(InputControlType.Action4);
+        actions.Join.AddDefaultBinding(InputControlType.Command);
 
         actions.Left.AddDefaultBinding(InputControlType.LeftStickLeft);
         actions.Right.AddDefaultBinding(InputControlType.LeftStickRight);
         actions.Up.AddDefaultBinding(InputControlType.LeftStickUp);
         actions.Down.AddDefaultBinding(InputControlType.LeftStickDown);
-        actions.Menu.AddDefaultBinding(InputControlType.Command);
+        //actions.Menu.AddDefaultBinding(InputControlType.Command);
 
         return actions;
     }
