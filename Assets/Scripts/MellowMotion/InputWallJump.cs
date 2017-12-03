@@ -50,7 +50,6 @@ public class InputWallJump : MonoBehaviour {
 			return;
 		}
 
-		Debug.Log ("Jumped on frame " + inputFramesCounted.ToString ());
 		inputFramesCounted = 0;
 		jumpWasPressed = false;
 		lastJumpForceModifier = jumpForceModifier;

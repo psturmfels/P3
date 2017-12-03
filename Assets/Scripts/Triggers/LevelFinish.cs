@@ -47,11 +47,6 @@ public class LevelFinish : MonoBehaviour {
         topMediumText = GameObject.Find("Top Medium Text");
         leftPanel = GameObject.Find("Left Panel");
         rightPanel = GameObject.Find("Right Panel");
-
-//        if (topLargeText != null) topLargeText.SetActive(false);
-//        if (topMediumText != null) topMediumText.SetActive(false);
-//        if (leftPanel != null) leftPanel.SetActive(false);
-//        if (rightPanel != null) rightPanel.SetActive(false);
     }
 
 	void AddMellow() {
@@ -122,7 +117,7 @@ public class LevelFinish : MonoBehaviour {
     }
 
     private IEnumerator StartDecay() {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(3.0f);
         candyWave.GetComponent<ReverseDecay>().ReverseWaveDecay();
     }
 
