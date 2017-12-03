@@ -16,17 +16,17 @@ public class InputWallJump : MonoBehaviour {
 	private float jumpForceModifier = 1.0f;
 	private float jumpNoStillDuration = 0.25f;
 	private float jumpLockMovementDuration = 0.15f;
-	private float jumpDelay = 0.0f;
 	private MellowStates ms;
 	private Rigidbody2D rb;
 	private MoveAnimate ma;
     private PlayerActions controls;
     private PlayerDeviceManager deviceManager;
-	private bool shouldCountFrames = false;
-	private int framesCountedTotal = 0;
-	private int framesCountedInput = 0;
-
     private int playerID = 0;
+	private bool shouldDampenFrames = false;
+	private int framesCountedDampen = 0;
+	private int framesDampenTotal = 7;
+	private bool isJumping = false;
+	private Vector2 dampenForce = Vector2.down * 50.0f;
 
     public void StartJump(float forceModifier = 1.0f) {
 		if (ms.canJump) {
@@ -35,14 +35,20 @@ public class InputWallJump : MonoBehaviour {
 		if (ms.canWallJumpLeft) {
 			ma.InterruptMovementAnimation (negativeJumpSprites, timeBetweenJumpSprites);
 			jumpForceModifier = -forceModifier;
+			dampenForce = Vector2.down * 50.0f + Vector2.right * 50.0f;
 		} else if (ms.canWallJumpRight) {
 			ma.InterruptMovementAnimation (positiveJumpSprites, timeBetweenJumpSprites);
 			jumpForceModifier = forceModifier;
+			dampenForce = Vector2.down * 50.0f + Vector2.left * 50.0f;
 		} else {
 			return;
 		}
 		CancelInvoke ();
 		DidWallJump ();
+		shouldDampenFrames = true;
+
+		framesCountedDampen = 0; 
+		isJumping = true;
 
 		ms.SetState (MellowStates.State.WallJumpLeft, false);
 		ms.SetState (MellowStates.State.WallJumpRight, false);
@@ -51,9 +57,7 @@ public class InputWallJump : MonoBehaviour {
 		ms.SetState (MellowStates.State.StillMovement, false);
 		ms.SetState (MellowStates.State.Move, false);
 
-
-		shouldCountFrames = true;
-		Invoke ("Jump", jumpDelay);
+		Jump ();
 		Invoke ("BeginStillMovement", jumpNoStillDuration);
 		Invoke ("BeginMovement", jumpLockMovementDuration);
 	}
@@ -62,9 +66,8 @@ public class InputWallJump : MonoBehaviour {
 		ms = GetComponent<MellowStates> ();
 		rb = GetComponentInParent<Rigidbody2D> ();
 		ma = GetComponent<MoveAnimate> ();
-		jumpDelay = timeBetweenJumpSprites * positiveJumpSprites.Length;
 
-        if (wallJumpSound == null)
+		if (wallJumpSound == null)
         {
             if (this.transform.parent.name == "BridgeMellow")
             {
@@ -85,14 +88,6 @@ public class InputWallJump : MonoBehaviour {
         }
     }
 
-	void FixedUpdate() {
-		if (shouldCountFrames) {
-			framesCountedTotal += 1;
-			if (controls != null && controls.Jump.IsPressed) {
-				framesCountedInput += 1;
-			}
-		}
-	}
 
 	void Update () {
         //Find the controls bound to this player
@@ -103,6 +98,15 @@ public class InputWallJump : MonoBehaviour {
 
         if(controls != null)
         {
+			if (shouldDampenFrames) {
+				if (!controls.Jump.IsPressed) {
+					rb.AddRelativeForce (dampenForce, ForceMode2D.Force);
+				}
+				framesCountedDampen += 1;
+				if (framesCountedDampen >= framesDampenTotal) {
+					shouldDampenFrames = false;
+				}
+			}
 			if(controls.Jump.WasPressed)
             {
                 StartJump();
@@ -111,15 +115,20 @@ public class InputWallJump : MonoBehaviour {
             
 	}
 
+	void FixedUpdate() {
+		if (isJumping && rb.velocity.y < 0.1f) {
+			isJumping = false;
+			framesCountedDampen = 0; 
+			dampenForce = Vector2.up * 15.0f;
+			shouldDampenFrames = true;
+		}
+	}
+
 	void Jump() {
-		float frameInputRatio = (float)(Mathf.Min(framesCountedInput + 1, framesCountedTotal) + 1) / (float)(framesCountedTotal + 1);
 		rb.velocity = Vector2.zero;
-		Vector2 modifiedJumpVector = new Vector2 (jumpVector.x * jumpForceModifier, jumpVector.y) * frameInputRatio;
+		Vector2 modifiedJumpVector = new Vector2 (jumpVector.x * jumpForceModifier, jumpVector.y);
 		rb.AddRelativeForce (modifiedJumpVector, ForceMode2D.Impulse);
         wallJumpSound.Play();
-        shouldCountFrames = false;
-		framesCountedInput = 0;
-		framesCountedTotal = 0;
 	}
 
 	void BeginStillMovement() {
