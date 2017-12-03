@@ -13,12 +13,9 @@ public class TransformBehavior: MonoBehaviour {
 	public UnityAction StartTowardsTransform;
 	public UnityAction StartTowardsNormal;
 	public UnityAction ReachedDeath;
-	public UnityAction WasCanceled;
 
 	private InputDirectional id;
 	private StateMachineForJack parentStateMachine;
-	private bool firstCancel = false;
-	private bool secondCancel = false;
 	private bool isTransforming = false;
 
     //Sliding behavior members
@@ -27,10 +24,8 @@ public class TransformBehavior: MonoBehaviour {
     private Vector3 transformedFrom;
     private Vector3 target;
 	private Vector3 targetOffset;
-	private bool isGoingToTransform = false;
-	private bool shouldSlideFromReject = false;
 	private bool isCanceling = false;
-	private bool isDying = false;
+	private float distanceToCancel = 0.0f;
 
 	void Awake () {
 		id = GetComponent<InputDirectional> ();
@@ -39,44 +34,16 @@ public class TransformBehavior: MonoBehaviour {
 		ReachedNormal += ReachedNormalScale; 
 		StartTowardsTransform += ScaleToTransform;
 		StartTowardsNormal += ScaleToNormal;
-		WasCanceled += ScaleToNormal;
 	}
 
 	void ReachedTransformScale() {
 		isTransforming = false;
-		ResetCancelChecks ();
 		parentStateMachine.SetState (StateMachineForJack.State.Transformed);
 	}
 
 	void ReachedNormalScale() {
 		isTransforming = false;
-		ResetCancelChecks ();
 		parentStateMachine.SetState (StateMachineForJack.State.Normal);
-	}
-
-	void ResetCancelChecks() {
-		firstCancel = false;
-		secondCancel = false;
-	}
-		
-	public void RegisterCancelContact(int cancelID) {
-		if (cancelID == 1) {
-			firstCancel = true;
-		} else if (cancelID == 2) {
-			secondCancel = true;
-		}
-		if (firstCancel && secondCancel) {
-			CancelTransform ();
-		}
-	}
-
-	void CancelTransform() {
-		if (parentStateMachine.GetState () == StateMachineForJack.State.InTransition) {
-			ResetCancelChecks ();
-			StopAllCoroutines ();
-			isCanceling = true;
-			WasCanceled ();
-		}
 	}
 
 	void ScaleToTransform () {
@@ -120,44 +87,37 @@ public class TransformBehavior: MonoBehaviour {
 		} else {
 			ReachedNormal ();
 		}
-		isCanceling = false;
-		isDying = false;
 	}
 
 	IEnumerator LerpToTransformScale() {
-		isGoingToTransform = true;
 		float transformIterations = Vector3.Distance (transform.localScale, transformScale) / transformSpeed;
 		float moveLerpSpeed = Vector3.Distance (transform.parent.position, target) / transformIterations;
+		Vector2 cancelDistanceIndicator = new Vector2 (slideOffset.x, slideOffset.y).normalized;
+		float finalTransformedSize = new Vector2 (slideOffset.x, slideOffset.y).magnitude * 2.0f;
 
         while (transform.localScale != transformScale) {
 			transform.localScale = Vector3.MoveTowards(transform.localScale, transformScale, transformSpeed);
-			if (canSlide || shouldSlideFromReject) {
+			if (canSlide) {
 				transform.parent.position = Vector3.MoveTowards(transform.parent.position, target, moveLerpSpeed);
             }
+			float currentTransformScale = Vector2.Dot (new Vector2(transform.localScale.x, transform.localScale.y), cancelDistanceIndicator) * finalTransformedSize;
+			if (isCanceling && currentTransformScale > distanceToCancel) {
+				UpdateTargetPosition (false);
+				StartCoroutine (LerpToNormalScale ());
+				isCanceling = false;
+				yield break;
+			}
+				
             yield return null;
 		}
 		ReachedTransform ();
-		isGoingToTransform = false;
-		shouldSlideFromReject = false;
 	}
-
-	public void LerpFromRejectInDirection(float signOfReject) {
-		if (!isGoingToTransform || isCanceling || isDying) {
-			return;
-		}
-
-		StopAllCoroutines ();
-		target = transform.parent.position + slideOffset * signOfReject;
-		shouldSlideFromReject = true;
-		StartCoroutine (LerpToTransformScale ());
-	}
-
+		
     public void TransformIntoDeath() {
 		if (isTransforming) {
 			StopAllCoroutines ();
 		}
 		isTransforming = true; 
-		isDying = true;
 		parentStateMachine.SetState (StateMachineForJack.State.Disabled);
 		StartCoroutine (LerpToNormalScale (true));
 	}
@@ -171,6 +131,43 @@ public class TransformBehavior: MonoBehaviour {
     }
 
     private void TargetPositionUpdate(bool transforming) {
+		bool dominantDirectionHit = false;
+		bool secondaryDirectionHit = false;
+		Vector2 dominantDirectionCastPosition = Vector2.zero;
+		Vector2 secondaryDirectionCastPosition = Vector2.zero;
+		Vector2 dominantDirection = new Vector2 (slideOffset.x, slideOffset.y);
+		Vector2 secondaryDirection = -dominantDirection;
+		if (transforming) {
+			Vector2 currentPos = new Vector2 (parentStateMachine.transform.position.x, parentStateMachine.transform.position.y);
+			int groundMask = 1 << LayerMask.NameToLayer ("Ground");
+			if (slideOffset.normalized == Vector3.right) {
+				groundMask = groundMask | (1 << LayerMask.NameToLayer ("Stilt"));
+			} else {
+				groundMask = groundMask | (1 << LayerMask.NameToLayer ("Bridge"));
+			}
+
+			RaycastHit2D dominantDirectionCast = Physics2D.CircleCast (currentPos, 0.15f, dominantDirection.normalized, dominantDirection.magnitude * 2.0f, groundMask);
+			RaycastHit2D secondaryDirectionCast = Physics2D.CircleCast (currentPos, 0.15f, secondaryDirection.normalized, secondaryDirection.magnitude * 2.0f, groundMask);
+			if (dominantDirectionCast.collider != null) {
+				dominantDirectionHit = true;
+				dominantDirectionCastPosition = dominantDirectionCast.point;
+			}
+			if (secondaryDirectionCast.collider != null) {
+				secondaryDirectionHit = true;
+				secondaryDirectionCastPosition = secondaryDirectionCast.point;
+			}
+
+			if (dominantDirectionHit && secondaryDirectionHit) {
+				target = 0.5f * (dominantDirectionCastPosition + secondaryDirectionCastPosition);
+				float distanceBetweenContacts = Mathf.Abs(Vector2.Dot (dominantDirectionCastPosition - secondaryDirectionCastPosition, dominantDirection.normalized));
+				if (distanceBetweenContacts < dominantDirection.magnitude * 2.0f) {
+					isCanceling = true;
+					distanceToCancel = distanceBetweenContacts;
+					return;
+				}
+			}
+		}
+
 		float axis = 0.0f;
 		if (slideOffset.normalized == Vector3.right) {
 			axis = id.GetCurrentHorzAxis ();
@@ -181,27 +178,49 @@ public class TransformBehavior: MonoBehaviour {
 			target = transformedFrom;
 		} 
 		else if (axis < 0) {
-			if (!transforming && !PlayerCanTransformTo(-slideOffset)) { //!PlayerFitsAt(2)) { // Collider check for left side
+			if (!transforming && !PlayerCanTransformTo(-slideOffset)) { // Collider check for secondary direction
                 target = transformedFrom;
             }
             else {
-				target = transform.parent.position - slideOffset;
+				if (secondaryDirectionHit) {
+					target = secondaryDirectionCastPosition - secondaryDirection;
+				} else {
+					if (!transforming) {
+						target = transform.parent.position - slideOffset * 0.9f;
+					} else {
+						target = transform.parent.position - slideOffset;
+					}
+				}
             }
         }
 		else if (axis > 0) {
-			if (!transforming && !PlayerCanTransformTo(slideOffset)) { // Collider check for right side
+			if (!transforming && !PlayerCanTransformTo(slideOffset)) { // Collider check for dominant direction
                 target = transformedFrom;
             }
             else {
-				target = transform.parent.position + slideOffset;
+				if (dominantDirectionHit) {
+					target = dominantDirectionCastPosition - dominantDirection;
+				} else {
+					if (!transforming) {
+						target = transform.parent.position + slideOffset * 0.9f;
+					} else {
+						target = transform.parent.position + slideOffset;
+					}
+				}
             }
         }
         else {
-			if (!transforming && !PlayerCanTransformTo(Vector3.zero)) { // Collider check for middle side
+			if (!transforming && !PlayerCanTransformTo(Vector3.zero)) { // Collider check for no direction
                 target = transformedFrom;
             }
             else {
-				target = transform.parent.position;
+				if (dominantDirectionHit) {
+					target = dominantDirectionCastPosition - dominantDirection;
+				} else if (secondaryDirectionHit) {
+					target = secondaryDirectionCastPosition - secondaryDirection;
+				} else {
+					target = transform.parent.position;
+				}
             }
         }
     }
@@ -256,8 +275,4 @@ public class TransformBehavior: MonoBehaviour {
 		}
 
 	}
-//
-//    private bool PlayerFitsAt(int colliderChildIndex) {
-//        return transform.GetChild(colliderChildIndex).gameObject.GetComponent<PlayerFitCheck>().playerCanFit();
-//    }
 }
