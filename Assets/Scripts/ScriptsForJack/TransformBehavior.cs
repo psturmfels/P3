@@ -146,8 +146,8 @@ public class TransformBehavior: MonoBehaviour {
 				groundMask = groundMask | (1 << LayerMask.NameToLayer ("Bridge"));
 			}
 
-			RaycastHit2D dominantDirectionCast = Physics2D.CircleCast (currentPos, 0.15f, dominantDirection.normalized, dominantDirection.magnitude * 2.0f, groundMask);
-			RaycastHit2D secondaryDirectionCast = Physics2D.CircleCast (currentPos, 0.15f, secondaryDirection.normalized, secondaryDirection.magnitude * 2.0f, groundMask);
+			RaycastHit2D dominantDirectionCast = Physics2D.Raycast (currentPos, dominantDirection.normalized, dominantDirection.magnitude * 2.0f, groundMask);
+			RaycastHit2D secondaryDirectionCast = Physics2D.Raycast (currentPos, secondaryDirection.normalized, secondaryDirection.magnitude * 2.0f, groundMask);
 			if (dominantDirectionCast.collider != null) {
 				dominantDirectionHit = true;
 				dominantDirectionCastPosition = dominantDirectionCast.point;
