@@ -24,7 +24,7 @@ public class MovingKillPlane : MonoBehaviour
 
     private void Start()
     {
-        stiltMellowCrushed.DisableTransform += ReturnToBasePosition;
+        stiltMellowCrushed.Respawn += ReturnToBasePosition;
     }
 
     private void FixedUpdate()
