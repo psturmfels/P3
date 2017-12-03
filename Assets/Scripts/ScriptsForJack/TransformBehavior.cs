@@ -133,6 +133,8 @@ public class TransformBehavior: MonoBehaviour {
     private void TargetPositionUpdate(bool transforming) {
 		bool dominantDirectionHit = false;
 		bool secondaryDirectionHit = false;
+		bool dominantObstaclePositionOneLength = false;
+		bool secondaryObstaclePositionOneLength = false;
 		Vector2 dominantDirectionCastPosition = Vector2.zero;
 		Vector2 secondaryDirectionCastPosition = Vector2.zero;
 		Vector2 dominantDirection = new Vector2 (slideOffset.x, slideOffset.y);
@@ -151,12 +153,17 @@ public class TransformBehavior: MonoBehaviour {
 			if (dominantDirectionCast.collider != null) {
 				dominantDirectionHit = true;
 				dominantDirectionCastPosition = dominantDirectionCast.point;
+				if (Vector2.Distance (currentPos, dominantDirectionCastPosition) < dominantDirection.magnitude) {
+					dominantObstaclePositionOneLength = true;
+				}
 			}
 			if (secondaryDirectionCast.collider != null) {
 				secondaryDirectionHit = true;
 				secondaryDirectionCastPosition = secondaryDirectionCast.point;
+				if (Vector2.Distance (currentPos, secondaryDirectionCastPosition) < secondaryDirection.magnitude) {
+					secondaryObstaclePositionOneLength = true;
+				}
 			}
-
 			if (dominantDirectionHit && secondaryDirectionHit) {
 				target = 0.5f * (dominantDirectionCastPosition + secondaryDirectionCastPosition);
 				float distanceBetweenContacts = Mathf.Abs(Vector2.Dot (dominantDirectionCastPosition - secondaryDirectionCastPosition, dominantDirection.normalized));
@@ -214,9 +221,9 @@ public class TransformBehavior: MonoBehaviour {
                 target = transformedFrom;
             }
             else {
-				if (dominantDirectionHit) {
+				if (dominantDirectionHit && dominantObstaclePositionOneLength) {
 					target = dominantDirectionCastPosition - dominantDirection;
-				} else if (secondaryDirectionHit) {
+				} else if (secondaryDirectionHit && secondaryObstaclePositionOneLength) {
 					target = secondaryDirectionCastPosition - secondaryDirection;
 				} else {
 					target = transform.parent.position;
