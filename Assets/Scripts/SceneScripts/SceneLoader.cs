@@ -82,29 +82,34 @@ public class SceneLoader : MonoBehaviour {
     IEnumerator DisplayLevelName() {
         yield return new WaitForSeconds(3.0f);
         GameObject topLargeText = GameObject.Find("Top Large Text");
-        if (topLargeText != null) {
+        GameObject topMediumText = GameObject.Find("Top Medium Text");
+        GameObject topLeftText = GameObject.Find("Top Left Text");
+        if (topLargeText != null && topMediumText != null && topLeftText != null) {
             Text[] txts = topLargeText.GetComponentsInChildren<Text>();
-            if (txts.Length > 0) {
-                foreach (var txt in txts) {
+            if (txts.Length > 0){
+                foreach (var txt in txts){
                     txt.text = levelNames[currentLevel];
                 }
             }
-            topLargeText.GetComponent<ImageFadeInOut>().FadeIn();
-        }
-        GameObject topMediumText = GameObject.Find("Top Medium Text");
-        if (topMediumText != null) {
-            Text[] txts = topMediumText.GetComponentsInChildren<Text>();
+            txts = topMediumText.GetComponentsInChildren<Text>();
             if (txts.Length > 0) {
                 foreach (var txt in txts) {
                     txt.text = levels[currentLevel];
                 }
             }
+            txts = topLeftText.GetComponentsInChildren<Text>();
+            if (txts.Length > 0) {
+                foreach (var txt in txts) {
+                    txt.text = "Press Start to go back\nto Candy Commons";
+                }
+            }
+            topLargeText.GetComponent<ImageFadeInOut>().FadeIn();
             topMediumText.GetComponent<ImageFadeInOut>().FadeIn();
-        }
-        yield return new WaitForSeconds(5.0f);
-        if (topLargeText != null && topMediumText != null) {
+            topLeftText.GetComponent<ImageFadeInOut>().FadeIn();
+            yield return new WaitForSeconds(5.0f);
             topLargeText.GetComponent<ImageFadeInOut>().FadeOut();
             topMediumText.GetComponent<ImageFadeInOut>().FadeOut();
+            topLeftText.GetComponent<ImageFadeInOut>().FadeOut();
         }
     }
 
