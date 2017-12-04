@@ -12,7 +12,6 @@ public class CameraMovement : MonoBehaviour {
 	public float maxSizeY = 7.0f;
 	public bool lockYPos = false;
 	public bool lockXPos = false;
-	public bool ignoreCheckpointY = false;
 
 	private Camera mainCamera;
 	private float playerTwiceOffset = 3.0f;
@@ -135,11 +134,7 @@ public class CameraMovement : MonoBehaviour {
 		StopAllCoroutines ();
 		StartCoroutine (RemoveCameraAfterTime(0.5f));
 
-		if (ignoreCheckpointY) {
-			StartCoroutine (LerpToTargetPosition (new Vector3(checkpointPosition.x, mainCamera.transform.position.y)));
-		} else {
-			StartCoroutine (LerpToTargetPosition (new Vector2(checkpointPosition.x, checkpointPosition.y)));
-		}
+		StartCoroutine (LerpToTargetPosition (new Vector2(checkpointPosition.x, checkpointPosition.y)));
 	}
 
 	IEnumerator RemoveCameraAfterTime(float time) {
