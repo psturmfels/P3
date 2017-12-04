@@ -118,6 +118,10 @@ public class LevelFinish : MonoBehaviour {
 
     private IEnumerator StartDecay() {
         yield return new WaitForSeconds(3.0f);
+        topLargeText.GetComponent<ImageFadeInOut>().FadeOut();
+        topMediumText.GetComponent<ImageFadeInOut>().FadeOut();
+        leftPanel.GetComponent<ImageFadeInOut>().FadeOut();
+        rightPanel.GetComponent<ImageFadeInOut>().FadeOut();
         candyWave.GetComponent<ReverseDecay>().ReverseWaveDecay();
     }
 
