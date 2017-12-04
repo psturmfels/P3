@@ -50,6 +50,9 @@ public class Door : MonoBehaviour {
 				foad.StartFadeOut ();
 			}
 		}
+		if (GetComponent<FadeOutAndDie> () != null) {
+			GetComponent<FadeOutAndDie> ().StartFadeOut ();
+		}
 	}
 
     private void TriggerPressed() {
@@ -95,6 +98,12 @@ public class Door : MonoBehaviour {
 				sr.color = color;
 			}
         }
+		if (GetComponent<SpriteRenderer> () != null) {
+			SpriteRenderer sr = GetComponent<SpriteRenderer> ();
+			Color color = sr.color;
+			color.a = alpha;
+			sr.color = color;
+		}
     }
 
     private void ChangeColliders(bool doorlocked)

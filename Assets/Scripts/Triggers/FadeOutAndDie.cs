@@ -21,7 +21,9 @@ public class FadeOutAndDie : MonoBehaviour {
 		if (justFadeOut) {
 			StartCoroutine (FadeOut ());
 		} else {
-			bc.enabled = false;
+			if (bc != null) {
+				bc.enabled = false;
+			}
 			rb.isKinematic = false;
 			rb.gravityScale = 1.0f;
 			rb.AddForce (Random.Range (-3.0f, 3.0f) * Vector2.right, ForceMode2D.Impulse);
@@ -35,7 +37,7 @@ public class FadeOutAndDie : MonoBehaviour {
 			sr.color = new Color (sr.color.r, sr.color.g, sr.color.b, Mathf.Max (0.0f, sr.color.a - fadeOutSpeed));
 			yield return null;
 		}
-		if (transform.parent != null && transform.parent.gameObject.activeSelf) {
+		if (transform.parent != null && transform.parent.gameObject.activeSelf && GetComponent<Door> () == null) {
 			Destroy (transform.parent.gameObject);
 		}
 		Destroy (gameObject);
