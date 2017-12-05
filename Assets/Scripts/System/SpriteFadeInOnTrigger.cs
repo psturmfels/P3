@@ -30,11 +30,9 @@ public class SpriteFadeInOnTrigger : MonoBehaviour {
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
-        {
+        if (other.gameObject.CompareTag("Player")) {
             numMellows -= 1;
-            if (numMellows == 0)
-            {
+            if (numMellows == 0) {
                 StopAllCoroutines();
                 StartCoroutine("FadeOut");
             }
