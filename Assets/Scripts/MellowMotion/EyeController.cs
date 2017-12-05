@@ -12,14 +12,22 @@ public class EyeController : MonoBehaviour {
     private Rigidbody2D rb;
     private Vector3 originalPosition;
 
+    // Eye Sprites
+    public Sprite eyeSprite;
+//    public Sprite largeIris;
+//    public Sprite smallIris;
+    public Sprite xEyeSprite;
+
     // Use this for initialization
     void Start() {
         fmwt = GetComponentInParent<FaceMoveWhenTransformed>();
         rb = GetComponentInParent<Rigidbody2D>();
+
         Invoke("Blink", 4.0f + Random.Range(0f, 4f));
         mellowCrushed = mellowMove.GetComponentInParent<MellowCrushed>();
         mellowCrushed.Remove += DisableEyes;
         mellowCrushed.Respawn += EnableEyes;
+        mellowCrushed.HazardContacted += ChangeToXEyes;
         originalPosition = transform.localPosition;
     }
 
@@ -33,7 +41,6 @@ public class EyeController : MonoBehaviour {
         else {
             if (fmwt.offsetAxis == Vector2.right) {
                 if (transform.parent.localPosition.x > 0) {
-//                    Debug.Log("Looking right");
                     lookingDirection = Vector3.right;
                 }
                 else if (transform.parent.localPosition.x < 0) {
@@ -72,7 +79,28 @@ public class EyeController : MonoBehaviour {
 
     private void EnableEyes() {
         gameObject.SetActive(true);
+        leftEye.transform.GetChild(1).gameObject.SetActive(true);
+        leftEye.transform.GetChild(2).gameObject.SetActive(true);
+        rightEye.transform.GetChild(1).gameObject.SetActive(true);
+        rightEye.transform.GetChild(2).gameObject.SetActive(true);
+        ChangeEyeSprites(eyeSprite);
         leftEye.transform.localScale = 0.8f * Vector3.one;
         rightEye.transform.localScale = 0.8f * Vector3.one;
+    }
+
+    private void ChangeToXEyes() {
+        leftEye.transform.GetChild(1).gameObject.SetActive(false);
+        leftEye.transform.GetChild(2).gameObject.SetActive(false);
+        rightEye.transform.GetChild(1).gameObject.SetActive(false);
+        rightEye.transform.GetChild(2).gameObject.SetActive(false);
+
+        ChangeEyeSprites(xEyeSprite);
+    }
+
+    private void ChangeEyeSprites(Sprite s) {
+        SpriteRenderer leftEyeSprite = leftEye.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
+        SpriteRenderer rightEyeSprite = rightEye.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
+        leftEyeSprite.sprite = s;
+        rightEyeSprite.sprite = s;
     }
 }

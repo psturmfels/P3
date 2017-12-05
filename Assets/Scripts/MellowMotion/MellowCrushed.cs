@@ -13,6 +13,7 @@ public class MellowCrushed : MonoBehaviour {
 
 	public event UnityAction DisableOther;
 	public event UnityAction DisableTransform;
+    public event UnityAction HazardContacted;
 	public event UnityAction Respawn;
 	public event UnityAction Remove;
 
@@ -44,7 +45,8 @@ public class MellowCrushed : MonoBehaviour {
 	}
 
 	void BeginDieRoutine() {
-		StartCoroutine (DieRoutine ());
+	    HazardContacted();
+        StartCoroutine (DieRoutine ());
 	}
 
 	IEnumerator DieRoutine() {
