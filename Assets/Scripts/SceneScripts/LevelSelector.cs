@@ -8,7 +8,10 @@ public class LevelSelector : MonoBehaviour {
 
     public int levelNo = 1;
 
-    private bool playerInRange = false;
+    private bool player1InRange = false;
+    private bool player2InRange = false;
+
+//    private bool playerInRange = false;
     private PlayerDeviceManager deviceManager;
     private PlayerActions p1Controls;
     private PlayerActions p2Controls;
@@ -19,34 +22,53 @@ public class LevelSelector : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
-	    if (playerInRange) {
+    void Update() {
+        if (player1InRange) {
             p1Controls = deviceManager.GetControls(0);
-            p2Controls = deviceManager.GetControls(1);
-            if ((p1Controls != null && p1Controls.Join.IsPressed) ||
-                (p2Controls != null && p2Controls.Join.IsPressed)) {
-
-                GameObject candyWave = GameObject.Find("CandyWave");
-                if (candyWave != null) {
-                    ReverseDecay rd = candyWave.GetComponent<ReverseDecay>();
-                    if (rd != null) {
-                        rd.ReverseWaveDecay();
-                    }
-                }
-                Invoke("EnterLevel", 2);
+            if (p1Controls != null && p1Controls.Join.IsPressed) {
+                JoinLevel();
             }
         }
-	}
+        if (player2InRange) {
+            p2Controls = deviceManager.GetControls(1);
+            if (p2Controls != null && p2Controls.Join.IsPressed) {
+                JoinLevel();
+            }
+        }
+    }
+
+    private void JoinLevel() {
+        GameObject candyWave = GameObject.Find("CandyWave");
+        if (candyWave != null) {
+            ReverseDecay rd = candyWave.GetComponent<ReverseDecay>();
+            if (rd != null) {
+                rd.ReverseWaveDecay();
+            }
+        }
+        Invoke("EnterLevel", 2);
+    }
 
     void OnTriggerEnter2D(Collider2D other) {
-        if (other.gameObject.CompareTag("Player")) {
-            playerInRange = true;
+        GameObject otherGO = other.gameObject;
+        if (otherGO.CompareTag("Player")) {
+            if (otherGO.name == "BridgeMellow") {
+                player1InRange = true;
+            }
+            else if (otherGO.name == "StiltMellow") {
+                player2InRange = true;
+            }
         }
     }
 
     void OnTriggerExit2D(Collider2D other) {
+        GameObject otherGO = other.gameObject;
         if (other.gameObject.CompareTag("Player")) {
-            playerInRange = false;
+            if (otherGO.name == "BridgeMellow") {
+                player1InRange = false;
+            }
+            else if (otherGO.name == "StiltMellow") {
+                player2InRange = false;
+            }
         }
     }
 
