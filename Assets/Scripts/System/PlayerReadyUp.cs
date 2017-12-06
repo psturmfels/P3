@@ -6,42 +6,31 @@ using UnityEngine.UI;
 
 public class PlayerReadyUp : MonoBehaviour
 {
-    private PlayerActions playerControls;
+//    private PlayerActions playerControls;
     public GameObject readyPanel;
+    public GameObject sleepZZZ;
 //    public GameObject YButton;
     public bool ready = false;
     int playerID;
-    private float delay = 0;
+//    private float delay = 0;
 
     //When this is enabled, find this players controls and enable their ready up sign.
-    private void OnEnable () {
+    public void Enable () {
         playerID = this.GetComponentInChildren<MellowStates>().playerID;
-        PlayerDeviceManager InstancePlayerDeviceManger = GameObject.Find("PlayerDeviceManager").GetComponent<PlayerDeviceManager>();
-        playerControls = InstancePlayerDeviceManger.GetControls(playerID);
+//        PlayerDeviceManager InstancePlayerDeviceManger = GameObject.Find("PlayerDeviceManager").GetComponent<PlayerDeviceManager>();
+//        playerControls = InstancePlayerDeviceManger.GetControls(playerID);
         readyPanel.SetActive(true);
+        sleepZZZ.SetActive(false);
         ready = true;
     }
 
-    private void OnDisable() {
+    public void Disable() {
         if (readyPanel != null) {
             readyPanel.SetActive(false);
         }
+        if (sleepZZZ != null) {
+            sleepZZZ.SetActive(true);
+        }
         ready = false;
     }
-
-//    //If this player presses join, make them as ready.
-//    private void Update() {
-//        if(delay < .3f) {
-//            delay += Time.deltaTime;
-//            return;
-//        } 
-//        if((playerID == 0) && playerControls.Join.WasPressed) {
-//            readyPanel.GetComponentInChildren<Text>().text = "Player 1 Ready!";
-//            ready = true;
-//        }
-//        else if((playerID == 1) && playerControls.Join.WasPressed) {
-//            Player2Ready.GetComponentInChildren<Text>().text = "Player 2 Ready!";
-//            ready = true;
-//        }
-//    }
 }

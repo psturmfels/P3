@@ -300,7 +300,6 @@ GameObject:
   - component: {fileID: 50858514520514892}
   - component: {fileID: 114084359003567450}
   - component: {fileID: 114618148889930892}
-  - component: {fileID: 114397130858910524}
   m_Layer: 0
   m_Name: BridgeMellow
   m_TagString: Player
@@ -1080,6 +1079,7 @@ MonoBehaviour:
   inputJump: {fileID: 114934310431919294}
   defaultSprite: {fileID: 21300002, guid: 69bc8237631a8104f8e440d5736c25b4, type: 3}
   smileSprite: {fileID: 21300000, guid: 69bc8237631a8104f8e440d5736c25b4, type: 3}
+  openSprite: {fileID: 21300000, guid: c60732cd832d9b943b10901febf0b8db, type: 3}
   smileDuration: 0.5
 --- !u!114 &114182013268525106
 MonoBehaviour:
@@ -1097,6 +1097,7 @@ MonoBehaviour:
   rightEye: {fileID: 114763363387534256}
   eyeSprite: {fileID: 21300000, guid: c60732cd832d9b943b10901febf0b8db, type: 3}
   xEyeSprite: {fileID: 21300000, guid: 7124335e7f85ad648a904c77006d53aa, type: 3}
+  sleepySprite: {fileID: 21300000, guid: 9edeea934d61aa14382ef1c82b591d75, type: 3}
 --- !u!114 &114224044488089218
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1124,19 +1125,6 @@ MonoBehaviour:
   OnTriggerEnable: 1
   RegisterStay: 1
   DelayBeforeExit: 0.1
---- !u!114 &114397130858910524
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1780767194214538}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82b16e5865d601948ad0c64fb54965b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  readyPanel: {fileID: 0}
-  ready: 0
 --- !u!114 &114479821642927544
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1654,7 +1642,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300002, guid: 69bc8237631a8104f8e440d5736c25b4, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

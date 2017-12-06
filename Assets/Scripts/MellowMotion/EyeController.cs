@@ -11,19 +11,20 @@ public class EyeController : MonoBehaviour {
     private MellowCrushed mellowCrushed;
     private Rigidbody2D rb;
     private Vector3 originalPosition;
+    private bool canBlink;
 
     // Eye Sprites
     public Sprite eyeSprite;
-//    public Sprite largeIris;
-//    public Sprite smallIris;
     public Sprite xEyeSprite;
+    public Sprite sleepySprite;
 
     // Use this for initialization
     void Start() {
         fmwt = GetComponentInParent<FaceMoveWhenTransformed>();
         rb = GetComponentInParent<Rigidbody2D>();
 
-        Invoke("Blink", 4.0f + Random.Range(0f, 4f));
+        canBlink = false;
+        
         mellowCrushed = mellowMove.GetComponentInParent<MellowCrushed>();
         mellowCrushed.Remove += DisableEyes;
         mellowCrushed.Respawn += EnableEyes;
@@ -68,7 +69,9 @@ public class EyeController : MonoBehaviour {
 
     private void Blink() {
         GetComponent<Animator>().SetTrigger("blink");
-        Invoke("Blink", 4f + Random.Range(0f, 4f));
+        if (canBlink) {
+            Invoke("Blink", 4f + Random.Range(0f, 4f));
+        }
     }
 
     private void DisableEyes() {
@@ -79,13 +82,19 @@ public class EyeController : MonoBehaviour {
 
     private void EnableEyes() {
         gameObject.SetActive(true);
+        ChangeToNormalEyes();
+        leftEye.transform.localScale = 0.8f * Vector3.one;
+        rightEye.transform.localScale = 0.8f * Vector3.one;
+    }
+
+    public void ChangeToNormalEyes() {
         leftEye.transform.GetChild(1).gameObject.SetActive(true);
         leftEye.transform.GetChild(2).gameObject.SetActive(true);
         rightEye.transform.GetChild(1).gameObject.SetActive(true);
         rightEye.transform.GetChild(2).gameObject.SetActive(true);
         ChangeEyeSprites(eyeSprite);
-        leftEye.transform.localScale = 0.8f * Vector3.one;
-        rightEye.transform.localScale = 0.8f * Vector3.one;
+        canBlink = true;
+        Invoke("Blink", 4.0f + Random.Range(0f, 4f));
     }
 
     private void ChangeToXEyes() {
@@ -95,6 +104,14 @@ public class EyeController : MonoBehaviour {
         rightEye.transform.GetChild(2).gameObject.SetActive(false);
 
         ChangeEyeSprites(xEyeSprite);
+    }
+
+    public void ChangeToSleepyEyes() {
+        leftEye.transform.GetChild(1).gameObject.SetActive(false);
+        leftEye.transform.GetChild(2).gameObject.SetActive(false);
+        rightEye.transform.GetChild(1).gameObject.SetActive(false);
+        rightEye.transform.GetChild(2).gameObject.SetActive(false);
+        ChangeEyeSprites(sleepySprite);
     }
 
     private void ChangeEyeSprites(Sprite s) {
