@@ -51,17 +51,14 @@ public class CharacterSelectManager : MonoBehaviour {
             int checkPlayers = 0;
 
             //Check how many players are spawned in.
-            for (int i = 0; i < maxPlayers; ++i)
-            {
-                if (PlayerDeviceManager.GetControls(i) != null)
-                {
+            for (int i = 0; i < maxPlayers; ++i) {
+                if (PlayerDeviceManager.GetControls(i) != null) {
                     ++checkPlayers;
                 }
             }
 
             //If 1 player has bound their controls, add bridge.
-            if (checkPlayers == 1)
-            {
+            if (checkPlayers == 1) {
                 BridgeMellow.SetActive(true);
                 bridgeEyes.ChangeToNormalEyes();
                 bridgeMouth.Default();
@@ -70,8 +67,7 @@ public class CharacterSelectManager : MonoBehaviour {
 
 
             //If 2 players have bound, add stilt.
-            else if (checkPlayers == 2)
-            {
+            else if (checkPlayers == 2) {
                 BridgeMellow.SetActive(true);
                 bridgeEyes.ChangeToNormalEyes();
                 bridgeMouth.Default();
@@ -85,13 +81,10 @@ public class CharacterSelectManager : MonoBehaviour {
 
             //Check if both players are ready
             if (BridgeMellow.GetComponent<PlayerReadyUp>().ready &&
-               StiltMellow.GetComponent<PlayerReadyUp>().ready)
-            {
+               StiltMellow.GetComponent<PlayerReadyUp>().ready) {
                 GameObject spBarrier = GameObject.Find("SPBarrier");
-                if (spBarrier != null)
-                {
-                    for (int i = 0; i < spBarrier.transform.childCount; ++i)
-                    {
+                if (spBarrier != null) {
+                    for (int i = 0; i < spBarrier.transform.childCount; ++i) {
                         spBarrier.transform.GetChild(i).gameObject.GetComponent<FadeOutAndDie>().StartFadeOut();
                     }
                     spBarrier.GetComponent<BoxCollider2D>().enabled = false;

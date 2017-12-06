@@ -24,7 +24,6 @@ public class LevelSelector : MonoBehaviour {
 	// Update is called once per frame
     void Update() {
         if (player1InRange) {
-            Debug.Log("hey join pressed for level");
             p1Controls = deviceManager.GetControls(0);
             if (p1Controls != null && p1Controls.Join.IsPressed) {
                 JoinLevel();
@@ -52,7 +51,6 @@ public class LevelSelector : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D other) {
         GameObject otherGO = other.gameObject;
         if (otherGO.CompareTag("Player")) {
-//            Debug.Log(otherGO.name);
             if (otherGO.name == "BridgeMellowMove") {
                 player1InRange = true;
             }

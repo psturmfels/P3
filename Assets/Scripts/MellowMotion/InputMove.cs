@@ -71,10 +71,14 @@ public class InputMove : MonoBehaviour {
 			float currentInputModifier = Mathf.Min (1.0f, (Mathf.Abs(controls.Move.X) + deadZone));
 			currentMaxSpeed = maxMoveSpeed * currentInputModifier;
 			SetCurrentHorzAxis (Mathf.Sign(controls.Move.X));
-//            anim.SetBool("walking", true);
-		} else {
+		    if (anim != null) {
+                anim.SetBool("walking", true);
+            }
+        } else {
 			SetCurrentHorzAxis (0.0f);
-//            anim.SetBool("walking", false);
+		    if (anim != null) {
+                anim.SetBool("walking", false);
+            }
         }
 	}
 
