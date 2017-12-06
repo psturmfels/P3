@@ -9,13 +9,14 @@ public class MouthMovement : MonoBehaviour {
 
     public Sprite defaultSprite;
     public Sprite smileSprite;
+    public Sprite openSprite;
     public float smileDuration = 0.5f;
 
 //    private InputJump ij;
     private SpriteRenderer sr;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
         sr = GetComponent<SpriteRenderer>();
         inputJump.DidJump += Smile;
 		mellowCrushed = GetComponentInParent<MellowCrushed> ();
@@ -28,16 +29,19 @@ public class MouthMovement : MonoBehaviour {
         Invoke("Default", smileDuration);
     }
 
-    void Default() {
+    public void Default() {
         sr.sprite = defaultSprite;
+    }
+
+    public void Sleepy() {
+        sr.sprite = openSprite;
     }
 
     private void DisableMouth() {
         gameObject.SetActive(false);
     }
 
-    private void EnableMouth()
-    {
+    private void EnableMouth() {
         gameObject.SetActive(true);
     }
 }

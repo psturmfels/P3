@@ -8,7 +8,7 @@ public class FadeInOnTrigger : MonoBehaviour {
     private TextMesh[] tms;
     private float fadeIncrement = 0.025f;
 	private int numMellows = 0;
-    private int numWillFade = 0;
+//    private int numWillFade = 0;
     private Dictionary<TextMesh, bool> tmDict;
     private Dictionary<SpriteRenderer, bool> srDict;
 
@@ -18,7 +18,7 @@ public class FadeInOnTrigger : MonoBehaviour {
         srs = srs.Skip(1).ToArray(); // To skip the sign sprite
 
         ResetFadedDicts();
-        numWillFade = tms.Length + srs.Length;
+//        numWillFade = tms.Length + srs.Length;
 	}
 
 	void OnTriggerEnter2D (Collider2D other) {
