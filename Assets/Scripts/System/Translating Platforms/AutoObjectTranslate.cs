@@ -146,7 +146,10 @@ public class AutoObjectTranslate : MonoBehaviour
     //Displace the entity
     private void DisplaceEntity()
     {
+        Vector2 nextPosition = nodes[nextIndex] + basePosition;
+        selfRigidbody2D.velocity = Vector3.Normalize(nextPosition - selfRigidbody2D.position) * speed;
         //Move towards next node via step
+        /*
         float step = speed * Time.fixedDeltaTime;
         Vector3 nextPosition = Vector3.MoveTowards(selfRigidbody2D.position, nodes[nextIndex] + basePosition, step);
 
@@ -154,6 +157,8 @@ public class AutoObjectTranslate : MonoBehaviour
         traveledDistance += Vector3.Distance(selfRigidbody2D.position, nextPosition);
 
         selfRigidbody2D.position = nextPosition;
+        */
+        traveledDistance += selfRigidbody2D.velocity.magnitude * Time.fixedDeltaTime;
         return;
     }
 
@@ -188,11 +193,8 @@ public class AutoObjectTranslate : MonoBehaviour
     private void EnforceRigidbodyConstraints()
     {
         selfRigidbody2D.bodyType = RigidbodyType2D.Kinematic;
-        //selfRigidbody2D.mass = 100000;
-        //selfRigidbody2D.gravityScale = 0;
-        //selfRigidbody2D.drag = 0;
-        //selfRigidbody2D.angularDrag = 0;
         selfRigidbody2D.freezeRotation = true;
+        selfRigidbody2D.interpolation = RigidbodyInterpolation2D.Interpolate;
     }
 
 }

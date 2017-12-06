@@ -8510,13 +8510,29 @@ Transform:
   m_PrefabParentObject: {fileID: 4363026196118604, guid: 8d8649a4cb6bd46c29a214240a7935f3,
     type: 2}
   m_PrefabInternal: {fileID: 1915433525}
---- !u!114 &558263291
+--- !u!114 &558263289
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 558263287}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 552f3c08ee7051a4b87bc709127dcfe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translation: {x: 6, y: 0}
+  maxSpeed: 2
+  minimumSpeed: 0.1
+  startingOffset: 0
+  accelerationOffset: 0.5
+--- !u!114 &558263291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 558263287}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 901b9351ca218a64b93be93885ee2a85, type: 3}
   m_Name: 
@@ -8535,7 +8551,7 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 558263287}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -8554,7 +8570,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 558263287}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a41877ce9b27eb43a1ba45f46ccb4be, type: 3}
   m_Name: 
@@ -8568,7 +8584,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 558263287}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 500cfe50b8959454db110cace07993ea, type: 3}
   m_Name: 
@@ -10286,6 +10302,22 @@ GameObject:
   m_PrefabParentObject: {fileID: 1472924374387150, guid: 8d8649a4cb6bd46c29a214240a7935f3,
     type: 2}
   m_PrefabInternal: {fileID: 273580908}
+--- !u!114 &665794542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 665794541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 552f3c08ee7051a4b87bc709127dcfe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translation: {x: 0, y: -6}
+  maxSpeed: 2
+  minimumSpeed: 0.1
+  startingOffset: 0
+  accelerationOffset: 0.5
 --- !u!4 &665794544 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4363026196118604, guid: 8d8649a4cb6bd46c29a214240a7935f3,
@@ -10297,7 +10329,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 665794541}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 901b9351ca218a64b93be93885ee2a85, type: 3}
   m_Name: 
@@ -10335,7 +10367,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 665794541}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 500cfe50b8959454db110cace07993ea, type: 3}
   m_Name: 
@@ -10347,7 +10379,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 665794541}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a41877ce9b27eb43a1ba45f46ccb4be, type: 3}
   m_Name: 
@@ -32263,7 +32295,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1892155846}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 901b9351ca218a64b93be93885ee2a85, type: 3}
   m_Name: 
@@ -32295,13 +32327,29 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1892155852
+--- !u!114 &1892155850
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1892155846}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 552f3c08ee7051a4b87bc709127dcfe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translation: {x: 0, y: 6}
+  maxSpeed: 2
+  minimumSpeed: 0.1
+  startingOffset: 0
+  accelerationOffset: 0.5
+--- !u!114 &1892155852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1892155846}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 500cfe50b8959454db110cace07993ea, type: 3}
   m_Name: 
@@ -32313,7 +32361,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1892155846}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a41877ce9b27eb43a1ba45f46ccb4be, type: 3}
   m_Name: 
