@@ -34,7 +34,7 @@ public class InputJump : MonoBehaviour {
 		if (!ms.canJump || ms.canWallJumpLeft || ms.canWallJumpRight) {
 			return;
 		}
-        anim.SetBool("walking", false);
+//        anim.SetBool("walking", false);
 		DidJump ();
 		inputFramesCounted = 0;
 		jumpWasPressed = false;
@@ -80,7 +80,7 @@ public class InputJump : MonoBehaviour {
 		rb = GetComponentInParent<Rigidbody2D> ();
 		ma = GetComponent<MoveAnimate> ();
 		im = GetComponent<InputMove> ();
-	    anim = GetComponentInParent<Animator>();
+//	    anim = GetComponentInParent<Animator>();
         if (jumpSound == null)
         {
             if (this.transform.parent.name == "BridgeMellow")

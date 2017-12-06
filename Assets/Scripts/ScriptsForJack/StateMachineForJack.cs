@@ -80,7 +80,7 @@ public class StateMachineForJack : MonoBehaviour {
 		if (currentState != State.Normal) {
 			return;
 		}
-        GetComponent<Animator>().SetBool("walking", false);
+//        GetComponent<Animator>().SetBool("walking", false);
         shiftSound.Play();
         BeganInputTransform ();
 		EnableTransformedObject ();
