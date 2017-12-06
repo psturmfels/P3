@@ -300,6 +300,7 @@ GameObject:
   - component: {fileID: 50858514520514892}
   - component: {fileID: 114084359003567450}
   - component: {fileID: 114618148889930892}
+  - component: {fileID: 114397130858910524}
   m_Layer: 0
   m_Name: BridgeMellow
   m_TagString: Player
@@ -519,8 +520,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1780767194214538}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -5, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4693303730065928}
@@ -1055,12 +1056,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1780767194214538}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d72b2cd84a3f54555ac3a3ce700aaedd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doesAcceptInput: 0
+  doesAcceptInput: 1
   normalObject: {fileID: 1377095096439136}
   transformedObject: {fileID: 1746954360759854}
   shiftSound: {fileID: 0}
@@ -1123,6 +1124,19 @@ MonoBehaviour:
   OnTriggerEnable: 1
   RegisterStay: 1
   DelayBeforeExit: 0.1
+--- !u!114 &114397130858910524
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1780767194214538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82b16e5865d601948ad0c64fb54965b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  readyPanel: {fileID: 0}
+  ready: 0
 --- !u!114 &114479821642927544
 MonoBehaviour:
   m_ObjectHideFlags: 1

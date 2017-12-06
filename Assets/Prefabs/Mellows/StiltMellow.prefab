@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 50863696001762740}
   - component: {fileID: 114214337713938294}
   - component: {fileID: 114641094364507918}
+  - component: {fileID: 114922067634108946}
   m_Layer: 0
   m_Name: StiltMellow
   m_TagString: Player
@@ -467,8 +468,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1006566591661138}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4997218723228054}
@@ -1228,12 +1229,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1006566591661138}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d72b2cd84a3f54555ac3a3ce700aaedd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doesAcceptInput: 0
+  doesAcceptInput: 1
   normalObject: {fileID: 1706781346111360}
   transformedObject: {fileID: 1407992296789926}
   shiftSound: {fileID: 0}
@@ -1333,6 +1334,19 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 44f781ec1738d490ca96228d01bbab44, type: 3}
   timeBetweenJumpSprites: 0.01
   jumpSound: {fileID: 0}
+--- !u!114 &114922067634108946
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1006566591661138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82b16e5865d601948ad0c64fb54965b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  readyPanel: {fileID: 0}
+  ready: 0
 --- !u!114 &114962362678057670
 MonoBehaviour:
   m_ObjectHideFlags: 1
