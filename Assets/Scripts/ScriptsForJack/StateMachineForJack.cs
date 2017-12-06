@@ -40,19 +40,15 @@ public class StateMachineForJack : MonoBehaviour {
 		return playerID;
 	}
 
-    void Start()
-    {
+    void Start() {
         ms = GetComponentInChildren<MellowStates>();
 		rb = GetComponent<Rigidbody2D> ();
 
-        if (shiftSound == null)
-        {
-            if (this.gameObject.name == "BridgeMellow")
-            {
+        if (shiftSound == null) {
+            if (this.gameObject.name == "BridgeMellow") {
                 shiftSound = GameObject.Find("GameCamera").transform.Find("SFX").Find("BridgeShift").GetComponent<AudioSource>();
             }
-            else
-            {
+            else {
                 shiftSound = GameObject.Find("GameCamera").transform.Find("SFX").Find("StiltShift").GetComponent<AudioSource>();
             }
         }
@@ -61,8 +57,7 @@ public class StateMachineForJack : MonoBehaviour {
         deviceManager = GameObject.Find("PlayerDeviceManager").GetComponent<PlayerDeviceManager>();
 
         //Grab playerID for controller purposes.
-        if(ms)
-        {
+        if(ms) {
             playerID = ms.playerID;
         }
 
@@ -85,6 +80,7 @@ public class StateMachineForJack : MonoBehaviour {
 		if (currentState != State.Normal) {
 			return;
 		}
+        GetComponent<Animator>().SetBool("walking", false);
         shiftSound.Play();
         BeganInputTransform ();
 		EnableTransformedObject ();

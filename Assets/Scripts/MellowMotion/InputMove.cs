@@ -14,6 +14,7 @@ public class InputMove : MonoBehaviour {
     private PlayerActions controls;
 	private float deadZone = 0.2f;
 	private float currentMaxSpeed;
+    private Animator anim;
 
 	public float moveIncrement;
 	public float maxMoveSpeed;
@@ -47,6 +48,7 @@ public class InputMove : MonoBehaviour {
 	void Start () {
 		ms = GetComponent<MellowStates> ();
 		rb = GetComponentInParent<Rigidbody2D> ();
+        anim = GetComponentInParent<Animator>();
 
         //Find PlayerDeviceManager
         deviceManager = GameObject.Find("PlayerDeviceManager").GetComponent<PlayerDeviceManager>();
@@ -69,9 +71,11 @@ public class InputMove : MonoBehaviour {
 			float currentInputModifier = Mathf.Min (1.0f, (Mathf.Abs(controls.Move.X) + deadZone));
 			currentMaxSpeed = maxMoveSpeed * currentInputModifier;
 			SetCurrentHorzAxis (Mathf.Sign(controls.Move.X));
+            anim.SetBool("walking", true);
 		} else {
 			SetCurrentHorzAxis (0.0f);
-		}
+            anim.SetBool("walking", false);
+        }
 	}
 
 	void FixedUpdate() {

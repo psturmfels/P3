@@ -19,6 +19,7 @@ public class InputJump : MonoBehaviour {
 	private MellowStates ms;
     private PlayerActions controls;
     private PlayerDeviceManager deviceManager;
+    private Animator anim;
     private int playerID = 0;
 	private Vector2 dampenForce = Vector2.down * 50.0f;
 	private bool shouldDampenFrames = false;
@@ -33,6 +34,7 @@ public class InputJump : MonoBehaviour {
 		if (!ms.canJump || ms.canWallJumpLeft || ms.canWallJumpRight) {
 			return;
 		}
+        anim.SetBool("walking", false);
 		DidJump ();
 		inputFramesCounted = 0;
 		jumpWasPressed = false;
@@ -78,6 +80,7 @@ public class InputJump : MonoBehaviour {
 		rb = GetComponentInParent<Rigidbody2D> ();
 		ma = GetComponent<MoveAnimate> ();
 		im = GetComponent<InputMove> ();
+	    anim = GetComponentInParent<Animator>();
         if (jumpSound == null)
         {
             if (this.transform.parent.name == "BridgeMellow")
