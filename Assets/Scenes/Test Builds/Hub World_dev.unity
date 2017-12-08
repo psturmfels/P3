@@ -2948,42 +2948,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 628032666}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 901b9351ca218a64b93be93885ee2a85, type: 3}
+  m_Script: {fileID: 11500000, guid: c092ac88cab337a4fa3665c87c792603, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nodes:
-  - {x: 0, y: 0, z: 0}
-  - {x: -3, y: 0, z: 0}
-  maxSpeed: 2
-  minimumSpeed: 0.1
-  startingOffset: 0
-  accelerationOffset: 0.5
---- !u!114 &628032668
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 628032666}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a41877ce9b27eb43a1ba45f46ccb4be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LinkedTranslators: []
---- !u!114 &628032669
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 628032666}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6ac34f464366a245b4769258abcdab9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startEnabled: 0
   Activators:
   - {fileID: 1973096526}
+  endPoint: {x: -2, y: 0, z: 0}
+  maxSpeed: 2
+  minimumSpeed: 0.1
+  accelerationOffset: 0.5
 --- !u!50 &628032670
 Rigidbody2D:
   serializedVersion: 4
@@ -3531,42 +3504,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 703197688}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 901b9351ca218a64b93be93885ee2a85, type: 3}
+  m_Script: {fileID: 11500000, guid: c092ac88cab337a4fa3665c87c792603, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nodes:
-  - {x: 0, y: 0, z: 0}
-  - {x: -3, y: 0, z: 0}
-  maxSpeed: 2
-  minimumSpeed: 0.1
-  startingOffset: 0
-  accelerationOffset: 0.5
---- !u!114 &703197690
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 703197688}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a41877ce9b27eb43a1ba45f46ccb4be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LinkedTranslators: []
---- !u!114 &703197691
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 703197688}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6ac34f464366a245b4769258abcdab9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startEnabled: 0
   Activators:
   - {fileID: 1973096526}
+  endPoint: {x: -1, y: 0, z: 0}
+  maxSpeed: 2
+  minimumSpeed: 0.1
+  accelerationOffset: 0.5
 --- !u!50 &703197692
 Rigidbody2D:
   serializedVersion: 4
@@ -5792,10 +5738,10 @@ Transform:
   - {fileID: 514249808}
   - {fileID: 862509344}
   - {fileID: 1012519889}
-  - {fileID: 1549099587}
   - {fileID: 1597517306}
   - {fileID: 1833473370}
   - {fileID: 778267230}
+  - {fileID: 1549099587}
   - {fileID: 322024135}
   - {fileID: 467623052}
   - {fileID: 336665079}
@@ -6639,11 +6585,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4507087852375326, guid: 2ac13ec552a8d40d19a107d785e0fe5a, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 5
+      value: 35.42
       objectReference: {fileID: 0}
     - target: {fileID: 4507087852375326, guid: 2ac13ec552a8d40d19a107d785e0fe5a, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 12.56
       objectReference: {fileID: 0}
     - target: {fileID: 4507087852375326, guid: 2ac13ec552a8d40d19a107d785e0fe5a, type: 2}
       propertyPath: m_LocalPosition.z
@@ -7374,20 +7320,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1472924374387150, guid: 8d8649a4cb6bd46c29a214240a7935f3,
     type: 2}
   m_PrefabInternal: {fileID: 1310099586}
---- !u!114 &1310099588
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1310099587}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6ac34f464366a245b4769258abcdab9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startEnabled: 0
-  Activators:
-  - {fileID: 778806653}
 --- !u!114 &1310099589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7396,27 +7328,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1310099587}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a41877ce9b27eb43a1ba45f46ccb4be, type: 3}
+  m_Script: {fileID: 11500000, guid: c092ac88cab337a4fa3665c87c792603, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LinkedTranslators: []
---- !u!114 &1310099590
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1310099587}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 901b9351ca218a64b93be93885ee2a85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nodes:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: -3, z: 0}
+  Activators:
+  - {fileID: 778806653}
+  endPoint: {x: 0, y: -3, z: 0}
   maxSpeed: 2
   minimumSpeed: 0.1
-  startingOffset: 0
   accelerationOffset: 0.5
 --- !u!50 &1310099591
 Rigidbody2D:
@@ -10324,11 +10243,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4622449771679638, guid: 8ab1e91112e6d46da8db5bc4fe5bd9ac, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -5
+      value: 40.77
       objectReference: {fileID: 0}
     - target: {fileID: 4622449771679638, guid: 8ab1e91112e6d46da8db5bc4fe5bd9ac, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 8.11
       objectReference: {fileID: 0}
     - target: {fileID: 4622449771679638, guid: 8ab1e91112e6d46da8db5bc4fe5bd9ac, type: 2}
       propertyPath: m_LocalPosition.z
