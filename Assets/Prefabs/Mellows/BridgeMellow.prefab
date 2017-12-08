@@ -70,6 +70,7 @@ GameObject:
   - component: {fileID: 4693144835481614}
   - component: {fileID: 50068209868817228}
   - component: {fileID: 61238475271177768}
+  - component: {fileID: 114711596259143490}
   m_Layer: 12
   m_Name: TopCollider
   m_TagString: BridgeCollider
@@ -121,6 +122,7 @@ GameObject:
   - component: {fileID: 61687076765890888}
   - component: {fileID: 114318772227978342}
   - component: {fileID: 114532583897519688}
+  - component: {fileID: 114051465312730638}
   m_Layer: 12
   m_Name: BottomCollider
   m_TagString: BridgeCollider
@@ -246,6 +248,7 @@ GameObject:
   - component: {fileID: 50166721882018550}
   - component: {fileID: 61906965314373908}
   - component: {fileID: 114074252814030852}
+  - component: {fileID: 114664208174116092}
   m_Layer: 12
   m_Name: LeftCollider
   m_TagString: BridgeCollider
@@ -335,6 +338,7 @@ GameObject:
   - component: {fileID: 50876989117274672}
   - component: {fileID: 61760534795930610}
   - component: {fileID: 114032527660054844}
+  - component: {fileID: 114286958060603986}
   m_Layer: 12
   m_Name: RightCollider
   m_TagString: BridgeCollider
@@ -353,6 +357,7 @@ GameObject:
   - component: {fileID: 50842696979761880}
   - component: {fileID: 61673260714945160}
   - component: {fileID: 114224044488089218}
+  - component: {fileID: 114445795576490444}
   m_Layer: 12
   m_Name: CenterCollider
   m_TagString: BridgeCollider
@@ -521,7 +526,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1780767194214538}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5, y: 0, z: 0}
+  m_LocalPosition: {x: -2, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4693303730065928}
@@ -1026,6 +1031,17 @@ MonoBehaviour:
   OnTriggerEnable: 1
   RegisterStay: 1
   DelayBeforeExit: 0.1
+--- !u!114 &114051465312730638
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1276179974927540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72c1d5ef947ff7147ad53e5ba1391741, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114074252814030852
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1128,6 +1144,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waitTime: 0.1
+--- !u!114 &114286958060603986
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1834983372360448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72c1d5ef947ff7147ad53e5ba1391741, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114318772227978342
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1143,6 +1170,17 @@ MonoBehaviour:
   OnTriggerEnable: 1
   RegisterStay: 1
   DelayBeforeExit: 0.1
+--- !u!114 &114445795576490444
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1849700346032068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72c1d5ef947ff7147ad53e5ba1391741, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114479821642927544
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1265,6 +1303,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   snapColor: {r: 0.49729672, g: 0.8351569, b: 0.9264706, a: 1}
+--- !u!114 &114664208174116092
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1588067345030300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72c1d5ef947ff7147ad53e5ba1391741, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114711596259143490
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1182810721898006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72c1d5ef947ff7147ad53e5ba1391741, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114758842758530260
 MonoBehaviour:
   m_ObjectHideFlags: 1
