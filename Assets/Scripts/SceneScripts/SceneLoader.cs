@@ -32,7 +32,7 @@ public class SceneLoader : MonoBehaviour {
             "Level 5",
             "Level 6",
             "Level 7",
-            "Level 8",
+            "Level 7",
             "Hub World" // Return to hub
         };
 
@@ -44,7 +44,7 @@ public class SceneLoader : MonoBehaviour {
             "Cookie Crumbles",
             "Red Velvet Ravine",
             "Frosty Flakes",
-            "Popsicle Plummet",
+            "Winter Wonderland",
             "Winter Wonderland",
             "Hub World"
         };
