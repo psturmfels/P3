@@ -10808,7 +10808,7 @@ GameObject:
   m_PrefabParentObject: {fileID: 1601554266406548, guid: 3497a06145db3409ea9f6ec5b45e5bfb,
     type: 2}
   m_PrefabInternal: {fileID: 328828153}
---- !u!114 &328828157
+--- !u!114 &328828156
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -10816,12 +10816,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 328828155}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 901b9351ca218a64b93be93885ee2a85, type: 3}
+  m_Script: {fileID: 11500000, guid: 552f3c08ee7051a4b87bc709127dcfe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nodes:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: -4.5, z: 0}
+  translation: {x: 0, y: -4.5}
   maxSpeed: 2
   minimumSpeed: 0.1
   startingOffset: 0
