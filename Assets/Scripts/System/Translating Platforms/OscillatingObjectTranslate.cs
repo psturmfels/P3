@@ -50,7 +50,7 @@ public class OscillatingObjectTranslate : MonoBehaviour
             //Clamp motion to base/end position
             ClampPosition();
         }
-
+        
         //Double check contacts
         CheckContacts();
 
