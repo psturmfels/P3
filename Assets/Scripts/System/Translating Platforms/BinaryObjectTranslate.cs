@@ -160,6 +160,7 @@ public class BinaryObjectTranslate : MonoBehaviour
         //selfRigidbody2D.drag = 0;
         //selfRigidbody2D.angularDrag = 0;
         selfRigidbody2D.freezeRotation = true;
+        selfRigidbody2D.interpolation = RigidbodyInterpolation2D.Interpolate;
     }
 
     //Compute the total path distance defined by the nodes.
