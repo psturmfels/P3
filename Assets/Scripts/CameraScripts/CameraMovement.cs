@@ -35,6 +35,7 @@ public class CameraMovement : MonoBehaviour {
 	private float viewportMin = -0.02f;
 	private float fixedYPosition;
 	private float fixedXPosition;
+	private SwitchLatch sl = null;
 
 
 	public void SetNewFixedYPosition (float newFixedYPos) {
@@ -131,6 +132,10 @@ public class CameraMovement : MonoBehaviour {
 		if (isLerping) {
 			return;
 		}
+		if (sl != null) {
+			sl.OnSwitchTrigger ();
+			sl = null;
+		}
 		StopAllCoroutines ();
 		StartCoroutine (RemoveCameraAfterTime(0.5f));
 
@@ -177,6 +182,36 @@ public class CameraMovement : MonoBehaviour {
 		reachedCheckpoint ();
 
 		isLerping = false;
+	}
+
+	public void StartLerpToDoorUnlock(Vector2 doorPosition, SwitchLatch triggeredSwitch) {
+		if (isLerping) {
+			return;
+		}
+		sl = triggeredSwitch;
+		StartCoroutine (LerpToDoorUnlock (doorPosition, triggeredSwitch));
+	}
+
+	IEnumerator LerpToDoorUnlock(Vector2 doorPosition, SwitchLatch triggeredSwitch) {
+		trackPlayers = false;
+		resizeCamera = false;
+		Vector2 originalPosition = new Vector2 (transform.position.x, transform.position.y);
+		Vector2 currentCameraPosition = originalPosition;
+		float moveSpeed = 0.25f;
+		float waitAtDoorSeconds = 0.75f;
+
+		while (currentCameraPosition != doorPosition) {
+			Vector2 newPosition = Vector2.MoveTowards (currentCameraPosition, doorPosition, moveSpeed);
+			currentCameraPosition = newPosition;
+			transform.position = new Vector3 (currentCameraPosition.x, currentCameraPosition.y, transform.position.z);
+			yield return null;
+		}
+		triggeredSwitch.OnSwitchTrigger ();
+		sl = null;
+		yield return new WaitForSeconds (waitAtDoorSeconds);
+
+		trackPlayers = true;
+		resizeCamera = true;
 	}
 
 //	void ClampPlayers() {
