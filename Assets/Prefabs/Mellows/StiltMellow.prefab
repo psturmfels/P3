@@ -91,6 +91,7 @@ GameObject:
   - component: {fileID: 61326217940336938}
   - component: {fileID: 114962362678057670}
   - component: {fileID: 114460406712708436}
+  - component: {fileID: 114951292771031010}
   m_Layer: 11
   m_Name: BottomCollider
   m_TagString: StiltCollider
@@ -109,6 +110,7 @@ GameObject:
   - component: {fileID: 50424137490077170}
   - component: {fileID: 61556181295736164}
   - component: {fileID: 114039439598057832}
+  - component: {fileID: 114460216280391702}
   m_Layer: 11
   m_Name: LeftCollider
   m_TagString: StiltCollider
@@ -211,6 +213,7 @@ GameObject:
   - component: {fileID: 50607879217567256}
   - component: {fileID: 61378674949823232}
   - component: {fileID: 114233194563687474}
+  - component: {fileID: 114865705475135566}
   m_Layer: 11
   m_Name: CenterCollider
   m_TagString: StiltCollider
@@ -335,6 +338,7 @@ GameObject:
   - component: {fileID: 4109834809289760}
   - component: {fileID: 50160253908876506}
   - component: {fileID: 61823955104843530}
+  - component: {fileID: 114488620416935402}
   m_Layer: 11
   m_Name: TopCollider
   m_TagString: StiltCollider
@@ -353,6 +357,7 @@ GameObject:
   - component: {fileID: 50153139850522860}
   - component: {fileID: 61440602953249370}
   - component: {fileID: 114147914929293710}
+  - component: {fileID: 114556174285396454}
   m_Layer: 11
   m_Name: RightCollider
   m_TagString: StiltCollider
@@ -469,7 +474,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1006566591661138}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7, y: 0, z: 0}
+  m_LocalPosition: {x: 2, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4997218723228054}
@@ -1217,6 +1222,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61134bbf238965245adff0a88447a70a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114460216280391702
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1376758265533372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72c1d5ef947ff7147ad53e5ba1391741, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114460406712708436
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1241,6 +1257,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offsetAxis: {x: 0, y: 1}
+--- !u!114 &114488620416935402
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1962807608975844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72c1d5ef947ff7147ad53e5ba1391741, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114556174285396454
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1964030560272674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72c1d5ef947ff7147ad53e5ba1391741, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114605011216934506
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1321,6 +1359,17 @@ MonoBehaviour:
     type: 3}
   wallClingRightSprite: {fileID: 21300000, guid: ff0da3410bf1b414dbef339fce1cdede,
     type: 3}
+--- !u!114 &114865705475135566
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1627681373095676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72c1d5ef947ff7147ad53e5ba1391741, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114886871940092054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1353,6 +1402,17 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 44f781ec1738d490ca96228d01bbab44, type: 3}
   timeBetweenJumpSprites: 0.01
   jumpSound: {fileID: 0}
+--- !u!114 &114951292771031010
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1371279289590362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72c1d5ef947ff7147ad53e5ba1391741, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114962362678057670
 MonoBehaviour:
   m_ObjectHideFlags: 1
