@@ -194,7 +194,7 @@ public class AutoObjectTranslate : MonoBehaviour
     {
         selfRigidbody2D.bodyType = RigidbodyType2D.Kinematic;
         selfRigidbody2D.freezeRotation = true;
-        selfRigidbody2D.interpolation = RigidbodyInterpolation2D.Interpolate;
+        //selfRigidbody2D.interpolation = RigidbodyInterpolation2D.Interpolate;
     }
 
 }

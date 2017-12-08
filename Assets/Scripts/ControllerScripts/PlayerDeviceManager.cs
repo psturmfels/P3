@@ -62,7 +62,12 @@ public class PlayerDeviceManager : MonoBehaviour
         DontDestroyOnLoad(this);
 	}
 
-	void Update ()
+    private void Start()
+    {
+        Cursor.visible = false;
+    }
+
+    void Update ()
     {
         //Checks join button on all controllers.
         if(ListenerJoins(controllerListener))

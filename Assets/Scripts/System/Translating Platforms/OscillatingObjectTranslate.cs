@@ -11,7 +11,9 @@ public class OscillatingObjectTranslate : MonoBehaviour
     private Vector2 endPosition = Vector3.zero;
     private float pathDistance = 0;
     private bool forward = true;
-    private bool contact = false;
+    private bool bridgeContact = false;
+    private bool stiltContact = false;
+    private ContactPoint2D[] contacts;
 
     public Vector2 translation = Vector3.zero;
     public float maxSpeed = 2;                          //Maximum Speed of the platform
@@ -36,6 +38,8 @@ public class OscillatingObjectTranslate : MonoBehaviour
         pathDistance = translation.magnitude;
 
         EmplaceEntity();
+
+        contacts = new ContactPoint2D[5];
     }
 
     private void FixedUpdate()
@@ -47,26 +51,50 @@ public class OscillatingObjectTranslate : MonoBehaviour
             ClampPosition();
         }
 
-        //Compute the speed if acceleration at path terminus is desired
-        if(accelerationOffset < 1)
-        {
-            ComputeSpeed();
-        }
+        //Double check contacts
+        CheckContacts();
+
+        //Compute the speed
+        ComputeSpeed();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.GetComponentInChildren<TransformBehavior>())
+        TransformBehavior collidingTransformBehavior = collision.gameObject.GetComponentInChildren<TransformBehavior>();
+        //If colliding with a transformed player
+        if(collidingTransformBehavior)
         {
-            contact = true;
+            //If the transformed player is bridge
+            if(collidingTransformBehavior.slideOffset.x > 0)
+            {
+                bridgeContact = true;
+            }
+
+            //If the transformed player is stilt
+            if(collidingTransformBehavior.slideOffset.y > 0)
+            {
+                stiltContact = true;
+            }
         }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if(collision.gameObject.GetComponentInChildren<TransformBehavior>())
+        TransformBehavior collidingTransformBehavior = collision.gameObject.GetComponentInChildren<TransformBehavior>();
+        //If colliding with a transformed player
+        if(collidingTransformBehavior)
         {
-            contact = false;
+            //If the transformed player is bridge
+            if(collidingTransformBehavior.slideOffset.x > 0)
+            {
+                bridgeContact = false;
+            }
+
+            //If the transformed player is stilt
+            if(collidingTransformBehavior.slideOffset.y > 0)
+            {
+                stiltContact = false;
+            }
         }
     }
 
@@ -94,13 +122,13 @@ public class OscillatingObjectTranslate : MonoBehaviour
 
     private void ComputeSpeed()
     {
-        if(contact)
+        
+        if(bridgeContact || stiltContact)
         {
             selfRigidbody2D.velocity = Vector2.zero;
             return;
         }
-
-
+        
         bool passedMidPoint = CheckMidpointPassed();
         Vector2 nextPoint = forward ? endPosition : basePosition;
         Vector2 lastPoint = forward ? basePosition : endPosition;
@@ -121,9 +149,16 @@ public class OscillatingObjectTranslate : MonoBehaviour
             return;
         }
 
-        selfRigidbody2D.velocity = nextDirection * maxSpeed;
+        selfRigidbody2D.velocity = nextDirection * maxSpeed;    
+    }
 
-        
+    private void CheckContacts()
+    {
+        if(selfRigidbody2D.GetContacts(contacts) == 0)
+        {
+            bridgeContact = false;
+            stiltContact = false;
+        }
     }
 
     private bool CheckMidpointPassed()
