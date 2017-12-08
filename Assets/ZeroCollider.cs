@@ -6,6 +6,6 @@ public class ZeroCollider : MonoBehaviour
 {
     private void FixedUpdate()
     {
-        this.transform.position = Vector3.zero;
+        this.transform.localPosition = Vector3.zero;
     }
 }
