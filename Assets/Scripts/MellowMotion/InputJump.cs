@@ -35,6 +35,7 @@ public class InputJump : MonoBehaviour {
 			return;
 		}
         if (anim != null) {
+            Debug.Log("Jump anim disabled");
             anim.SetBool("walking", false);
         }
         DidJump ();
