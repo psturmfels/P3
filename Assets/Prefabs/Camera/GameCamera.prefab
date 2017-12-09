@@ -2342,6 +2342,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97c5b050637b06e4dbf6efde74851c42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RedColumn: {fileID: 21300000, guid: 48bf40a81ad53d949a38bf4777a78169, type: 3}
+  GreenColumn: {fileID: 21300000, guid: 5fa7df5bb48785443a081cdf433e3d4a, type: 3}
+  BlueColumn: {fileID: 21300000, guid: 1768098d98e4c3e47bea1cd5431a1a80, type: 3}
+  RainbowColumn: {fileID: 21300000, guid: 05e092da7fe74544babc26f160aa4513, type: 3}
 --- !u!114 &114526750659201514
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2424,7 +2428,6 @@ MonoBehaviour:
   maxSizeY: 10
   lockYPos: 1
   lockXPos: 0
-  ignoreCheckpointY: 0
 --- !u!114 &114958494177129064
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2525,6 +2528,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!212 &212161249477849700
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -2566,6 +2570,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!212 &212236219676905688
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -2607,6 +2612,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!212 &212317189122325268
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -2648,6 +2654,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!212 &212354259908081922
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -2689,6 +2696,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!212 &212380812806685412
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -2730,6 +2738,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!212 &212408025159763826
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -2771,6 +2780,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!212 &212432328805154394
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -2812,6 +2822,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!212 &212444565235446498
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -2853,6 +2864,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!212 &212474333672916382
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -2894,6 +2906,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!212 &212520642269297664
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -2935,6 +2948,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!212 &212669026273047472
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -2976,6 +2990,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!212 &212763957880800048
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -3017,6 +3032,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!212 &212822540405339930
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -3058,6 +3074,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!212 &212914178675945742
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -3099,6 +3116,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!212 &212929855317218288
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -3140,3 +3158,4 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0

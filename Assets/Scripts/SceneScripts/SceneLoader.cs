@@ -75,6 +75,7 @@ public class SceneLoader : MonoBehaviour {
             PlayerPrefs.SetInt("Last Level", 0);
             Debug.Log("Restarting the scene with last level: 0");
             Destroy(GameObject.Find("PlayerDeviceManager"));
+            PlayerPrefs.DeleteAll();
             LoadMenu();
         }
     }

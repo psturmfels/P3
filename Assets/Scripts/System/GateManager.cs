@@ -10,7 +10,7 @@ public class GateManager : MonoBehaviour
     public SpriteRenderer Level4;
     public SpriteRenderer Level5;
     public SpriteRenderer Level6;
-    public SpriteRenderer Level7;
+    public SpriteRenderer Level8;
 
     public Sprite Red;
     public Sprite Green;
@@ -27,7 +27,7 @@ public class GateManager : MonoBehaviour
         int Level4Finish = PlayerPrefs.GetInt("Level4Finish", 0);
         int Level5Finish = PlayerPrefs.GetInt("Level5Finish", 0);
         int Level6Finish = PlayerPrefs.GetInt("Level6Finish", 0);
-        int Level7Finish = PlayerPrefs.GetInt("Level7Finish", 0);
+        int Level8Finish = PlayerPrefs.GetInt("Level8Finish", 0);
 
         if(Level1Finish == 0)
         {
@@ -89,14 +89,14 @@ public class GateManager : MonoBehaviour
             Level6.sprite = Rainbow;
         }
 
-        if(Level7Finish == 0)
+        if(Level8Finish == 0)
         {
-            Level7.sprite = Blue;
+            Level8.sprite = Blue;
         }
 
-        if(Level7Finish != 0)
+        if(Level8Finish != 0)
         {
-            Level7.sprite = Rainbow;
+            Level8.sprite = Rainbow;
         }
     }
 }

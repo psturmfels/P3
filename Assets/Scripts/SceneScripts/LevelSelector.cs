@@ -49,6 +49,7 @@ public class LevelSelector : MonoBehaviour {
         if (candyWave != null) {
             ReverseDecay rd = candyWave.GetComponent<ReverseDecay>();
             if (rd != null) {
+                ChangeWaveColor(rd);
                 rd.ReverseWaveDecay();
             }
         }
@@ -82,6 +83,107 @@ public class LevelSelector : MonoBehaviour {
     //this exists so it can be invoked and allow the transition animation to fire
     void EnterLevel() {
         SceneLoader.instance.LoadLevel(levelNo.ToString());
+    }
+
+    private void ChangeWaveColor(ReverseDecay target)
+    {
+        if(levelNo == 1)
+        {
+            int levelFinish = PlayerPrefs.GetInt("Level1Finish", 0);
+            if(levelFinish == 0)
+            {
+                target.ReplaceSprite("Green");
+            }
+
+            else
+            {
+                target.ReplaceSprite("Rainbow");
+            }
+        }
+
+        if(levelNo == 2)
+        {
+            int levelFinish = PlayerPrefs.GetInt("Level2Finish", 0);
+            if(levelFinish == 0)
+            {
+                target.ReplaceSprite("Green");
+            }
+
+            else
+            {
+                target.ReplaceSprite("Rainbow");
+            }
+        }
+
+        if(levelNo == 3)
+        {
+            int levelFinish = PlayerPrefs.GetInt("Level3Finish", 0);
+            if(levelFinish == 0)
+            {
+                target.ReplaceSprite("Red");
+            }
+
+            else
+            {
+                target.ReplaceSprite("Rainbow");
+            }
+        }
+
+        if(levelNo == 4)
+        {
+            int levelFinish = PlayerPrefs.GetInt("Level4Finish", 0);
+            if(levelFinish == 0)
+            {
+                target.ReplaceSprite("Red");
+            }
+
+            else
+            {
+                target.ReplaceSprite("Rainbow");
+            }
+        }
+
+        if(levelNo == 5)
+        {
+            int levelFinish = PlayerPrefs.GetInt("Level5Finish", 0);
+            if(levelFinish == 0)
+            {
+                target.ReplaceSprite("Red");
+            }
+
+            else
+            {
+                target.ReplaceSprite("Rainbow");
+            }
+        }
+
+        if(levelNo == 6)
+        {
+            int levelFinish = PlayerPrefs.GetInt("Level6Finish", 0);
+            if(levelFinish == 0)
+            {
+                target.ReplaceSprite("Blue");
+            }
+
+            else
+            {
+                target.ReplaceSprite("Rainbow");
+            }
+        }
+
+        if(levelNo == 8)
+        {
+            int levelFinish = PlayerPrefs.GetInt("Level8Finish", 0);
+            if(levelFinish == 0)
+            {
+                target.ReplaceSprite("Blue");
+            }
+
+            else
+            {
+                target.ReplaceSprite("Rainbow");
+            }
+        }
     }
 
 }

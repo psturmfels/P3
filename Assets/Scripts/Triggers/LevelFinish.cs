@@ -14,6 +14,7 @@ public class LevelFinish : MonoBehaviour {
     public AudioSource finishSound;
     public AudioSource mainTheme;
     public GameObject candyWave;
+    public int level = 1;
     private GameObject firstPlayer;
 
     // UI Elements regarding level finish
@@ -126,8 +127,15 @@ public class LevelFinish : MonoBehaviour {
     }
 
     private void BackToMenu() {
+        SetLevelComplete();
         SceneLoader.instance.LevelCompleted();
         SceneLoader.instance.LoadMenu();
+    }
+
+    private void SetLevelComplete()
+    {
+        string target = "Level" + level.ToString() + "Finish";
+        PlayerPrefs.SetInt(target, 1);
     }
 
 }

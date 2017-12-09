@@ -9,6 +9,12 @@ public class ReverseDecay : MonoBehaviour {
     public Sprite BlueColumn;
     public Sprite RainbowColumn;
 
+    private void Awake()
+    {
+        string waveColor = PlayerPrefs.GetString("WaveColor", "Red");
+        ReplaceSprite(waveColor);
+    }
+
     public void ReverseWaveDecay() {
         var alphaDecays = GetComponentsInChildren<AlphaDecay>();
 
@@ -28,25 +34,27 @@ public class ReverseDecay : MonoBehaviour {
                 target.sprite = RedColumn;
             }
 
-            if(color == "Green")
+            else if(color == "Green")
             {
                 target.sprite = GreenColumn;
             }
 
-            if(color == "Blue")
+            else if(color == "Blue")
             {
                 target.sprite = BlueColumn;
             }
 
-            if(color == "Rainbow")
+            else if(color == "Rainbow")
             {
                 target.sprite = RainbowColumn;
             }
 
             else
             {
-                target.sprite = RainbowColumn;
+                target.sprite = RedColumn;
             }
         }
+
+        PlayerPrefs.SetString("WaveColor", color);
     }
 }
