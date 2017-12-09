@@ -39,6 +39,7 @@ public class InputJump : MonoBehaviour {
             anim.SetBool("walking", false);
         }
         DidJump ();
+		SpawnDust ();
 		inputFramesCounted = 0;
 		jumpWasPressed = false;
 		StopAllCoroutines ();
@@ -142,5 +143,20 @@ public class InputJump : MonoBehaviour {
 				}
 			}
         }
+	}
+
+	void SpawnDust() {
+		Vector3 offset = new Vector3 (0.0f, -0.6f, 0.0f);
+		if (GetComponentInChildren<StickToUnder> () != null) {
+			GameObject BottomCollider = GetComponentInChildren<StickToUnder> ().gameObject;
+			if (BottomCollider.GetComponent<BoxCollider2D> () != null && !BottomCollider.GetComponent<BoxCollider2D> ().IsTouchingLayers(1 << LayerMask.NameToLayer("Ground"))) {
+				return;
+			}
+		}
+		if (Resources.Load ("JumpCloud") != null && im.GetCurrentFaceDirection () < 0.0f) {
+			Instantiate (Resources.Load ("JumpCloud") as GameObject, transform.position + offset, Quaternion.identity);
+		} else if (Resources.Load ("ReverseJumpCloud") != null && im.GetCurrentFaceDirection () > 0.0f) {
+			Instantiate (Resources.Load ("ReverseJumpCloud") as GameObject, transform.position + offset, Quaternion.identity);
+		}
 	}
 }
