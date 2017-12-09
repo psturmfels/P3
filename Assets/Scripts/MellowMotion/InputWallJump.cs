@@ -41,13 +41,11 @@ public class InputWallJump : MonoBehaviour {
 		if (ms.canWallJumpLeft) {
 			ma.InterruptMovementAnimation (negativeJumpSprites, timeBetweenJumpSprites);
 			jumpForceModifier = -forceModifier;
-			SpawnDust (true);
 			dampenForce = Vector2.down * 50.0f + Vector2.right * 50.0f;
 		} else if (ms.canWallJumpRight) {
 			ma.InterruptMovementAnimation (positiveJumpSprites, timeBetweenJumpSprites);
 			jumpForceModifier = forceModifier;
 			dampenForce = Vector2.down * 50.0f + Vector2.left * 50.0f;
-			SpawnDust (false);
 		} else {
 			return;
 		}
@@ -169,25 +167,5 @@ public class InputWallJump : MonoBehaviour {
 
 	void BeginMovement() {
 		ms.SetState (MellowStates.State.Move, true);
-	}
-
-	void SpawnDust(bool isRight) {
-		Vector3 rightOffset = new Vector3 (0.4f, 0.0f, 0.0f);
-		Vector3 leftOffset = new Vector3 (-0.4f, 0.0f, 0.0f);
-		if (Resources.Load ("JumpCloud") != null && isRight) {
-			GameObject dust = Instantiate (Resources.Load ("JumpCloud") as GameObject, transform.position + rightOffset, Quaternion.Euler (new Vector3 (0.0f, 0.0f, 90.0f)));
-			if (dust.GetComponent<CycleFadeSprites> () != null) {
-				CycleFadeSprites cfs = dust.GetComponent<CycleFadeSprites> ();
-				cfs.endScale.y = 0.1f;
-				cfs.endScale.x = 0.6f;
-			}
-		} else if (Resources.Load ("ReverseJumpCloud") != null && !isRight) {
-			GameObject dust = Instantiate (Resources.Load ("ReverseJumpCloud") as GameObject, transform.position + leftOffset, Quaternion.Euler (new Vector3 (0.0f, 0.0f, -90.0f)));
-			if (dust.GetComponent<CycleFadeSprites> () != null) {
-				CycleFadeSprites cfs = dust.GetComponent<CycleFadeSprites> ();
-				cfs.endScale.y = 0.1f;
-				cfs.endScale.x = -0.6f;
-			}
-		}
 	}
 }

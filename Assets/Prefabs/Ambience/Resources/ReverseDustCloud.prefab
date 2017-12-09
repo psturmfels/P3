@@ -36,7 +36,7 @@ Transform:
   m_GameObject: {fileID: 1016623026744358}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.49, y: 0.62, z: 0}
-  m_LocalScale: {x: -0.4, y: 0.3, z: 1}
+  m_LocalScale: {x: -0.4, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -53,19 +53,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: 21300000, guid: d277b9861a3c341acbf2809728e202f5, type: 3}
-  - {fileID: 21300000, guid: 4d6fb2f6d58ea4749b655b39d04f262f, type: 3}
-  - {fileID: 21300000, guid: 07eca1e51acd048e5aae2cad16f1e96e, type: 3}
-  - {fileID: 21300000, guid: eca9b358ccacf42b98069b0bdae743ca, type: 3}
-  - {fileID: 21300000, guid: d79ccad09cb1d463faa019326670ab4a, type: 3}
-  - {fileID: 21300000, guid: b63a684636d534192854deb0d27b1f8d, type: 3}
-  - {fileID: 21300000, guid: 8354814cb50ed40b98af6b5fd52357bc, type: 3}
-  - {fileID: 21300000, guid: e8dbebbba20dd49d9b1c845ed8327997, type: 3}
-  - {fileID: 21300000, guid: 4e06cccd8df1140dcaafdec77d4a5981, type: 3}
-  timeBetweenSprites: 0.075
-  alphaFadeRate: 0.15
+  - {fileID: 21300000, guid: 76dc12e102e33455e8ad7c8dea397a8a, type: 3}
+  - {fileID: 21300000, guid: d054a7e24841a4607ab50b2028dd8e43, type: 3}
+  - {fileID: 21300000, guid: f7aaa67eeb95c4acf9f6f1530c86cb4c, type: 3}
+  - {fileID: 21300000, guid: a906869466dc6449fa5a02fe9a657fa2, type: 3}
+  - {fileID: 21300000, guid: 5a088dd913731412385a1777d8c2fa61, type: 3}
+  - {fileID: 21300000, guid: 1cd6e603d312141378084f2167c0a317, type: 3}
+  - {fileID: 21300000, guid: 6f89e08a1406440e3b9506ba3375b5db, type: 3}
+  - {fileID: 21300000, guid: 0dd46c61f3dd44eaaaa942fa55939a5b, type: 3}
+  - {fileID: 21300000, guid: c0215ba9daab642d7a7ed8ec23cf5f5e, type: 3}
+  timeBetweenSprites: 0.02
+  alphaFadeRate: 0.1
   scaleJumpRate: 0.1
-  endScale: {x: -1.5, y: 0.5, z: 0}
+  endScale: {x: -0.7, y: 0.2, z: 0}
 --- !u!212 &212178269443152938
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -106,4 +106,4 @@ SpriteRenderer:
   m_Size: {x: 1.06, y: 0.71}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
