@@ -83,6 +83,12 @@ public class InputMove : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
+		if ((Mathf.Sign (previousHorzAxis) != Mathf.Sign (currentHorzAxis) ||
+			previousHorzAxis == 0.0f)
+			&& Mathf.Abs (currentHorzAxis) > 0.1f) {
+			SpawnDust ();
+		}
+
 		if ((previousHorzAxis != currentHorzAxis || currentHorzAxis == 0.0f) && ms.shouldStillMovement) {
 			rb.velocity = new Vector2 (0.0f, rb.velocity.y);
 		}
@@ -93,6 +99,20 @@ public class InputMove : MonoBehaviour {
 			} else if (currentHorzAxis < 0.0f) {
 				rb.velocity = new Vector2 (Mathf.Max (rb.velocity.x - moveIncrement, -currentMaxSpeed), rb.velocity.y);
 			}
+		}
+	}
+
+	void SpawnDust() {
+		if (GetComponent<MellowStates> () != null && !GetComponent<MellowStates> ().canJump) {
+			return;
+		}
+
+		Vector3 RightOffset = new Vector3 (0.3f, -0.554f, 0.0f);
+		Vector3 LeftOffset = new Vector3 (-0.3f, -0.554f, 0.0f);
+		if (Resources.Load ("DustCloud") != null && currentHorzAxis < 0.0f) {
+			Instantiate (Resources.Load ("DustCloud") as GameObject, transform.position + RightOffset, Quaternion.identity);
+		} else if (Resources.Load("ReverseDustCloud") != null && currentHorzAxis > 0.0f) {
+			Instantiate (Resources.Load ("ReverseDustCloud") as GameObject, transform.position + LeftOffset, Quaternion.identity);
 		}
 	}
 }
