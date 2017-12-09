@@ -156,11 +156,5 @@ public class InputJump : MonoBehaviour {
 		Vector3 LeftOffset = new Vector3 (-0.5f, -0.554f, 0.0f);
 		Instantiate (Resources.Load ("DustCloud") as GameObject, transform.position + RightOffset, Quaternion.identity);
 		Instantiate (Resources.Load ("ReverseDustCloud") as GameObject, transform.position + LeftOffset, Quaternion.identity);
-//		Vector3 offset = new Vector3 (0.0f, -0.6f, 0.0f);
-//		if (Resources.Load ("JumpCloud") != null && im.GetCurrentFaceDirection () < 0.0f) {
-//			Instantiate (Resources.Load ("JumpCloud") as GameObject, transform.position + offset, Quaternion.identity);
-//		} else if (Resources.Load ("ReverseJumpCloud") != null && im.GetCurrentFaceDirection () > 0.0f) {
-//			Instantiate (Resources.Load ("ReverseJumpCloud") as GameObject, transform.position + offset, Quaternion.identity);
-//		}
 	}
 }
