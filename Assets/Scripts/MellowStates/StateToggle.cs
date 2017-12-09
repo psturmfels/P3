@@ -5,33 +5,30 @@ using UnityEngine;
 public class StateToggle : MonoBehaviour {
 	public MellowStates.State toggleState;
 	public bool OnTriggerEnable;
-	public bool RegisterStay;
 	public float DelayBeforeExit = 0.0f;
+	private float timeSinceLastJump = 1.0f;
+	private float jumpTimeWait = 0.3f;
 
 	private MellowStates ms;
-
+	private bool isJumper = false;
 
 	void Start () {
 		ms = GetComponentInParent<MellowStates> ();
-		InputJump ij = GetComponentInParent<InputJump> ();
-		ij.DidJump += StartCycleStayBehavior;
+		if (toggleState == MellowStates.State.Jump ||
+		    toggleState == MellowStates.State.WallJumpLeft ||
+		    toggleState == MellowStates.State.WallJumpRight) {
+			isJumper = true;
+			InputJump ij = GetComponentInParent<InputJump> ();
+			ij.DidJump += SetTimeSinceLastJumpToZero;
+			InputWallJump iwj = GetComponentInParent<InputWallJump> ();
+			iwj.DidWallJump += SetTimeSinceLastJumpToZero;
+		}
+	}
+		
+	void SetTimeSinceLastJumpToZero() {
+		timeSinceLastJump = 0.0f;
+	}
 
-		InputWallJump iwj = GetComponentInParent<InputWallJump> ();
-		iwj.DidWallJump += StartCycleStayBehavior;
-	}
-		
-	void StartCycleStayBehavior() {
-		ExitAssignedState ();
-		StopAllCoroutines ();
-		StartCoroutine (CycleStayBehavior ());
-	}
-		
-	IEnumerator CycleStayBehavior() {
-		RegisterStay = false;
-		yield return new WaitForSeconds (0.3f);
-		RegisterStay = true;
-	}
-	
 	void OnTriggerEnter2D(Collider2D other) {
 		if (ms != null) {
 			SetAssignedState ();
@@ -39,8 +36,10 @@ public class StateToggle : MonoBehaviour {
 	}
 
 	void OnTriggerStay2D(Collider2D other) {
-		if (ms != null && RegisterStay) {
-			SetAssignedState ();
+		if (ms != null) {
+			if ((isJumper && timeSinceLastJump > jumpTimeWait) || !isJumper) {
+				SetAssignedState ();
+			}
 		}
 	}
 
@@ -61,5 +60,9 @@ public class StateToggle : MonoBehaviour {
 	void SetAssignedState() {
 		CancelInvoke ();
 		ms.SetState (toggleState, OnTriggerEnable);
+	}
+
+	void Update() {
+		timeSinceLastJump += Time.deltaTime;
 	}
 }
