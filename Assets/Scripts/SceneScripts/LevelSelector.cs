@@ -39,6 +39,13 @@ public class LevelSelector : MonoBehaviour {
 
     private void JoinLevel() {
         GameObject candyWave = GameObject.Find("CandyWave");
+        var cam = GameObject.Find("GameCamera");
+        var mainTheme = cam.GetComponent<AudioSource>();
+        var enterSound = cam.transform.Find("SFX").Find("LevelEnter").GetComponent<AudioSource>();
+
+        mainTheme.Pause();
+        enterSound.Play();
+
         if (candyWave != null) {
             ReverseDecay rd = candyWave.GetComponent<ReverseDecay>();
             if (rd != null) {
