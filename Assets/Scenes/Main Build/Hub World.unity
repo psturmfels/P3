@@ -411,6 +411,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 60170466}
+  - component: {fileID: 60170467}
   m_Layer: 0
   m_Name: GateOverlays
   m_TagString: Untagged
@@ -438,6 +439,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &60170467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 60170465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d78e2f0c24c0f0f4ba624c53869dcc62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Level1: {fileID: 68196675}
+  Level2: {fileID: 1462938724}
+  Level3: {fileID: 1734668082}
+  Level4: {fileID: 1712018737}
+  Level5: {fileID: 1539376669}
+  Level6: {fileID: 1617559945}
+  Level7: {fileID: 1386899592}
+  Red: {fileID: 21300000, guid: 43ebb86ab8b8c694aa1b51ca395c80af, type: 3}
+  Green: {fileID: 21300000, guid: 4d119db059f7d1a449d75b3764ba4b86, type: 3}
+  Blue: {fileID: 21300000, guid: e720c996fd3ec744691d357978d34622, type: 3}
+  Rainbow: {fileID: 21300000, guid: a2216797d277f1a4ebdb00af3c25cf9a, type: 3}
 --- !u!1 &68196673
 GameObject:
   m_ObjectHideFlags: 0
@@ -448,7 +471,7 @@ GameObject:
   - component: {fileID: 68196674}
   - component: {fileID: 68196675}
   m_Layer: 0
-  m_Name: lollipop_green
+  m_Name: Level1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7536,7 +7559,7 @@ GameObject:
   - component: {fileID: 1386899591}
   - component: {fileID: 1386899592}
   m_Layer: 0
-  m_Name: lollipop_blue (1)
+  m_Name: Level7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7735,7 +7758,7 @@ GameObject:
   - component: {fileID: 1462938723}
   - component: {fileID: 1462938724}
   m_Layer: 0
-  m_Name: lollipop_green (1)
+  m_Name: Level2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7911,6 +7934,24 @@ Prefab:
       propertyPath: ignoreCheckpointY
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 212822540405339930, guid: 8f23d1ced251e436cbb2fecb35e85ef8,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 48bf40a81ad53d949a38bf4777a78169,
+        type: 3}
+    - target: {fileID: 212380812806685412, guid: 8f23d1ced251e436cbb2fecb35e85ef8,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1768098d98e4c3e47bea1cd5431a1a80,
+        type: 3}
+    - target: {fileID: 212444565235446498, guid: 8f23d1ced251e436cbb2fecb35e85ef8,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5fa7df5bb48785443a081cdf433e3d4a,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8f23d1ced251e436cbb2fecb35e85ef8, type: 2}
   m_IsPrefabParent: 0
@@ -7980,7 +8021,7 @@ GameObject:
   - component: {fileID: 1539376668}
   - component: {fileID: 1539376669}
   m_Layer: 0
-  m_Name: lollipop_red (2)
+  m_Name: Level5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8353,7 +8394,7 @@ GameObject:
   - component: {fileID: 1617559944}
   - component: {fileID: 1617559945}
   m_Layer: 0
-  m_Name: lollipop_blue
+  m_Name: Level6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9055,7 +9096,7 @@ GameObject:
   - component: {fileID: 1712018736}
   - component: {fileID: 1712018737}
   m_Layer: 0
-  m_Name: lollipop_red (1)
+  m_Name: Level4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9252,7 +9293,7 @@ GameObject:
   - component: {fileID: 1734668081}
   - component: {fileID: 1734668082}
   m_Layer: 0
-  m_Name: lollipop_red
+  m_Name: Level3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
