@@ -27,7 +27,7 @@ public class GateManager : MonoBehaviour
         int Level4Finish = PlayerPrefs.GetInt("Level4Finish", 0);
         int Level5Finish = PlayerPrefs.GetInt("Level5Finish", 0);
         int Level6Finish = PlayerPrefs.GetInt("Level6Finish", 0);
-        int Level8Finish = PlayerPrefs.GetInt("Level8Finish", 0);
+        int Level8Finish = PlayerPrefs.GetInt("Level7Finish", 0);
 
         if(Level1Finish == 0)
         {
