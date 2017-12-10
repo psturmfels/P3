@@ -171,9 +171,9 @@ public class LevelSelector : MonoBehaviour {
             }
         }
 
-        if(levelNo == 8)
+        if(levelNo == 7)
         {
-            int levelFinish = PlayerPrefs.GetInt("Level8Finish", 0);
+            int levelFinish = PlayerPrefs.GetInt("Level7Finish", 0);
             if(levelFinish == 0)
             {
                 target.ReplaceSprite("Blue");
