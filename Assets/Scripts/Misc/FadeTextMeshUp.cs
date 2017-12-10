@@ -17,7 +17,7 @@ public class FadeTextMeshUp : MonoBehaviour {
 	}
 	
 	IEnumerator FadeUpParabola() {
-		yield return WaitForSeconds (1.0f); 
+		yield return new WaitForSeconds (1.0f); 
 		float initialYPosition = transform.position.y;
 		float initialXPosition = transform.position.x;
 		float finalXPosition = transform.position.x + finalXOffset;
