@@ -64,7 +64,7 @@ public class PlayerDeviceManager : MonoBehaviour
 
     private void Start()
     {
-//        Cursor.visible = false;
+        Cursor.visible = false;
     }
 
     void Update ()
