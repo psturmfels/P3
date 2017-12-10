@@ -143,9 +143,6 @@ public class SceneLoader : MonoBehaviour {
                 pos = new Vector2(38f, 2f);
                 break;
             case 7:
-                pos = new Vector2(52f, 12.5f);
-                break;
-            case 8:
                 pos = new Vector2(62.5f, 4.5f);
                 break;
             default:
