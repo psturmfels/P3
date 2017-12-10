@@ -65,12 +65,14 @@ public class SceneLoader : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (controllerActions.BackLevel.WasPressed || keyboardActions.BackLevel.WasPressed) {
-            if (SceneManager.GetActiveScene().buildIndex != 0) {
-                LoadMenu();
+        if (controllerActions != null && keyboardActions != null) {
+            if (controllerActions.BackLevel.WasPressed || keyboardActions.BackLevel.WasPressed) {
+                if (SceneManager.GetActiveScene().buildIndex != 0) {
+                    LoadMenu();
+                }
             }
         }
-
+        
         if (Input.GetKeyDown(KeyCode.R)) {
             PlayerPrefs.SetInt("Last Level", 0);
             Debug.Log("Restarting the scene with last level: 0");
