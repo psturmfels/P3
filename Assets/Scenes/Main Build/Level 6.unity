@@ -42,7 +42,7 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 11
+  serializedVersion: 9
   m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
@@ -54,7 +54,7 @@ LightmapSettings:
     m_EnableBakedLightmaps: 0
     m_EnableRealtimeLightmaps: 0
   m_LightmapEditorSettings:
-    serializedVersion: 9
+    serializedVersion: 8
     m_Resolution: 2
     m_BakeResolution: 40
     m_TextureWidth: 1024
@@ -77,17 +77,19 @@ LightmapSettings:
     m_PVRDirectSampleCount: 32
     m_PVRSampleCount: 500
     m_PVRBounces: 2
-    m_PVRFiltering: 0
+    m_PVRFilterTypeDirect: 0
+    m_PVRFilterTypeIndirect: 0
+    m_PVRFilterTypeAO: 0
     m_PVRFilteringMode: 1
     m_PVRCulling: 1
     m_PVRFilteringGaussRadiusDirect: 1
     m_PVRFilteringGaussRadiusIndirect: 5
     m_PVRFilteringGaussRadiusAO: 2
-    m_PVRFilteringAtrousColorSigma: 1
-    m_PVRFilteringAtrousNormalSigma: 1
-    m_PVRFilteringAtrousPositionSigma: 1
+    m_PVRFilteringAtrousPositionSigmaDirect: 0.5
+    m_PVRFilteringAtrousPositionSigmaIndirect: 2
+    m_PVRFilteringAtrousPositionSigmaAO: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_ShadowMaskMode: 2
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -208,7 +210,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &6965443
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,7 +310,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &8319131
 Prefab:
   m_ObjectHideFlags: 0
@@ -356,12 +356,12 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
@@ -373,6 +373,12 @@ Prefab:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -477,7 +483,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &22342813
 GameObject:
   m_ObjectHideFlags: 0
@@ -565,7 +570,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!4 &53386460 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4295842888995746, guid: dc150518d782e469299b9fc9a452200c,
@@ -676,7 +680,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &69313555
 Prefab:
   m_ObjectHideFlags: 0
@@ -826,6 +829,12 @@ Prefab:
       propertyPath: cell_size
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -1505,7 +1514,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &94667038
 Prefab:
   m_ObjectHideFlags: 0
@@ -1688,7 +1696,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &101611003
 Prefab:
   m_ObjectHideFlags: 0
@@ -4565,18 +4572,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_IsPrefabParent: 0
@@ -5168,18 +5181,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_IsPrefabParent: 0
@@ -5897,18 +5916,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -5991,18 +6016,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -6112,7 +6143,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &170357520
 GameObject:
   m_ObjectHideFlags: 0
@@ -6218,7 +6248,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &177195792
 Prefab:
   m_ObjectHideFlags: 0
@@ -6287,18 +6316,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -6395,7 +6430,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &179692637
 Prefab:
   m_ObjectHideFlags: 0
@@ -6442,18 +6476,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_IsPrefabParent: 0
@@ -8241,7 +8281,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &207296175
 GameObject:
   m_ObjectHideFlags: 0
@@ -8342,7 +8381,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &214938060
 Prefab:
   m_ObjectHideFlags: 0
@@ -8401,12 +8439,12 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
@@ -8418,6 +8456,12 @@ Prefab:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -8522,7 +8566,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &222758900
 Prefab:
   m_ObjectHideFlags: 0
@@ -9155,7 +9198,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &244090229
 GameObject:
   m_ObjectHideFlags: 0
@@ -9264,18 +9306,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -10136,7 +10184,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &285781758
 Prefab:
   m_ObjectHideFlags: 0
@@ -10205,18 +10252,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -10523,7 +10576,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &298728998
 GameObject:
   m_ObjectHideFlags: 0
@@ -10624,7 +10676,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!4 &302308234 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4117712363108904, guid: 348d74df819e7428fbdf1ae76a83a895,
@@ -10730,7 +10781,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &328828153
 Prefab:
   m_ObjectHideFlags: 0
@@ -11144,7 +11194,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &344369590
 Prefab:
   m_ObjectHideFlags: 0
@@ -11315,12 +11364,12 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
@@ -11332,6 +11381,12 @@ Prefab:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -11423,7 +11478,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &360674572
 GameObject:
   m_ObjectHideFlags: 0
@@ -11524,7 +11578,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &361332219
 GameObject:
   m_ObjectHideFlags: 0
@@ -11836,18 +11889,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -12102,7 +12161,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!4 &400414874 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4587584932836080, guid: 3d9e37017f7b94607adb51d56dfdcfa0,
@@ -12154,18 +12212,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_IsPrefabParent: 0
@@ -12311,12 +12375,12 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
@@ -12328,6 +12392,12 @@ Prefab:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -12711,18 +12781,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -12784,7 +12860,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!4 &456645313
 Transform:
   m_ObjectHideFlags: 0
@@ -13058,18 +13133,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -13668,7 +13749,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &523377821
 Prefab:
   m_ObjectHideFlags: 0
@@ -14751,18 +14831,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -14994,7 +15080,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &554316223
 Prefab:
   m_ObjectHideFlags: 0
@@ -15199,7 +15284,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &564280928
 Prefab:
   m_ObjectHideFlags: 0
@@ -15254,18 +15338,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -15316,18 +15406,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_IsPrefabParent: 0
@@ -15436,7 +15532,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &575940740
 Prefab:
   m_ObjectHideFlags: 0
@@ -15580,18 +15675,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -15834,7 +15935,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &603169538
 Prefab:
   m_ObjectHideFlags: 0
@@ -16115,7 +16215,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &631678041
 Prefab:
   m_ObjectHideFlags: 0
@@ -16353,12 +16452,12 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
@@ -16370,6 +16469,12 @@ Prefab:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -16442,18 +16547,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -16668,7 +16779,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!4 &662262862 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4117712363108904, guid: 348d74df819e7428fbdf1ae76a83a895,
@@ -16842,12 +16952,12 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
@@ -16859,6 +16969,12 @@ Prefab:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -17038,18 +17154,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -17280,18 +17402,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -17369,18 +17497,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -17524,7 +17658,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &712370948
 Prefab:
   m_ObjectHideFlags: 0
@@ -17829,12 +17962,12 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
@@ -17846,6 +17979,12 @@ Prefab:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -18932,7 +19071,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &740686222
 GameObject:
   m_ObjectHideFlags: 0
@@ -19063,7 +19201,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &753512055
 Prefab:
   m_ObjectHideFlags: 0
@@ -19211,18 +19348,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -19295,18 +19438,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -19734,6 +19883,12 @@ Prefab:
       propertyPath: m_Name
       value: Spike Block (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -19843,7 +19998,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &787087021
 GameObject:
   m_ObjectHideFlags: 0
@@ -19944,7 +20098,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &788539802
 GameObject:
   m_ObjectHideFlags: 0
@@ -20045,7 +20198,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &789527271
 GameObject:
   m_ObjectHideFlags: 0
@@ -20146,7 +20298,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &789823559
 Prefab:
   m_ObjectHideFlags: 0
@@ -20205,12 +20356,12 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
@@ -20222,6 +20373,12 @@ Prefab:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -20358,18 +20515,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_IsPrefabParent: 0
@@ -21194,18 +21357,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -21315,7 +21484,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &825837307
 Prefab:
   m_ObjectHideFlags: 0
@@ -21785,18 +21953,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -22206,7 +22380,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &873567356
 Prefab:
   m_ObjectHideFlags: 0
@@ -23022,7 +23195,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &917108702
 GameObject:
   m_ObjectHideFlags: 0
@@ -23096,7 +23268,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &927784122
 Prefab:
   m_ObjectHideFlags: 0
@@ -23464,7 +23635,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &948580508
 Prefab:
   m_ObjectHideFlags: 0
@@ -23694,7 +23864,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!4 &958605026 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4877144533604614, guid: 00b27a3e898d242a9bc0588069b7ef6a,
@@ -24337,7 +24506,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &979773887
 Prefab:
   m_ObjectHideFlags: 0
@@ -24406,18 +24574,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -24591,6 +24765,12 @@ Prefab:
       propertyPath: m_Name
       value: Spike Block (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -24702,18 +24882,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_IsPrefabParent: 0
@@ -25700,6 +25886,12 @@ Prefab:
       propertyPath: m_Name
       value: Spike Block (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -25767,12 +25959,12 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
@@ -25784,6 +25976,12 @@ Prefab:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -26098,7 +26296,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &1102444020
 Prefab:
   m_ObjectHideFlags: 0
@@ -26167,18 +26364,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -26352,7 +26555,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &1109527143
 GameObject:
   m_ObjectHideFlags: 0
@@ -26453,7 +26655,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &1110777804
 Prefab:
   m_ObjectHideFlags: 0
@@ -26504,12 +26705,12 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
@@ -26521,6 +26722,12 @@ Prefab:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -26856,7 +27063,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &1124458376
 Prefab:
   m_ObjectHideFlags: 0
@@ -26907,18 +27113,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -27158,18 +27370,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -27237,12 +27455,12 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
@@ -27254,6 +27472,12 @@ Prefab:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -27326,18 +27550,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -27959,18 +28189,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -28048,18 +28284,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -28174,7 +28416,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &1232348174
 Prefab:
   m_ObjectHideFlags: 0
@@ -28243,18 +28484,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -28420,7 +28667,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!4 &1259885264
 Transform:
   m_ObjectHideFlags: 0
@@ -29122,18 +29368,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -30873,7 +31125,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &1279470402
 GameObject:
   m_ObjectHideFlags: 0
@@ -31168,7 +31419,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &1304856852
 Prefab:
   m_ObjectHideFlags: 0
@@ -31837,18 +32087,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -32083,7 +32339,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &1331227713
 Prefab:
   m_ObjectHideFlags: 0
@@ -32274,7 +32529,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &1344638170
 GameObject:
   m_ObjectHideFlags: 0
@@ -33020,18 +33274,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -33141,7 +33401,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &1367242548
 GameObject:
   m_ObjectHideFlags: 0
@@ -33242,7 +33501,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &1370947218
 Prefab:
   m_ObjectHideFlags: 0
@@ -33393,18 +33651,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_IsPrefabParent: 0
@@ -33646,12 +33910,12 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
@@ -33663,6 +33927,12 @@ Prefab:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -33767,7 +34037,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &1403593654
 GameObject:
   m_ObjectHideFlags: 0
@@ -33897,7 +34166,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!4 &1407679752 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4877144533604614, guid: 00b27a3e898d242a9bc0588069b7ef6a,
@@ -33961,12 +34229,12 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
@@ -33978,6 +34246,12 @@ Prefab:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -35624,7 +35898,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &1415692904
 Prefab:
   m_ObjectHideFlags: 0
@@ -35764,18 +36037,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -35853,18 +36132,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -36185,12 +36470,12 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
@@ -36202,6 +36487,12 @@ Prefab:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -36539,7 +36830,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &1469610084
 GameObject:
   m_ObjectHideFlags: 0
@@ -36640,7 +36930,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &1473421683
 Prefab:
   m_ObjectHideFlags: 0
@@ -37393,7 +37682,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &1494278326
 Prefab:
   m_ObjectHideFlags: 0
@@ -38946,7 +39234,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &1504051861
 Prefab:
   m_ObjectHideFlags: 0
@@ -39275,7 +39562,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &1529384536
 Prefab:
   m_ObjectHideFlags: 0
@@ -39665,7 +39951,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &1554553052
 Prefab:
   m_ObjectHideFlags: 0
@@ -39734,18 +40019,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -39816,18 +40107,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -39970,18 +40267,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -40467,7 +40770,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &1613758433
 Prefab:
   m_ObjectHideFlags: 0
@@ -40647,7 +40949,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &1617296773
 Prefab:
   m_ObjectHideFlags: 0
@@ -40716,18 +41017,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -41417,18 +41724,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -41591,7 +41904,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &1664620291
 Prefab:
   m_ObjectHideFlags: 0
@@ -42593,7 +42905,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &1685410928
 Prefab:
   m_ObjectHideFlags: 0
@@ -42895,7 +43206,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &1701171881
 GameObject:
   m_ObjectHideFlags: 0
@@ -42996,7 +43306,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &1702111361
 GameObject:
   m_ObjectHideFlags: 0
@@ -43174,18 +43483,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_IsPrefabParent: 0
@@ -43504,18 +43819,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_IsPrefabParent: 0
@@ -43624,7 +43945,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &1766272956
 Prefab:
   m_ObjectHideFlags: 0
@@ -43781,7 +44101,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &1782002278
 GameObject:
   m_ObjectHideFlags: 0
@@ -44473,18 +44792,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -44594,7 +44919,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &1798334618
 Prefab:
   m_ObjectHideFlags: 0
@@ -46066,18 +46390,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_IsPrefabParent: 0
@@ -46291,7 +46621,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &1812828309
 Prefab:
   m_ObjectHideFlags: 0
@@ -46467,7 +46796,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &1828200785
 Prefab:
   m_ObjectHideFlags: 0
@@ -46733,7 +47061,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &1846685063
 GameObject:
   m_ObjectHideFlags: 0
@@ -46807,7 +47134,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &1849849810
 Prefab:
   m_ObjectHideFlags: 0
@@ -47445,7 +47771,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &1867673633
 GameObject:
   m_ObjectHideFlags: 0
@@ -47738,7 +48063,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &1916959086
 Prefab:
   m_ObjectHideFlags: 0
@@ -49255,7 +49579,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &1946958229
 GameObject:
   m_ObjectHideFlags: 0
@@ -49356,7 +49679,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!4 &1960686890 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4103614161738392, guid: 4b02819d8b4244241b3a648e811b03fe,
@@ -49549,7 +49871,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &2006336679
 Prefab:
   m_ObjectHideFlags: 0
@@ -49724,7 +50045,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &2012947917
 GameObject:
   m_ObjectHideFlags: 0
@@ -49862,7 +50182,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &2021211518
 GameObject:
   m_ObjectHideFlags: 0
@@ -49963,7 +50282,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &2031777500
 GameObject:
   m_ObjectHideFlags: 0
@@ -50064,7 +50382,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &2036927656
 GameObject:
   m_ObjectHideFlags: 0
@@ -50165,7 +50482,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &2038617396
 GameObject:
   m_ObjectHideFlags: 0
@@ -50266,7 +50582,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!4 &2044888751 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4263744852156662, guid: fa01601003aab47949318855da0fa7c6,
@@ -50372,7 +50687,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &2068967193
 GameObject:
   m_ObjectHideFlags: 0
@@ -50473,7 +50787,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &2070922755
 Prefab:
   m_ObjectHideFlags: 0
@@ -50532,12 +50845,12 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
@@ -50549,6 +50862,12 @@ Prefab:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -50688,18 +51007,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114693292388388824, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
@@ -50806,7 +51131,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &2094401308
 Prefab:
   m_ObjectHideFlags: 0
@@ -50976,7 +51300,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &2105649963
 GameObject:
   m_ObjectHideFlags: 0
@@ -51064,7 +51387,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &2106670828
 Prefab:
   m_ObjectHideFlags: 0
@@ -51261,7 +51583,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &2114226758
 Prefab:
   m_ObjectHideFlags: 0
@@ -51304,18 +51625,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.84705883
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.9490196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c1df070105b44f3f828e08323107756,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_IsPrefabParent: 0
@@ -51457,7 +51784,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &2122826644
 GameObject:
   m_ObjectHideFlags: 0

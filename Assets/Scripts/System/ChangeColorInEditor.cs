@@ -16,9 +16,9 @@ public class ChangeColorInEditor : MonoBehaviour {
 	public Sprite[] greenSprites;
 	public Sprite[] blueSprites;
 
-	private Color blueSpikesColor = new Color (216.0f / 255.0f, 242.0f / 255.0f, 255.0f / 255.0f);
+	private Color blueSpikesColor = new Color (1.0f, 1.0f, 1.0f);
 	private Color redSpikesColor = new Color (1.0f, 1.0f, 1.0f);
-	private Color greenSpikesColor = new Color (176.0f / 255.0f, 156.0f / 255.0f, 0.0f);
+	private Color greenSpikesColor = new Color (223.0f / 255.0f, 234.0f / 255.0f, 181.0f / 255.0f);
 	private string spikeSpriteName = "AbstractPlatformer_351";
 
 	private string[] redValues = new string[] { 
@@ -39,7 +39,8 @@ public class ChangeColorInEditor : MonoBehaviour {
 		"AbstractPlatformer_70",
 		"AbstractPlatformer_240",
 		"AbstractPlatformer_90",
-		"AbstractPlatformer_190"
+		"AbstractPlatformer_190",
+		"MetalSpikes"
 		};
 
 	private string[] greenValues = new string[] { 
@@ -60,7 +61,8 @@ public class ChangeColorInEditor : MonoBehaviour {
 		"AbstractPlatformer_199",
 		"AbstractPlatformer_21",
 		"AbstractPlatformer_225",
-		"AbstractPlatformer_69"
+		"AbstractPlatformer_69",
+		"Thorns"
 	};
 
 	private string[] blueValues = new string[] { 
@@ -81,7 +83,8 @@ public class ChangeColorInEditor : MonoBehaviour {
 		"AbstractPlatformer_338",
 		"AbstractPlatformer_313",
 		"AbstractPlatformer_6",
-		"AbstractPlatformer_176"
+		"AbstractPlatformer_176",
+		"Icicles"
 	};
 
 
@@ -108,6 +111,7 @@ public class ChangeColorInEditor : MonoBehaviour {
 								sr.sprite = blueSprites [greenIndex];
 							} else if (objSpriteName == spikeSpriteName) {
 								sr.color = blueSpikesColor;
+								sr.sprite = blueSprites [blueSprites.Length - 1];
 							}
 						}
 						break;
@@ -122,6 +126,7 @@ public class ChangeColorInEditor : MonoBehaviour {
 								sr.sprite = greenSprites [blueIndex];
 							} else if (objSpriteName == spikeSpriteName) {
 								sr.color = greenSpikesColor;
+								sr.sprite = greenSprites [greenSprites.Length - 1];
 							}
 						}
 						break;
@@ -136,6 +141,7 @@ public class ChangeColorInEditor : MonoBehaviour {
 								sr.sprite = redSprites [greenIndex];
 							} else if (objSpriteName == spikeSpriteName) {
 								sr.color = redSpikesColor;
+								sr.sprite = redSprites [redSprites.Length - 1];
 							}
 						}
 						break;

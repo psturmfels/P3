@@ -42,7 +42,7 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 11
+  serializedVersion: 9
   m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
@@ -54,7 +54,7 @@ LightmapSettings:
     m_EnableBakedLightmaps: 0
     m_EnableRealtimeLightmaps: 0
   m_LightmapEditorSettings:
-    serializedVersion: 9
+    serializedVersion: 8
     m_Resolution: 2
     m_BakeResolution: 40
     m_TextureWidth: 1024
@@ -77,17 +77,19 @@ LightmapSettings:
     m_PVRDirectSampleCount: 32
     m_PVRSampleCount: 500
     m_PVRBounces: 2
-    m_PVRFiltering: 0
+    m_PVRFilterTypeDirect: 0
+    m_PVRFilterTypeIndirect: 0
+    m_PVRFilterTypeAO: 0
     m_PVRFilteringMode: 1
     m_PVRCulling: 1
     m_PVRFilteringGaussRadiusDirect: 1
     m_PVRFilteringGaussRadiusIndirect: 5
     m_PVRFilteringGaussRadiusAO: 2
-    m_PVRFilteringAtrousColorSigma: 1
-    m_PVRFilteringAtrousNormalSigma: 1
-    m_PVRFilteringAtrousPositionSigma: 1
+    m_PVRFilteringAtrousPositionSigmaDirect: 0.5
+    m_PVRFilteringAtrousPositionSigmaIndirect: 2
+    m_PVRFilteringAtrousPositionSigmaAO: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_ShadowMaskMode: 2
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -309,7 +311,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &13821654
 Prefab:
   m_ObjectHideFlags: 0
@@ -356,18 +357,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.6901961
+      value: 0.8745098
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.6117647
+      value: 0.91764706
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
-      value: 0
+      value: 0.70980394
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 116e9e83e11da403981ce5cc89d33bc8,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_IsPrefabParent: 0
@@ -449,7 +456,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &28386630
 GameObject:
   m_ObjectHideFlags: 0
@@ -523,7 +529,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &30728760
 Prefab:
   m_ObjectHideFlags: 0
@@ -929,7 +934,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!4 &51060244
 Transform:
   m_ObjectHideFlags: 0
@@ -944,54 +948,6 @@ Transform:
   m_Father: {fileID: 2097109867}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &66477398
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4050150667307952, guid: 2a81e1bef71124868b6dc3afabb520a9, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4050150667307952, guid: 2a81e1bef71124868b6dc3afabb520a9, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4050150667307952, guid: 2a81e1bef71124868b6dc3afabb520a9, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4050150667307952, guid: 2a81e1bef71124868b6dc3afabb520a9, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4050150667307952, guid: 2a81e1bef71124868b6dc3afabb520a9, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4050150667307952, guid: 2a81e1bef71124868b6dc3afabb520a9, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4050150667307952, guid: 2a81e1bef71124868b6dc3afabb520a9, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4050150667307952, guid: 2a81e1bef71124868b6dc3afabb520a9, type: 2}
-      propertyPath: m_RootOrder
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 114640137916668630, guid: 2a81e1bef71124868b6dc3afabb520a9,
-        type: 2}
-      propertyPath: currentTileColor
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114640137916668630, guid: 2a81e1bef71124868b6dc3afabb520a9, type: 2}
-  m_ParentPrefab: {fileID: 100100000, guid: 2a81e1bef71124868b6dc3afabb520a9, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &73752460
 GameObject:
   m_ObjectHideFlags: 0
@@ -1065,7 +1021,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &80043635
 GameObject:
   m_ObjectHideFlags: 0
@@ -1226,7 +1181,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &92765162
 GameObject:
   m_ObjectHideFlags: 0
@@ -1327,7 +1281,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &94479572
 GameObject:
   m_ObjectHideFlags: 0
@@ -1502,7 +1455,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!4 &105203073
 Transform:
   m_ObjectHideFlags: 0
@@ -1618,7 +1570,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &151883691
 GameObject:
   m_ObjectHideFlags: 0
@@ -1692,7 +1643,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &160009673
 GameObject:
   m_ObjectHideFlags: 0
@@ -1793,7 +1743,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &184847006
 GameObject:
   m_ObjectHideFlags: 0
@@ -1867,7 +1816,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &208449967
 GameObject:
   m_ObjectHideFlags: 0
@@ -1968,7 +1916,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &210612750
 GameObject:
   m_ObjectHideFlags: 0
@@ -2042,7 +1989,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &221873616
 Prefab:
   m_ObjectHideFlags: 0
@@ -2177,7 +2123,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &246720640
 GameObject:
   m_ObjectHideFlags: 0
@@ -2280,7 +2225,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &255675017
 GameObject:
   m_ObjectHideFlags: 0
@@ -2388,7 +2332,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!114 &255675022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2475,7 +2418,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &286002151
 GameObject:
   m_ObjectHideFlags: 0
@@ -2576,7 +2518,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &288177162
 GameObject:
   m_ObjectHideFlags: 0
@@ -3284,7 +3225,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &301955096
 Prefab:
   m_ObjectHideFlags: 0
@@ -3445,7 +3385,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &310502115
 GameObject:
   m_ObjectHideFlags: 0
@@ -3546,7 +3485,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &350801036
 Prefab:
   m_ObjectHideFlags: 0
@@ -3804,7 +3742,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &399154703
 GameObject:
   m_ObjectHideFlags: 0
@@ -3909,7 +3846,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &445028173
 Prefab:
   m_ObjectHideFlags: 0
@@ -4067,7 +4003,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &462826283
 GameObject:
   m_ObjectHideFlags: 0
@@ -4168,7 +4103,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &489756380
 Prefab:
   m_ObjectHideFlags: 0
@@ -4215,18 +4149,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.6901961
+      value: 0.8745098
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.6117647
+      value: 0.91764706
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
-      value: 0
+      value: 0.70980394
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 116e9e83e11da403981ce5cc89d33bc8,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_IsPrefabParent: 0
@@ -4335,7 +4275,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &520504703
 GameObject:
   m_ObjectHideFlags: 0
@@ -4424,7 +4363,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!114 &520504707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4629,7 +4567,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &533912215
 Prefab:
   m_ObjectHideFlags: 0
@@ -4834,7 +4771,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &546970563
 Prefab:
   m_ObjectHideFlags: 0
@@ -4972,7 +4908,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!4 &562701003
 Transform:
   m_ObjectHideFlags: 0
@@ -5080,7 +5015,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!4 &566357223
 Transform:
   m_ObjectHideFlags: 0
@@ -5152,7 +5086,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!4 &610041349
 Transform:
   m_ObjectHideFlags: 0
@@ -5271,7 +5204,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &619414650
 GameObject:
   m_ObjectHideFlags: 0
@@ -5367,7 +5299,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!4 &622840393
 Transform:
   m_ObjectHideFlags: 0
@@ -5569,7 +5500,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &638933848
 GameObject:
   m_ObjectHideFlags: 0
@@ -5670,7 +5600,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &649355296
 Prefab:
   m_ObjectHideFlags: 0
@@ -6028,7 +5957,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &652997548
 Prefab:
   m_ObjectHideFlags: 0
@@ -6639,7 +6567,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &677152470
 GameObject:
   m_ObjectHideFlags: 0
@@ -6713,7 +6640,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &691592282
 Prefab:
   m_ObjectHideFlags: 0
@@ -6838,18 +6764,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.6901961
+      value: 0.8745098
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.6117647
+      value: 0.91764706
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
-      value: 0
+      value: 0.70980394
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 116e9e83e11da403981ce5cc89d33bc8,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_IsPrefabParent: 0
@@ -6964,7 +6896,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &731918508
 Prefab:
   m_ObjectHideFlags: 0
@@ -7604,18 +7535,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.6901961
+      value: 0.8745098
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.6117647
+      value: 0.91764706
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
-      value: 0
+      value: 0.70980394
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 116e9e83e11da403981ce5cc89d33bc8,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_IsPrefabParent: 0
@@ -7724,7 +7661,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &758090491
 Prefab:
   m_ObjectHideFlags: 0
@@ -7987,7 +7923,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &773064710
 GameObject:
   m_ObjectHideFlags: 0
@@ -8295,18 +8230,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.6901961
+      value: 0.8745098
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.6117647
+      value: 0.91764706
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
-      value: 0
+      value: 0.70980394
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 116e9e83e11da403981ce5cc89d33bc8,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_IsPrefabParent: 0
@@ -8502,7 +8443,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &824790365
 GameObject:
   m_ObjectHideFlags: 0
@@ -8576,7 +8516,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &835890841
 GameObject:
   m_ObjectHideFlags: 0
@@ -8650,7 +8589,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &841582835
 GameObject:
   m_ObjectHideFlags: 0
@@ -8738,7 +8676,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &856507199
 Prefab:
   m_ObjectHideFlags: 0
@@ -8955,7 +8892,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &874444284
 Prefab:
   m_ObjectHideFlags: 0
@@ -9177,7 +9113,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &887414179
 GameObject:
   m_ObjectHideFlags: 0
@@ -9314,7 +9249,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &887658176
 GameObject:
   m_ObjectHideFlags: 0
@@ -9392,7 +9326,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!114 &887658179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9590,7 +9523,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!4 &960796876 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4724982406060082, guid: 16ff2f6411a5f41fba3b3b6a2ca564db,
@@ -9696,7 +9628,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &981601482
 Prefab:
   m_ObjectHideFlags: 0
@@ -9867,7 +9798,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &1002543973
 GameObject:
   m_ObjectHideFlags: 0
@@ -10020,7 +9950,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &1026061551
 GameObject:
   m_ObjectHideFlags: 0
@@ -10094,7 +10023,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &1029094944
 Prefab:
   m_ObjectHideFlags: 0
@@ -10234,7 +10162,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!4 &1030189765
 Transform:
   m_ObjectHideFlags: 0
@@ -10386,7 +10313,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &1048335583
 GameObject:
   m_ObjectHideFlags: 0
@@ -10524,7 +10450,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &1062463867
 GameObject:
   m_ObjectHideFlags: 0
@@ -10625,7 +10550,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!82 &1075493766 stripped
 AudioSource:
   m_PrefabParentObject: {fileID: 82286934874188076, guid: 8f23d1ced251e436cbb2fecb35e85ef8,
@@ -11073,7 +10997,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &1208807756
 Prefab:
   m_ObjectHideFlags: 0
@@ -12542,7 +12465,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!82 &1237000858 stripped
 AudioSource:
   m_PrefabParentObject: {fileID: 82395872056508154, guid: 8f23d1ced251e436cbb2fecb35e85ef8,
@@ -12648,7 +12570,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &1255234663
 Prefab:
   m_ObjectHideFlags: 0
@@ -13335,7 +13256,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &1333880134
 GameObject:
   m_ObjectHideFlags: 0
@@ -13558,7 +13478,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &1384140518
 GameObject:
   m_ObjectHideFlags: 0
@@ -13835,18 +13754,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.6901961
+      value: 0.8745098
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.6117647
+      value: 0.91764706
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
-      value: 0
+      value: 0.70980394
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 116e9e83e11da403981ce5cc89d33bc8,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_IsPrefabParent: 0
@@ -13943,7 +13868,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!114 &1445785404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14046,7 +13970,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!114 &1448575244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14161,7 +14084,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &1453252064
 GameObject:
   m_ObjectHideFlags: 0
@@ -14235,7 +14157,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &1459831968
 GameObject:
   m_ObjectHideFlags: 0
@@ -14336,7 +14257,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &1465421142
 Prefab:
   m_ObjectHideFlags: 0
@@ -14871,7 +14791,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &1483411174
 GameObject:
   m_ObjectHideFlags: 0
@@ -15196,7 +15115,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &1507519655
 GameObject:
   m_ObjectHideFlags: 0
@@ -15384,7 +15302,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &1549776048
 GameObject:
   m_ObjectHideFlags: 0
@@ -15489,7 +15406,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &1562255628
 GameObject:
   m_ObjectHideFlags: 0
@@ -15737,7 +15653,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &1575288441
 GameObject:
   m_ObjectHideFlags: 0
@@ -15843,7 +15758,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &1593434360
 Prefab:
   m_ObjectHideFlags: 0
@@ -15971,7 +15885,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1101182483985390, guid: 8f23d1ced251e436cbb2fecb35e85ef8, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8f23d1ced251e436cbb2fecb35e85ef8, type: 2}
@@ -16076,7 +15990,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &1608414109
 GameObject:
   m_ObjectHideFlags: 0
@@ -16149,7 +16062,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!4 &1608414113
 Transform:
   m_ObjectHideFlags: 0
@@ -16252,7 +16164,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!4 &1612518107
 Transform:
   m_ObjectHideFlags: 0
@@ -16341,7 +16252,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &1670039950
 Prefab:
   m_ObjectHideFlags: 0
@@ -16807,7 +16717,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &1711619023
 GameObject:
   m_ObjectHideFlags: 0
@@ -16944,7 +16853,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &1719526972
 Prefab:
   m_ObjectHideFlags: 0
@@ -17614,7 +17522,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &1762991579
 Prefab:
   m_ObjectHideFlags: 0
@@ -17669,18 +17576,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.6901961
+      value: 0.8745098
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.6117647
+      value: 0.91764706
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
-      value: 0
+      value: 0.70980394
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 116e9e83e11da403981ce5cc89d33bc8,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_IsPrefabParent: 0
@@ -18378,7 +18291,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &1811504381
 GameObject:
   m_ObjectHideFlags: 0
@@ -18538,7 +18450,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!4 &1812831625
 Transform:
   m_ObjectHideFlags: 0
@@ -18646,7 +18557,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &1847294284
 GameObject:
   m_ObjectHideFlags: 0
@@ -18719,7 +18629,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!4 &1847294288
 Transform:
   m_ObjectHideFlags: 0
@@ -18835,7 +18744,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &1867673633
 GameObject:
   m_ObjectHideFlags: 0
@@ -18997,7 +18905,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &1879148646
 Prefab:
   m_ObjectHideFlags: 0
@@ -19192,7 +19099,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &1897476667
 Prefab:
   m_ObjectHideFlags: 0
@@ -20490,7 +20396,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!4 &1930462018
 Transform:
   m_ObjectHideFlags: 0
@@ -20957,7 +20862,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &1961239337
 GameObject:
   m_ObjectHideFlags: 0
@@ -21015,7 +20919,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!4 &1961239339
 Transform:
   m_ObjectHideFlags: 0
@@ -21027,7 +20930,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1974806425
 GameObject:
@@ -21149,7 +21052,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &1976790393
 GameObject:
   m_ObjectHideFlags: 0
@@ -21223,7 +21125,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &1979892225
 GameObject:
   m_ObjectHideFlags: 0
@@ -21311,7 +21212,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &2001657307
 GameObject:
   m_ObjectHideFlags: 0
@@ -21412,7 +21312,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &2002676086
 Prefab:
   m_ObjectHideFlags: 0
@@ -21933,7 +21832,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &2021231884
 GameObject:
   m_ObjectHideFlags: 0
@@ -22113,7 +22011,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &2032558764
 GameObject:
   m_ObjectHideFlags: 0
@@ -22216,7 +22113,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1001 &2046534405
 Prefab:
   m_ObjectHideFlags: 0
@@ -22263,18 +22159,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.6901961
+      value: 0.8728821
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.6117647
+      value: 0.9191176
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
-      value: 0
+      value: 0.7096129
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 116e9e83e11da403981ce5cc89d33bc8,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_IsPrefabParent: 0
@@ -22404,18 +22306,24 @@ Prefab:
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.6901961
+      value: 0.8745098
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.6117647
+      value: 0.91764706
       objectReference: {fileID: 0}
     - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
         type: 2}
       propertyPath: m_Color.b
-      value: 0
+      value: 0.70980394
       objectReference: {fileID: 0}
+    - target: {fileID: 212579957078853328, guid: 6cd3aa570b56bf24b991c911279a1ef0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 116e9e83e11da403981ce5cc89d33bc8,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6cd3aa570b56bf24b991c911279a1ef0, type: 2}
   m_IsPrefabParent: 0
@@ -22524,7 +22432,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &2093537233
 GameObject:
   m_ObjectHideFlags: 0
@@ -22598,7 +22505,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!4 &2096675001 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4006586994525054, guid: 7be04e5d11dce463599cc9d7ae11230c,
@@ -22811,7 +22717,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &2115565471
 GameObject:
   m_ObjectHideFlags: 0
@@ -22885,7 +22790,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!1 &2136224861
 GameObject:
   m_ObjectHideFlags: 0
@@ -22990,4 +22894,3 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0

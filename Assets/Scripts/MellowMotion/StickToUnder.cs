@@ -30,17 +30,17 @@ public class StickToUnder : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D (Collider2D other) {
-		if (current == null && other.gameObject.CompareTag ("Ground") && other.gameObject.GetComponentInParent<AutoObjectTranslate> () != null) {
-			current = other.gameObject.GetComponentInParent<AutoObjectTranslate> ().gameObject;
+		if (current == null && other.gameObject.CompareTag ("Ground") && other.gameObject.GetComponentInParent<OscillatingObjectTranslate> () != null) {
+			current = other.gameObject.GetComponentInParent<OscillatingObjectTranslate> ().gameObject;
 			previousX = current.transform.position.x;
 			numberInContactWithCurrent = 1;
-		} else if (other.gameObject.GetComponentInParent<AutoObjectTranslate> () != null && current == other.gameObject.GetComponentInParent<AutoObjectTranslate> ().gameObject) {
+		} else if (other.gameObject.GetComponentInParent<OscillatingObjectTranslate> () != null && current == other.gameObject.GetComponentInParent<OscillatingObjectTranslate> ().gameObject) {
 			numberInContactWithCurrent += 1;
 		}
 	}
 
 	void OnTriggerExit2D (Collider2D other) {
-		if (other.gameObject.GetComponentInParent<AutoObjectTranslate> () != null && current == other.gameObject.GetComponentInParent<AutoObjectTranslate> ().gameObject) {
+		if (other.gameObject.GetComponentInParent<OscillatingObjectTranslate> () != null && current == other.gameObject.GetComponentInParent<OscillatingObjectTranslate> ().gameObject) {
 			numberInContactWithCurrent -= 1;
 			if (numberInContactWithCurrent == 0) {
 				previousX = 0.0f;
