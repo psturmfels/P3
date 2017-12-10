@@ -11,7 +11,8 @@ public class InstatiatePrefabOverTime : MonoBehaviour {
 	}
 	
 	IEnumerator SpawnPrefabsEndlessly() {
-		while (true) {
+        yield return new WaitForSeconds(1.0f);
+        while (true) {
 			if (prefabToInstantiate != null) {
 				Instantiate (prefabToInstantiate, transform.position, Quaternion.identity);
 				yield return new WaitForSeconds (secondsBetweenInstantiation);
