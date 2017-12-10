@@ -14,6 +14,10 @@ public class StickToUnder : MonoBehaviour {
 	void Start () {
 		mc = GetComponentInParent<MellowCrushed> ();
 		mc.DisableTransform += SetCurrentToNull;
+
+		if (GetComponentInParent<StateMachineForJack> () != null) {
+			GetComponentInParent<StateMachineForJack> ().BeganInputTransform += SetCurrentToNull;
+		}
 		if (transform.parent != null && transform.parent.parent != null) {
 			topLevelTransform = transform.parent.parent;
 			rb = topLevelTransform.gameObject.GetComponent<Rigidbody2D> ();
