@@ -5,16 +5,24 @@ using UnityEngine;
 public class StickToUnder : MonoBehaviour {
 	private Rigidbody2D rb;
 	private Transform topLevelTransform;
+	private MellowCrushed mc;
 	public GameObject current = null;
 	private int numberInContactWithCurrent = 0;
 	private float previousX = 0.0f;
 	private float eps = 0.1f;
 
 	void Start () {
+		mc = GetComponentInParent<MellowCrushed> ();
+		mc.DisableTransform += SetCurrentToNull;
 		if (transform.parent != null && transform.parent.parent != null) {
 			topLevelTransform = transform.parent.parent;
 			rb = topLevelTransform.gameObject.GetComponent<Rigidbody2D> ();
 		}
+	}
+
+	void SetCurrentToNull () {
+		previousX = 0.0f;
+		current = null;
 	}
 
 	void Update() {
