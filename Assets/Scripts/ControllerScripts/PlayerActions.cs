@@ -96,7 +96,7 @@ public class PlayerActions : PlayerActionSet
         actions.Right.AddDefaultBinding(InputControlType.LeftStickRight);
         actions.Up.AddDefaultBinding(InputControlType.LeftStickUp);
         actions.Down.AddDefaultBinding(InputControlType.LeftStickDown);
-        //actions.Menu.AddDefaultBinding(InputControlType.Command);
+        actions.Menu.AddDefaultBinding(InputControlType.Command);
 
         return actions;
     }
